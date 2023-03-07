@@ -4,7 +4,7 @@
 
 ### Members:
 - Dane Coleman
--
+- Tom Kiba
 -
 -
 -
