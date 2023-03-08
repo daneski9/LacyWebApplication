@@ -3,16 +3,15 @@
 
 
 ### Members:
-- Dane Coleman // test 2
+- Dane Coleman
 - Tom Kiba
 - Marjeela Habib 
 - Carlena Schwab //test 2
 - Igor Oleshko // test 2
-- 
 - Eric Chavez
 -
--
--
+
 
 ### Production-members:
 - Dane Coleman
+- 
