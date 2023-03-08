@@ -5,11 +5,10 @@
 ### Members:
 - Dane Coleman
 - Tom Kiba
-- Carlena Schwab
 - Marjeela Habib 
 - Carlena Schwab //test 2
-- Marjeela test 
--
+- Igor Oleshko // test 2
+- Dane test 2
 -
 -
 -
