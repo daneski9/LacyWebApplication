@@ -3,11 +3,12 @@
 
 
 ### Members:
-- Dane Coleman
+- Dane Coleman // test 2
 - Tom Kiba
-- Carlena Schwab
+- Marjeela Habib 
+- Carlena Schwab //test 2
+- Igor Oleshko // test 2
 - Eric Chavez
--
 -
 -
 -
