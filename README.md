@@ -5,7 +5,7 @@
 ### Members:
 - Dane Coleman
 - Tom Kiba
--
+- Carlena Schwab
 -
 -
 -
