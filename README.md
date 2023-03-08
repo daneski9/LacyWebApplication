@@ -6,7 +6,7 @@
 - Dane Coleman
 - Tom Kiba
 - Carlena Schwab
--
+- Eric Chavez
 -
 -
 -
