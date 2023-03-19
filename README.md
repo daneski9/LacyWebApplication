@@ -10,5 +10,5 @@
 - Igor Oleshko
 - Eric Chavez
 - Aaron Shackelford
-- Abduk Malek Abdul Khaliq
+- Abdul Malek Abdul Khaliq
 
