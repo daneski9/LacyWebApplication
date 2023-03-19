@@ -6,8 +6,8 @@
 - Dane Coleman
 - Tom Kiba
 - Marjeela Habib 
-- Carlena Schwab //test 2
-- Igor Oleshko // test 2
+- Carlena Schwab
+- Igor Oleshko
 - Eric Chavez
 - Aaron Shackelford
 - Abduk Malek Abdul Khaliq
