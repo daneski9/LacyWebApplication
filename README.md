@@ -1,3 +1,6 @@
+# 190 The Squad Mk II members:
+- Aaron Shackelford, Abdul Malek Abdul Khaliq, Carlena Schwab, Dane Coleman, Eric Chavez, Igor Oleshko, Marjeela Habib, Tom Kiba
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
