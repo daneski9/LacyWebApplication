@@ -5,6 +5,7 @@ import Services from "./components/Services";
 import Portfolio from "./components/Portfolio";
 import Contact from "./components/Contact";
 import Navbar from "./components/Navbar";
+import Login from "./components/Login";
 import "./components/Navbar.css";
 import ".//App.css";
 //import Lounge from "./components/Lounge";
@@ -23,6 +24,7 @@ function App() {
             <Route path="/inquiry" element={<Inquiry />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
         </Routes>
         
         
