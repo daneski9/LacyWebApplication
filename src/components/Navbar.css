@@ -1,37 +1,57 @@
 /* testing some google fonts, can change fonts later if desired */
-@import url('https://fonts.googleapis.com/css2?family=Asap:wght@200;400&family=Fjalla+One&family=IBM+Plex+Sans&family=Mulish:wght@200&family=Open+Sans:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@200;400&family=Fjalla+One&family=IBM+Plex+Sans&family=Jost:wght@300&family=Mulish:wght@200&display=swap');
 
-.navbar {
-    background-color: #744747;
-    justify-content: space-between;
-    padding: 1.2em;
-    font-family: 'Open Sans', sans-serif;
-   
-    
-  }
-  
-  .navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 7em;
-    justify-content: center;
-    
+  body{
+    margin: 0;
   }
  
-  
-  .navbar a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1.2em;
-    letter-spacing: 0.03em;
-    font-weight: 300;
-    
-    transition: all 0.2s ease-in-out;
-   
+  .navbar {
+    background-color: #501e1ede;
+    justify-content: space-between;
+    padding: 1em;
+    font-family: 'Jost', sans-serif;
+    border-bottom: 4px solid #bba3a38f;
   }
 
-  .navbar a:hover {
-    color: #ffffff;
-    text-shadow: 0px 2px 1px rgb(255, 38, 38);
-    font-size: 1.25em;
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-right: 25px;
+    gap: 4%;
   }
+  a {
+    color: #ffffffea;
+    text-decoration: none;
+    font-size: 1.1em;
+    letter-spacing: 0.02em;
+    font-weight: 300;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+  }
+
+  a:hover{
+    color: #f84a4a;
+    text-shadow: 3px 2px 2px rgb(146, 0, 0);
+  }
+    
+  /* Media query for responsive design */
+  @media (max-width: 660px) {
+  ul {
+    flex-wrap: wrap;
+    text-align:center;
+    margin-right: 25px;
+  }
+  li {
+    width: 100%;
+  }
+  a {
+    font-size: 1em;
+    letter-spacing: 0.20em;
+  }
+  .navbar {
+    padding: 0.1em;
+  }
+}
+   
+  
