@@ -1,8 +1,8 @@
-import JulioNavbar from "./JulioNavbar";
+import Navbar from "../Navbar";
 function Contact() {
     return (
       <>
-      <JulioNavbar />
+      <Navbar />
       <div>
         <h1 className="title is-1">This is Julio's Contact Page</h1>
         <p>
