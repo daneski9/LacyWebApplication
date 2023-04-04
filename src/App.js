@@ -1,30 +1,34 @@
-import Home from "./components/Home.js";
-import Inquiry from "./components/Inquiry";
-import About from "./components/About";
-import Services from "./components/Services";
-import Portfolio from "./components/Portfolio";
-import Contact from "./components/Contact";
-import Navbar from "./components/Navbar";
-import Login from "./components/Login";
-import "./components/Navbar.css";
 import ".//App.css";
-//import Lounge from "./components/Lounge";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import Lounge from "./components/Lounge";
+//Julio imports:
+import Juliojimenez from "./components/julioj/juliojimenez";
+import AboutJulioJimenez from "./components/julioj/AboutJulioJimenez";
+import ContactJulioJimenez from "./components/julioj/ContactJulioJimenez";
+import InquiryJulioJimenez from "./components/julioj/InquiryJulioJimenez";
+import PortfolioJulioJimenez from "./components/julioj/PortfolioJulioJimenez";
+import ServicesJulioJimenez from "./components/julioj/ServicesJulioJimenez";
+
+//Next artist imports:
+
+
 
 function App() {
     return (
         
     <BrowserRouter>
-        <Navbar />
-        
+       
         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/inquiry" element={<Inquiry />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Lounge />} />
+            <Route path="/Juliojimenez" element={<Juliojimenez />} />
+            <Route path="/AboutJulioJimenez" element={<AboutJulioJimenez />} />
+            <Route path="/ContactJulioJimenez" element={<ContactJulioJimenez />} />
+            <Route path="/InquiryJulioJimenez" element={<InquiryJulioJimenez />} />
+            <Route path="/PortfolioJulioJimenez" element={<PortfolioJulioJimenez />} />
+            <Route path="/ServicesJulioJimenez" element={<ServicesJulioJimenez />} />
+
+
         </Routes>
         
         

@@ -1,22 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
-import "./Navbar.css";
+import "../Navbar.css";
 
-function Navbar(){
+function julioNavbar(){
     return (
         <nav className="navbar">
           <ul>
           <li>
-             <Link to="/About">About</Link>
+             <Link to="/AboutJulioJimenez">About</Link>
             </li>
             <li>
-             <Link to="/services">Services</Link>
+             <Link to="/ServicesJulioJimenez">Services</Link>
             </li>
             <li>
-             <Link to="/portfolio">Portfolio</Link>
+             <Link to="/PortfolioJulioJimenez">Portfolio</Link>
             </li>
             <li>
-             <Link to="/contact">Contact</Link>
+             <Link to="/ContactJulioJimenez">Contact</Link>
             </li>
             <li>
              <Link to="/">Lounge</Link>
@@ -26,4 +26,4 @@ function Navbar(){
     );
 }
 
-export default Navbar;
+export default julioNavbar;

@@ -13,16 +13,16 @@
     border-bottom: 4px solid #bba3a38f;
   }
 
-  ul {
+  nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
     margin-right: 25px;
-    gap: 4%;
+    gap: 7%;
   }
-  a {
+  nav a {
     display: block;
-    color: #ffc7c7ea;
+    color: #ffd6d6;
     text-decoration: none;
     font-size: 1.1em;
     letter-spacing: 0.02em;
@@ -31,7 +31,7 @@
     text-transform: uppercase;
   }
 
-  a:hover{
+  nav a:hover{
     color: #ffffff;
     text-shadow: 1px 2px 2px rgb(255, 0, 0);
     transform: scale(1.1);
@@ -41,15 +41,15 @@
     
   /* Media query for responsive design */
   @media (max-width: 660px) {
-  ul {
+  nav ul {
     flex-wrap: wrap;
     text-align:center;
     margin-right: 25px;
   }
-  li {
+  nav li {
     width: 100%;
   }
-  a {
+  nav a {
     font-size: 1em;
     letter-spacing: 0.20em;
   }

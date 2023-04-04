@@ -1,8 +1,11 @@
-function Services() {
+import JulioNavbar from "../julioj/JulioNavbar";
+
+function Portfolio() {
     return (
-  
+      <>
+      <JulioNavbar />
       <div>
-        <h1 className="title is-1">This is the Services Page</h1>
+        <h1 className="title is-1">This is Julio's Portfolio Page</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida,
           risus at dapibus aliquet, elit quam scelerisque tortor, nec accumsan eros
@@ -10,8 +13,8 @@ function Services() {
           lorem tortor dapibus turpis, sit amet vestibulum eros mi et odio.
         </p>
       </div>
-      
+      </>
     );
   }
   
-  export default Services;
+  export default Portfolio;
