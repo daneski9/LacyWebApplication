@@ -1,9 +1,9 @@
-import JulioNavbar from "../julioj/JulioNavbar";
+import Navbar from "../Navbar";
 
 function Portfolio() {
     return (
       <>
-      <JulioNavbar />
+      <Navbar />
       <div>
         <h1 className="title is-1">This is Julio's Portfolio Page</h1>
         <p>

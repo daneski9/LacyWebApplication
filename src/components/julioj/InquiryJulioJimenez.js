@@ -1,4 +1,4 @@
-import JulioNavbar from "../julioj/JulioNavbar";
+import Navbar from "../Navbar";
 import React, { useState } from 'react';
 
 function InquiryPage() {
@@ -22,7 +22,7 @@ function InquiryPage() {
 
   return (
     <>
-    <JulioNavbar />
+    <Navbar />
     <div>
 
       <h1>Inquiry Julio Jimenez</h1>

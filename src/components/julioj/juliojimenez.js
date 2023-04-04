@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import JulioNavbar from "../julioj/JulioNavbar";
+import Navbar from "../Navbar";
 function juliojimenez() {
   return (
     <>
-    <JulioNavbar />
+    <Navbar />
     <div>
       <p>
-      <Link to="/InquiryJulioJimenez">
+      <Link to="/JulioJimenez/inquiry">
         <button>Inquiry</button>
       </Link>
       </p>
