@@ -1,7 +1,8 @@
+import JulioNavbar from "../julioj/JulioNavbar";
 import React, { useState } from 'react';
 
 function InquiryPage() {
-
+  
   // Hold all of the states of the fields that we need to use for the email
   const [first, setFirst] = useState('');
   const [last, setLast] = useState('');
@@ -20,9 +21,11 @@ function InquiryPage() {
   };
 
   return (
+    <>
+    <JulioNavbar />
     <div>
 
-      <h1>Inquiry Form</h1>
+      <h1>Inquiry Julio Jimenez</h1>
       <form onSubmit={handleSubmit}>
         
         <div>
@@ -65,6 +68,7 @@ function InquiryPage() {
       </form>
 
     </div>
+    </>
   );
 }
 
