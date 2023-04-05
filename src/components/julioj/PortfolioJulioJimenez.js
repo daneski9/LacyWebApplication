@@ -8,29 +8,29 @@ function Portfolio(properties) {
     const [images, setImages] = useState([]);
   
     useEffect(() => {
-    // get all images from the images directory
-    const imageContext = require.context('./images', false, /\.(png|jpe?g|svg)$/);
-    const images = imageContext.keys().map(imageContext);
-    setImages(images);
-  }, []);
+        // get all images from the images directory
+        const imageContext = require.context('../images', false, /\.(png|jpe?g|svg)$/);
+        const images = imageContext.keys().map(imageContext);
+        setImages(images);
+    }, []);
   
     const filteredImages = images.filter(image => {
-      return image.name.toLowerCase().includes(query.toLowerCase());
+        return image && String(image.name).toLowerCase().includes(query.toLowerCase());
     });
 
     return (
-      <>
-        <Navbar />
-        <div className="container">
-            <SearchBar
-                query={query}
-                setQuery={setQuery}
-            />
-            <Boxes
-                filteredImages={filteredImages}
-            />
-        </div>
-      </>
+        <>
+            <Navbar />
+            <div className="container">
+                <SearchBar
+                    query={query}
+                    setQuery={setQuery}
+                />
+                <Boxes
+                    filteredImages={filteredImages}
+                />
+            </div>
+        </>
     );
   }
   
