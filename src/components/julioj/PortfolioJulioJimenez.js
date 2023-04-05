@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "../Navbar";
-import SearchBar from "../Searchbar";
-import Boxes from "./Boxes";
+import SearchBar from "../subcomponents/Searchbar";
+import Boxes from "../subcomponents/Boxes";
 
 function Portfolio(properties) {
     const [query, setQuery] = useState('');
