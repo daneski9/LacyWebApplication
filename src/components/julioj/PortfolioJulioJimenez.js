@@ -3,15 +3,16 @@ import Navbar from "../Navbar";
 import SearchBar from "../Searchbar";
 import Boxes from "./Boxes";
 
-
-function Portfolio(props) {
+function Portfolio(properties) {
     const [query, setQuery] = useState('');
     const [images, setImages] = useState([]);
   
     useEffect(() => {
-      // fetch images from API or set default images
-      // and update the images state
-    }, []);
+    // get all images from the images directory
+    const imageContext = require.context('./images', false, /\.(png|jpe?g|svg)$/);
+    const images = imageContext.keys().map(imageContext);
+    setImages(images);
+  }, []);
   
     const filteredImages = images.filter(image => {
       return image.name.toLowerCase().includes(query.toLowerCase());

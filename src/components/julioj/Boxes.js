@@ -1,8 +1,8 @@
 import React from 'react';
 import Box from './Box';
 
-function Boxes(props) {
-  const rows = Math.ceil(props.filteredImages.length / 4); // calculate the number of rows
+function Boxes(properties) {
+  const rows = Math.ceil(properties.filteredImages.length / 4); // calculate the number of rows
   const displayRows = Math.min(rows, Math.floor(window.innerHeight / 250)); // calculate the number of rows to display based on window height
 
   const boxes = []; // create an array to store the boxes
@@ -12,7 +12,7 @@ function Boxes(props) {
 
     for (let j = 0; j < 4; j++) {
       const imageIndex = i * 4 + j;
-      const image = props.filteredImages[imageIndex] || null;
+      const image = properties.filteredImages[imageIndex] || null;
       const imageSrc = image ? image.src : null;
 
       boxRow.push(
@@ -23,7 +23,7 @@ function Boxes(props) {
         />
       );
 
-      if (imageIndex >= props.filteredImages.length - 1) {
+      if (imageIndex >= properties.filteredImages.length - 1) {
         break; // stop adding boxes if there are no more images
       }
     }

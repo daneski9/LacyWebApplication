@@ -1,13 +1,13 @@
 import React from 'react';
 
-function SearchBar(props) {
+function SearchBar(properties) {
   return (
     <div>
       <input
         type="text"
         placeholder="Search..."
-        value={props.query}
-        onChange={(event) => props.onChange(event.target.value)}
+        value={properties.query}
+        onChange={(event) => properties.onChange(event.target.value)}
       />
     </div>
   );

@@ -1,13 +1,13 @@
 import React from 'react';
 
-function Box(props) {
+function Box(properties) {
   return (
     <div className="box">
-      {props.imageSrc && (
+      {properties.imageSrc && (
         <img
           className="image"
-          src={props.imageSrc}
-          alt={props.image ? props.image.name : ''}
+          src={properties.imageSrc}
+          alt={properties.image ? properties.image.name : ''}
         />
       )}
     </div>
