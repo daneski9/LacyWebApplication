@@ -1,5 +1,5 @@
 import Navbar from "../Navbar";
-import julioPic from "../images/julio-pic.png";
+import julioPic from "../images/julio/julio-pic.png";
 
 function About() {
     return (
