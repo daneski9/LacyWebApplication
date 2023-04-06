@@ -8,8 +8,8 @@ function Portfolio(properties) {
     let [query, setQuery] = useState('');
 
     // An array to hold the image file names
-    // let [imageArray, setImageArray] = useState([]);
-    let [imageArray, setImageArray] = useState(new Array(0));
+    // let [imageArray, setImageArray] = useState(new Array(0));
+    let imageArray = new Array(0);
     
     // The url directory path where the images are located
     // FIXME: change this to URL once server is live
@@ -35,7 +35,7 @@ function Portfolio(properties) {
                 imageArray.push(src);
             });
             console.log(imageArray);
-            setImageArray(imageArray);
+            // setImageArray(imageArray);
         })
         .catch(error => {
             console.error('Error loading images:', error);
@@ -60,9 +60,6 @@ function Portfolio(properties) {
             }}
             >
             <SearchBar query={query} onChange={setQuery} />
-            </div>
-            <div>
-                <textarea rows={5} style={{ width: '100%' }} value={JSON.stringify(imageArray, null, 2)} readOnly />
             </div>
             <div className="bannerGrid">
                 {imageArray.map((image) => (
