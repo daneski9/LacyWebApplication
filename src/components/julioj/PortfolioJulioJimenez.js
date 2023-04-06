@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Navbar from "../Navbar";
 import SearchBar from "../subcomponents/Searchbar";
 import Box from "../subcomponents/Box";
-import ServiceBanner from "../subcomponents/ServiceBanner";
 
 function Portfolio(properties) {
     const [query, setQuery] = useState('');
@@ -31,7 +30,9 @@ function Portfolio(properties) {
     });
 
 
-    const dataArray = new Array(imageArray);
+    const dataArray = new Array(imageArray.length);
+
+    imageArray.forEach(element => dataArray.push(element));
 
     return (
         <>
@@ -44,7 +45,7 @@ function Portfolio(properties) {
             </div>
             <div className="bannerGrid">
                 {dataArray.map((banner) => (
-                <ServiceBanner data={banner}/>
+                <Box data={banner}/>
                 ))}
             </div>
             
