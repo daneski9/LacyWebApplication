@@ -1,13 +1,16 @@
 import { Link } from 'react-router-dom';
 import Navbar from "../Navbar";
+import './juliojimenez.css';
+
 function juliojimenez() {
   return (
     <>
     <Navbar />
     <div>
+      <h1 className='header'>Julio Jimenez</h1>
       <p>
       <Link to="/JulioJimenez/inquiry">
-        <button>Inquiry</button>
+        <button className= 'btn'>Inquiry</button>
       </Link>
       </p>
     </div>
