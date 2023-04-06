@@ -40,34 +40,58 @@ function Portfolio(properties) {
         .catch(error => {
             console.error('Error loading images:', error);
         });
+
+        return (
+            <>
+                <Navbar />
+                <div
+                className="container"
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    paddingTop: '50px',
+                }}
+                >
+                <SearchBar query={query} onChange={setQuery} />
+                </div>
+                <div className="bannerGrid">
+                    {imageArray.map((image, index) => (
+                        <Box data={urlPath + image} index={index} key={image} />
+                    ))}
+                </div>
+            </>
+        );
     }
     else{
         // local testing
         imageArray = imageContext.keys().map(imageContext);
         console.log(imageArray);
+
+        return (
+            <>
+                <Navbar />
+                <div
+                className="container"
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    paddingTop: '50px',
+                }}
+                >
+                <SearchBar query={query} onChange={setQuery} />
+                </div>
+                <div className="bannerGrid">
+                    {imageArray.map((image, index) => (
+                        <Box data={image} index={image} key={image} />
+                    ))}
+                </div>
+            </>
+        );
     }
 
-    return (
-        <>
-            <Navbar />
-            <div
-            className="container"
-            style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                paddingTop: '50px',
-            }}
-            >
-            <SearchBar query={query} onChange={setQuery} />
-            </div>
-            <div className="bannerGrid">
-                {imageArray.map((image) => (
-                    <Box data={urlPath + image} key={image} />
-                ))}
-            </div>
-        </>
-    );
+    
   }
   
   export default Portfolio;

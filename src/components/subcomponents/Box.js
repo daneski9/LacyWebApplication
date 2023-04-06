@@ -1,15 +1,18 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import './Box.css';
 
-function Box({ data }) {
+function Box({ data, index }) {
   return (
-    <div className="box">
-      <img src={data} alt="" />
-      <div className="box-info">
-        <h3>Title</h3>
-        <p>Description</p>
-      </div>
-    </div>
+    <Fragment>
+        <div className='banner'>
+            <img
+                className="bannerImage"
+                src={`${data}`} 
+                alt={''}
+                // alt={`${index}`}
+            />
+        </div>
+    </Fragment>
   );
 }
 
