@@ -1,7 +1,51 @@
+.box {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.box:hover {
+    transform: scale(1.05);
+}
+
+.box img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.box .box-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.box:hover .box-info {
+    opacity: 1;
+}
+
+.box h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.box p {
+    margin: 0;
+    font-size: 1rem;
+}
+
 .bannerGrid {
     display: grid;
-    margin-left: 5rem;
-    margin-top: 3rem;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 1rem;
+    margin-top: 2rem;
 }

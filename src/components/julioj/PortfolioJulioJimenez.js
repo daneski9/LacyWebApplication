@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navbar from "../Navbar";
 import SearchBar from "../subcomponents/Searchbar";
 import Box from "../subcomponents/Box";
+import './PortfolioJulioJimenez.css';
 
 function Portfolio(properties) {
     const [query, setQuery] = useState('');
@@ -37,18 +38,22 @@ function Portfolio(properties) {
     return (
         <>
             <Navbar />
-            <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '50px' }}>
-                <SearchBar
-                    query={query}
-                    onChange={setQuery}
-                />
+            <div
+            className="container"
+            style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                paddingTop: '50px',
+            }}
+            >
+            <SearchBar query={query} onChange={setQuery} />
             </div>
             <div className="bannerGrid">
-                {dataArray.map((banner) => (
-                <Box data={banner}/>
-                ))}
+            {dataArray.map((image) => (
+                <Box data={dirPath + image} key={image} />
+            ))}
             </div>
-            
         </>
     );
   }

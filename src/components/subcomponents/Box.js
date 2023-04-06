@@ -1,15 +1,14 @@
 import React from 'react';
+import './Box.css';
 
-function Box(properties) {
+function Box({ data }) {
   return (
     <div className="box">
-      {properties.imageSrc && (
-        <img
-          className="image"
-          src={properties.imageSrc}
-          alt={properties.image ? properties.image.name : ''}
-        />
-      )}
+      <img src={data} alt="" />
+      <div className="box-info">
+        <h3>Title</h3>
+        <p>Description</p>
+      </div>
     </div>
   );
 }
