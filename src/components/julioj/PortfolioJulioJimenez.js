@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import Navbar from "../Navbar";
 import SearchBar from "../subcomponents/Searchbar";
-import Boxes from "../subcomponents/Boxes";
 import Box from "../subcomponents/Box";
+import ServiceBanner from "../subcomponents/ServiceBanner";
 
 function Portfolio(properties) {
     const [query, setQuery] = useState('');
-    const [images, setImages] = useState([]);
 
     // The directory path where the images are located
     const dirPath = '../images/';
@@ -14,7 +13,6 @@ function Portfolio(properties) {
     // An array to hold the image file names
     const imageArray = [];
 
-    
     // Load the images from the server and add them to the array
     fetch(dirPath)
     .then(response => response.text())
@@ -23,7 +21,7 @@ function Portfolio(properties) {
         const doc = parser.parseFromString(html, 'text/html');
         const imgElements = doc.querySelectorAll('img');
         imgElements.forEach(img => {
-            const src = img.getAttribute('src');
+        const src = img.getAttribute('src');
             imageArray.push(src);
         });
         console.log(imageArray);
@@ -31,33 +29,25 @@ function Portfolio(properties) {
     .catch(error => {
         console.error('Error loading images:', error);
     });
-  
-    useEffect(() => {
-        // get all images from the images directory
-        const imageContext = require.context('../images', false, /\.(png|jpe?g|svg)$/);
-        const images = imageContext.keys().map(imageContext);
-        setImages(images);
-    }, []);
-  
-    const filteredImages = images.filter(image => {
-        return image && String(image.name).toLowerCase().includes(query.toLowerCase());
-    });
+
+
+    const dataArray = new Array(imageArray);
 
     return (
         <>
             <Navbar />
-            <div className="container">
+            <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '50px' }}>
                 <SearchBar
                     query={query}
-                    setQuery={setQuery}
+                    onChange={setQuery}
                 />
-                
             </div>
-            <div className="Boxes">
-                {imageArray.map((banner) => (
-                <Box data={banner}/>
+            <div className="bannerGrid">
+                {dataArray.map((banner) => (
+                <ServiceBanner data={banner}/>
                 ))}
             </div>
+            
         </>
     );
   }

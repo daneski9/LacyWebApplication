@@ -1,0 +1,14 @@
+.imageGrid {
+    display: grid;
+    /* justify-content: center; */
+    /* centers horizontally */
+    align-items: center;
+    /* centers vertically */
+    padding-top: 50px;
+    /* add padding to move it down */
+
+    margin-left: 5rem;
+    margin-top: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
