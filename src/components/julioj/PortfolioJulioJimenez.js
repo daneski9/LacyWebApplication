@@ -5,41 +5,47 @@ import Box from "../subcomponents/Box";
 import './PortfolioJulioJimenez.css';
 
 function Portfolio(properties) {
-    const [query, setQuery] = useState('');
+    let [query, setQuery] = useState('');
 
     // An array to hold the image file names
-    const [imageArray, setImageArray] = useState([]);
+    // let [imageArray, setImageArray] = useState([]);
+    let [imageArray, setImageArray] = useState(new Array(0));
+    
+    // The url directory path where the images are located
+    // FIXME: change this to URL once server is live
+    const urlPath = '../images/';
+    
+    // This is only for local testing
+    const imageContext = require.context("../images", true, /\.(png|jpg|jpeg|gif)$/);
 
-    // The directory path where the images are located
-    const dirPath = './images/';
+    const local = true;
 
-    let x = 0;
+    if (!local){
+        // Server
 
-    // Load the images from the server and add them to the array
-    fetch(dirPath)
-    .then(response => response.text())
-    .then(html => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const imgElements = doc.querySelectorAll('img');
-        imgElements.forEach(img => {
-            x += 1;
-            const src = img.getAttribute('src');
-            imageArray.push(src);
+        // Load the images from the server and add them to the array
+        fetch(urlPath)
+        .then(response => response.text())
+        .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const imgElements = doc.querySelectorAll('img');
+            imgElements.forEach(img => {
+                const src = img.getAttribute('src');
+                imageArray.push(src);
+            });
+            console.log(imageArray);
+            setImageArray(imageArray);
+        })
+        .catch(error => {
+            console.error('Error loading images:', error);
         });
+    }
+    else{
+        // local testing
+        imageArray = imageContext.keys().map(imageContext);
         console.log(imageArray);
-        console.log(x);
-        setImageArray(imageArray);
-    })
-    .catch(error => {
-        console.error('Error loading images:', error);
-    });
-
-
-    const dataArray = new Array(imageArray.length);
-
-    imageArray.forEach(element => dataArray.push(element));
-    // FIXME console says this is empty...
+    }
 
     return (
         <>
@@ -60,7 +66,7 @@ function Portfolio(properties) {
             </div>
             <div className="bannerGrid">
                 {imageArray.map((image) => (
-                    <Box data={dirPath + image} key={image} />
+                    <Box data={urlPath + image} key={image} />
                 ))}
             </div>
         </>
