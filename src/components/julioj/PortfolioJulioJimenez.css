@@ -1,0 +1,11 @@
+.bannerGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 1rem;
+    margin: 0 auto; /* add this line to center the grid */
+    max-width: 1200px; /* adjust the max-width to fit your needs */
+    padding: 2rem; /* add some padding to make the grid look better */
+    margin-left: 5rem;
+    margin-top: 3rem;
+    gap: 1rem;
+}

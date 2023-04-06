@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    justify-content: center;
+    /* centers horizontally */
+    align-items: center;
+    /* centers vertically */
+    padding-top: 50px;
+    /* add padding to move it down */
+}
