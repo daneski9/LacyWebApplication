@@ -2,7 +2,7 @@ import { useState } from "react";
 import Navbar from "../Navbar";
 import SearchBar from "../subcomponents/Searchbar";
 import Box from "../subcomponents/Box";
-import './PortfolioJulioJimenez.css';
+import './julioCSS/PortfolioJulioJimenez.css';
 
 function Portfolio(properties) {
     // TODO: Finish the search implimentation

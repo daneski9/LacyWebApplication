@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Navbar from "../Navbar";
-import './juliojimenez.css';
+import './julioCSS/juliojimenez.css';
 
 function juliojimenez() {
   return (
