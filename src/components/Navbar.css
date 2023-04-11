@@ -6,11 +6,11 @@
   }
  
   .navbar {
-    background-color: #501e1ede;
+    background-color: #4b232375;
     justify-content: space-between;
     padding: 1em;
     font-family: 'Jost', sans-serif;
-    border-bottom: 4px solid #bba3a38f;
+    border-bottom: 3px solid #ada9a970;
   }
 
   nav ul {
@@ -22,23 +22,21 @@
   }
   nav a {
     display: block;
-    color: #ffd6d6;
+    color: #ffffff;
     text-decoration: none;
     font-size: 1.1em;
     letter-spacing: 0.02em;
     font-weight: 300;
-    transition: all 0.3s ease-in-out;
     text-transform: uppercase;
   }
 
   nav a:hover{
     color: #ffffff;
-    text-shadow: 1px 2px 2px rgb(255, 0, 0);
-    transform: scale(1.1);
+    text-shadow: 1px 2px 2px #ffd6d6;
+    transform: scale(1.03);
   }
-
   
-    
+
   /* Media query for responsive design */
   @media (max-width: 660px) {
   nav ul {

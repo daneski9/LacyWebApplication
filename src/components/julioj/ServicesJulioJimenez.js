@@ -1,6 +1,6 @@
 import Navbar from "../Navbar";
 import ServiceBanner from "../subcomponents/ServiceBanner";
-import './ServicesJulioJimenez.css';
+import './julioCSS/ServicesJulioJimenez.css';
 
 const fakeData = {
     image: 'https://images.unsplash.com/photo-1588417490421-63d4e4175f95?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80',

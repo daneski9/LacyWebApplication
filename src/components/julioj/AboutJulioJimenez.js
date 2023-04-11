@@ -1,5 +1,6 @@
 import Navbar from "../Navbar";
 import julioPic from "../images/julio/julio-pic.png";
+import './julioCSS/AboutJulioJimenez.css'
 
 function About() {
     return (
