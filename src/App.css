@@ -1,5 +1,10 @@
 body {
-    background-image: url('../src/components/images/la-bg.jpg');
-    background-repeat: repeat;
-    background-position: center top;
+    background-image: url('../src/components/images/la-bg.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: rgb(0, 0, 0);
+    background-size: cover;
+    background-attachment: fixed
   }
+
+ 
