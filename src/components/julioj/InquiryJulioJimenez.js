@@ -1,6 +1,9 @@
 import Navbar from "../Navbar";
 import React, { useState } from 'react';
-//import './julioCSS/juliojimenez.css';
+import { Link } from 'react-router-dom';
+import '../../App.css'
+import './julioCSS/InquiryJulioJimenez.css'
+
 function InquiryPage() {
   
   // Hold all of the states of the fields that we need to use for the email
@@ -16,6 +19,8 @@ function InquiryPage() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    window.location.href = "/JulioJimenez";
+
     // We will need to add additional stuff here to lead to other pages in capture data in Sprint 04
     
   };
@@ -23,7 +28,7 @@ function InquiryPage() {
   return (
     <>
     <Navbar />
-    <div>
+    <div className='inquiry'>
 
       <h1>Inquiry Julio Jimenez</h1>
       <form onSubmit={handleSubmit}>
@@ -54,16 +59,19 @@ function InquiryPage() {
         </div>
 
         <div>
-          <label htmlFor="description">Tattoo Description:</label>
-          <textarea id="description" value={description} onChange={(event) => setDescription(event.target.value)} required />
+          <label htmlFor="textarea">Tattoo Description:</label>
+          <textarea id="description" value={description} style={{ resize: 'none' }} onChange={(event) => setDescription(event.target.value)} required />
         </div>
 
         <div>
-          <label htmlFor="image">Reference Image:</label>
-          <input type="file" id="image" onChange={(event) => setImage(event.target.files[0])} required />
+          <label htmlFor="image">Reference Image:
+            <input type="file" id="image" onChange={(event) => setImage(event.target.files[0])} required />
+          </label>
         </div>
 
-        <button type="submit">Submit</button>
+        <div>
+          <button type="submit">Submit Inquiry</button>
+        </div>
 
       </form>
 
