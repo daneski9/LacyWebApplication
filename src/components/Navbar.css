@@ -6,25 +6,26 @@
   }
  
   .navbar {
-    background-color: #4b232375;
+    background-color: #4d3a3a6c;
     justify-content: space-between;
     padding: 1em;
     font-family: 'Jost', sans-serif;
-    border-bottom: 3px solid #ada9a970;
+    min-width: 768px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.144);
+    
+    
   }
-
   nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    margin-right: 25px;
     gap: 7%;
   }
   nav a {
     display: block;
-    color: #ffffff;
+    color: #d0d6cbdc;
     text-decoration: none;
-    font-size: 1.1em;
+    font-size: 1.3em;
     letter-spacing: 0.02em;
     font-weight: 300;
     text-transform: uppercase;
@@ -32,28 +33,26 @@
 
   nav a:hover{
     color: #ffffff;
-    text-shadow: 1px 2px 2px #ffd6d6;
+    text-shadow: 1px 2px 2px #ffffff;
     transform: scale(1.03);
   }
-  
+    /* Media query for responsive design */
+  @media (max-width: 425px) {
+    nav ul {
+      flex-wrap: wrap;
+      text-align:center;
+      
+    }
+    nav li {
+      padding: 0.6em;
+    }
+    nav a {
+      font-size: 1.3em;
+      letter-spacing: 0.20em;
+    }
+    .navbar {
+      padding: 0.1em;
+      margin-left: 10px;
+    }
 
-  /* Media query for responsive design */
-  @media (max-width: 660px) {
-  nav ul {
-    flex-wrap: wrap;
-    text-align:center;
-    margin-right: 25px;
   }
-  nav li {
-    width: 100%;
-  }
-  nav a {
-    font-size: 1em;
-    letter-spacing: 0.20em;
-  }
-  .navbar {
-    padding: 0.1em;
-  }
-}
-   
-  

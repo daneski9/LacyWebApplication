@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@200;400&family=Fjalla+One&family=IBM+Plex+Sans&family=Jost:wght@300&family=Mulish:wght@200&display=swap');
+
+body{
+    font-family: 'Jost', sans-serif;
+}
+
+.top-container{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 15%;
+    width: 40%;
+    margin: 0 auto;
+    min-width: 400px;
+    padding: 4%;
+    
+}
+.top-container > img{
+    max-height: 550px;
+    -webkit-box-shadow: 10px 12px 11px -2px rgba(0, 0, 0, 0.281);
+    -moz-box-shadow: 10px 12px 11px -2px rgba(0, 0, 0, 0.267);
+    box-shadow: 10px 12px 11px -2px rgba(0, 0, 0, 0.192);
+}
+.top-container > .text-about > p{
+    color: rgb(255, 255, 255);
+    width: 160%;
+    font-size: 1.5em;
+    letter-spacing: -0.04em;
+    background-color: #92614f83;
+    padding: 10% 60% 10% 0;
+    -webkit-box-shadow: 10px 12px 11px -2px rgba(0,0,0,0.46);
+    -moz-box-shadow: 10px 12px 11px -2px rgba(0,0,0,0.46);
+    box-shadow: 10px 12px 11px -2px rgba(0,0,0,0.46);
+}
+.hours-container{
+    background-color: rgba(31, 24, 16, 0.301);
+    margin: 0 auto;
+    min-width: 768px;
+    
+}
+.hours-info{
+    font-size: 1.6rem;
+    color: rgb(221, 221, 221);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.hours-info li{
+    list-style: none;
+    text-align: left;
+    margin-bottom: 3px;
+}
+.hours-info ul{
+    margin-top: -25px;
+    margin-left: 35px;
+}
+
+li:nth-child(3) {
+    padding-left: 3px;
+  }
+
+@media (max-width: 1440px) {
+    .top-container > .text-about > p{
+        width: 200%;
+    }
+
+}
+@media (max-width: 425px) {
+    .top-container{
+        gap: 7%;
+        margin-top: 65px;
+        margin-left: 65px;
+    }
+    .top-container > img{
+        max-height: 350px;
+        -webkit-box-shadow: 10px 12px 11px -2px rgba(0, 0, 0, 0.281);
+        -moz-box-shadow: 10px 12px 11px -2px rgba(0, 0, 0, 0.267);
+        box-shadow: 10px 12px 11px -2px rgba(0, 0, 0, 0.192);
+    }
+    .hours-container{
+        margin-left: 20px;
+        margin-top: 60px;
+    }
+
+}
