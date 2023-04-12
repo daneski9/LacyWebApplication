@@ -15,7 +15,7 @@
     filter: brightness(0.9);
 }
 .text-box{
-    background-color: #92614f83;
+    background-color: #271d1996;
     padding: 2.5em 0em 2.5em 2em;
     -webkit-box-shadow: 10px 12px 11px -2px rgba(0,0,0,0.46);
     -moz-box-shadow: 10px 12px 11px -2px rgba(0,0,0,0.46);
@@ -26,11 +26,15 @@
     font-size: 1.5em;
     letter-spacing: -0.04em;
     width: 75%;
-    min-width: 200px;
+    min-width: 300px;
 }
 .hours-container{
     background-color: rgba(31, 24, 16, 0.301);
-    margin: 0 auto;    
+    margin: 0 auto;
+    font-family: 'Anuphan', 'Jost', 'Cambria', 'Roboto', sans-serif;    
+}
+.hours-container >.hours-info > h2{
+    margin-right: 25px;
 }
 .hours-info{
     font-size: 1.6rem;
@@ -72,6 +76,7 @@ li:nth-child(3) {
                   0 0 15px #dbe2e2;
     -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
     background-image: linear-gradient(to right, #0e1a20 0%, #413f33  51%, #000203  100%);
+    margin-right: 30px;
   }
   
   .about-btn:hover{
@@ -82,7 +87,10 @@ li:nth-child(3) {
                   0 0 35px #e0bc5a;
        -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
   }
-@media (max-width: 840px) {
+@media (max-width: 960px) {
+    body{
+        display: flex;
+    }
     .top-container{
         gap: 7%;
         margin-top: 30px;
@@ -106,6 +114,7 @@ li:nth-child(3) {
     .text-box{
         margin-top: 25px;
         background-color: rgba(0, 0, 0, 0.637);
+        margin-right: 25px;
         
     }
     .text-content{

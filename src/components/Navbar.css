@@ -1,19 +1,17 @@
 /* testing some google fonts, can change fonts later if desired */
 @import url('https://fonts.googleapis.com/css2?family=Asap:wght@200;400&family=Fjalla+One&family=IBM+Plex+Sans&family=Jost:wght@300&family=Mulish:wght@200&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300&display=swap');
   body{
     margin: 0;
   }
  
   .navbar {
-    background-color: #4d3a3a6c;
     justify-content: space-between;
-    padding: 1em;
+    padding: 0.3em;
     font-family: 'Jost', 'Cambria', 'Roboto', sans-serif;
     min-width: 768px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.144);
-    
-    
+    border-bottom: #fffefe9a solid 1px;
+    background: #2b2822ea;
   }
   nav ul {
     list-style: none;
@@ -23,17 +21,17 @@
   }
   nav a {
     display: block;
-    color: #d0d6cbdc;
+    color: #ccc6c6;
     text-decoration: none;
-    font-size: 1.3em;
-    letter-spacing: 0.02em;
-    font-weight: 300;
+    font-size: 1em;
+    letter-spacing: 0.10em;
     text-transform: uppercase;
+    
   }
 
   nav a:hover{
     color: #ffffff;
-    text-shadow: 1px 2px 2px #ffffff;
+    text-shadow: 1px 2px 2px #ffffff5d;
     transform: scale(1.03);
   }
     /* Media query for responsive design */
