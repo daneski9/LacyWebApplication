@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from "./components/Login";
 import Lounge from "./components/Lounge";
 //Julio imports:
-import JulioJimenez from "./components/julioj/juliojimenez";
 import AboutJulioJimenez from "./components/julioj/AboutJulioJimenez";
 import ContactJulioJimenez from "./components/julioj/ContactJulioJimenez";
 import InquiryJulioJimenez from "./components/julioj/InquiryJulioJimenez";
@@ -22,7 +21,6 @@ function App() {
        
         <Routes>
             <Route path="/" element={<Lounge />} />
-            <Route path="/JulioJimenez" element={<JulioJimenez />} />
             <Route path="/JulioJimenez/about" element={<AboutJulioJimenez />} />
             <Route path="/JulioJimenez/contact" element={<ContactJulioJimenez />} />
             <Route path="/JulioJimenez/Inquiry" element={<InquiryJulioJimenez />} />

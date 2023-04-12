@@ -15,7 +15,7 @@ function Lounge() {
           <h1 className="title is-1">Lacy St. Art Lounge</h1>
           <div class = "artists-container">
               <div class = "lacy-container">
-                <Link to="/JulioJimenez" > 
+                <Link to="/JulioJimenez/about" > 
                   <img src={julioPic} alt="julio-pic" /> 
                 </Link> 
                 <img src={julioWork1} alt="julio-work1" /> 
