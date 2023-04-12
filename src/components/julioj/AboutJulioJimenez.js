@@ -30,7 +30,7 @@ function About() {
       </div>
       <div class = "bottom-container">
         <Link to="/JulioJimenez/inquiry">
-        <button>BOOK NOW</button>
+        <button class ='about-btn'>BOOK NOW</button>
         </Link>
       </div>
 

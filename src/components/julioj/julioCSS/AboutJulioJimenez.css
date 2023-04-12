@@ -53,9 +53,9 @@ li:nth-child(3) {
 /* button */
 .bottom-container{
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 3.6rem;
 }
-button{
+.about-btn{
     font-size: 1rem;
     text-decoration: none;
     padding: 10px 30px;
@@ -74,7 +74,7 @@ button{
     background-image: linear-gradient(to right, #0e1a20 0%, #413f33  51%, #000203  100%);
   }
   
-  button:hover{
+  .about-btn:hover{
       background: #ddf1a4;
       color: #050801;
       box-shadow: 0 0 5px #e0bc5a,
@@ -100,7 +100,7 @@ button{
         margin-left: 35px;
         margin-top: 0px;
     }
-    button{
+    .about-btn{
         margin-left: 35px;
     }
     .text-box{
