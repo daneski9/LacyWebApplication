@@ -1,6 +1,6 @@
 import Navbar from "../Navbar";
-import julioPic from "../images/julio/julio-pic.png";
-import './julioCSS/AboutJulioJimenez.css'
+import julioPic from "../images/julio/j-tats.png";
+import './julioCSS/AboutJulioJimenez.css';
 
 function About() {
     return (
@@ -8,11 +8,12 @@ function About() {
       <Navbar />
       
       <div class = "top-container">
-        <img src={julioPic} alt="julio-pic" />
-        <div class = "text-about">
-          <p>While tattooing since 2016, Julio specializes in realism and black ink. He studies realistic art and photo realism. In his spare time, Julio draws
+        <img src={julioPic} alt="j-tats" />
+        <div class = "text-box">
+          <div class = "text-content"> <p>While tattooing since 2016, Julio specializes in realism and black ink. He studies realistic art and photo realism. In his spare time, Julio draws
             and paints constantly, trying to develop skills and raise the bar!</p>
           </div>
+        </div>
       </div>
       <div class = "hours-container">
         <div class = "hours-info">

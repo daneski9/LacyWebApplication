@@ -9,10 +9,10 @@
     background-color: #4d3a3a6c;
     justify-content: space-between;
     padding: 1em;
-    font-family: 'Jost', sans-serif;
+    font-family: 'Jost', 'Cambria', 'Roboto', sans-serif;
     min-width: 768px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.144);
-    
+    min-width: 100vw;
     
   }
   nav ul {
