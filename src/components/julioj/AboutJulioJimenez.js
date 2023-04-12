@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Navbar from "../Navbar";
 import julioPic from "../images/julio/j-tats.png";
 import './julioCSS/AboutJulioJimenez.css';
@@ -26,6 +27,11 @@ function About() {
             <li>Sa (Appointment Only)</li>
             <li>Su (Appointment Only)</li>
           </ul></div>
+      </div>
+      <div class = "bottom-container">
+        <Link to="/JulioJimenez/inquiry">
+        <button>BOOK NOW</button>
+        </Link>
       </div>
 
       

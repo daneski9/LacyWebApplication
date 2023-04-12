@@ -46,13 +46,42 @@
 }
 .hours-info ul{
     margin-top: -25px;
-    margin-left: 35px;
 }
-
 li:nth-child(3) {
     padding-left: 3px;
+}
+/* button */
+.bottom-container{
+    text-align: center;
+    margin-top: 3rem;
+}
+button{
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 10px 30px;
+    background-color: #ada18a;
+    color: #ffffff;
+    border-radius: 25px;
+    font-weight: bold;
+    border: none;
+    letter-spacing: 4px;
+    overflow: hidden;
+    transition: 0.5s;
+    cursor: pointer;
+    box-shadow: 0 0 2px #f2fafa,
+                  0 0 15px #dbe2e2;
+    -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+    background-image: linear-gradient(to right, #0e1a20 0%, #413f33  51%, #000203  100%);
   }
-
+  
+  button:hover{
+      background: #ddf1a4;
+      color: #050801;
+      box-shadow: 0 0 5px #e0bc5a,
+                  0 0 25px #e0bc5a,
+                  0 0 35px #e0bc5a;
+       -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+  }
 @media (max-width: 840px) {
     .top-container{
         gap: 7%;
@@ -70,6 +99,9 @@ li:nth-child(3) {
     .hours-container{
         margin-left: 35px;
         margin-top: 0px;
+    }
+    button{
+        margin-left: 35px;
     }
     .text-box{
         margin-top: 25px;
