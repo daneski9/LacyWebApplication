@@ -142,8 +142,28 @@ button[type="submit"] {
   font-family: 'Jost', sans-serif;
 }
 
+/* Update the CSS for the button of type button to add some additional CSS features to make it look appealing */
+button[type="button"] {
+  display: inline-block;
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 10px;
+  border: none;
+  transition: background-color 0.3s ease;
+  font-family: 'Jost', sans-serif;
+}
 
 /* Update the CSS for the button of type submit to change the background color when being hovered over */
 form > div button[type="submit"]:hover {
+  background-color: #3e8e41; /* Darker green */
+}
+
+/* Update the CSS for the button of type button to change the background color when being hovered over */
+form > div button[type="button"]:hover {
   background-color: #3e8e41; /* Darker green */
 }
