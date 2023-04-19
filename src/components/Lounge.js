@@ -6,6 +6,7 @@ import gPic from "./images/g/g-pic.jpg";
 import gabrielPic from "./images/gabriel/gabriel-pic.jpg";
 import luisPic from "./images/luis/luis-pic.jpg";
 import "./Lounge.css";
+import FooterPortal from './FooterPortal';
 
 function Lounge() {
     return (
@@ -72,6 +73,9 @@ function Lounge() {
           <Link to="/login">
             <button class = "lounge-button">Admin Login</button>
           </Link>
+          <div>
+            <FooterPortal />
+          </div>
         </div>
     );
   }
