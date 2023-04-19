@@ -1,6 +1,5 @@
 import Navbar from "../Navbar";
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import '../../App.css'
 import './julioCSS/InquiryJulioJimenez.css'
 
@@ -14,12 +13,35 @@ function InquiryPage() {
   const [location, setLocation] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
+  const [showAlert, setShowAlert] = useState(false);
 
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    window.location.href = "/JulioJimenez";
+
+    // Clear all fields
+    setFirst('');
+    setLast('');
+    setEmail('');
+    setNumber('');
+    setLocation('');
+    setDescription('');
+    setImage(null);
+
+    // Show alert
+    setShowAlert(true);
+
+    // Hide alert after 15 seconds
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 15000);
+
+    
+    
+    //window.location.href = "/JulioJimenez";
+
+
 
     // We will need to add additional stuff here to lead to other pages in capture data in Sprint 04
     
@@ -29,6 +51,12 @@ function InquiryPage() {
     <>
     <Navbar />
     <div className='inquiry'>
+      
+      {showAlert && (
+        <div className="alert">
+          Thank you for your inquiry!
+        </div>
+      )}
 
       <h1>Inquiry Julio Jimenez</h1>
       <form onSubmit={handleSubmit}>
@@ -64,8 +92,9 @@ function InquiryPage() {
         </div>
 
         <div>
-          <label htmlFor="image">Reference Image:
+          <label htmlFor="image">Reference Image (Required)
             <input type="file" id="image" onChange={(event) => setImage(event.target.files[0])} required />
+              {image && <p className='filename'>{image.name}</p>}
           </label>
         </div>
 

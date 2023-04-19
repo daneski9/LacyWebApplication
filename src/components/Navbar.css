@@ -11,7 +11,7 @@
     font-family: 'Jost', 'Cambria', 'Roboto', sans-serif;
     min-width: 768px;
     border-bottom: #fffefe9a solid 1px;
-    background: #2b2822ea;
+    background: #000;
   }
   nav ul {
     list-style: none;
@@ -21,7 +21,7 @@
   }
   nav a {
     display: block;
-    color: #ccc6c6;
+    color: white;
     text-decoration: none;
     font-size: 1em;
     letter-spacing: 0.10em;
