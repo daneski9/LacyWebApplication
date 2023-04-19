@@ -1,5 +1,5 @@
 /* Style the title */
-.title {
+.title-1 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
   text-align: center;
@@ -82,7 +82,7 @@
  /* Style the login button */
   .lounge-button {
     display: block;
-    margin-top:10px;
+    margin-top:50px;
     margin-bottom:0;
     margin-left:auto;
     margin-right:auto;
@@ -90,18 +90,17 @@
     font-size: 1.2rem;
     font-weight: bold;
     color: white;
-    background-color: #f5c3c396;
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
+    background-color: #000000;
     box-shadow: 0 0 2px #f2fafa,
                   0 0 15px #dbe2e2;
     background-image: linear-gradient(to right, #0e1a20 0%, #413f33  51%, #000203  100%);
   }
   
   .lounge-button:hover{
-    transition: background-color 0.4s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
     background: #000000;
 
   }
