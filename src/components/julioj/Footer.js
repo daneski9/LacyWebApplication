@@ -13,7 +13,7 @@ function Footer() {
           <p>Email: Email to be added</p>
         </div>
         <div className="footer-middle">
-          <h3>Find Us</h3>
+          <h3>Naviagtion</h3>
           <ul>
           <li><a href= "/JulioJimenez/about"> About </a></li> 
           <li><a href= "/JulioJimenez/services"> Services </a></li>
