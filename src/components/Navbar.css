@@ -10,7 +10,7 @@
     padding: 0.3em;
     font-family: 'Jost', 'Cambria', 'Roboto', sans-serif;
     min-width: 768px;
-    
+    border-bottom: #fffefe9a solid 1px;
     background: #24211bea;
   }
   nav ul {
@@ -21,7 +21,7 @@
   }
   nav a {
     display: block;
-    color: #ccc6c6;
+    color: white;
     text-decoration: none;
     font-size: 1em;
     letter-spacing: 0.10em;

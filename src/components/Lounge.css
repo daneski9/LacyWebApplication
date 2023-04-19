@@ -1,0 +1,107 @@
+/* Style the title */
+.title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.title-2 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 1.0rem;
+  text-align: center;
+}
+  /* Style the container for the artists */
+  .artists-container {
+    display: grid;
+    justify-items: center;
+    row-gap: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+    
+  }
+  
+  /* Style the container for each artist */
+  .lacy-container, .diana-container, .g-container, .gabriel-container, .luis-container {
+    position: relative;
+    display: inline-block;
+    align-items: center; 
+    background-color: #271d1996;
+    padding: 1em;
+  }
+  
+  /* Style the image for each artist */
+  .artists-container img {
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    object-fit: cover;
+  }
+
+   /* Style the text to appear on hover */
+   .img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; /* Hide by default */
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+   /*Show the text when hovering over the container*/
+  .lacy-container:hover .img-overlay, .diana-container:hover .img-overlay,
+   .g-container:hover .img-overlay, .gabriel-container:hover .img-overlay, 
+   .luis-container:hover .img-overlay {
+    display: flex;
+  }
+
+ /*
+  Hover for images with links  
+  a:hover {
+    opacity: 0.8;
+  }
+  
+  hover effect on img tag inside Link/anchor tag component 
+  a:hover img {
+    transform: scale(1.2);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  a:not(:hover) img {
+    opacity: 1;
+    transition: transform 0.2s ease-in-out;
+  }
+  */
+
+ /* Style the login button */
+  .lounge-button {
+    display: block;
+    margin-top:10px;
+    margin-bottom:0;
+    margin-left:auto;
+    margin-right:auto;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background-color: #f5c3c396;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    box-shadow: 0 0 2px #f2fafa,
+                  0 0 15px #dbe2e2;
+    background-image: linear-gradient(to right, #0e1a20 0%, #413f33  51%, #000203  100%);
+  }
+  
+  .lounge-button:hover{
+    transition: background-color 0.4s ease-in-out;
+    background: #000000;
+
+  }

@@ -1,0 +1,9 @@
+.user-pass-container {
+  padding-top: 300px;
+  /* add padding to move it down */
+}
+
+.back-button{
+  text-align: center;
+  margin-top: -4.3rem;
+}
