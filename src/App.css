@@ -9,8 +9,7 @@ body {
   background-repeat: no-repeat;
   background-color: rgb(0, 0, 0);
   background-size: cover;
-  background-attachment: fixed;
-  font-family: 'Jost', sans-serif;
+  font-family: 'Jost', 'Anuphan', 'Cambria', 'Roboto', sans-serif;
   padding-bottom: 5%;
 }
 

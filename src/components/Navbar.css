@@ -10,8 +10,8 @@
     padding: 0.3em;
     font-family: 'Jost', 'Cambria', 'Roboto', sans-serif;
     min-width: 768px;
-    border-bottom: #fffefe9a solid 1px;
-    background: #2b2822ea;
+    
+    background: #24211bea;
   }
   nav ul {
     list-style: none;
@@ -50,7 +50,6 @@
     }
     .navbar {
       padding: 0.1em;
-      margin-left: 10px;
     }
 
   }

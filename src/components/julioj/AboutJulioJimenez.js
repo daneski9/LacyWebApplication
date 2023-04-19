@@ -9,7 +9,7 @@ function About() {
       <Navbar />
       
       <div class = "top-container">
-        <img src={julioPic} alt="j-tats" />
+        <div class = "img-container"><img src={julioPic} alt="j-tats" /></div>
         <div class = "text-box">
           <div class = "text-content"> <p>While tattooing since 2016, Julio specializes in realism and black ink. He studies realistic art and photo realism. In his spare time, Julio draws
             and paints constantly, trying to develop skills and raise the bar!</p>
@@ -29,9 +29,15 @@ function About() {
           </ul></div>
       </div>
       <div class = "bottom-container">
-        <Link to="/JulioJimenez/inquiry">
-        <button class ='about-btn'>BOOK NOW</button>
-        </Link>
+      <Link to="/JulioJimenez/inquiry">
+        <button className='about-btn' onClick={() => {
+          window.scroll({
+            top: 0,
+            left: 0
+          });
+        }}>BOOK NOW</button>
+      </Link>
+        <div class = "btm-links"></div>
       </div>
 
       
