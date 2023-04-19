@@ -27,6 +27,7 @@ function FooterPortal() {
         <div className="footer-right">
           <h3>Where We Are</h3>
           <ul>
+            {/* TODO: add link */}
             <li><a>Insert</a></li>
             <li><a>Google</a></li>
             <li><a>Maps</a></li>
