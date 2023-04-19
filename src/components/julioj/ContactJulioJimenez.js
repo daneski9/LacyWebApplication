@@ -1,7 +1,7 @@
 import Navbar from "../Navbar";
 import React, { useState } from 'react';
 //import './julioCSS/juliojimenez.css';
-
+import Footer from './Footer';
 function Contact() {
     
   const [first, setFirst] = useState('');
@@ -60,6 +60,9 @@ function Contact() {
         <button type="submit">Submit</button>
 
       </form>
+      </div>
+      <div>
+        <Footer />
       </div>
       </>
     );

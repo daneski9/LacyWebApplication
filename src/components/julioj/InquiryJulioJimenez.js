@@ -2,7 +2,7 @@ import Navbar from "../Navbar";
 import React, { useState } from 'react';
 import '../../App.css'
 import './julioCSS/InquiryJulioJimenez.css'
-
+import Footer from './Footer';
 function InquiryPage() {
   
   // Hold all of the states of the fields that we need to use for the email
@@ -105,6 +105,9 @@ function InquiryPage() {
       </form>
 
     </div>
+    <div>
+        <Footer />
+      </div>
     </>
   );
 }
