@@ -21,16 +21,15 @@ function Portfolio(properties) {
     
     // The url directory path where the images are located
     // FIXME: change this to URL once server is live
-    const urlPath = '../images/';
+    const urlPath = '../images/julio/';
     
     // This is only for local testing
-    const imageContext = require.context("../images", true, /\.(png|jpg|jpeg|gif)$/);
+    const imageContext = require.context(urlPath, true, /\.(png|jpg|jpeg|gif)$/);
 
     const local = true;
 
     if (!local){
         // Server
-
         // Load the images from the server and add them to the array
         fetch(urlPath)
         .then(response => response.text())
@@ -48,7 +47,6 @@ function Portfolio(properties) {
         .catch(error => {
             console.error('Error loading images:', error);
         });
-
         return (
             <>
                 <Navbar />
@@ -75,7 +73,6 @@ function Portfolio(properties) {
         // local testing
         imageArray = imageContext.keys().map(imageContext);
         console.log(imageArray);
-
         return (
             <>
                 <Navbar />
@@ -98,8 +95,6 @@ function Portfolio(properties) {
             </>
         );
     }
+}
 
-    
-  }
-  
-  export default Portfolio;
+export default Portfolio;
