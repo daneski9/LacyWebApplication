@@ -20,11 +20,11 @@ function Portfolio(properties) {
     let imageArray = new Array(0);
     
     // The url directory path where the images are located
-    // FIXME: change this to URL once server is live
-    const urlPath = '../images/julio/';
+    // FIXME: change this to URL to image database when live!
+    const urlPath = '../images/julio/works/';
     
     // This is only for local testing
-    const imageContext = require.context(urlPath, true, /\.(png|jpg|jpeg|gif)$/);
+    const imageContext = require.context("../images/julio/works/", true, /\.(png|jpg|jpeg|gif)$/);
 
     const local = true;
 
@@ -87,6 +87,7 @@ function Portfolio(properties) {
                 >
                 <SearchBar query={query} onChange={setQuery} />
                 </div>
+                
                 <div className="bannerGrid">
                     {imageArray.map((image, index) => (
                         <Box data={image} index={image} key={image} />
