@@ -1,9 +1,25 @@
+
+
 .user-pass-container {
-  padding-top: 300px;
-  /* add padding to move it down */
+  /* display:flex; */
+  /* padding-top: 300px; */
+   /* add padding to move it down   */
 }
 
-.back-button{
+
+/* .buttons{
   text-align: center;
   margin-top: -4.3rem;
+}  */
+
+
+.buttons {
+  display: flex;
+  justify-content: left;
+
+  gap: 10px;
 }
+
+
+
+

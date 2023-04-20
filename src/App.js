@@ -3,12 +3,14 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Login from "./components/Login";
 import Lounge from "./components/Lounge";
+import ForgotPassword from "./components/ForgotPassword";
 //Julio imports:
 import AboutJulioJimenez from "./components/julioj/AboutJulioJimenez";
 import ContactJulioJimenez from "./components/julioj/ContactJulioJimenez";
 import InquiryJulioJimenez from "./components/julioj/InquiryJulioJimenez";
 import PortfolioJulioJimenez from "./components/julioj/PortfolioJulioJimenez";
 import ServicesJulioJimenez from "./components/julioj/ServicesJulioJimenez";
+
 
 //Next artist imports:
 
@@ -27,6 +29,7 @@ function App() {
             <Route path="/JulioJimenez/Portfolio" element={<PortfolioJulioJimenez />} />
             <Route path="/JulioJimenez/Services" element={<ServicesJulioJimenez />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/forgotpassword" element={<ForgotPassword />} />
 
         </Routes>
         
