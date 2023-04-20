@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
 
+
 function Login() {
 
   const [username, setUsername] = useState('');
@@ -13,12 +14,13 @@ function Login() {
     console.log(`Password: ${password}`);
     // Do something with the form data, e.g. send it to a server
   };
-
+  
+/*
   const handleForgotPassword = (event) => {
     event.preventDefault();
     console.log(`Forgot Password: ${username}`);
     // Do something with the form data, e.g. send it to a server
-  };
+  }; */
 
   return (
     <div>
@@ -26,19 +28,25 @@ function Login() {
         <div class = "user-pass-container">
           <label htmlFor="username">Username</label>
           <input type="text" id="username" value={username} onChange={(event) => setUsername(event.target.value)} required />
+        
+          <div>
+            <label htmlFor="password">Password</label>
+            <input type="password" id="password" value={password} onChange={(event) => setPassword(event.target.value)} required />
+          </div>
         </div>
+
         <div>
-          <label for="password">Password</label>
-          <input type="password" id="password" value={password} onChange={(event) => setPassword(event.target.value)} required />
-            <div>
-              <button type="submit">Submit</button>
-              <button type="button" onClick={handleForgotPassword}>Forgot Password</button>
-            </div>
-        </div>
-        <div class = "back-button">
-          <Link to='/'>
-            <button type="button" onClick="/">Back</button>
-          </Link>
+          <div class = "buttons"> 
+            <button type="submit">Submit</button>
+
+            <Link to="/forgotpassword">
+              <button type="button">Reset Password</button>
+            </Link>
+
+            <Link to='/'>
+              <button type="button">Back</button>
+            </Link>
+          </div>  
         </div>
       </form>
     </div>
