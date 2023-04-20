@@ -3,7 +3,7 @@ import Navbar from "../Navbar";
 import SearchBar from "../subcomponents/Searchbar";
 import Box from "../subcomponents/Box";
 import './julioCSS/PortfolioJulioJimenez.css';
-
+import Footer from './Footer';
 function Portfolio(properties) {
     // TODO: Finish the search implimentation
     // TODO: Make it so that they load in boxes and propperly crop and center on the image while retaining quality. 
@@ -94,6 +94,9 @@ function Portfolio(properties) {
                     {imageArray.map((image, index) => (
                         <Box data={image} index={image} key={image} />
                     ))}
+                </div>
+                <div>
+                <Footer />
                 </div>
             </>
         );
