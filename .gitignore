@@ -25,4 +25,8 @@ yarn.lock
 
 #vs code
 .vscode
+.vscode/
 
+#MacOS
+.DS_Store
+*.icloud
