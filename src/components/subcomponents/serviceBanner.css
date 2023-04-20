@@ -1,7 +1,8 @@
 .banner {
     display: flex;
-    width: 25rem;
-    border-radius: 10px;
+    color: black;
+    justify-content: center;
+    min-width: 25rem;
 }
 
 .bannerImage {
@@ -9,6 +10,14 @@
 }
 
 .fullDescription {
+    display: grid;
+    grid-template-rows: 0fr;
+    width: 100%;
     background-color: #e1e6e5;
     padding-left: 1rem;
+
+}
+.session,.deposit{
+    margin-top: 0%;
+    margin-bottom: 0%;
 }
