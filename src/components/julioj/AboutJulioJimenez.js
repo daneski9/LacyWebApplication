@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Navbar from "../Navbar";
 import julioPic from "../images/julio/j-tats.png";
 import './julioCSS/AboutJulioJimenez.css';
-
+import Footer from './Footer';
 function About() {
     return (
       <>
@@ -32,6 +32,9 @@ function About() {
         <Link to="/JulioJimenez/inquiry">
         <button class ='about-btn'>BOOK NOW</button>
         </Link>
+      </div>
+      <div>
+        <Footer />
       </div>
 
       
