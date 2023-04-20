@@ -40,10 +40,12 @@ function Portfolio(properties) {
             <SearchBar query={query} onChange={setQuery} />
             </div>
 
-            <div className="bannerGrid">
+            <div className="gridContainer">
+                <div className="bannerGrid">
                 {imageArray.map((image, index) => (
                     <Box data={image} index={image} key={image} />
                 ))}
+            </div>
             </div>
         </>
     );
