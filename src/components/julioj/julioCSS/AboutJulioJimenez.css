@@ -31,12 +31,15 @@
     width: 75%;
     min-width: 300px;
 }
-.hours-container{
-    background-color: rgba(31, 24, 16, 0.301);
-    margin: 0 auto;
-    font-family: 'Anuphan', 'Jost', 'Cambria', 'Roboto', sans-serif;    
+.bottom-container{
+    background-color: rgba(15, 12, 9, 0.425);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Anuphan', 'Jost', 'Cambria', 'Roboto', sans-serif;
 }
-.hours-container >.hours-info > h2{
+.bottom-container >.hours-info > h2{
     margin-right: 25px;
 }
 .hours-info{
@@ -59,11 +62,9 @@ li:nth-child(3) {
     padding-left: 3px;
 }
 /* button */
-.bottom-container{
-    text-align: center;
-    margin-top: 3.6rem;
-}
 .about-btn{
+    display: inline-block;
+    margin: 1em 0 4em 0;
     font-size: 1rem;
     text-decoration: none;
     padding: 10px 30px;
@@ -115,13 +116,6 @@ li:nth-child(3) {
     .text-content{
         margin: 0 auto;
         margin-left: 65px;
-    }
-    .bottom-container{
-        margin-top: 40px;
-    }
-    .bottom-container>.btm-links{
-        margin-top: 40px;
-        background-color: black;
     }
 
 }

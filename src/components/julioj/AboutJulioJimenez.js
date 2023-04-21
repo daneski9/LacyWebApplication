@@ -16,7 +16,7 @@ function About() {
           </div>
         </div>
       </div>
-      <div class = "hours-container">
+      <div class = "bottom-container">
         <div class = "hours-info">
           <h2>Hours</h2>
           <ul>
@@ -27,21 +27,18 @@ function About() {
             <li>Sa (Appointment Only)</li>
             <li>Su (Appointment Only)</li>
           </ul></div>
+          <Link to="/JulioJimenez/inquiry">
+            <button className='about-btn' onClick={() => {
+              window.scroll({
+                top: 0,
+                left: 0
+              });
+            }}>BOOK NOW</button>
+          </Link>
       </div>
-      <div class = "bottom-container">
-      <Link to="/JulioJimenez/inquiry">
-        <button className='about-btn' onClick={() => {
-          window.scroll({
-            top: 0,
-            left: 0
-          });
-        }}>BOOK NOW</button>
-      </Link>
-        <div class = "btm-links"></div>
-      </div>
-      <div>
-        <Footer />
-      </div>
+
+      <Footer />
+      
 
       
       </>
