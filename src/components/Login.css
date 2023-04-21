@@ -1,9 +1,14 @@
 .user-pass-container {
-  padding-top: 300px;
-  /* add padding to move it down */
+  padding-top: 20%; 
+  /*add padding to move it down  */ 
 }
 
-.back-button{
-  text-align: center;
-  margin-top: -4.3rem;
+.buttons {
+  display: flex;
+  justify-content: left;
+  gap: 10px;
 }
+
+
+
+
