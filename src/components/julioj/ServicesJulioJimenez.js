@@ -77,23 +77,21 @@ const dataArray = [{
 
 ]
 
-
-
-
 function Services() {
-    return (
-      <>
-      <Navbar />
-      <div className="bannerGrid">
-        {dataArray.map((banner) => (
+  return (
+    <>
+    <Navbar />
+    <div className="bannerGrid">
+      {dataArray.map((banner) => (
+        <div className="serviceBannerWrapper">
           <ServiceBanner data={banner}/>
-        ))}
-      </div>
-      <div>
-        <Footer />
-      </div>
-      </>
-    );
-  }
-  
+        </div>
+      ))}
+    </div>
+    <div>
+      <Footer />
+    </div>
+    </>
+  );
+}
   export default Services;
