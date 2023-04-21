@@ -6,11 +6,8 @@
 } */
 
 footer {
-  background-color: #222;
   color: #fff;
   font-size: 1.2rem;
-  padding: 0rem 0;
-  
 }
 
 html, body {
@@ -18,18 +15,16 @@ html, body {
 }
 
 .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
-    margin-top: 10rem;
+    margin: 10rem 0 2rem 0;
+    gap: 10%;
     
 }
 
 .footer-left {
-    flex-basis: 25%;
-    padding-right: 4rem;
+    
 }
 
 .footer-left h3 {
@@ -47,8 +42,7 @@ html, body {
 }
 
 .footer-middle {
-    flex-basis: 35%;
-    padding-right: 4rem;
+    
 }
 
 .footer-middle h3 {
@@ -77,7 +71,7 @@ html, body {
 }
 
 .footer-right {
-    flex-basis: 25%;
+    
 }
 
 .footer-right h3 {

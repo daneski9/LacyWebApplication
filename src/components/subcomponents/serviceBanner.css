@@ -2,7 +2,6 @@
     display: flex;
     color: black;
     justify-content: center;
-    min-width: 25rem;
 }
 
 .bannerImage {
