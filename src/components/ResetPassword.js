@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function ForgotPassword() {
+function ResetPassword() {
 
   const [username, setUsername] = useState('');
   const [oldPassword, setOldPassword] = useState('');
@@ -17,7 +17,7 @@ function ForgotPassword() {
   return (
     <div>
 
-      <h1>Forgot Password</h1>
+      <h1>Reset Password</h1>
 
       <form onSubmit={handleSubmit}>
         <div>
@@ -44,4 +44,4 @@ function ForgotPassword() {
   );
 }
 
-export default ForgotPassword;
+export default ResetPassword;
