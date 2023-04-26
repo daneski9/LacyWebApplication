@@ -8,8 +8,7 @@ function Box({ data, index }) {
             <img
                 className="bannerImage"
                 src={`${data}`} 
-                alt={''}
-                // alt={`${index}`}
+                alt={`${index}`}
             />
         </div>
     </Fragment>

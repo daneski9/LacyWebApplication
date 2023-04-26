@@ -2,21 +2,21 @@ import { Link } from 'react-router-dom';
 import Navbar from "../Navbar";
 import julioPic from "../images/julio/j-tats.png";
 import './julioCSS/AboutJulioJimenez.css';
-
+import Footer from './Footer';
 function About() {
     return (
       <>
       <Navbar />
       
       <div class = "top-container">
-        <img src={julioPic} alt="j-tats" />
+        <div class = "img-container"><img src={julioPic} alt="j-tats" /></div>
         <div class = "text-box">
           <div class = "text-content"> <p>While tattooing since 2016, Julio specializes in realism and black ink. He studies realistic art and photo realism. In his spare time, Julio draws
             and paints constantly, trying to develop skills and raise the bar!</p>
           </div>
         </div>
       </div>
-      <div class = "hours-container">
+      <div class = "bottom-container">
         <div class = "hours-info">
           <h2>Hours</h2>
           <ul>
@@ -27,12 +27,18 @@ function About() {
             <li>Sa (Appointment Only)</li>
             <li>Su (Appointment Only)</li>
           </ul></div>
+          <Link to="/JulioJimenez/inquiry">
+            <button className='about-btn' onClick={() => {
+              window.scroll({
+                top: 0,
+                left: 0
+              });
+            }}>BOOK NOW</button>
+          </Link>
       </div>
-      <div class = "bottom-container">
-        <Link to="/JulioJimenez/inquiry">
-        <button class ='about-btn'>BOOK NOW</button>
-        </Link>
-      </div>
+
+      <Footer />
+      
 
       
       </>

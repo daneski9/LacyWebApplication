@@ -1,10 +1,32 @@
 
-
+.serviceBannerWrapper {
+  padding: 15px;
+  background-color: rgba(43, 31, 31, 0.486);
+  margin-top: 3rem;
+  margin-right: 6rem;
+  
+  }
 .bannerGrid {
+    /*Problem, needs two columns per row at least for phones, looks bad on huge screens*/
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10rem;
+    gap: 5%; 
+    /*
+    Problem: the containers are clickable outside their boxes
     display: grid;
-    margin-left: 5rem;
+    margin-left: 10rem;
     margin-top: 3rem;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 2fr);
     gap: 2rem;
+    justify-content: center;
+    min-width: 25rem;
+    */
 }
 
+a{
+    text-decoration: none;
+    
+}

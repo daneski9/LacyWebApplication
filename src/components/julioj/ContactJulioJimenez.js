@@ -1,5 +1,7 @@
 import Navbar from "../Navbar";
 import React, { useState } from 'react';
+//import './julioCSS/juliojimenez.css';
+import Footer from './Footer';
 //import '../../App.css'
 import './julioCSS/ContactJulioJimenez.css'
 
@@ -65,6 +67,9 @@ function Contact() {
 
           </form>
         </div>
+      </div>
+      <div>
+        <Footer />
       </div>
       </>
     );
