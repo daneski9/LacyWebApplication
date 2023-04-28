@@ -11,15 +11,43 @@ import servicePic6 from "../images/services/lower_leg.jpeg";
 import servicePic7 from "../images/services/chest.jpeg";
 import servicePic8 from "../images/services/spine.webp";
 
-
-const dataArray = [{
-  image: servicePic1,
-  session: 'Full Day Session',
-  price: 1600,
+const leftArray = [
+  {
+    image: servicePic1,
+    session: 'Full Day Session',
+    price: 1600,
+    deposit: 200,
+    time: 480,
+    description: 'Book this session if interested in starting a full back, chest or sleeve'
+  },
+  {
+  image: servicePic3,
+  session: 'Upper Arm Session',
+  price: 2400,
   deposit: 200,
   time: 480,
-  description: 'Book this session if interested in starting a full back, chest or sleeve'
-},
+  description: 'Upper Arm Tattoo may exceed 8hrs or require 2 Sessions'
+  },
+  {
+    image: servicePic5,
+    session: 'Inner Bicep Session',
+    price: 1200,
+    deposit: 200,
+    time: 420,
+    description: 'Full Inner biceps tattoo between the elbow and the armpit'
+  }, 
+  {
+    image: servicePic7,
+    session: 'Chest Tattoo',
+    price: 1400,
+    deposit: 200,
+    time: 480,
+    description: 'Single side chest tattoo that covers whole chest from. Takes Full day'
+  }
+]
+
+
+const rightArray = [
 {
   image: servicePic2,
   session: 'Half day Session',
@@ -29,28 +57,13 @@ const dataArray = [{
   description: 'Typically Involves a 3-4 hour appointment with a professional tattoo artist'
 },
 {
-  image: servicePic3,
-  session: 'Upper Arm Session',
-  price: 2400,
-  deposit: 200,
-  time: 480,
-  description: ''
-},
-{
   image: servicePic4,
   session: 'Full Lower Arm',
   price: 1200,
   deposit: 200,
   time: 420,
   description: 'Full Inner Forearm Tattoo Wrist to Ditch Or Full Outer Arm Tattoo Wrist to Elbow'
-},{
-  image: servicePic5,
-  session: 'Inner Bicep Session',
-  price: 1200,
-  deposit: 200,
-  time: 420,
-  description: 'Full Inner biceps tattoo between the elbow and the armpit'
-}, 
+},
 {
   image: servicePic6,
   session: 'Full Lower Leg',
@@ -58,13 +71,6 @@ const dataArray = [{
   deposit: 200,
   time: 480,
   description: 'Full Lower Leg Tatttoo inner ankle to knee or outer ankle to knee'
-}, {
-  image: servicePic7,
-  session: 'Chest Tattoo',
-  price: 1400,
-  deposit: 200,
-  time: 480,
-  description: 'Single side chest tattoo that covers whole chest from. Takes Full day'
 },
 {
   image: servicePic8,
@@ -74,20 +80,28 @@ const dataArray = [{
   time: 360,
   description: 'Book this session if interested in starting a full back, chest or sleeve'
 }
-
 ]
 
 function Services() {
   return (
     <>
     <Navbar />
-    <div className="bannerGrid">
-      {dataArray.map((banner) => (
-        <div className="serviceBannerWrapper">
-          <ServiceBanner data={banner}/>
-        </div>
-      ))}
-    </div>
+    <ul class = "servicesList">
+      <li>
+        {leftArray.map((banner) => (
+          <div className="leftSide">
+            <ServiceBanner data={banner}/>
+          </div>
+        ))}
+      </li>
+      <li>
+        {rightArray.map((banner) => (
+          <div className="rightSide">
+            <ServiceBanner data={banner}/>
+          </div>
+        ))}
+      </li>
+    </ul>
     <div>
       <Footer />
     </div>

@@ -18,9 +18,7 @@ import ServicesJulioJimenez from "./components/julioj/ServicesJulioJimenez";
 
 function App() {
     return (
-        
     <BrowserRouter>
-       
         <Routes>
             <Route path="/" element={<Lounge />} />
             <Route path="/JulioJimenez/about" element={<AboutJulioJimenez />} />
@@ -30,14 +28,8 @@ function App() {
             <Route path="/JulioJimenez/Services" element={<ServicesJulioJimenez />} />
             <Route path="/login" element={<Login />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
-
         </Routes>
-        
-        
-        
     </BrowserRouter>
-        
-        
     );
   }
 
