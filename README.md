@@ -25,14 +25,14 @@
   <img src="src/components/images/teamlogo.png" />
 </p>
 
-- [https://github.com/daneski9](Dane Coleman)
-- [https://github.com/chessset5](Aaron Shackelford)
-- [https://github.com/malekus40](Abdul Malek Abdul Khaliq)
-- [https://github.com/carlenacodes](Carlena Schwab)
-- [https://github.com/TwerpZ](Eric Jimenez Chavez)
-- [https://github.com/ioleshko1](Igor Oleshko)
-- [https://github.com/marjeela](Marjeela Habib)
-- [https://github.com/tquiba](Timothy Quiba)
+- [Dane Coleman](https://github.com/daneski9)
+- [Aaron Shackelford](https://github.com/chessset5)
+- [Abdul Malek Abdul Khaliq](https://github.com/malekus40)
+- [Carlena Schwab](https://github.com/carlenacodes)
+- [Eric Jimenez Chavez](https://github.com/TwerpZ)
+- [Igor Oleshko](https://github.com/ioleshko1)
+- [Marjeela Habib](https://github.com/marjeela)
+- [Timothy Quiba](https://github.com/tquiba)
 
 ## Background
 
