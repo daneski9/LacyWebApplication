@@ -22,7 +22,7 @@
 ---
 
 <p align="center">
-  <img src="client/src/asset/images/A Cup of Java Team Logo.png" />
+  <img src="src/components/images/teamlogo.png" />
 </p>
 
 - Dane Coleman
@@ -46,13 +46,11 @@
 
 ---
 
-LACY ST. ART LOUNGE _____
+Lacy St. Art Lounge is a popular LA tattoo parlor with talented artists and various styles. The space is stylish and artistic, with strict hygiene standards. It’s a great place to get a quality and original tattoo in the Los Angeles Area.
 
 ## Solution
 
----
-
-THE SOLUTION ______
+The solution of this project is to developed web application for the Lacy St. Art Lounge tattoo parlor. This website showcases the portfolios of the artists working at the tattoo parlor, allowing potential customers to browse through their previous works and get a sense of their artistic styles. This website also provides detailed information about the services offered, including tattoo styles, and pricing. One of the important features of the website will be the ability to submit an inquiry that will enable clients to easily submit inquiries with the required information. Additionally, this website facilitates client-artist communications, allowing clients to directly communicate with their chosen artists to discuss their tattoo ideas and ask questions. By providing a user-friendly and informative website, the Lacy St Art Lounge aims to enhance customer convenience and satisfaction, increase business visibility in the digital realm, and improve the overall efficiency in managing inquiries and appointments. This website will serve as a powerful tool to attract new clients, showcase the artistic talent of the tattoo artists, and elevate the professional image of the tattoo parlor.
 
 ## Prototype
 
