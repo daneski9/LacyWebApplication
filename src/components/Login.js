@@ -39,7 +39,7 @@ function Login() {
           <div class = "buttons"> 
             <button type="submit">Submit</button>
 
-            <Link to="/forgotpassword">
+            <Link to="/resetpassword">
               <button type="button">Reset Password</button>
             </Link>
 

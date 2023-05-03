@@ -11,11 +11,26 @@ function Contact() {
   const [last, setLast] = useState('');
   const [email, setEmail] = useState('');
   const [message, setDescription] = useState('');
-
+  const [showAlert, setShowAlert] = useState(false);
 
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+     // Clear all fields
+     setFirst('');
+     setLast('');
+     setEmail('');
+     setDescription('');
+     
+ 
+     // Show alert
+     setShowAlert(true);
+ 
+     // Hide alert after 15 seconds
+     setTimeout(() => {
+       setShowAlert(false);
+     }, 15000);
 
     
     
@@ -29,6 +44,12 @@ function Contact() {
       <>
       <Navbar />
       <div className='contact'>
+
+      {showAlert && (
+        <div className="alert">
+          Thank you for your message! A reply will be sent shortly.
+        </div>
+      )}
         <div>
           <h1 className="title is-1">Contact Julio</h1>
           {/* <p>

@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Login from "./components/Login";
 import Lounge from "./components/Lounge";
-import ForgotPassword from "./components/ForgotPassword";
+import ResetPassword from "./components/ResetPassword";
 //Julio imports:
 import AboutJulioJimenez from "./components/julioj/AboutJulioJimenez";
 import ContactJulioJimenez from "./components/julioj/ContactJulioJimenez";
@@ -29,7 +29,7 @@ function App() {
             <Route path="/JulioJimenez/Portfolio" element={<PortfolioJulioJimenez />} />
             <Route path="/JulioJimenez/Services" element={<ServicesJulioJimenez />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/forgotpassword" element={<ForgotPassword />} />
+            <Route path="/resetpassword" element={<ResetPassword />} />
 
         </Routes>
         
