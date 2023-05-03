@@ -28,25 +28,16 @@ function Portfolio(properties) {
     return (
         <>
             <Navbar />
-            <div
-            className="container"
-            style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                paddingTop: '50px',
-            }}
-            >
+            <div className="search-container">
             <SearchBar query={query} onChange={setQuery} />
             </div>
 
-            <div className="gridContainer">
                 <div className="bannerGrid">
                 {imageArray.map((image, index) => (
                     <Box data={image} index={image} key={image} />
-                ))}
-            </div>
-            </div>
+                ))} </div>
+
+            <Footer />
         </>
     );
 }

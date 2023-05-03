@@ -1,24 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+
+
 /* Style the title */
 .title {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
+  font-size: 4em;
   text-align: center;
+  font-family: 'Oleo Script', 'Jost', sans-serif, Arial;
+  font-weight: lighter;
+  color: #ffffff;
 }
 
 .title-2 {
-  color: white;
-  font-size: 1.5rem;
-  margin-bottom: 1.0rem;
+  color: rgb(255, 255, 255);
+  margin-top:-5px;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
   text-align: center;
+  font-family: 'Inter', 'Jost', 'Anuphan', 'Cambria', 'Roboto', sans-serif;
+  font-weight: 200;
+
 }
   /* Style the container for the artists */
   .artists-container {
     display: grid;
     justify-items: center;
-    row-gap: 10px;
-    margin-left: 40px;
-    margin-right: 40px;
-    
+    row-gap: 20px;
   }
   
   /* Style the container for each artist */
@@ -26,15 +33,15 @@
     position: relative;
     display: inline-block;
     align-items: center; 
-    background-color: #271d1996;
-    padding: 1em;
+    background-color: #0000007a;
+    padding: 0.3em;
   }
   
   /* Style the image for each artist */
   .artists-container img {
     width: 200px;
     height: 200px;
-    padding: 10px;
+    padding: 6px;
     object-fit: cover;
   }
 
@@ -81,27 +88,17 @@
 
  /* Style the login button */
   .lounge-button {
-    display: block;
-    margin-top:10px;
-    margin-bottom:0;
-    margin-left:auto;
-    margin-right:auto;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
+    font-size: 1em;
     font-weight: bold;
-    color: white;
-    background-color: #f5c3c396;
     border: none;
-    border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-    box-shadow: 0 0 2px #f2fafa,
-                  0 0 15px #dbe2e2;
-    background-image: linear-gradient(to right, #0e1a20 0%, #413f33  51%, #000203  100%);
+    background-color: #ffffff00;
+    color: rgba(59, 49, 49, 0.795);
+    
   }
-  
-  .lounge-button:hover{
-    transition: background-color 0.4s ease-in-out;
-    background: #000000;
-
+  .login{
+    background-color: #000;
+    display: flex;
+    justify-content: right;
+    margin-top: -10px;
   }

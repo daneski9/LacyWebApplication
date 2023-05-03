@@ -6,6 +6,8 @@
 
 .bannerImage {
     width: 8rem;
+    min-height: 200px;
+    object-fit: contain;
 }
 
 .fullDescription {
