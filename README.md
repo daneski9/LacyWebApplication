@@ -42,15 +42,45 @@
 - Timothy Quiba
   - **Email:** tquiba@csus.edu
 
+## Background
 
+---
 
+LACY ST. ART LOUNGE _____
 
+## Solution
 
+---
 
+THE SOLUTION ______
 
+## Prototype
 
+---
 
+THE PROTOTYPE _____
 
+## Timeline
+
+---
+
+THE TIMELINE _____
+
+## Website Demo
+
+---
+
+WEBSITE DEMO _____
+
+## Testing
+
+---
+
+TESTING WILL BE DONE LATER
+
+## Run and Deploy
+
+---
 
 
 
