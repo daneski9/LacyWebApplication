@@ -57,14 +57,16 @@ The solution of this project is to developed web application for the Lacy St. Ar
 <br>
 During our prototype phase, we developed a figma demo which showcased our ideas for the website. In the demo (viewable above) we created a few of the base pages that would be used for the final product. 
 
-The following pages were created:
-   Contact page for getting in contact with the artist
-   Main portal to select the artist
-   Admin login to modify the websites’ contents
-   Service page to show off the the available tattoo areas
-   About page for the artist
-   Portfolio page to show of the artist’s artwork
-   And the inquire page that was deprecated to the contact page later in development
+The following pages were created:<br>
+<ul style="circle">
+   <li>Contact page for getting in contact with the artist</li>
+   <li>Main portal to select the artist</li>
+   <li>Admin login to modify the websites’ contents</li>
+   <li>Service page to show off the the available tattoo areas</li>
+   <li>About page for the artist</li>
+   <li>Portfolio page to show of the artist’s artwork</li>
+   <li>And the inquire page that was deprecated to the contact page later in development</li>
+</ul>
    
 
 ## Timeline
@@ -78,7 +80,7 @@ THE TIMELINE _____
 ---
 
 <p align="center">
-  <img src="src/components/images/website_demo.gif" />
+  <img src="src/components/images/website_demo2.webm" />
 </p>
 
 This section will provide GIF that showcases a walkthrough of the deployed Lacy St. Art Lounge web application.
