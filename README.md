@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="src/components/images/la-bg.png" />
+  <img src="src/components/images/logo.png" />
 </p>
 
 <p align="center">
