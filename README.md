@@ -56,8 +56,9 @@ The solution of this project is to developed web application for the Lacy St. Ar
 
 <br>
 During our prototype phase, we developed a figma demo which showcased our ideas for the website. In the demo (viewable above) we created a few of the base pages that would be used for the final product. 
+<br>
 
-The following pages were created:<br>
+The following pages were created:
 <ul style="circle">
    <li>Contact page for getting in contact with the artist</li>
    <li>Main portal to select the artist</li>
@@ -77,16 +78,11 @@ THE TIMELINE _____
 
 ## Website Demo
 
-![website_demo2.webm](https://user-images.githubusercontent.com/117392319/236071792-56710919-d5ad-4403-90bc-70ef56dd0665.webm)
-
-
 <p align="center">
-  <img src="src/components/images/website_demo2.webm" />
-  <img src="https://user-images.githubusercontent.com/117392319/236071792-56710919-d5ad-4403-90bc-70ef56dd0665.webm" />
   <video src="https://user-images.githubusercontent.com/117392319/236071792-56710919-d5ad-4403-90bc-70ef56dd0665.webm" controls="controls" style="max-width: 730px;" />
 </p>
 
-This section will provide GIF that showcases a walkthrough of the deployed Lacy St. Art Lounge web application.
+The video above does a quick demo of the current state of the Lacy St. Art Lounge web application.  It showcases the different pages and the pathways which can be taken to get to this specific pages along with the fields and buttons that are available on the web pages.  If an individual wants to visit the website themselves, then they can reach it by going to [Lacy St. Art Lounge](https://www.twerpz.dev/).
 
 ## Testing
 
