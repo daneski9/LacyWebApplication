@@ -1,5 +1,24 @@
-# 190 The Squad Mk II members:
-- Aaron Shackelford, Abdul Malek Abdul Khaliq, Carlena Schwab, Dane Coleman, Eric Chavez, Igor Oleshko, Marjeela Habib, Tim Quiba
+<p align="center">
+  <img src="src/components/images/la-bg.png" />
+</p>
+
+<p align="center">
+  <strong>Lact St. Art Lounge Web Application</strong>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Getting Started with Create React App
 
