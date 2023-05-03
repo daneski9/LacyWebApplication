@@ -46,13 +46,7 @@ The solution of this project is to developed web application for the Lacy St. Ar
 ## Prototype
 ---
 
-<p align="center">
-  <img src="src/components/images/mock_up_demo.gif" />
-</p>
-
-<br />
-During our prototype phase, we developed a figma demo which showcased our ideas for the website. In the demo (viewable above) we created a few of the base pages that would be used for the final product. 
-<br />
+During our prototype phase, we developed a figma demo which showcased our ideas for the website. In the demo (viewable above) we created a few of the base pages that would be used for the final product./n
 
 The following pages were created:
 <ul style="circle">
@@ -64,8 +58,11 @@ The following pages were created:
    <li>Portfolio page to show of the artist’s artwork</li>
    <li>And the inquire page that was deprecated to the contact page later in development</li>
 </ul>
-   
 
+<p align="center">
+  <img src="src/components/images/mock_up_demo.gif" />
+</p>
+   
 ## Timeline
 ---
 
@@ -74,11 +71,11 @@ THE TIMELINE _____
 ## Website Demo
 ---
 
+The video below does a quick demo of the current state of the Lacy St. Art Lounge web application.  It showcases the different pages and the pathways which can be taken to get to this specific pages along with the fields and buttons that are available on the web pages.  If an individual wants to visit the website themselves, then they can reach it by going to [Lacy St. Art Lounge](https://www.twerpz.dev/).
+
 <p align="center">
   <video src="https://user-images.githubusercontent.com/117392319/236071792-56710919-d5ad-4403-90bc-70ef56dd0665.webm" controls="controls" style="max-width: 730px;" />
 </p>
-
-The video above does a quick demo of the current state of the Lacy St. Art Lounge web application.  It showcases the different pages and the pathways which can be taken to get to this specific pages along with the fields and buttons that are available on the web pages.  If an individual wants to visit the website themselves, then they can reach it by going to [Lacy St. Art Lounge](https://www.twerpz.dev/).
 
 ## Testing
 ---
