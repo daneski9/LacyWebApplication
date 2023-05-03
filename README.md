@@ -77,12 +77,13 @@ THE TIMELINE _____
 
 ## Website Demo
 
----[website_demo2.webm](https://user-images.githubusercontent.com/117392319/236071792-56710919-d5ad-4403-90bc-70ef56dd0665.webm)
+![website_demo2.webm](https://user-images.githubusercontent.com/117392319/236071792-56710919-d5ad-4403-90bc-70ef56dd0665.webm)
 
 
 <p align="center">
   <img src="src/components/images/website_demo2.webm" />
   <img src="https://user-images.githubusercontent.com/117392319/236071792-56710919-d5ad-4403-90bc-70ef56dd0665.webm" />
+  <video src="https://user-images.githubusercontent.com/117392319/236071792-56710919-d5ad-4403-90bc-70ef56dd0665.webm" controls="controls" style="max-width: 730px;" />
 </p>
 
 This section will provide GIF that showcases a walkthrough of the deployed Lacy St. Art Lounge web application.
