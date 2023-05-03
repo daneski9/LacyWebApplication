@@ -1,9 +1,12 @@
 .bannerGrid{
-
+    display: grid;
+    grid-template-columns: repeat(3, auto); /* 3 columns */
+    justify-content: center;
+    
 }
 
-.gridContainer{
+.search-container{
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    margin-top: 60px;
 }
