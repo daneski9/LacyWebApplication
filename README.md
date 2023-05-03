@@ -1,10 +1,46 @@
 <p align="center">
-  <img src="src/components/images/logo.png" />
+  <img src="src/components/images/logo2.png" />
 </p>
 
+## Table of Contents
+
+---
+
+- [Table of Contents](#table-of-contents)
+- [Team Members](#team-members)
+- [Background](#background)
+- [Solution](#solution)
+- [Prototype](#prototype)
+- [Timeline](#timeline)
+- [Website Demo](#website-demo)
+- [Testing](#testing)
+- [Run and Deploy](#run-and-deploy)
+
+
+## Team Members
+
+---
+
 <p align="center">
-  <strong>Lact St. Art Lounge Web Application</strong>
+  <img src="client/src/asset/images/A Cup of Java Team Logo.png" />
 </p>
+
+- Dane Coleman
+  - **Email:** danecoleman@csus.edu
+- Aaron Shackelford
+  - **Email:** ashackelford@csus.edu
+- Abdul Malek Abdul Khaliq
+  - **Email:** aabdulkhaliq@csus.edu
+- Carlena Schwab
+  - **Email:** cschwab@csus.edu
+- Eric Jimenez Chavez
+  - **Email:** jimenezchavez@csus.edu
+- Igor Oleshko
+  - **Email:** ioleshko@csus.edu
+- Marjeela Habib
+  - **Email:** mhabib@csus.edu
+- Timothy Quiba
+  - **Email:** tquiba@csus.edu
 
 
 
