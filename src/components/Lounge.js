@@ -70,11 +70,13 @@ function Lounge() {
                 <img src={require("./images/gabriel/works/gabriel-work3.jpg")} alt="gabriel-work3"/>
               </div>
           </div>
+          <div>
+            <FooterPortal />
+          </div>
+          <div class = "login">
           <Link to="/login">
             <button class = "lounge-button">Admin Login</button>
           </Link>
-          <div>
-            <FooterPortal />
           </div>
         </div>
     );

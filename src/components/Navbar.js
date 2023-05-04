@@ -20,7 +20,6 @@ function Navbar(){
         portfolioUrl = '';
         contactUrl = '';
     } */
-
     return (
         <nav className="navbar">
           <ul>
@@ -43,5 +42,4 @@ function Navbar(){
         </nav>
     );
 }
-
 export default Navbar;
