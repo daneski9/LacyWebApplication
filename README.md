@@ -64,10 +64,9 @@ The following pages were created:
    <li>And the inquire page that was deprecated to the contact page later in development</li>
 </ul>   
 
-
 <p align="center">
-  <img src="src/components/images/mock_up_demo.gif" />
-</p>  
+  <video src="https://user-images.githubusercontent.com/117392319/236076733-4386d409-6b29-4344-864c-a4f081bf3573.webm" controls="controls" style="max-width: 730px;" />
+</p>   
 
    
 ## Timeline
