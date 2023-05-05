@@ -82,7 +82,7 @@ The video below does a quick demo of the current state of the Lacy St. Art Loung
 ---
 
 <p align="center">
-  <img src="src/components/images/timeline.png" />
+  <img src="src/components/images/project_timeline.png" />
 </p>   
 
 
