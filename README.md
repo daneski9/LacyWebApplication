@@ -68,23 +68,21 @@ The following pages were created:
   <video src="https://user-images.githubusercontent.com/117392319/236076733-4386d409-6b29-4344-864c-a4f081bf3573.webm" controls="controls" style="max-width: 730px;" />
 </p>   
 
-   
-## Timeline
----
-
-THE TIMELINE _____   
-
-
 ## Website Demo
 ---
 
 The video below does a quick demo of the current state of the Lacy St. Art Lounge web application.  It showcases the different pages and the pathways which can be taken to get to this specific pages along with the fields and buttons that are available on the web pages.  If an individual wants to visit the website themselves, then they can reach it by going to [Lacy St. Art Lounge](https://www.twerpz.dev/).   
 
-
-
-
 <p align="center">
   <video src="https://user-images.githubusercontent.com/117392319/236071792-56710919-d5ad-4403-90bc-70ef56dd0665.webm" controls="controls" style="max-width: 730px;" />
+</p>   
+
+   
+## Timeline
+---
+
+<p align="center">
+  <img src="src/components/images/project_timeline.png" />
 </p>   
 
 
