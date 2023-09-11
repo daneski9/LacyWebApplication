@@ -60,7 +60,6 @@ function InquiryPage() {
 
       <h1>Inquiry Julio Jimenez</h1>
       <form onSubmit={handleSubmit}>
-        
         <div>
           <label htmlFor="first">First Name:</label>
           <input type="text" id="first" value={first} onChange={(event) => setFirst(event.target.value)} required />
@@ -98,8 +97,8 @@ function InquiryPage() {
           </label>
         </div>
 
-        <div>
-          <button type="submit">Submit Inquiry</button>
+        <div class = "submit-btn">
+          <button type="submit">Submit</button>
         </div>
 
       </form>
