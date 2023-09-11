@@ -21,25 +21,53 @@ function Navbar(){
         contactUrl = '';
     } */
     return (
+        <>
+        <label class="hamburger-menu">
+            <input type="checkbox"></input>
+        </label>
+        <aside class="sidebar">
+            <nav>
+            <ul>
+                <li>
+                <Link to={aboutUrl}>About</Link>
+                </li>
+                <li>
+                <Link to={servicesUrl}>Services</Link>
+                </li>
+                <li>
+                <Link to={portfolioUrl}>Portfolio</Link>
+                </li>
+                <li>
+                <Link to={contactUrl}>Contact</Link>
+                </li>
+                <li>
+                <Link to="/">Lounge</Link>
+                </li>
+            </ul>
+            </nav>
+        </aside>
         <nav className="navbar">
-          <ul>
-          <li>
-             <Link to={aboutUrl}>About</Link>
-            </li>
-            <li>
-             <Link to={servicesUrl}>Services</Link>
-            </li>
-            <li>
-             <Link to={portfolioUrl}>Portfolio</Link>
-            </li>
-            <li>
-             <Link to={contactUrl}>Contact</Link>
-            </li>
-            <li>
-             <Link to="/">Lounge</Link>
-            </li>
-           </ul>
+            
+            <ul>
+                <li>
+                <Link to={aboutUrl}>About</Link>
+                </li>
+                <li>
+                <Link to={servicesUrl}>Services</Link>
+                </li>
+                <li>
+                <Link to={portfolioUrl}>Portfolio</Link>
+                </li>
+                <li>
+                <Link to={contactUrl}>Contact</Link>
+                </li>
+                <li>
+                <Link to="/">Lounge</Link>
+                </li>
+            </ul>
         </nav>
+        </>
+        
     );
 }
 export default Navbar;
