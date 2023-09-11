@@ -22,9 +22,11 @@ function Navbar(){
     } */
     return (
         <>
+        <div class="ham-background">
         <label class="hamburger-menu">
             <input type="checkbox"></input>
         </label>
+        
         <aside class="sidebar">
             <nav>
             <ul>
@@ -46,6 +48,7 @@ function Navbar(){
             </ul>
             </nav>
         </aside>
+        </div>
         <nav className="navbar">
             
             <ul>
