@@ -61,23 +61,19 @@ function Contact() {
           <form onSubmit={handleSubmit}>
           
             <div>
-              <label htmlFor="first">First Name:</label>
-              <input type="text" id="first" value={first} onChange={(event) => setFirst(event.target.value)} required />
+              <input type="text" id="first" placeholder="First name" value={first} onChange={(event) => setFirst(event.target.value)} required />
             </div>
 
             <div>
-              <label htmlFor="last">Last Name:</label>
-              <input type="text" id="last" value={last} onChange={(event) => setLast(event.target.value)} required />
+              <input type="text" id="last" placeholder="Last name" value={last} onChange={(event) => setLast(event.target.value)} required />
             </div>
 
             <div>
-              <label htmlFor="email">Email:</label>
-              <input type="email" id="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
+              <input type="email" id="email" placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)} required />
             </div>
 
             <div>
-              <label htmlFor="message">Message:</label>
-              <textarea id="message" value={message} onChange={(event) => setDescription(event.target.value)} required />
+              <textarea id="message" placeholder="Message" value={message} onChange={(event) => setDescription(event.target.value)} required />
             </div>
 
             

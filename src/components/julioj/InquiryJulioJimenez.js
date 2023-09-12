@@ -58,36 +58,30 @@ function InquiryPage() {
         </div>
       )}
 
-      <h1>Inquiry Julio Jimenez</h1>
+      <h1 className="title">Inquiry Julio Jimenez</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="first">First Name:</label>
-          <input type="text" id="first" value={first} onChange={(event) => setFirst(event.target.value)} required />
+          <input type="text" id="first" placeholder="First name" value={first} onChange={(event) => setFirst(event.target.value)} required />
         </div>
 
         <div>
-          <label htmlFor="last">Last Name:</label>
-          <input type="text" id="last" value={last} onChange={(event) => setLast(event.target.value)} required />
+          <input type="text" id="last" placeholder="Last name" value={last} onChange={(event) => setLast(event.target.value)} required />
         </div>
 
         <div>
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
+          <input type="email" id="email" placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)} required />
         </div>
 
         <div>
-          <label htmlFor="number">Phone Number:</label>
-          <input type="tel" id="number" value={number} onChange={(event) => setNumber(event.target.value)} required />
+          <input type="tel" id="number" placeholder="Phone" value={number} onChange={(event) => setNumber(event.target.value)} required />
         </div>
 
         <div>
-          <label htmlFor="location">Location on the body:</label>
-          <input type="text" id="location" value={location} onChange={(event) => setLocation(event.target.value)} required />
+          <input type="text" id="location" placeholder="Location on the body" value={location} onChange={(event) => setLocation(event.target.value)} required />
         </div>
 
         <div>
-          <label htmlFor="textarea">Tattoo Description:</label>
-          <textarea id="description" value={description} style={{ resize: 'none' }} onChange={(event) => setDescription(event.target.value)} required />
+          <textarea id="description" placeholder="Tattoo description" value={description} style={{ resize: 'none' }} onChange={(event) => setDescription(event.target.value)} required />
         </div>
 
         <div>
