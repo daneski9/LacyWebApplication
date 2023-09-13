@@ -33,20 +33,13 @@ h1 {
 
 
 
-
-
-
-
-
-
-
 /*
  * Modifying buttons, labels, and additional fields on the Form below
  */
 
 /* Update the CSS for the forms to have them all be padded 32.5% from the left */
 form {
-  padding-left: 32.5%;
+  padding-left: 38%;
   display: flex;
   flex-wrap: wrap;
 }
@@ -54,33 +47,43 @@ form {
 /* Update the CSS for the divs in the forms so that they will have a width of 100%, a padding of 10px, and be a border box */
 form > div {
   width: 100%;
-  padding: 10px;
   box-sizing: border-box;
 }
-
 /* Update the CSS for the labels in the divs in the form to make them look more appealing */
 form > div label {
-  color: #fff;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
   display: block;
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.08rem;
   margin-bottom: 5px;
+  
+}
+input::placeholder, textarea::placeholder {
+  color: #888888d2;  /* Change to the color you desire */
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.09rem;
 }
 
 /* Update the CSS for the inputs, textarea, and selects in the divs which are in the form to make fields look more appealing */
 form > div input,
-form > div textarea,
-form > div select {
-  width: 50%;
+form > div select,
+form > div textarea{
+  width: 35%;
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 3);
+  background-color: #1a1515;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 3);
   margin-bottom: 10px;
   font-size: 1.2rem;
+  color: rgb(240, 232, 232);
 }
-
+form > div textarea{
+  width: 45%;
+}
 /* Update the CSS for the inputs, textarea, and selects for when they are being focused on */
 form > div input:focus,
 form > div textarea:focus,
@@ -103,19 +106,22 @@ form > div input[type="file"] {
 
 /* Update the CSS for the label of type image to add additional CSS features to make it look better */
 form > div label[for="image"] {
-  width: 50%;
-  background-color: #f04d4d;
-  color: #fff;
+  width: 35%;
+  background-color: #6d2d2d;
+  color: #ffffff;
+  letter-spacing: 0.02rem;
   padding: 10px;
   display: inline-block;
   cursor: pointer;
   border-radius: 5px;
   margin-right: 10px;
+
 }
 
 /* Update the CSS for the label of type image to change the background color when being hovered over */
 form > div label[for="image"]:hover {
-  background-color: #e33e3e;
+  background-color: #f36d6d;
+  transition: background-color 0.2s ease;
 }
 
 /* Update the CSS for the label of type image to add some additional CSS features before the label is being hovered over */
@@ -129,40 +135,25 @@ form > div input[type="file"] {
 }
 
 /* Update the CSS for the button of type submit to add some additional CSS features to make it look appealing */
-button[type="submit"] {
+button[type="submit"], button[type="button"] {
   display: inline-block;
-  background-color: #4CAF50;
+  background-color: #226324;
   color: #fff;
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: 5px;
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1.1rem;
+  font-weight: 500;
   cursor: pointer;
   margin-right: 10px;
   border: none;
+  letter-spacing: 0.09rem;
   transition: background-color 0.3s ease;
-  font-family: 'Jost', sans-serif;
+  font-family: Arial, sans-serif;
+  
 }
-
-/* Update the CSS for the button of type button to add some additional CSS features to make it look appealing */
-button[type="button"] {
-  display: inline-block;
-  background-color: #4CAF50;
-  color: #fff;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  cursor: pointer;
-  margin-right: 10px;
-  border: none;
-  transition: background-color 0.3s ease;
-  font-family: 'Jost', sans-serif;
-}
-
 /* Update the CSS for the button of type submit to change the background color when being hovered over */
 form > div button[type="submit"]:hover {
-  background-color: #3e8e41; /* Darker green */
+  background-color: #63e768;
 }
 
 /* Update the CSS for the button of type button to change the background color when being hovered over */
