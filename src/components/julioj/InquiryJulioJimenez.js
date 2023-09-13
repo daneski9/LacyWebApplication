@@ -1,50 +1,36 @@
 import Navbar from "../Navbar";
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
+
 import '../../App.css'
 import './julioCSS/InquiryJulioJimenez.css'
 import Footer from './Footer';
+
 function InquiryPage() {
   
-  // Hold all of the states of the fields that we need to use for the email
-  const [first, setFirst] = useState('');
-  const [last, setLast] = useState('');
-  const [email, setEmail] = useState('');
-  const [number, setNumber] = useState('');
-  const [location, setLocation] = useState('');
-  const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
   const [showAlert, setShowAlert] = useState(false);
+  const form = useRef();
 
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+    emailjs.sendForm('service_3croqwd', 'template_ocg7ucx', form.current, 'zCUN8bCaLrLkii0mR')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
 
+      e.target.reset();
 
-    // Clear all fields
-    setFirst('');
-    setLast('');
-    setEmail('');
-    setNumber('');
-    setLocation('');
-    setDescription('');
-    setImage(null);
+      // Show alert
+      setShowAlert(true);
 
-    // Show alert
-    setShowAlert(true);
-
-    // Hide alert after 15 seconds
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 15000);
-
-    
-    
-    //window.location.href = "/JulioJimenez";
-
-
-
-    // We will need to add additional stuff here to lead to other pages in capture data in Sprint 04
-    
+      // Hide alert after 15 seconds
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 15000);
   };
 
   return (
@@ -58,49 +44,27 @@ function InquiryPage() {
         </div>
       )}
 
-      <h1 className="title">Inquiry Julio Jimenez</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input type="text" id="first" placeholder="First name" value={first} onChange={(event) => setFirst(event.target.value)} required />
-        </div>
+      <h1 className="inquiry_header">Submit an Inquiry</h1>
+      <form ref={form} onSubmit={sendEmail}>
 
-        <div>
-          <input type="text" id="last" placeholder="Last name" value={last} onChange={(event) => setLast(event.target.value)} required />
-        </div>
-
-        <div>
-          <input type="email" id="email" placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)} required />
-        </div>
-
-        <div>
-          <input type="tel" id="number" placeholder="Phone" value={number} onChange={(event) => setNumber(event.target.value)} required />
-        </div>
-
-        <div>
-          <input type="text" id="location" placeholder="Location on the body" value={location} onChange={(event) => setLocation(event.target.value)} required />
-        </div>
-
-        <div>
-          <textarea id="description" placeholder="Tattoo description" value={description} style={{ resize: 'none' }} onChange={(event) => setDescription(event.target.value)} required />
-        </div>
-
-        <div>
-          <label htmlFor="image">Reference Image (Required)
-            <input type="file" id="image" onChange={(event) => setImage(event.target.files[0])} required />
-              {image && <p className='filename'>{image.name}</p>}
-          </label>
-        </div>
-
-        <div class = "submit-btn">
-          <button type="submit">Submit</button>
-        </div>
+        <input type="text" name="first" placeholder="First name" required />
+        <input type="text" name="last" placeholder="Last name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="tel" name="number" placeholder="Phone"  required />
+        <input type="text" name="location" placeholder="Location on the body" required />
+        <textarea name="description" placeholder="Tattoo description" required />
+        
+        <label htmlFor="image">Reference Image
+            <input type="file" name="image" onChange={(event) => setImage(event.target.files[0])} required />
+        </label>
+        
+        <button type="submit">Submit</button>
 
       </form>
 
     </div>
-    <div>
-        <Footer />
-      </div>
+    
+    <Footer />
     </>
   );
 }

@@ -1,6 +1,5 @@
 .inquiry {
     width: 100%;
-    max-width: 10000px;
     margin: 0 auto;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -8,4 +7,8 @@
 
 .submit-btn{
     margin-top: 10px;
+}
+
+.inquiry_header {
+    margin-bottom: 40px;
 }

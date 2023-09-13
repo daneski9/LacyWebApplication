@@ -51,7 +51,7 @@ function Contact() {
         </div>
       )}
         <div>
-          <h1 className="title is-1">Contact Julio</h1>
+          <h1 class="contact_header">Contact Us</h1>
           {/* <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida,
             risus at dapibus aliquet, elit quam scelerisque tortor, nec accumsan eros
@@ -60,28 +60,15 @@ function Contact() {
           </p> */}
           <form onSubmit={handleSubmit}>
           
-            <div>
-              <input type="text" id="first" placeholder="First name" value={first} onChange={(event) => setFirst(event.target.value)} required />
-            </div>
+            <input type="text" id="first" placeholder="First name" value={first} onChange={(event) => setFirst(event.target.value)} required />
+            <input type="text" id="last" placeholder="Last name" value={last} onChange={(event) => setLast(event.target.value)} required />
+            <input type="email" id="email" placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)} required />
+            <textarea id="message" placeholder="Message" value={message} onChange={(event) => setDescription(event.target.value)} required />
 
-            <div>
-              <input type="text" id="last" placeholder="Last name" value={last} onChange={(event) => setLast(event.target.value)} required />
-            </div>
-
-            <div>
-              <input type="email" id="email" placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)} required />
-            </div>
-
-            <div>
-              <textarea id="message" placeholder="Message" value={message} onChange={(event) => setDescription(event.target.value)} required />
-            </div>
-
-            
             <div className='submit-button'>
               <button type="submit">Submit</button>
             </div>
             
-
           </form>
         </div>
       </div>
