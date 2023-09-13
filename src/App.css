@@ -39,9 +39,9 @@ h1 {
 
 /* Update the CSS for the forms to have them all be padded 32.5% from the left */
 form {
-  padding-left: 20%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
 }
 
 
@@ -67,7 +67,7 @@ input::placeholder, textarea::placeholder {
 form > input,
 form > select,
 form > textarea{
-  width: 75%;
+  min-width: 300px;
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -78,7 +78,7 @@ form > textarea{
   color: rgb(240, 232, 232);
 }
 form > textarea{
-  width: 75%;
+  min-width: 300px;
   resize: none;
 }
 /* Update the CSS for the inputs, textarea, and selects for when they are being focused on */
@@ -92,6 +92,7 @@ form > select:focus {
 /* Update the CSS for the textarea to have it set to a height of 150 pixels */
 form > textarea {
   height: 150px;
+  font-family: Arial, sans-serif;
 }
 
 /*
@@ -103,7 +104,7 @@ form > input[type="file"] {
 
 /* Update the CSS for the label of type image to add additional CSS features to make it look better */
 form > label[for="image"] {
-  width: 35%;
+  width: 300px;
   background-color: #6d2d2d;
   color: #ffffff;
   letter-spacing: 0.02rem;
@@ -111,8 +112,6 @@ form > label[for="image"] {
   display: inline-block;
   cursor: pointer;
   border-radius: 5px;
-  margin-right: 10px;
-
 }
 
 /* Update the CSS for the label of type image to change the background color when being hovered over */
