@@ -24,30 +24,25 @@ function Login() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div class = "user-pass-container">
-          <label htmlFor="username">Username</label>
-          <input type="text" id="username" value={username} onChange={(event) => setUsername(event.target.value)} required />
+      <form onSubmit={handleSubmit} className="user-pass-container">
         
-          <div>
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" value={password} onChange={(event) => setPassword(event.target.value)} required />
-          </div>
-        </div>
+        <input type="text" id="username" placeholder="Username" value={username} onChange={(event) => setUsername(event.target.value)} required />
+        <input type="password" id="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} required />
 
-        <div>
-          <div class = "buttons"> 
-            <button type="submit">Submit</button>
+        <div class = "buttons"> 
+          
+          <button type="submit">Submit</button>
 
-            <Link to="/resetpassword">
-              <button type="button">Reset Password</button>
-            </Link>
+          <Link to="/resetpassword">
+            <button type="button">Reset Password</button>
+          </Link>
 
-            <Link to='/'>
-              <button type="button">Back</button>
-            </Link>
-          </div>  
-        </div>
+          <Link to='/'>
+            <button type="button">Back</button>
+          </Link>
+        
+        </div>  
+
       </form>
     </div>
   );

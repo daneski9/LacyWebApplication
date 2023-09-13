@@ -8,6 +8,8 @@ function About() {
       <>
       <Navbar />
       
+      <h1 class="about_header">About Us</h1>
+
       <div class = "top-container">
         <div class = "img-container"><img src={julioPic} alt="j-tats" /></div>
         <div class = "text-box">
