@@ -58,6 +58,8 @@ function InquiryPage() {
             <input type="file" name="image" onChange={(event) => setImage(event.target.files[0])} required />
         </label>
         
+        <br></br>
+
         <button type="submit">Submit</button>
 
       </form>
