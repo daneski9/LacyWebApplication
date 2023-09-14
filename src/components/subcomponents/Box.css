@@ -43,13 +43,6 @@
     font-size: 1rem;
 }
 
-.bannerGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 1rem;
-    margin-top: 2rem;
-}
-
 .banner {
     display: flex;
     width: 25rem;
@@ -60,7 +53,3 @@
     width: 8rem;
 }
 
-.fullDescription {
-    background-color: #e1e6e5;
-    padding-left: 1rem;
-}

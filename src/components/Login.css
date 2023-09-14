@@ -1,0 +1,14 @@
+.user-pass-container {
+  padding-top: 20%; 
+  /*add padding to move it down  */ 
+}
+
+.buttons {
+  display: flex;
+  justify-content: left;
+  gap: 10px;
+}
+
+
+
+

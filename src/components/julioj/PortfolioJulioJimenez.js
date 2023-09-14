@@ -3,7 +3,7 @@ import Navbar from "../Navbar";
 import SearchBar from "../subcomponents/Searchbar";
 import Box from "../subcomponents/Box";
 import './julioCSS/PortfolioJulioJimenez.css';
-
+import Footer from './Footer';
 function Portfolio(properties) {
     // TODO: Finish the search implimentation
     // TODO: Make it so that they load in boxes and propperly crop and center on the image while retaining quality. 
@@ -19,87 +19,29 @@ function Portfolio(properties) {
     // let [imageArray, setImageArray] = useState(new Array(0));
     let imageArray = new Array(0);
     
-    // The url directory path where the images are located
-    // FIXME: change this to URL once server is live
-    const urlPath = '../images/';
-    
     // This is only for local testing
-    const imageContext = require.context("../images", true, /\.(png|jpg|jpeg|gif)$/);
+    const imageContext = require.context("../images/julio/works/", true, /\.(png|jpg|jpeg|gif)$/);
 
-    const local = true;
+    // local testing
+    imageArray = imageContext.keys().map(imageContext);
+    console.log(imageArray);
+    return (
+        <>
+            <Navbar />
 
-    if (!local){
-        // Server
+            <h1>Gallery of Recent Tattoos</h1>
 
-        // Load the images from the server and add them to the array
-        fetch(urlPath)
-        .then(response => response.text())
-        .then(html => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const imgElements = doc.querySelectorAll('img');
-            imgElements.forEach(img => {
-                const src = img.getAttribute('src');
-                imageArray.push(src);
-            });
-            console.log(imageArray);
-            // setImageArray(imageArray);
-        })
-        .catch(error => {
-            console.error('Error loading images:', error);
-        });
+            <div className="search-container">
+            <SearchBar query={query} onChange={setQuery} />
+            </div>
 
-        return (
-            <>
-                <Navbar />
-                <div
-                className="container"
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    paddingTop: '50px',
-                }}
-                >
-                <SearchBar query={query} onChange={setQuery} />
-                </div>
                 <div className="bannerGrid">
-                    {imageArray.map((image, index) => (
-                        <Box data={urlPath + image} index={index} key={image} />
-                    ))}
-                </div>
-            </>
-        );
-    }
-    else{
-        // local testing
-        imageArray = imageContext.keys().map(imageContext);
-        console.log(imageArray);
+                {imageArray.map((image, index) => (
+                    <Box data={image} index={image} key={image} />
+                ))} </div>
 
-        return (
-            <>
-                <Navbar />
-                <div
-                className="container"
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    paddingTop: '50px',
-                }}
-                >
-                <SearchBar query={query} onChange={setQuery} />
-                </div>
-                <div className="bannerGrid">
-                    {imageArray.map((image, index) => (
-                        <Box data={image} index={image} key={image} />
-                    ))}
-                </div>
-            </>
-        );
-    }
-
-    
-  }
-  
-  export default Portfolio;
+            <Footer />
+        </>
+    );
+}
+export default Portfolio;

@@ -1,17 +1,18 @@
 /* testing some google fonts, can change fonts later if desired */
 @import url('https://fonts.googleapis.com/css2?family=Asap:wght@200;400&family=Fjalla+One&family=IBM+Plex+Sans&family=Jost:wght@300&family=Mulish:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300&display=swap');
+  :root{
+    --background: rgba(8, 8, 8, 0.747);
+  }
   body{
     margin: 0;
   }
- 
   .navbar {
     justify-content: space-between;
     padding: 0.3em;
     font-family: 'Jost', 'Cambria', 'Roboto', sans-serif;
-    min-width: 768px;
     border-bottom: #fffefe9a solid 1px;
-    background: #2b2822ea;
+    background: var(--background);
   }
   nav ul {
     list-style: none;
@@ -21,36 +22,117 @@
   }
   nav a {
     display: block;
-    color: #ccc6c6;
+    color: white;
     text-decoration: none;
     font-size: 1em;
     letter-spacing: 0.10em;
     text-transform: uppercase;
-    
   }
 
   nav a:hover{
     color: #ffffff;
     text-shadow: 1px 2px 2px #ffffff5d;
     transform: scale(1.03);
+ 
+  }
+  .hamburger-menu {
+    display: none;
+  }
+  .sidebar{
+    display: none;
   }
     /* Media query for responsive design */
-  @media (max-width: 425px) {
+  @media (max-width: 670px) {
+    .navbar{
+      display:none;
+    }
+    /*Variables*/
+    :root{ 
+      --bar-width: 50px;
+      --bar-height: 7px;
+      --hamburger-gap: 6px;
+      --hamburger-color: #ffffffe7;
+      --hamburger-margin: 14px;
+      --animation-timing: 200ms ease-in-out;
+      --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+    }
+    .hamburger-menu {
+      --x-width: calc(var(--hamburger-height) * 1.41421356237);
+      display: flex;
+      flex-direction: column;
+      gap: var(--hamburger-gap);
+      width: max-content;
+      position: absolute;
+      top: var(--hamburger-margin);
+      left: var(--hamburger-margin);
+      z-index: 2;
+      cursor: pointer;
+    }
+    .ham-background{
+      padding: 30px;
+      background-color:  rgba(8, 8, 8, 0.685);
+    }
+    .hamburger-menu:has(input:checked){
+      --background: white;
+      --hamburger-color: var(--background);
+    }
+    .hamburger-menu::before,
+    .hamburger-menu::after,
+    .hamburger-menu input{
+      content: "";
+      width: var(--bar-width);
+      height: var(--bar-height);
+      background-color: var(--hamburger-color);
+      border-radius: 9999px;
+      transform-origin: left center;
+      transition: opacity var(--animation-timing), width var(--animation-timing),
+      rotate var(--animation-timing), translate var(--animation-timing),
+      background-color var(--animation-timing);
+    }
+    .hamburger-menu input {
+      appearance: none;
+      padding: 0;
+      margin: 0;
+      outline: none;
+      pointer-events: none;
+    }
+    .hamburger-menu:has(input:checked)::before{
+      rotate: 45deg;
+      width: var(--x-width);
+      translate: 0 calc(var(--bar-height) / -2);
+    }
+    .hamburger-menu:has(input:checked)::after{
+      rotate: -45deg;
+      width: var(--x-width);
+      translate: 0 calc(var(--bar-height) / 2);
+    }
+    .hamburger-menu input:checked{
+      opacity: 0;
+      width: 0;
+    } 
+    .sidebar {
+      display: inline-block;
+      position:fixed;
+      top: -10px;
+      left: -10px;
+      transition: translate var(--animation-timing);
+      translate: -100%;
+      font-size: 30px;
+      padding: 0.5rem 3rem;
+      padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
+      background-color: rgba(8, 8, 8, 0.849);
+      color: var(--hamburger-color);
+      max-width: 25rem;
+      min-height: 100vh;
+      z-index: 1;
+    }
     nav ul {
-      flex-wrap: wrap;
-      text-align:center;
-      
+      flex-direction: column;
+      justify-content: center;
+      gap: 50px;
     }
-    nav li {
-      padding: 0.6em;
-    }
-    nav a {
-      font-size: 1.3em;
-      letter-spacing: 0.20em;
-    }
-    .navbar {
-      padding: 0.1em;
-      margin-left: 10px;
+    .hamburger-menu:has(input:checked) + .sidebar{
+      translate: 0;
     }
 
   }
