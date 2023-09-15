@@ -1,8 +1,11 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from "../Navbar";
 import julioPic from "../images/julio/j-tats.png";
 import './julioCSS/AboutJulioJimenez.css';
-import Footer from './Footer';
+// import Footer from './Footer';
+import FooterPortal from '../FooterPortal';
+
 function About() {
     return (
       <>
@@ -39,9 +42,17 @@ function About() {
           </Link>
       </div>
 
-      <Footer />
-      
+      <div>
+        <FooterPortal />
+      </div>
 
+      <div class = "login">
+        <Link to = "/login">
+            <button class = "lounge-button">
+                Admin Login
+            </button>
+        </Link>
+      </div>
       
       </>
     );
