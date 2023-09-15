@@ -86,6 +86,9 @@ function Services() {
   return (
     <>
     <Navbar />
+
+    <h1 class="services_header">Services Provided</h1>
+
     <ul class = "servicesList">
       <li>
         {leftArray.map((banner) => (

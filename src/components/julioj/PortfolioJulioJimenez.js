@@ -28,6 +28,9 @@ function Portfolio(properties) {
     return (
         <>
             <Navbar />
+
+            <h1>Gallery of Recent Tattoos</h1>
+
             <div className="search-container">
             <SearchBar query={query} onChange={setQuery} />
             </div>

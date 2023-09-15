@@ -39,18 +39,14 @@ h1 {
 
 /* Update the CSS for the forms to have them all be padded 32.5% from the left */
 form {
-  padding-left: 38%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Update the CSS for the divs in the forms so that they will have a width of 100%, a padding of 10px, and be a border box */
-form > div {
-  width: 100%;
-  box-sizing: border-box;
-}
+
 /* Update the CSS for the labels in the divs in the form to make them look more appealing */
-form > div label {
+form > label {
   font-family: Arial, sans-serif;
   color: #ffffff;
   display: block;
@@ -68,45 +64,47 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Update the CSS for the inputs, textarea, and selects in the divs which are in the form to make fields look more appealing */
-form > div input,
-form > div select,
-form > div textarea{
-  width: 35%;
+form > input,
+form > select,
+form > textarea{
+  min-width: 300px;
   padding: 10px;
   border: none;
   border-radius: 5px;
   background-color: #1a1515;
   box-shadow: 0 0 3px rgba(0, 0, 0, 3);
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-size: 1.2rem;
   color: rgb(240, 232, 232);
 }
-form > div textarea{
-  width: 45%;
+form > textarea{
+  min-width: 300px;
+  resize: none;
 }
 /* Update the CSS for the inputs, textarea, and selects for when they are being focused on */
-form > div input:focus,
-form > div textarea:focus,
-form > div select:focus {
+form > input:focus,
+form > textarea:focus,
+form > select:focus {
   outline: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 /* Update the CSS for the textarea to have it set to a height of 150 pixels */
-form > div textarea {
+form > textarea {
   height: 150px;
+  font-family: Arial, sans-serif;
 }
 
 /*
 Update the CSS for the input of type file to hide the display feature */
-form > div input[type="file"] {
+form > input[type="file"] {
   margin-left: 10px;
   width: 120px;
 }
 
 /* Update the CSS for the label of type image to add additional CSS features to make it look better */
-form > div label[for="image"] {
-  width: 35%;
+form > label[for="image"] {
+  width: 300px;
   background-color: #6d2d2d;
   color: #ffffff;
   letter-spacing: 0.02rem;
@@ -114,28 +112,26 @@ form > div label[for="image"] {
   display: inline-block;
   cursor: pointer;
   border-radius: 5px;
-  margin-right: 10px;
-
 }
 
 /* Update the CSS for the label of type image to change the background color when being hovered over */
-form > div label[for="image"]:hover {
+form > label[for="image"]:hover {
   background-color: #f36d6d;
   transition: background-color 0.2s ease;
 }
 
 /* Update the CSS for the label of type image to add some additional CSS features before the label is being hovered over */
-form > div label[for="image"]::before {
+form > label[for="image"]::before {
   font-size: 1.2rem;
   font-weight: bold;
 }
 
-form > div input[type="file"] {
+form > input[type="file"] {
   display: none;
 }
 
 /* Update the CSS for the button of type submit to add some additional CSS features to make it look appealing */
-button[type="submit"], button[type="button"] {
+div button[type="submit"], div button[type="button"] {
   display: inline-block;
   background-color: #226324;
   color: #fff;
@@ -152,17 +148,17 @@ button[type="submit"], button[type="button"] {
   
 }
 /* Update the CSS for the button of type submit to change the background color when being hovered over */
-form > div button[type="submit"]:hover {
+form > button[type="submit"]:hover {
   background-color: #63e768;
 }
 
 /* Update the CSS for the button of type button to change the background color when being hovered over */
-form > div button[type="button"]:hover {
+form > button[type="button"]:hover {
   background-color: #3e8e41; /* Darker green */
 }
 
 .alert {
-  background-color: red;
+  background-color: green;
   color: #fff;
   display: block;
   padding: 10px;

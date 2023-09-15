@@ -17,6 +17,7 @@
 a{
     text-decoration: none;
 }
+
 @media(max-width: 600px){
   .leftSide, .rightSide {
     margin-top: 0.2em;
@@ -24,4 +25,8 @@ a{
   .servicesList {
     padding: 0;
   }
+}
+
+.services_header {
+  margin-bottom: -20px;
 }

@@ -20,20 +20,10 @@ function ResetPassword() {
       <h1>Reset Password</h1>
 
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username</label>
-          <input type="text" id="username" value={username} onChange={(event) => setUsername(event.target.value)} required />
-        </div>
-
-        <div>
-          <label htmlFor="oldPassword">Old Password</label>
-          <input type="password" id="oldPassword" value={oldPassword} onChange={(event) => setOldPassword(event.target.value)} required />
-        </div>
-
-        <div>
-          <label htmlFor="newPassword">New Password</label>
-          <input type="password" id="newPassword" value={newPassword} onChange={(event) => setNewPassword(event.target.value)} required />
-        </div>
+        
+        <input type="text" id="username" placeholder="Username"  value={username} onChange={(event) => setUsername(event.target.value)} required />
+        <input type="password" id="oldPassword" placeholder="Old Password"  value={oldPassword} onChange={(event) => setOldPassword(event.target.value)} required />
+        <input type="password" id="newPassword" placeholder="New Password"  value={newPassword} onChange={(event) => setNewPassword(event.target.value)} required />
 
         <div>
           <button type="submit">Update Password</button>

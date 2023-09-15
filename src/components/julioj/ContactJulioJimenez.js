@@ -1,11 +1,15 @@
 import Navbar from "../Navbar";
 import React, { useState } from 'react';
+import {useRef} from 'react';
+import emailjs from '@emailjs/browser';
 //import './julioCSS/juliojimenez.css';
 import Footer from './Footer';
 //import '../../App.css'
 import './julioCSS/ContactJulioJimenez.css'
 
 function Contact() {
+
+  const form = useRef()
     
   const [first, setFirst] = useState('');
   const [last, setLast] = useState('');
@@ -13,32 +17,26 @@ function Contact() {
   const [message, setDescription] = useState('');
   const [showAlert, setShowAlert] = useState(false);
 
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+    emailjs.sendForm('service_26d3yqg', 'template_gm183as', form.current, 'xcT2ZwmVbDNdY3rvM')
+      .then((result) => {
+        console.log(result.text);
+    }, (error) => {
+        console.log(error.text);
+    });
 
-     // Clear all fields
-     setFirst('');
-     setLast('');
-     setEmail('');
-     setDescription('');
-     
- 
-     // Show alert
-     setShowAlert(true);
- 
-     // Hide alert after 15 seconds
-     setTimeout(() => {
-       setShowAlert(false);
-     }, 15000);
+    e.target.reset();
 
-    
-    
+    // Show alert
+    setShowAlert(true);
+
+    // Hide alert after 15 seconds
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 15000);
   };
-  
-  
-  
-  
   
   return (
       <>
@@ -51,37 +49,24 @@ function Contact() {
         </div>
       )}
         <div>
-          <h1 className="title is-1">Contact Julio</h1>
+          <h1 class="contact_header">Contact Us</h1>
           {/* <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida,
             risus at dapibus aliquet, elit quam scelerisque tortor, nec accumsan eros
             nulla interdum justo. Pellentesque dignissim, sapien et congue rutrum,
             lorem tortor dapibus turpis, sit amet vestibulum eros mi et odio.
           </p> */}
-          <form onSubmit={handleSubmit}>
+          <form ref={form} onSubmit={sendEmail}>
           
-            <div>
-              <input type="text" id="first" placeholder="First name" value={first} onChange={(event) => setFirst(event.target.value)} required />
-            </div>
+            <input type="text" name="first" placeholder="First name" value={first} onChange={(event) => setFirst(event.target.value)} required />
+            <input type="text" name="last" placeholder="Last name" value={last} onChange={(event) => setLast(event.target.value)} required />
+            <input type="email" name="email" placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)} required />
+            <textarea id="message" name ="message" placeholder="Message" value={message} onChange={(event) => setDescription(event.target.value)} required />
 
-            <div>
-              <input type="text" id="last" placeholder="Last name" value={last} onChange={(event) => setLast(event.target.value)} required />
-            </div>
-
-            <div>
-              <input type="email" id="email" placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)} required />
-            </div>
-
-            <div>
-              <textarea id="message" placeholder="Message" value={message} onChange={(event) => setDescription(event.target.value)} required />
-            </div>
-
-            
             <div className='submit-button'>
               <button type="submit">Submit</button>
             </div>
             
-
           </form>
         </div>
       </div>
