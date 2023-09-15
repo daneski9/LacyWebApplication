@@ -123,3 +123,21 @@ li:nth-child(3) {
 .about_header {
     margin-bottom: -10px;
 }
+
+ /* Style the login button */
+ .lounge-button {
+     font-size: 1em;
+     font-weight: bold;
+     border: none;
+     cursor: pointer;
+     background-color: #ffffff00;
+     color: rgba(59, 49, 49, 0.795);
+
+ }
+
+ .login {
+     background-color: #000;
+     display: flex;
+     justify-content: right;
+     margin-top: -10px;
+ }

@@ -68,37 +68,3 @@
     display: flex;
   }
 
- /*
-  Hover for images with links  
-  a:hover {
-    opacity: 0.8;
-  }
-  
-  hover effect on img tag inside Link/anchor tag component 
-  a:hover img {
-    transform: scale(1.2);
-    transition: transform 0.2s ease-in-out;
-  }
-
-  a:not(:hover) img {
-    opacity: 1;
-    transition: transform 0.2s ease-in-out;
-  }
-  */
-
- /* Style the login button */
-  .lounge-button {
-    font-size: 1em;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    background-color: #ffffff00;
-    color: rgba(59, 49, 49, 0.795);
-    
-  }
-  .login{
-    background-color: #000;
-    display: flex;
-    justify-content: right;
-    margin-top: -10px;
-  }

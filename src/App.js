@@ -10,6 +10,7 @@ import ContactJulioJimenez from "./components/julioj/ContactJulioJimenez";
 import InquiryJulioJimenez from "./components/julioj/InquiryJulioJimenez";
 import PortfolioJulioJimenez from "./components/julioj/PortfolioJulioJimenez";
 import ServicesJulioJimenez from "./components/julioj/ServicesJulioJimenez";
+import AdminLanding from "./components/julioj/AdminLanding";
 
 
 //Next artist imports:
@@ -28,6 +29,7 @@ function App() {
             <Route path="/JulioJimenez/Services" element={<ServicesJulioJimenez />} />
             <Route path="/login" element={<Login />} />
             <Route path="/resetpassword" element={<ResetPassword />} />
+            <Route path="/JulioJimenez/adminlanding" element={<AdminLanding />} />
 
 
         </Routes>
