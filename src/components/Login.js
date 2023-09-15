@@ -13,7 +13,7 @@ function Login() {
     console.log(`Username: ${username}`);
     console.log(`Password: ${password}`);
     // Do something with the form data, e.g. send it to a server
-  };
+  }; 
   
 /*
   const handleForgotPassword = (event) => {
@@ -31,7 +31,9 @@ function Login() {
 
         <div class = "buttons"> 
           
-          <button type="submit">Submit</button>
+          <Link to="/JulioJimenez/adminlanding">
+            <button type="button">Submit</button> 
+          </Link>
 
           <Link to="/resetpassword">
             <button type="button">Reset Password</button>
