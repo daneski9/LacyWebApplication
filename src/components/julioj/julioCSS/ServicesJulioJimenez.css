@@ -2,12 +2,12 @@
   padding: 10px;
   background-color: rgba(43, 31, 31, 0.486);
   margin-top: 3em;
-  
   }
 
 .servicesList{
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 6%;
 }
 .servicesList > li{
@@ -16,6 +16,15 @@
 
 a{
     text-decoration: none;
+}
+
+@media(max-width: 600px){
+  .leftSide, .rightSide {
+    margin-top: 0.2em;
+  }
+  .servicesList {
+    padding: 0;
+  }
 }
 
 .services_header {
