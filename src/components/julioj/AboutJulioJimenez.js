@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Navbar from "../Navbar";
 import julioPic from "../images/julio/j-tats.png";
 import './julioCSS/AboutJulioJimenez.css';
-import FooterPortal from '../FooterPortal';
+import Footer from './Footer';
 
 function About() {
     return (
@@ -39,7 +39,7 @@ function About() {
           </Link>
       </div>
       <div>
-        <FooterPortal />
+        <Footer />
       </div>
 
       <div class = "login">
