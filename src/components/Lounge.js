@@ -80,21 +80,15 @@ function Lounge() {
   }, []);
 
     return (
+      <>
         <div>
           <h1 className="title is-1">Lacy St. Art Lounge</h1>
           <h2 className="title-2">Meet The Artists</h2>
-          <div class = "artists-container">
-          {shuffledArtists}
-          </div>
-          <div>
-            <FooterPortal />
-          </div>
-          <div class = "login">
-          <Link to="/login">
-            <button class = "lounge-button">Admin Login</button>
-          </Link>
-          </div>
+          <div class = "artists-container">{shuffledArtists}</div>
         </div>
+
+        <FooterPortal />
+      </> 
     );
   }
   

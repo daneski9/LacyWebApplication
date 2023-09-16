@@ -45,7 +45,7 @@ function About() {
       </div>
 
       <div class = "login">
-        <Link to = "/login">
+        <Link to = "/JulioJimenez/login">
             <button class = "lounge-button">
                 Admin Login
             </button>
