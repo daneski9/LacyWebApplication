@@ -14,18 +14,10 @@ function shuffleArray(array) {
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
-import FooterPortal from './FooterPortal';
-import React, { useEffect, useState } from 'react';
-
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
 
 function Lounge() {
   const [shuffledArtists, setShuffledArtists] = useState([]);
+  
   useEffect(() => {
     const artists = [
       <div className="lacy-container"> 
@@ -99,14 +91,7 @@ function Lounge() {
           <div>
             <FooterPortal />
           </div>
-          <div class = "login">
-          <Link to="/login">
-            <button class = "lounge-button">Admin Login</button>
-          </Link>
-          </div>
         </div>
-
-        <FooterPortal />
       </> 
     );
   }
