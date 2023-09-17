@@ -5,13 +5,14 @@ import "./Navbar.css";
 function Navbar(){
     const location = useLocation();
     const currentPath = location.pathname;
-    let aboutUrl, servicesUrl, portfolioUrl, contactUrl = '';
+    let aboutUrl, servicesUrl, portfolioUrl, contactUrl, paymentUrl = '';
 
     if (currentPath.startsWith('/JulioJimenez')) {
         aboutUrl = '/JulioJimenez/about';
         servicesUrl = '/JulioJimenez/services';
         portfolioUrl = '/JulioJimenez/portfolio';
         contactUrl = '/JulioJimenez/contact';
+        paymentUrl = '/JulioJimenez/payment'
     }
     //To add another artist:
     /*else if (currentPath.startsWith('OtherArtist')){
@@ -43,6 +44,9 @@ function Navbar(){
                 <Link to={contactUrl}>Contact</Link>
                 </li>
                 <li>
+                <Link to={paymentUrl}>Payment Options</Link>
+                </li>
+                <li>
                 <Link to="/">Lounge</Link>
                 </li>
             </ul>
@@ -63,6 +67,9 @@ function Navbar(){
                 </li>
                 <li>
                 <Link to={contactUrl}>Contact</Link>
+                </li>
+                <li>
+                <Link to={paymentUrl}>Payment Options</Link>
                 </li>
                 <li>
                 <Link to="/">Lounge</Link>

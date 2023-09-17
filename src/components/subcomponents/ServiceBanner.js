@@ -6,7 +6,7 @@ import './serviceBanner.css';
 const ServiceBanner = (props) => {
     return(
         <Fragment>
-            <Link to='/JulioJimenez/about'>
+            <Link to='/JulioJimenez/inquiry'>
                 <div className='banner'>
                     <img className='bannerImage' src={`${props.data.image}`}/>
                     <div className='fullDescription'>

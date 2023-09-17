@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
 
+import Navbar from "./Navbar";
+import Footer from './julioj/Footer';
+
 
 function Login() {
 
@@ -23,30 +26,39 @@ function Login() {
   }; */
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="user-pass-container">
-        
-        <input type="text" id="username" placeholder="Username" value={username} onChange={(event) => setUsername(event.target.value)} required />
-        <input type="password" id="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} required />
+    <>
+      <Navbar />
 
-        <div class = "buttons"> 
+      <div>
+
+        <h1 class="login_header">Log In</h1>
+
+        <form onSubmit={handleSubmit} className="user-pass-container">
           
-          <Link to="/JulioJimenez/adminlanding">
-            <button type="button">Submit</button> 
-          </Link>
+          <input type="text" id="username" placeholder="Username" value={username} onChange={(event) => setUsername(event.target.value)} required />
+          <input type="password" id="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} required />
 
-          <Link to="/resetpassword">
-            <button type="button">Reset Password</button>
-          </Link>
+          <div class = "buttons"> 
+            
+            <Link to="/JulioJimenez/adminlanding">
+              <button type="button">Submit</button> 
+            </Link>
 
-          <Link to='/'>
-            <button type="button">Back</button>
-          </Link>
-        
-        </div>  
+            <Link to="/JulioJimenez/resetpassword">
+              <button type="button">Reset Password</button>
+            </Link>
 
-      </form>
-    </div>
+            <Link to='/JulioJimenez/about'>
+              <button type="button">Back</button>
+            </Link>
+          
+          </div>  
+
+        </form>
+      </div>
+    
+      <Footer />
+    </>
   );
 }
 
