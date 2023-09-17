@@ -14,6 +14,15 @@ function shuffleArray(array) {
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
+import FooterPortal from './FooterPortal';
+import React, { useEffect, useState } from 'react';
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
 
 function Lounge() {
   const [shuffledArtists, setShuffledArtists] = useState([]);
@@ -80,6 +89,7 @@ function Lounge() {
   }, []);
 
     return (
+      <>
         <div>
           <h1 className="title is-1">Lacy St. Art Lounge</h1>
           <h2 className="title-2">Meet The Artists</h2>
@@ -95,6 +105,9 @@ function Lounge() {
           </Link>
           </div>
         </div>
+
+        <FooterPortal />
+      </> 
     );
   }
   

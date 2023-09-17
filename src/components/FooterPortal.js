@@ -15,11 +15,11 @@ function FooterPortal() {
           <p>Email: lacystartlounge@gmail.com</p>
         </div>
         <div className="footer-middle">
-          <h3>Find Us</h3>
+          <h3>Find Us on IG</h3>
           <ul>
-          <li><a href="/JulioJimenez/about">Julio Jimenez (JayTatts) </a></li> 
-          <li><a href= "https://www.instagram.com/la_dianuchis/?hl=en" >Diana</a></li>
-          <li><a href= "https://www.instagram.com/tattoovibesla/?hl=en" >G Galvez</a></li>
+          <li><a href="https://www.instagram.com/jayytatts/?hl=en">Julio Jimenez</a></li> 
+          <li><a href= "https://www.instagram.com/la_dianuchis/?hl=en">Diana</a></li>
+          <li><a href= "https://www.instagram.com/tattoovibesla/?hl=en">G Galvez</a></li>
           <li><a href= "https://www.instagram.com/tattoovibesla/?hl=en">Gabriel</a></li>
           <li><a href="https://www.instagram.com/smileyartla/?hl=en">Luis</a></li>
           </ul>

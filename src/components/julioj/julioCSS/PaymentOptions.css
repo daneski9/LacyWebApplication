@@ -1,0 +1,27 @@
+/* Style for the payment button */
+.payment-button {
+    background-color: #1a1515; /* PayPal blue color */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+}
+
+.payment-portal {
+
+    align-items: center;
+
+}
+
+/* Style for the payment logo */
+.payment-logo {
+    width: 30px;
+    height: auto;
+    margin-right: 10px;
+}
