@@ -17,6 +17,7 @@ function shuffleArray(array) {
 
 function Lounge() {
   const [shuffledArtists, setShuffledArtists] = useState([]);
+  
   useEffect(() => {
     const artists = [
       <div className="lacy-container"> 
@@ -84,10 +85,13 @@ function Lounge() {
         <div>
           <h1 className="title is-1">Lacy St. Art Lounge</h1>
           <h2 className="title-2">Meet The Artists</h2>
-          <div class = "artists-container">{shuffledArtists}</div>
+          <div class = "artists-container">
+          {shuffledArtists}
+          </div>
+          <div>
+            <FooterPortal />
+          </div>
         </div>
-
-        <FooterPortal />
       </> 
     );
   }
