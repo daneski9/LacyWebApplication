@@ -70,7 +70,7 @@
     }
     .ham-background{
       padding: 30px;
-      background-color:  rgba(8, 8, 8, 0.685);
+      background-color:  rgba(8, 8, 8, 0.863);
     }
     .hamburger-menu:has(input:checked){
       --background: white;

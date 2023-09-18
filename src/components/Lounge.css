@@ -65,4 +65,32 @@
    .luis-container:hover .img-overlay {
     display: flex;
   }
+  @media (max-width: 900px) {
+    .title {
+      font-size: 2em;
+    }
+  
+    .title-2 {
+      font-size: 1rem;
+    }
 
+    /* Style the container for the artists */
+    .artists-container {
+    display: grid;
+    justify-items: center;
+    row-gap: 5px;
+    }
+  
+    .artists-container img {
+      width: 80px;
+      height: 80px;
+      padding: 2px;
+      object-fit: cover;
+    }
+
+
+  }
+  
+
+  
+  

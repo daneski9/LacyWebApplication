@@ -17,10 +17,15 @@ function shuffleArray(array) {
 
 function Lounge() {
   const [shuffledArtists, setShuffledArtists] = useState([]);
+
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   useEffect(() => {
     const artists = [
       <div className="lacy-container"> 
-        <Link to="/JulioJimenez/about" >
+        <Link to="/JulioJimenez/about" onClick={handleLinkClick} >
         <div class = "img-overlay">
           <p>View Julio's Profile</p>
         </div>
@@ -80,6 +85,7 @@ function Lounge() {
   }, []);
 
     return (
+      <>
         <div>
           <h1 className="title is-1">Lacy St. Art Lounge</h1>
           <h2 className="title-2">Meet The Artists:</h2>
@@ -89,12 +95,8 @@ function Lounge() {
           <div>
             <FooterPortal />
           </div>
-          <div class = "login">
-          <Link to="/login">
-            <button class = "lounge-button">Admin Login</button>
-          </Link>
-          </div>
         </div>
+      </> 
     );
   }
   
