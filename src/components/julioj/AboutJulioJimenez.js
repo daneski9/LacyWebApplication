@@ -39,6 +39,7 @@ function About() {
           </Link>
       </div>
       <div>
+
         <Footer />
       </div>
 

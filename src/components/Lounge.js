@@ -5,6 +5,7 @@ import gPic from "./images/g/g-pic.jpg";
 import gabrielPic from "./images/gabriel/gabriel-pic.jpg";
 import luisPic from "./images/luis/luis-pic.jpg";
 import "./Lounge.css";
+
 import FooterPortal from './FooterPortal';
 import React, { useEffect, useState } from 'react';
 
@@ -14,6 +15,7 @@ function shuffleArray(array) {
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
+
 
 function Lounge() {
   const [shuffledArtists, setShuffledArtists] = useState([]);
@@ -92,6 +94,7 @@ function Lounge() {
           <div class = "artists-container">
           {shuffledArtists}
           </div>
+
           <div>
             <FooterPortal />
           </div>

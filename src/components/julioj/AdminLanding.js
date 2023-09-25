@@ -4,14 +4,43 @@ import './julioCSS/AdminLanding.css'
 import Navbar from "../Navbar";
 import Footer from './Footer';
 
+// Uncomment for access to image database
+// import { storage } from "../../DataBase";
+// import { ref, uploadBytes } from 'firebase/storage';
+// import { v4 } from 'uuid';
+
+// TODO: Impliment JSON fro imageInfo
+// import {  } from "json";
+
 
 function AdminLanding() {
   const data = [
     { inquiryID: 1, requestorName: 'temp name', appointmentType: 'Full Day Session', tattooArtist: 'Julio Jimenez'}
   ];
   const [image, setImage] = useState(null);
+//   const [ imageInfo ] = useState(null);
   const handleRefresh = () => {
     window.location.reload();
+
+    // Probably can remove this
+    // if(image == null) return;
+    // let tmp = v4();
+    // const imageRef = ref(storage, `gs://daring-wavelet-384121.appspot.com/ImageData/${image.name + tmp}`);
+
+    // // TODO: image information JSON, imageInfo.json
+    // // const imageInfo = json
+    // const imageRefInfo = ref(storage, `gs://daring-wavelet-384121.appspot.com/ImageInformation/${image.name+tmp}`);
+    // fetch("imageInfo.json")
+    //     .then(response => response.json())
+    //     .then(imageInfo => {
+    //         imageInfo.orignalName = image.name;
+    //         imageInfo.imageHash = tmp;
+    //     })
+    // uploadBytes( imageRef, image ).then(()=>{
+    //     alert("Image Uploaded");
+    // })
+    // uploadBytes(imageRefInfo, imageInfo).then(()=>{}
+    // );
   }
 
   return (
