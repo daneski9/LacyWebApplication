@@ -85,29 +85,28 @@ const rightArray = [
 function Services() {
   return (
     <>
-    <Navbar />
+      <Navbar />
 
-    <h1 class="services_header">Services Provided</h1>
+      <h1 class="services_header">Services Provided</h1>
 
-    <ul class = "servicesList">
-      <li>
-        {leftArray.map((banner) => (
-          <div className="leftSide">
-            <ServiceBanner data={banner}/>
-          </div>
-        ))}
-      </li>
-      <li>
-        {rightArray.map((banner) => (
-          <div className="rightSide">
-            <ServiceBanner data={banner}/>
-          </div>
-        ))}
-      </li>
-    </ul>
-    <div>
+      <ul class = "servicesList">
+        <li>
+          {leftArray.map((banner) => (
+            <div className="leftSide">
+              <ServiceBanner data={banner}/>
+            </div>
+          ))}
+        </li>
+        <li>
+          {rightArray.map((banner) => (
+            <div className="rightSide">
+              <ServiceBanner data={banner}/>
+            </div>
+          ))}
+        </li>
+      </ul>
+
       <Footer />
-    </div>
     </>
   );
 }
