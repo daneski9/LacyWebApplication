@@ -1,15 +1,15 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from "../Navbar";
 import julioPic from "../images/julio/j-tats.png";
 import './julioCSS/AboutJulioJimenez.css';
 import Footer from './Footer';
+
 function About() {
     return (
       <>
       <Navbar />
       
-      <h1 class="about_header">About Us</h1>
-
       <div class = "top-container">
         <div class = "img-container"><img src={julioPic} alt="j-tats" /></div>
         <div class = "text-box">
@@ -38,10 +38,18 @@ function About() {
             }}>BOOK NOW</button>
           </Link>
       </div>
+      <div>
 
-      <Footer />
-      
+        <Footer />
+      </div>
 
+      <div class = "login">
+        <Link to = "/JulioJimenez/login">
+            <button class = "lounge-button">
+                Admin Login
+            </button>
+        </Link>
+      </div>
       
       </>
     );

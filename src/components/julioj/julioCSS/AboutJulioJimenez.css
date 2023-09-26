@@ -1,3 +1,9 @@
+.about_header{
+  font-size: 3em;
+  font-family: 'Oleo Script', 'Jost', sans-serif, Arial;
+  font-weight: lighter;
+  color: #ffffff;
+}
 .top-container{
     justify-content: center;
     align-items: center;
@@ -98,28 +104,51 @@ li:nth-child(3) {
     .top-container{
         gap: 7%;
         margin-top: 30px;
-        margin-left: 65px;
         flex-wrap: wrap;
         text-align:center;
     }
     .top-container > .img-container > img{
-        margin-right: 30px;  
+        min-width: 400px;
+        height: auto;
     }
     
     .text-box{
-        margin-top: 45px;
+        margin-top: 30px;
         margin-bottom: 20px;
         background-color: rgba(0, 0, 0, 0.637);
-        margin-right: 25px;
-        
     }
-    .text-content{
-        margin: 0 auto;
-        margin-left: 65px;
+    .text-box > .text-content {
+        width: auto;
+        min-width: 0;
+        margin-right: 15px;
     }
 
 }
-
 .about_header {
     margin-bottom: -10px;
 }
+
+ /* Style the login button */
+ .lounge-button {
+     font-size: 1em;
+     font-weight: bold;
+     border: none;
+     cursor: pointer;
+     background-color: #ffffff00;
+     color: rgba(59, 49, 49, 0.795);
+
+ }
+
+ .login {
+     background-color: #000;
+     display: flex;
+     justify-content: right;
+     margin-top: -10px;
+
+ }
+
+ @media (max-width: 670px) {
+    .top-container > .img-container > img{
+        margin-top: 50px;
+    }
+ }
