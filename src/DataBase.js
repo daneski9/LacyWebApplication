@@ -4,6 +4,8 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import {getStorage} from "firebase/storage";
+import {getFirestore} from "@firebase/firestore" // Firebase Datrabase added by Eric
+
 
 // Referenced this video for button and file access:
 // https://www.youtube.com/watch?v=YOAeBSCkArA
@@ -23,4 +25,5 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
+export const db = getFirestore(app); // Firebase Database added by Eric
 export const storage = getStorage(app);
