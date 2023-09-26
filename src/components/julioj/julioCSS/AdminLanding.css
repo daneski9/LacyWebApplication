@@ -6,6 +6,7 @@
   
 }
 
+
 .file {
   width: 300px;
   background-color: #6d2d2d;
@@ -30,19 +31,19 @@ th {
   border: 1px solid;
   text-align: left;
   padding: 8px;
-  background-color: #dddddd;
+  background-color: transparent;
+  color: white;
 }
 
 td {
   border: 1px solid;
   text-align: left;
   padding: 20px;
-  background-color: #dddddd;
+  background-color: transparent;
+  color: white;
 }
 
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
+
 
 .submit-button {
   margin-top: 10px;
