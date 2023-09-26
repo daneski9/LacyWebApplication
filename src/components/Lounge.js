@@ -5,6 +5,7 @@ import gPic from "./images/g/g-pic.jpg";
 import gabrielPic from "./images/gabriel/gabriel-pic.jpg";
 import luisPic from "./images/luis/luis-pic.jpg";
 import "./Lounge.css";
+
 import FooterPortal from './FooterPortal';
 import React, { useEffect, useState } from 'react';
 
@@ -15,13 +16,18 @@ function shuffleArray(array) {
   }
 }
 
+
 function Lounge() {
   const [shuffledArtists, setShuffledArtists] = useState([]);
-  
+
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   useEffect(() => {
     const artists = [
       <div className="lacy-container"> 
-        <Link to="/JulioJimenez/about" >
+        <Link to="/JulioJimenez/about" onClick={handleLinkClick} >
         <div class = "img-overlay">
           <p>View Julio's Profile</p>
         </div>
@@ -84,10 +90,11 @@ function Lounge() {
       <>
         <div>
           <h1 className="title is-1">Lacy St. Art Lounge</h1>
-          <h2 className="title-2">Meet The Artists</h2>
+          <h2 className="title-2">Meet The Artists:</h2>
           <div class = "artists-container">
           {shuffledArtists}
           </div>
+
           <div>
             <FooterPortal />
           </div>

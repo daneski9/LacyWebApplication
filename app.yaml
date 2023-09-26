@@ -1,0 +1,18 @@
+runtime: nodejs16
+env: standard
+instance_class: F1
+handlers:
+  - url: /(.*\..+)$
+    static_files: build/\1
+    upload: build/(.*\..+)$
+  - url: /.*
+    static_files: build/index.html
+    upload: build/index.html
+  - url: .*
+    script: auto
+automatic_scaling:
+  min_idle_instances: automatic
+  max_idle_instances: automatic
+  min_pending_latency: automatic
+  max_pending_latency: automatic
+service_account: daring-wavelet-384121@appspot.gserviceaccount.com

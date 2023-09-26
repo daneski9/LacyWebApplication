@@ -3,15 +3,13 @@ import { Link } from 'react-router-dom';
 import Navbar from "../Navbar";
 import julioPic from "../images/julio/j-tats.png";
 import './julioCSS/AboutJulioJimenez.css';
-import FooterPortal from '../FooterPortal';
+import Footer from './Footer';
 
 function About() {
     return (
       <>
       <Navbar />
       
-      <h1 class="about_header">About Us</h1>
-
       <div class = "top-container">
         <div class = "img-container"><img src={julioPic} alt="j-tats" /></div>
         <div class = "text-box">
@@ -41,7 +39,8 @@ function About() {
           </Link>
       </div>
       <div>
-        <FooterPortal />
+
+        <Footer />
       </div>
 
       <div class = "login">
