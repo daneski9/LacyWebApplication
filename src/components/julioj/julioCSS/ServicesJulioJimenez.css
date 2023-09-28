@@ -7,11 +7,31 @@
   min-height: 80vh;
   margin-top: 50px;
 }
+.headerContainer{
+  display: flex;
+  justify-content: space-around;
+}
+.discountText{
+  color: rgb(255, 255, 255);
+  background-color: rgba(21, 44, 24, 0.514);
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 35px;
+  margin-left: 10px;
+  margin-bottom: 30px;
+  max-width: 200px;
+}
+.spacer{
+  width: 250px;
+}
+
 .servicesTitle {
   font-size: 3em;
   font-family: 'Oleo Script', 'Jost', sans-serif, Arial;
   font-weight: lighter;
   color: #ffffff;
+  margin: 0;
+  margin-top: 10px;
 }
 .services-container{
   display: grid;
@@ -31,10 +51,11 @@
   border-radius: 10px;
 }
 .itemImg{
-  border: black 1px solid;
-  border-radius: 10px;
-  width: 150px;
+  max-width: 150px; /* or 100% if you want it to take the full width of the container */
   height: 200px;
+  object-fit: cover;
+  display: block; /* to remove the bottom spacing */
+  border-radius: 10px;
 }
 .itemTitle {
   font-weight: lighter;
@@ -42,13 +63,25 @@
   font-weight:200;
   margin: 5px 0px 0px 5px;
   min-width: 100%;
-   
 }
 .itemText > p{
   min-width: 70%;
   color: white;
   margin-top: 5px;
   margin-left: 10px;
+}
+@media (max-width: 1152px) {
+  .spacer{
+    width: 0px;
+  }
+
+}
+@media (max-width: 980px) {
+  .services-container{
+    margin-top: -30px;
+  }
+
+
 }
 @media (max-width: 852px) {
   .itemTitle {
@@ -61,19 +94,32 @@
     padding: 0px 0px 0px 0px;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 668px) {
   .page-container {
-    margin-top: -20px;
+    margin-top: 10px;
   }
-  .servicesTitle{
-    margin-top: -20px;
+  .itemImg{
+    max-width: 100px; /* or 100% if you want it to take the full width of the container */
+    height: 200px;
+    object-fit: cover;
+    display: block; /* to remove the bottom spacing */
   }
+
 }
 @media (max-width: 532px) {
   .services-container{
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 10px;
+  }
+  .itemImg{
+    max-width: 130px; /* or 100% if you want it to take the full width of the container */
+    height: 200px;
+    object-fit: cover;
+    display: block; /* to remove the bottom spacing */
+  }
+  .servicesTitle{
+    margin-top: 10px;
   }
 
 }

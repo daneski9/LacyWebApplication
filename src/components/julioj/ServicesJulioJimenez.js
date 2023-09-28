@@ -17,9 +17,12 @@ import servicePic8 from "../images/services/img8.png";
 function Services() {
   return (
     <>
-      <Navbar />
-    
-    <h1 className="servicesTitle">Services</h1>
+    <Navbar className="navbar-edit"/>
+    <div className = "headerContainer">
+      <div className="spacer"></div>
+      <h1 className="servicesTitle">Services</h1>
+      <p className = "discountText"> Got referals? Get a discount. Take $150 off your next tattoo!</p>
+    </div>
     <div className="page-container">
        <div className = "services-container">
               <Link to="/JulioJimenez/inquiry">
