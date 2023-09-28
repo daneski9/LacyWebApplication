@@ -75,7 +75,7 @@
       position: fixed;
       z-index: 4;
       min-width: 100%;
-      
+      margin-top: -30px;
     }
     .hamburger-menu:has(input:checked){
       --background: white;
