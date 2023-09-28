@@ -67,15 +67,15 @@
       left: var(--hamburger-margin);
       z-index: 2;
       cursor: pointer;
-      position: fixed;
     }
     .ham-background{
       padding: 22px;
       background-color:  rgba(8, 8, 8, 0.658);
       position: fixed;
+      top: 0;
+      left: 0;
       z-index: 4;
       min-width: 100%;
-      margin-top: -30px;
     }
     .hamburger-menu:has(input:checked){
       --background: white;

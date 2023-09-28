@@ -12,21 +12,22 @@
   justify-content: space-around;
 }
 .discountText{
-  color: rgb(255, 255, 255);
-  background-color: rgba(21, 44, 24, 0.514);
-  padding: 15px;
+  color: rgba(255, 255, 255, 0.925);
+  background-color: rgba(38, 39, 38, 0.678);
+  padding: 1.3% 1.5%;
   border-radius: 5px;
   margin-top: 35px;
   margin-left: 10px;
   margin-bottom: 30px;
   max-width: 200px;
+  border: 0.5px solid rgba(218, 206, 206, 0.856);
 }
 .spacer{
-  width: 250px;
+  width: 300px;
 }
 
 .servicesTitle {
-  font-size: 3em;
+  font-size: 4em;
   font-family: 'Oleo Script', 'Jost', sans-serif, Arial;
   font-weight: lighter;
   color: #ffffff;
@@ -37,6 +38,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 30px;
+  margin-top: -25px;
 }
 .services-container a {
   text-decoration: none;
@@ -49,10 +51,11 @@
   -moz-box-shadow: 10px 12px 11px -2px rgba(0,0,0,0.46);
   box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.349);
   border-radius: 10px;
+  max-width: 600px;
 }
 .itemImg{
-  max-width: 150px; /* or 100% if you want it to take the full width of the container */
-  height: 200px;
+  max-width: auto; 
+  max-height: 200px;
   object-fit: cover;
   display: block; /* to remove the bottom spacing */
   border-radius: 10px;
@@ -63,6 +66,7 @@
   font-weight:200;
   margin: 5px 0px 0px 5px;
   min-width: 100%;
+  text-shadow: 1px 1px 5px #e6ddddaf;
 }
 .itemText > p{
   min-width: 70%;
@@ -98,28 +102,61 @@
   .page-container {
     margin-top: 10px;
   }
+  .servicesTitle {
+    margin-top: -6px;
+  }
   .itemImg{
     max-width: 100px; /* or 100% if you want it to take the full width of the container */
     height: 200px;
     object-fit: cover;
     display: block; /* to remove the bottom spacing */
   }
+  .headerContainer{
+    margin-top: 25px;
+    margin-bottom: 20p;
+  }
 
 }
-@media (max-width: 532px) {
+@media (max-width: 595px) {
   .services-container{
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
     grid-gap: 10px;
   }
   .itemImg{
-    max-width: 130px; /* or 100% if you want it to take the full width of the container */
+    max-width: 50%; /* or 100% if you want it to take the full width of the container */
     height: 200px;
     object-fit: cover;
     display: block; /* to remove the bottom spacing */
   }
-  .servicesTitle{
-    margin-top: 10px;
+  .itemDescription{
+    line-height: 1.1;
+    width: 120px;
+    font-size: 0.8rem;
   }
+  .itemTitle{
+    font-size: 1.3rem;
+    line-height: 0.9;
+  }
+}
+@media (max-width: 481px) {
+  .itemDescription{
+    width: 105px;
+  }
+}
+@media (max-width: 424px) {
+  .servicesTitle {
+    margin-top: 20px;
+  }
+  .itemDescription{
+    width: unset;
+    font-size: 0.7rem;
+  }
+  .itemImg{
+    max-height: 130px;
+  }
+}
 
+@media (max-width: 390px){
+  .services-container{
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
