@@ -4,8 +4,8 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import {getStorage} from "firebase/storage";
-import {getFirestore} from "@firebase/firestore" // Firebase Datrabase added by Eric
-
+import {getFirestore} from "@firebase/firestore"; // Firebase Datrabase added by Eric
+import { ref } from "firebase/database";
 
 // Referenced this video for button and file access:
 // https://www.youtube.com/watch?v=YOAeBSCkArA
