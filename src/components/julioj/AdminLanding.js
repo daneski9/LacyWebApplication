@@ -8,9 +8,9 @@ import{collection, getDocs} from 'firebase/firestore'; // collection and getDocs
 import { set } from 'lodash';
 
 // Uncomment for access to image database
-// import { storage } from "../../DataBase";
-// import { ref, uploadBytes } from 'firebase/storage';
-// import { v4 } from 'uuid';
+import { storage } from "../../DataBase";
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { v4 } from 'uuid';
 
 // TODO: Impliment JSON fro imageInfo
 // import {  } from "json";
@@ -35,11 +35,18 @@ function AdminLanding() {
   // end Cloud Database Stuff
   
   const [image, setImage] = useState(null);
-//   const [ imageInfo ] = useState(null);
-  const handleRefresh = () => {
-    window.location.reload();
+  //const [ imageInfo ] = useState(null);
+  //const [imageInfo, setImageInfo] = useState([]);
 
-    // Probably can remove this
+  const uploadFile = () => {
+    // window.location.reload();
+    if (image == null) return;
+    const imageRef = ref(storage, `gs://daring-wavelet-384121.appspot.com/ImageData/${image.name + v4()}`);
+    uploadBytes(imageRef, image).then(() => {
+      alert("Image Uploaded");
+    })
+
+    // // Probably can remove this
     // if(image == null) return;
     // let tmp = v4();
     // const imageRef = ref(storage, `gs://daring-wavelet-384121.appspot.com/ImageData/${image.name + tmp}`);
@@ -64,8 +71,6 @@ function AdminLanding() {
     <>
     <Navbar />
     <div className='landing'>
-    
-      
       <div className='table'>  
       <table>
         <thead>
@@ -100,16 +105,13 @@ function AdminLanding() {
         </table>
         </div>
 
-    
-    
-      
       <div className = 'file'>
         <label htmlFor="image">Upload Image
           <input type="file" name="image" onChange={(event) => setImage(event.target.files[0])} required />
         </label>
       </div>
       <div className = 'submit-button'>
-        <button onClick={handleRefresh} type="button">Submit</button>
+        <button onClick={uploadFile} type="button">Submit</button>
       </div>
     </div>
     
