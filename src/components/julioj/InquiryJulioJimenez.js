@@ -7,6 +7,8 @@ import './julioCSS/InquiryJulioJimenez.css'
 import Footer from './Footer';
 
 function InquiryPage() {
+
+  // Database Stuff
   
   const [image, setImage] = useState(null);
   const [showAlert, setShowAlert] = useState(false);

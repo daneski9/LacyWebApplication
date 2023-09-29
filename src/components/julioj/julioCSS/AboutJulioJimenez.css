@@ -98,9 +98,6 @@ li:nth-child(3) {
        -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
   }
 @media (max-width: 960px) {
-    body{
-        display: flex;
-    }
     .top-container{
         gap: 7%;
         margin-top: 30px;
@@ -144,11 +141,11 @@ li:nth-child(3) {
      display: flex;
      justify-content: right;
      margin-top: -10px;
+
  }
 
  @media (max-width: 670px) {
     .top-container > .img-container > img{
         margin-top: 50px;
     }
-    
  }

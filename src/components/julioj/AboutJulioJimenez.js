@@ -39,6 +39,7 @@ function About() {
           </Link>
       </div>
       <div>
+
         <Footer />
       </div>
 
@@ -49,7 +50,7 @@ function About() {
             </button>
         </Link>
       </div>
-      
+    
       </>
     );
   }

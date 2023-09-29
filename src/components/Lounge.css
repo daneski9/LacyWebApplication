@@ -11,13 +11,12 @@
 }
 
 .title-2 {
-  color: rgb(255, 255, 255);
-  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.884);
+  font-size: 1.1rem;
   letter-spacing: -0.01em;
   text-align: center;
   font-family: 'Montserrat', sans-serif, 'Arial';
   font-weight: 200;
-
 }
   /* Style the container for the artists */
   .artists-container {
@@ -79,7 +78,7 @@
     }
   
     .title-2 {
-      font-size: 1.2rem;
+      font-size: 0.8rem;
     }
 
     /* Style the container for the artists */
