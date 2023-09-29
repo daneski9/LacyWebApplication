@@ -123,12 +123,12 @@
   font-size: 0.8rem;
   line-height: 1.1;
   }
+  .services-container{
+    gap: 5px;
+  }
 
 }
 @media (max-width: 595px) {
-  .services-container{
-    grid-gap: 10px;
-  }
   .itemImg{
     max-width: 50%; /* or 100% if you want it to take the full width of the container */
     height: 200px;
@@ -148,7 +148,9 @@
   }
   .servicesTitle {
       margin-top: -10px;
-
+  }
+  .itemText > .itemDescription{
+    color: rgba(255, 255, 255, 0.918);
   }
 }
 @media (max-width: 531px) {
@@ -168,6 +170,14 @@
   .itemDescription{
     width: 105px;
   }
+  .services-item{
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+  .services-container{
+    gap: 7px;
+  }
 }
 @media (max-width: 426px) {
   .servicesTitle {
@@ -182,9 +192,6 @@
   }
   .itemTitle{
     font-size: 1.1rem;
-  }
-  .services-container{
-    gap: 7px;
   }
 }
 @media (max-width: 350px){
