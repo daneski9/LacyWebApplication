@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom'; 
 import "./Navbar.css";
 
-function Navbar(){
+function Navbar(props){
     const location = useLocation();
     const currentPath = location.pathname;
     let aboutUrl, servicesUrl, portfolioUrl, contactUrl, paymentUrl = '';
@@ -27,7 +27,6 @@ function Navbar(){
         <label class="hamburger-menu">
             <input type="checkbox"></input>
         </label>
-        
         <aside class="sidebar">
             <nav>
             <ul>
@@ -77,7 +76,6 @@ function Navbar(){
             </ul>
         </nav>
         </>
-        
     );
 }
 export default Navbar;

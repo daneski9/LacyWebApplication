@@ -1,9 +1,9 @@
 import React from 'react';
 import "./julioCSS/Footer.css";
 
-function Footer() {
+function Footer(props) {
   return (
-    <footer>
+    <footer className={props.className}>
       <div className="footer-container">
         <div className="footer-left">
           <h3>Lacy St. Art Lounge</h3>
