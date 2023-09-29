@@ -1,7 +1,9 @@
 import ".//App.css";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Login from "./components/Login";
+import Login from "./components/auth/Login";
+import SignUp from "./components/auth/SignUp";
+import AuthDetails from "./components/auth/AuthDetails";
 import Lounge from "./components/Lounge";
 import UpdatePassword from "./components/UpdatePassword";
 //Julio imports:
@@ -29,6 +31,8 @@ function App() {
             <Route path="/JulioJimenez/portfolio" element={<PortfolioJulioJimenez />} />
             <Route path="/JulioJimenez/services" element={<ServicesJulioJimenez />} />
             <Route path="/JulioJimenez/login" element={<Login />} />
+            <Route path="/JulioJimenez/signup" element={<SignUp />} />
+            <Route path="/JulioJimenez/authdetails" element={<AuthDetails />} />
             <Route path="/JulioJimenez/resetpassword" element={<UpdatePassword />} />
             <Route path="/JulioJimenez/adminlanding" element={<AdminLanding />} />
             <Route path="/JulioJimenez/payment" element={<PaymentOptions />} />

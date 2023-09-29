@@ -4,7 +4,8 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import {getStorage} from "firebase/storage";
-import {getFirestore} from "@firebase/firestore"; // Firebase Datrabase added by Eric
+import {getFirestore} from "@firebase/firestore" // Firebase Datrabase added by Eric
+import { getAuth } from "firebase/auth";
 import { ref } from "firebase/database";
 
 // Referenced this video for button and file access:
@@ -27,3 +28,6 @@ const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 export const db = getFirestore(app); // Firebase Database added by Eric
 export const storage = getStorage(app);
+
+// Initialize Firebase Authentication and get a reference to the service
+export const auth = getAuth(app);

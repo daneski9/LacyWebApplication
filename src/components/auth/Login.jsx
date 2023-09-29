@@ -1,22 +1,35 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Login.css';
+import '../Login.css';
+import {signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from "../../DataBase";
 
-import Navbar from "./Navbar";
-import Footer from './julioj/Footer';
+
+import Navbar from "../Navbar";
+import Footer from '../julioj/Footer';
 
 
 function Login() {
 
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+
+  
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`Username: ${username}`);
-    console.log(`Password: ${password}`);
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+    console.log(userCredential)
+    }).catch((error) => {
+    console.log(error)
+    })
+
+    //console.log(`Email: ${email}`);
+    //console.log(`Password: ${password}`);
     // Do something with the form data, e.g. send it to a server
   }; 
+  
   
 /*
   const handleForgotPassword = (event) => {
@@ -29,20 +42,20 @@ function Login() {
     <>
       <Navbar />
 
-      <div>
+      <div className = "log-in-container">
 
         <h1 class="login_header">Log In</h1>
 
         <form onSubmit={handleSubmit} className="user-pass-container">
           
-          <input type="text" id="username" placeholder="Username" value={username} onChange={(event) => setUsername(event.target.value)} required />
+          
+          <input type="text" id="email" placeholder="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
           <input type="password" id="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} required />
 
           <div class = "buttons"> 
             
-            <Link to="/JulioJimenez/adminlanding">
-              <button type="button">Submit</button> 
-            </Link>
+              <button type="submit">Submit</button> 
+            
 
             <Link to="/JulioJimenez/resetpassword">
               <button type="button">Reset Password</button>
@@ -63,3 +76,10 @@ function Login() {
 }
 
 export default Login;
+
+/*
+<Link to="/JulioJimenez/adminlanding"></Link>
+   <button type="submit">Submit</button>
+</Link>
+
+*/
