@@ -98,7 +98,7 @@
     padding: 0px 0px 0px 0px;
   }
 }
-@media (max-width: 668px) {
+@media (max-width: 740px) {
   .page-container {
     margin-top: 10px;
   }
@@ -112,8 +112,7 @@
     display: block; /* to remove the bottom spacing */
   }
   .headerContainer{
-    margin-top: 25px;
-    margin-bottom: 20p;
+    margin-bottom: 20px;
   }
   .itemDescription{
     hyphens: auto; /* attempt to hyphenate */
@@ -126,6 +125,18 @@
   .services-container{
     gap: 5px;
   }
+  .services-item{
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+
+}
+@media (max-width: 670px) {
+  .headerContainer{
+    margin-top: 25px; 
+  }
+
 
 }
 @media (max-width: 595px) {
@@ -169,11 +180,6 @@
 @media (max-width: 481px) {
   .itemDescription{
     width: 105px;
-  }
-  .services-item{
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
   }
   .services-container{
     gap: 7px;
