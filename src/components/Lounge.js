@@ -83,7 +83,7 @@ function Lounge() {
       </div>,
     ];
     shuffleArray(artists); // shuffles the artists array in-place
-    setShuffledArtists(artists); // updates the shuffledArtists state variable and triggers a re-render of the component.
+    setShuffledArtists(artists); // updates the shuffledArtists state variable 
   }, []);
 
     return (
