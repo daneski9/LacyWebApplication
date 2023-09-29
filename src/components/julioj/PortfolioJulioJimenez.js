@@ -29,7 +29,7 @@ function Portfolio(properties) {
         <>
             <Navbar />
 
-            <h1>Gallery of Recent Tattoos</h1>
+            <h1 className="galleryTitle">Gallery of Recent Tattoos</h1>
 
             <div className="search-container">
             <SearchBar query={query} onChange={setQuery} />

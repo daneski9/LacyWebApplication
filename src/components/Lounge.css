@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script&family=Montserrat&display=swap');
 
 
 /* Style the title */
@@ -13,11 +12,10 @@
 
 .title-2 {
   color: rgb(255, 255, 255);
-  margin-top:-5px;
-  font-size: 1.3rem;
-  letter-spacing: -0.02em;
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
   text-align: center;
-  font-family: 'Inter', 'Jost', 'Anuphan', 'Cambria', 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif, 'Arial';
   font-weight: 200;
 
 }
@@ -25,16 +23,19 @@
   .artists-container {
     display: grid;
     justify-items: center;
-    row-gap: 20px;
-  }
+    row-gap: 55px;
+    grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
   
+  }
+
+
   /* Style the container for each artist */
   .lacy-container, .diana-container, .g-container, .gabriel-container, .luis-container {
     position: relative;
     display: inline-block;
     align-items: center; 
-    background-color: #0000007a;
-    padding: 0.3em;
+    background-color: #131212b3;
+    padding: 0.4em;
   }
   
   /* Style the image for each artist */
@@ -43,6 +44,7 @@
     height: 200px;
     padding: 6px;
     object-fit: cover;
+    vertical-align: middle;
   }
 
    /* Style the text to appear on hover */
@@ -55,9 +57,9 @@
     display: none; /* Hide by default */
     justify-content: center;
     align-items: center;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.4);
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     text-align: center;
   }
 
@@ -67,13 +69,17 @@
    .luis-container:hover .img-overlay {
     display: flex;
   }
+
+  
+
+  
   @media (max-width: 900px) {
     .title {
       font-size: 2em;
     }
   
     .title-2 {
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
 
     /* Style the container for the artists */
@@ -88,11 +94,22 @@
       height: 80px;
       padding: 2px;
       object-fit: cover;
+      vertical-align: middle;
     }
-
-
   }
-  
-
-  
-  
+  @media (hover:none) {
+    .img-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex; /* Hide by default */
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.3);
+      color: #fff;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+  }
