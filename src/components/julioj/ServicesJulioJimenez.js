@@ -21,7 +21,7 @@ function Services() {
     <div className = "headerContainer">
       <div className="spacer"></div>
       <h1 className="servicesTitle">Services</h1>
-      <p className = "discountText"> Got referals? Get a discount. Take $150 off your next tattoo!</p>
+      <p className = "discountText"> Got referrals? Get a discount. Take $150 off your next tattoo!</p>
     </div>
     <div className="page-container">
        <div className = "services-container">
