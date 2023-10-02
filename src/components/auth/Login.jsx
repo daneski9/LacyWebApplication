@@ -15,6 +15,9 @@ function Login() {
   const [password, setPassword] = useState('');
 
 
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
   
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -58,11 +61,11 @@ function Login() {
             
 
             <Link to="/JulioJimenez/resetpassword">
-              <button type="button">Reset Password</button>
+              <button type="button" onClick={handleLinkClick}>Reset Password</button>
             </Link>
 
             <Link to='/JulioJimenez/about'>
-              <button type="button">Back</button>
+              <button type="button" onClick={handleLinkClick}>Back</button>
             </Link>
           
           </div>  

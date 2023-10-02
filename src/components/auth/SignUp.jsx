@@ -14,6 +14,10 @@ function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   
   const signUp = (event) => {
     event.preventDefault();
@@ -59,7 +63,7 @@ function SignUp() {
             
 
             <Link to='/JulioJimenez/about'>
-              <button type="button">Back</button>
+              <button type="button" onClick={handleLinkClick}>Back</button>
             </Link>
           
           </div>  

@@ -10,16 +10,16 @@ function About() {
       <>
       <Navbar />
       
-      <div class = "top-container">
-        <div class = "img-container"><img src={julioPic} alt="j-tats" /></div>
-        <div class = "text-box">
-          <div class = "text-content"> <p>While tattooing since 2016, Julio specializes in realism and black ink. He studies realistic art and photo realism. In his spare time, Julio draws
+      <div className = "top-container">
+        <div className = "img-container"><img src={julioPic} alt="j-tats" /></div>
+        <div className = "text-box">
+          <div className = "text-content"> <p>While tattooing since 2016, Julio specializes in realism and black ink. He studies realistic art and photo realism. In his spare time, Julio draws
             and paints constantly, trying to develop skills and raise the bar!</p>
           </div>
         </div>
       </div>
-      <div class = "bottom-container">
-        <div class = "hours-info">
+      <div className = "bottom-container">
+        <div className = "hours-info">
           <h2>Hours</h2>
           <ul>
             <li>M&nbsp;&nbsp;10am - 9pm</li>
@@ -43,11 +43,14 @@ function About() {
         <Footer />
       </div>
 
-      <div class = "login">
+      <div className = "login">
         <Link to = "/JulioJimenez/login">
-            <button class = "lounge-button">
-                Admin Login
-            </button>
+            <button className = "lounge-button" onClick={() => {
+              window.scroll({
+                top: 0,
+                left: 0
+              });
+            }}>Admin Login</button>
         </Link>
       </div>
     

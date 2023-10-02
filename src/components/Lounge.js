@@ -28,7 +28,7 @@ function Lounge() {
     const artists = [
       <div className="lacy-container"> 
         <Link to="/JulioJimenez/about" onClick={handleLinkClick} >
-        <div class = "img-overlay">
+        <div className = "img-overlay">
           <p>View Julio's Profile</p>
         </div>
         </Link>
@@ -38,8 +38,8 @@ function Lounge() {
         <img src={require("./images/julio/works/julio-work3.jpg")} alt="julio-work3" /> 
       </div>,
       <div className="diana-container">
-        <a class = "socials" href = "https://www.instagram.com/la_dianuchis/?hl=en" target="_blank" rel ="noreferrer">
-        <div class = "img-overlay">
+        <a className = "socials" href = "https://www.instagram.com/la_dianuchis/?hl=en" target="_blank" rel ="noreferrer">
+        <div className = "img-overlay">
           <p>View Diana's Profile</p>
         </div>
         </a>
@@ -49,8 +49,8 @@ function Lounge() {
         <img src={require("./images/diana/works/diana-work3.jpg")} alt="diana-work3" />  
       </div>,
       <div className="luis-container">
-        <a class = "socials" href = "https://www.instagram.com/smileyartla/?hl=en" target="_blank" rel ="noreferrer">
-        <div class = "img-overlay">
+        <a className = "socials" href = "https://www.instagram.com/smileyartla/?hl=en" target="_blank" rel ="noreferrer">
+        <div className = "img-overlay">
           <p>View Luis' Profile</p>
         </div>
         </a>
@@ -60,8 +60,8 @@ function Lounge() {
         <img src={require("./images/luis/works/luis-work3.jpg")} alt="luis-work3"/>
       </div>,
       <div className="g-container">
-        <a class = "socials" href = "https://www.instagram.com/tattoovibesla/?hl=en" target="_blank" rel ="noreferrer">
-          <div class = "img-overlay">
+        <a className = "socials" href = "https://www.instagram.com/tattoovibesla/?hl=en" target="_blank" rel ="noreferrer">
+          <div className = "img-overlay">
             <p>View G's Profile</p>
           </div>
         </a>
@@ -71,8 +71,8 @@ function Lounge() {
         <img src={require("./images/g/works/g-work3.jpg")} alt="g-work3" />
       </div>,
       <div className="gabriel-container">
-        <a class = "socials" href = "https://www.instagram.com/q_tat2/?hl=en" target="_blank" rel ="noreferrer">
-        <div class = "img-overlay">
+        <a className = "socials" href = "https://www.instagram.com/q_tat2/?hl=en" target="_blank" rel ="noreferrer">
+        <div className = "img-overlay">
           <p>View Gabriel's Profile</p>
         </div>
         </a>
@@ -91,7 +91,7 @@ function Lounge() {
         <div>
           <h1 className="title is-1">Lacy St. Art Lounge</h1>
           <h2 className="title-2">Meet The Artists:</h2>
-          <div class = "artists-container">
+          <div className = "artists-container">
           {shuffledArtists}
           </div>
 
