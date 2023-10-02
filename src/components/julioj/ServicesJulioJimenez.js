@@ -15,6 +15,11 @@ import servicePic7 from "../images/services/upper-arm-full.png";
 
 
 function Services() {
+
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <>
     <Navbar/>
@@ -25,7 +30,7 @@ function Services() {
     </div>
     <div className="page-container">
        <div className = "services-container">
-              <Link to="/JulioJimenez/inquiry">
+              <Link to="/JulioJimenez/inquiry" onClick={handleLinkClick}>
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic2} alt="text"></img>
                   <div className = "itemText">
@@ -34,7 +39,7 @@ function Services() {
                   </div>
               </div>
               </Link>
-              <Link to="/JulioJimenez/inquiry">
+              <Link to="/JulioJimenez/inquiry" onClick={handleLinkClick}>
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic2} alt="text"></img>
                   <div className = "itemText">
@@ -43,7 +48,7 @@ function Services() {
                   </div>
               </div>
               </Link>
-              <Link to="/JulioJimenez/inquiry">
+              <Link to="/JulioJimenez/inquiry" onClick={handleLinkClick}>
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic7} alt="text"></img>
                   <div className = "itemText">
@@ -52,7 +57,7 @@ function Services() {
                   </div>
               </div>
               </Link>
-              <Link to="/JulioJimenez/inquiry">
+              <Link to="/JulioJimenez/inquiry" onClick={handleLinkClick}>
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic7} alt="text"></img>
                   <div className = "itemText">
@@ -61,7 +66,7 @@ function Services() {
                   </div>
               </div>
               </Link>
-              <Link to="/JulioJimenez/inquiry">
+              <Link to="/JulioJimenez/inquiry" onClick={handleLinkClick}>
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic3} alt="text"></img>
                   <div className = "itemText">
@@ -70,7 +75,7 @@ function Services() {
                   </div>
               </div>
               </Link>
-              <Link to="/JulioJimenez/inquiry">
+              <Link to="/JulioJimenez/inquiry" onClick={handleLinkClick}>
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic4} alt="text"></img>
                   <div className = "itemText">
@@ -79,7 +84,7 @@ function Services() {
                   </div>
               </div>
               </Link>
-              <Link to="/JulioJimenez/inquiry">
+              <Link to="/JulioJimenez/inquiry" onClick={handleLinkClick}>
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic5}  alt="text"></img>
                   <div className = "itemText">
@@ -88,7 +93,7 @@ function Services() {
                   </div>
               </div>
               </Link>
-              <Link to="/JulioJimenez/inquiry">
+              <Link to="/JulioJimenez/inquiry" onClick={handleLinkClick}>
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic6}alt="text"></img>
                   <div className = "itemText">
@@ -97,7 +102,7 @@ function Services() {
                   </div>
               </div>
               </Link>
-              <Link to="/JulioJimenez/inquiry">
+              <Link to="/JulioJimenez/inquiry" onClick={handleLinkClick}>
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic7} alt="text"></img>
                   <div className = "itemText">
@@ -106,7 +111,7 @@ function Services() {
                   </div>
               </div>
               </Link>
-              <Link to="/JulioJimenez/inquiry">
+              <Link to="/JulioJimenez/inquiry" onClick={handleLinkClick}>
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic7} alt="text"></img>
                   <div className = "itemText">

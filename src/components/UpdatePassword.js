@@ -17,6 +17,10 @@ function UpdatePassword() {
     // Do something with the form data, e.g. send it to a server
   };
 
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <>
       <Navbar />
@@ -34,7 +38,7 @@ function UpdatePassword() {
             <button type="submit">Submit</button>
 
             <Link to='/JulioJimenez/login'>
-              <button type="button">Back</button>
+              <button type="button" onClick={handleLinkClick}>Back</button>
             </Link>
           </div>
 

@@ -56,6 +56,8 @@ function InquiryPage() {
           console.log(error.text);
       });
 
+      window.scrollTo(0, 0);
+
       e.target.reset();
 
       // Show alert
@@ -89,7 +91,7 @@ function InquiryPage() {
         <textarea name="description" value={description} onChange={handleDescription} placeholder="Tattoo description" required />
         
         <label htmlFor="image">Reference Image
-            <input type="file" accept=".pdf, .jpg, .png" name="image" value={imageRef} onChange={handleImageRef} required />
+            <input type="file" accept=".pdf, .jpg, .png" name="image" value={imageRef} onChange={handleImageRef} />
         </label>
         
         <br></br>

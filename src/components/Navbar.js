@@ -7,6 +7,10 @@ function Navbar(props){
     const currentPath = location.pathname;
     let aboutUrl, servicesUrl, portfolioUrl, contactUrl, paymentUrl = '';
 
+    const handleLinkClick = () => {
+        window.scrollTo(0, 0);
+    };
+
     if (currentPath.startsWith('/JulioJimenez')) {
         aboutUrl = '/JulioJimenez/about';
         servicesUrl = '/JulioJimenez/services';
@@ -23,30 +27,30 @@ function Navbar(props){
     } */
     return (
         <>
-        <div class="ham-background">
-        <label class="hamburger-menu">
+        <div className="ham-background">
+        <label className="hamburger-menu">
             <input type="checkbox"></input>
         </label>
-        <aside class="sidebar">
+        <aside className="sidebar">
             <nav>
             <ul>
                 <li>
-                <Link to={aboutUrl}>About</Link>
+                <Link to={aboutUrl} onClick={handleLinkClick}>About</Link>
                 </li>
                 <li>
-                <Link to={servicesUrl}>Services</Link>
+                <Link to={servicesUrl} onClick={handleLinkClick}>Services</Link>
                 </li>
                 <li>
-                <Link to={portfolioUrl}>Portfolio</Link>
+                <Link to={portfolioUrl} onClick={handleLinkClick}>Portfolio</Link>
                 </li>
                 <li>
-                <Link to={contactUrl}>Contact</Link>
+                <Link to={contactUrl} onClick={handleLinkClick}>Contact</Link>
                 </li>
                 <li>
-                <Link to={paymentUrl}>Payment Options</Link>
+                <Link to={paymentUrl} onClick={handleLinkClick}>Payment Options</Link>
                 </li>
                 <li>
-                <Link to="/">Lounge</Link>
+                <Link to="/" onClick={handleLinkClick}>Lounge</Link>
                 </li>
             </ul>
             </nav>
@@ -56,22 +60,22 @@ function Navbar(props){
             
             <ul>
                 <li>
-                <Link to={aboutUrl}>About</Link>
+                <Link to={aboutUrl} onClick={handleLinkClick}>About</Link>
                 </li>
                 <li>
-                <Link to={servicesUrl}>Services</Link>
+                <Link to={servicesUrl} onClick={handleLinkClick}>Services</Link>
                 </li>
                 <li>
-                <Link to={portfolioUrl}>Portfolio</Link>
+                <Link to={portfolioUrl} onClick={handleLinkClick}>Portfolio</Link>
                 </li>
                 <li>
-                <Link to={contactUrl}>Contact</Link>
+                <Link to={contactUrl} onClick={handleLinkClick}>Contact</Link>
                 </li>
                 <li>
-                <Link to={paymentUrl}>Payment Options</Link>
+                <Link to={paymentUrl} onClick={handleLinkClick}>Payment Options</Link>
                 </li>
                 <li>
-                <Link to="/">Lounge</Link>
+                <Link to="/" onClick={handleLinkClick}>Lounge</Link>
                 </li>
             </ul>
         </nav>
