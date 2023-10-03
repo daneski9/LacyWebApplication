@@ -146,7 +146,6 @@
       max-height: 86px;
     }
   }
-
   @media (max-width: 386px) {
     .artists-container img {
       max-width: 70px;
@@ -158,17 +157,24 @@
     }
     
   }
-  @media (max-width: 386px) {
+  @media (max-width: 308px) {
+    .artists-container img {
+      max-width: 60px;
+      max-height: 60px;
+    }
+    .artists-container > div:first-child {
+      margin-top: 30px;
+      
+    }
+    
+  }
+  @media (max-width: 266px) {
     .artists-container img {
       max-width: 50px;
       max-height: 50px;
     }
     .artists-container > div:first-child {
       margin-top: 40px;
-      
     }
-
-
-  }
     
-  
+  }
