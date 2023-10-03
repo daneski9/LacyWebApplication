@@ -83,7 +83,7 @@
 
     /* Style the container for the artists */
     .artists-container {
-      row-gap: 5px;
+      row-gap: 10px;
     }
   
     .artists-container img {
@@ -152,13 +152,23 @@
       max-width: 70px;
       max-height: 70px;
     }
-    .artists-container {
-      gap: 30px;
-    }
     .artists-container > div:first-child {
       margin-top: 25px;
+      
     }
     
-}
+  }
+  @media (max-width: 386px) {
+    .artists-container img {
+      max-width: 50px;
+      max-height: 50px;
+    }
+    .artists-container > div:first-child {
+      margin-top: 40px;
+      
+    }
+
+
+  }
     
   
