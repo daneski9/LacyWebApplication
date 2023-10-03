@@ -26,7 +26,7 @@ function Lounge() {
 
   useEffect(() => {
     const artists = [
-      <div className="lacy-container"> 
+      <div key="julio" className="lacy-container"> 
         <Link to="/JulioJimenez/about" onClick={handleLinkClick} >
         <div className = "img-overlay">
           <p>View Julio's Profile</p>
@@ -37,7 +37,7 @@ function Lounge() {
         <img src={require("./images/julio/works/julio-work2.jpg")} alt="julio-work2" /> 
         <img src={require("./images/julio/works/julio-work3.jpg")} alt="julio-work3" /> 
       </div>,
-      <div className="diana-container">
+      <div key="diana" className="diana-container">
         <a className = "socials" href = "https://www.instagram.com/la_dianuchis/?hl=en" target="_blank" rel ="noreferrer">
         <div className = "img-overlay">
           <p>View Diana's Profile</p>
@@ -48,7 +48,7 @@ function Lounge() {
         <img src={require("./images/diana/works/diana-work2.jpg")} alt="diana-work2" /> 
         <img src={require("./images/diana/works/diana-work3.jpg")} alt="diana-work3" />  
       </div>,
-      <div className="luis-container">
+      <div key="luis" className="luis-container">
         <a className = "socials" href = "https://www.instagram.com/smileyartla/?hl=en" target="_blank" rel ="noreferrer">
         <div className = "img-overlay">
           <p>View Luis' Profile</p>
@@ -59,7 +59,7 @@ function Lounge() {
         <img src={require("./images/luis/works/luis-work2.jpg")} alt="luis-work2"/>
         <img src={require("./images/luis/works/luis-work3.jpg")} alt="luis-work3"/>
       </div>,
-      <div className="g-container">
+      <div key="g" className="g-container">
         <a className = "socials" href = "https://www.instagram.com/tattoovibesla/?hl=en" target="_blank" rel ="noreferrer">
           <div className = "img-overlay">
             <p>View G's Profile</p>
@@ -70,7 +70,7 @@ function Lounge() {
         <img src={require("./images/g/works/g-work2.jpg")} alt="g-work2" />
         <img src={require("./images/g/works/g-work3.jpg")} alt="g-work3" />
       </div>,
-      <div className="gabriel-container">
+      <div key="gabriel" className="gabriel-container">
         <a className = "socials" href = "https://www.instagram.com/q_tat2/?hl=en" target="_blank" rel ="noreferrer">
         <div className = "img-overlay">
           <p>View Gabriel's Profile</p>
@@ -81,7 +81,8 @@ function Lounge() {
         <img src={require("./images/gabriel/works/gabriel-work2.jpg")} alt="gabriel-work2"/>
         <img src={require("./images/gabriel/works/gabriel-work3.jpg")} alt="gabriel-work3"/>
       </div>,
-    ];
+    ] // keys are needed for react to identify which items are changed. console warning. ex: <div key="gabriel" className="gabriel-container">
+
     shuffleArray(artists); // shuffles the artists array in-place
     setShuffledArtists(artists); // updates the shuffledArtists state variable 
   }, []);
