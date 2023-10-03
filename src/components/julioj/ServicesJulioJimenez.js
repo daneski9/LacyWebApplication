@@ -34,8 +34,8 @@ function Services() {
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic2} alt="text"></img>
                   <div className = "itemText">
-                    <p class = "itemTitle">Full Day Session</p>
-                    <p class = "itemDescription">Ideal for extensive designs, covering the entire back, chest, or sleeve, bringing your bold ideas to life.</p>
+                    <p className = "itemTitle">Full Day Session</p>
+                    <p className = "itemDescription">Ideal for extensive designs, covering the entire back, chest, or sleeve, bringing your bold ideas to life.</p>
                   </div>
               </div>
               </Link>
@@ -43,8 +43,8 @@ function Services() {
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic2} alt="text"></img>
                   <div className = "itemText">
-                    <p class = "itemTitle">Half Day Session</p>
-                    <p class = "itemDescription">Suited for shorter appointments, typically lasting around 3-4 hours, offering a professional touch in less time.</p>
+                    <p className = "itemTitle">Half Day Session</p>
+                    <p className = "itemDescription">Suited for shorter appointments, typically lasting around 3-4 hours, offering a professional touch in less time.</p>
                   </div>
               </div>
               </Link>
@@ -52,8 +52,8 @@ function Services() {
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic7} alt="text"></img>
                   <div className = "itemText">
-                    <p class = "itemTitle">Filler Tattoo</p>
-                    <p class = "itemDescription">Ideal for those looking to add some extra flair or fill empty spaces with smaller, detailed designs.</p>
+                    <p className = "itemTitle">Filler Tattoo</p>
+                    <p className = "itemDescription">Ideal for those looking to add some extra flair or fill empty spaces with smaller, detailed designs.</p>
                   </div>
               </div>
               </Link>
@@ -61,8 +61,8 @@ function Services() {
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic7} alt="text"></img>
                   <div className = "itemText">
-                    <p class = "itemTitle">Small Tattoo</p>
-                    <p class = "itemDescription">Perfect for a subtle statement, these tattoos are small but impactful.</p>
+                    <p className = "itemTitle">Small Tattoo</p>
+                    <p className = "itemDescription">Perfect for a subtle statement, these tattoos are small but impactful.</p>
                   </div>
               </div>
               </Link>
@@ -70,8 +70,8 @@ function Services() {
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic3} alt="text"></img>
                   <div className = "itemText">
-                    <p class = "itemTitle">Upper Arm Session</p>
-                    <p class = "itemDescription">Ideal for elaborate or larger designs specifically crafted for the upper arm area.</p>
+                    <p className = "itemTitle">Upper Arm Session</p>
+                    <p className = "itemDescription">Ideal for elaborate or larger designs specifically crafted for the upper arm area.</p>
                   </div>
               </div>
               </Link>
@@ -79,8 +79,8 @@ function Services() {
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic4} alt="text"></img>
                   <div className = "itemText">
-                    <p class = "itemTitle">Full Lower Arm Session</p>
-                    <p class = "itemDescription">Suited for those desiring comprehensive artwork on the inner or outer lower arm, from wrist to elbow.</p>
+                    <p className = "itemTitle">Full Lower Arm Session</p>
+                    <p className = "itemDescription">Suited for those desiring comprehensive artwork on the inner or outer lower arm, from wrist to elbow.</p>
                   </div>
               </div>
               </Link>
@@ -88,8 +88,8 @@ function Services() {
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic5}  alt="text"></img>
                   <div className = "itemText">
-                    <p class = "itemTitle">Inner Bicep Session</p>
-                    <p class = "itemDescription">Perfect for those seeking detailed designs in the more discreet inner bicep area.</p>
+                    <p className = "itemTitle">Inner Bicep Session</p>
+                    <p className = "itemDescription">Perfect for those seeking detailed designs in the more discreet inner bicep area.</p>
                   </div>
               </div>
               </Link>
@@ -97,8 +97,8 @@ function Services() {
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic6}alt="text"></img>
                   <div className = "itemText">
-                    <p class = "itemTitle">Full Lower Leg Session</p>
-                    <p class = "itemDescription">Ideal for those aiming to cover the lower leg with detailed, extensive designs, from the ankle to the knee.</p>
+                    <p className = "itemTitle">Full Lower Leg Session</p>
+                    <p className = "itemDescription">Ideal for those aiming to cover the lower leg with detailed, extensive designs, from the ankle to the knee.</p>
                   </div>
               </div>
               </Link>
@@ -106,8 +106,8 @@ function Services() {
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic7} alt="text"></img>
                   <div className = "itemText">
-                    <p class = "itemTitle">Chest Tattoo</p>
-                    <p class = "itemDescription">Great for bold, expansive designs aimed at transforming the chest area with intricate ink work.</p>
+                    <p className = "itemTitle">Chest Tattoo</p>
+                    <p className = "itemDescription">Great for bold, expansive designs aimed at transforming the chest area with intricate ink work.</p>
                   </div>
               </div>
               </Link>
@@ -115,8 +115,8 @@ function Services() {
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic7} alt="text"></img>
                   <div className = "itemText">
-                    <p class = "itemTitle">Spine Tattoo</p>
-                    <p class = "itemDescription">Perfect for those looking to adorn their spine with elegant, linear designs that follow the body's curvature.</p>
+                    <p className = "itemTitle">Spine Tattoo</p>
+                    <p className = "itemDescription">Perfect for those looking to adorn their spine with elegant, linear designs that follow the body's curvature.</p>
                   </div>
               </div>
               </Link>
