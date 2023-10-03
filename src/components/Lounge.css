@@ -22,7 +22,7 @@
   .artists-container {
     display: grid;
     justify-items: center;
-    row-gap: 30px;
+    row-gap: 25px;
     grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
   }
 
