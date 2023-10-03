@@ -6,18 +6,19 @@ import Footer from './Footer';
 import { db } from "../../DataBase";  // db const
 import{collection, getDocs} from 'firebase/firestore'; // collection and getDocs const
 import { set } from 'lodash';
-
+import { getAuth } from 'firebase/auth';
 // Uncomment for access to image database
 import { storage } from "../../DataBase";
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { v4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
 
 // TODO: Impliment JSON fro imageInfo
 // import {  } from "json";
 
 
 function AdminLanding() {
-
   // Cloud Database Stuff
   const [Inquirer, setInquirer] = useState([]);
   const InquirerCollectionRef = collection(db,"Inquirer");
@@ -31,7 +32,6 @@ function AdminLanding() {
     getInquirer();
 
   }, []);
-
   // end Cloud Database Stuff
   
   const [image, setImage] = useState(null);
@@ -45,7 +45,7 @@ function AdminLanding() {
     uploadBytes(imageRef, image).then(() => {
       alert("Image Uploaded");
     })
-
+    
     // // Probably can remove this
     // if(image == null) return;
     // let tmp = v4();
@@ -66,10 +66,39 @@ function AdminLanding() {
     // uploadBytes(imageRefInfo, imageInfo).then(()=>{}
     // );
   }
+  // To show current email logged in:
+  const [email, setEmail] = useState("");
+  useEffect(() => {
+    const authEmail = getAuth().currentUser?.email;  // ? is a Safe-check if currentUser exists
+    if (authEmail) {
+      setEmail(authEmail);
+    }
+  }, []);
+
+  // To logout:
+  const auth = getAuth();
+  const logoutNavigate = useNavigate();
+  const handleLogout = async (event) => {
+    event.preventDefault();
+    try {
+        await signOut(auth);  // Logout the user. pause the function's execution until the promise from signOut(auth) is either fulfilled or rejected.
+        logoutNavigate("/"); // Navigate to the main page after logout
+        // Check if the user is still logged in
+        if (auth.currentUser) {
+          console.log('User is still logged in:', auth.currentUser.email);
+        } 
+        else {
+          console.log('User successfully logged out.');
+        }
+    } catch (error) {
+        console.log('Error logging out:', error);
+    }
+  };
 
   return (
     <>
     <Navbar />
+    <div className='welcome-message'>Welcome, {email} </div>
     <div className='landing'>
       <div className='table'>  
       <table>
@@ -114,6 +143,7 @@ function AdminLanding() {
         <button onClick={uploadFile} type="button">Submit</button>
       </div>
     </div>
+    <button class = "logout-btn" onClick={handleLogout}>LOGOUT</button>
     
     
     <Footer />

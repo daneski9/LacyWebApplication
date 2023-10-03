@@ -49,7 +49,7 @@ function Contact() {
         </div>
       )}
         <div>
-          <h1 class="contact_header">Contact</h1>
+          <h1 className="contact_header">Contact</h1>
           {/* <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida,
             risus at dapibus aliquet, elit quam scelerisque tortor, nec accumsan eros

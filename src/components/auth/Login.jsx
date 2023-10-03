@@ -3,36 +3,31 @@ import { Link } from 'react-router-dom';
 import '../Login.css';
 import {signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from "../../DataBase";
-
-
+import { useNavigate } from 'react-router-dom';
 import Navbar from "../Navbar";
 import Footer from '../julioj/Footer';
 
 
 function Login() {
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-
   const handleLinkClick = () => {
     window.scrollTo(0, 0);
   };
-  
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-    console.log(userCredential)
-    }).catch((error) => {
-    console.log(error)
-    })
 
-    //console.log(`Email: ${email}`);
-    //console.log(`Password: ${password}`);
-    // Do something with the form data, e.g. send it to a server
-  }; 
-  
+  // Submit button for the login page:
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigateToLanding = useNavigate();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password); // sign-in. pause the function's execution until the promise from signInWithEmailAndPassword(auth, email, password) is either fulfilled or rejected.
+        console.log(userCredential);
+        navigateToLanding('/JulioJimenez/adminlanding'); // Navigate after a successful login, does not require a click like <Link> does.
+    } catch (error) {
+        console.log(error);
+    }
+  };
   
 /*
   const handleForgotPassword = (event) => {
@@ -56,18 +51,16 @@ function Login() {
           <input type="password" id="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} required />
 
           <div class = "buttons"> 
-            
+
               <button type="submit">Submit</button> 
-            
 
-            <Link to="/JulioJimenez/resetpassword">
+              <Link to="/JulioJimenez/resetpassword">
               <button type="button" onClick={handleLinkClick}>Reset Password</button>
-            </Link>
+              </Link>
 
-            <Link to='/JulioJimenez/about'>
+              <Link to='/JulioJimenez/about'>
               <button type="button" onClick={handleLinkClick}>Back</button>
-            </Link>
-          
+              </Link>
           </div>  
 
         </form>
@@ -79,10 +72,3 @@ function Login() {
 }
 
 export default Login;
-
-/*
-<Link to="/JulioJimenez/adminlanding"></Link>
-   <button type="submit">Submit</button>
-</Link>
-
-*/

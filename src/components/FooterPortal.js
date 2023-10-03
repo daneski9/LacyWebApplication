@@ -5,7 +5,7 @@ import "./FooterPortal.css";
 
 function FooterPortal() {
   return (
-    <footerportal>
+    <>
       <div className="footer-container-">
         <div className="footer-left-">
           <h3>Lacy St. Art Lounge</h3>
@@ -35,7 +35,7 @@ function FooterPortal() {
         <p>Copyright © 2023 Lacy St. Art Lounge.
           All rights reserved.</p>
       </div>
-    </footerportal>
+      </>
   );
 }
 
