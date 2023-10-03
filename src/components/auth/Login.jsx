@@ -23,6 +23,7 @@ function Login() {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password); // sign-in. pause the function's execution until the promise from signInWithEmailAndPassword(auth, email, password) is either fulfilled or rejected.
         console.log(userCredential);
+        window.scrollTo(0, 0);
         navigateToLanding('/JulioJimenez/adminlanding'); // Navigate after a successful login, does not require a click like <Link> does.
     } catch (error) {
         console.log(error);
