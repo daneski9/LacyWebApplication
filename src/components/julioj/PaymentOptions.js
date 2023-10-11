@@ -7,7 +7,8 @@ import Box from "../subcomponents/paymentDropBox";
 import paypal from "../images/paypal.jpg";
 import zelle from "../images/zelle.png";
 import cashapp from "../images/cashapp.png";
-import zelleImage from "../images/zelle.jpeg";
+import venmo from "../images/venmo_logo.png";
+import square from "../images/square_logo.jpg";
 
 
 
@@ -17,24 +18,49 @@ function PaymentOptions() {
   const [paypalOpen, setPayPalOpen] = useState(false);
   const [zelleOpen, setZelleOpen] = useState(false);
   const [cashAppOpen, setCashAppOpen] = useState(false);
+  const [venmoOpen, setVenmoOpen] = useState(false);
+  const [squareOpen, setSquareOpen] = useState(false);
 
   const togglePaypal = () => {
     setPayPalOpen(!paypalOpen);
     setCashAppOpen(false);
     setZelleOpen(false);
+    setVenmoOpen(false);
+    setSquareOpen(false);
   }
 
   const toggleZelle = () => {
     setZelleOpen(!zelleOpen);
     setCashAppOpen(false);
     setPayPalOpen(false);
+    setVenmoOpen(false);
+    setSquareOpen(false);
   }
 
   const toggleCashApp = () => {
     setCashAppOpen(!cashAppOpen);
     setZelleOpen(false);
     setPayPalOpen(false);
+    setVenmoOpen(false);
+    setSquareOpen(false);
   }
+
+  const toggleVenmo = () => {
+    setVenmoOpen(!venmoOpen);
+    setCashAppOpen(false);
+    setZelleOpen(false);
+    setPayPalOpen(false);
+    setSquareOpen(false);
+  }
+
+  const toggleSquare = () => {
+    setSquareOpen(!squareOpen);
+    setCashAppOpen(false);
+    setZelleOpen(false);
+    setPayPalOpen(false);
+    setVenmoOpen(false);
+  }
+
   
   
   return (
@@ -68,6 +94,25 @@ function PaymentOptions() {
             <div className="box">
               {cashAppOpen ? <Box  title = {"cashapp"}/> : null}
             </div>
+            <br></br>
+
+            <button className="payment-button" onClick={toggleVenmo}>
+                <img src={venmo} alt="Venmo Logo" className="payment-logo" />
+                Pay with Venmo
+            </button>
+            <div className="box">
+              {venmoOpen ? <Box  title = {"venmo"}/> : null}
+            </div>
+            <br></br>
+
+            <button className="payment-button" onClick={toggleSquare}>
+                <img src={square} alt="Square Logo" className="payment-logo" />
+                Pay with Square
+            </button>
+            <div className="box">
+              {squareOpen ? <Box  title = {"square"}/> : null}
+            </div>
+
         </div>
         
         <Footer />
