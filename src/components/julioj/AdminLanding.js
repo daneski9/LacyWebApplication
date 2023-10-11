@@ -69,34 +69,18 @@ function AdminLanding() {
   //const [ imageInfo ] = useState(null);
   //const [imageInfo, setImageInfo] = useState([]);
 
-  const uploadFile = () => {
-    // window.location.reload();
-    if (image == null) return;
-    const imageRef = ref(storage, `gs://daring-wavelet-384121.appspot.com/ImageData/${image.name + v4()}`);
-    uploadBytes(imageRef, image).then(() => {
-      alert("Image Uploaded");
-    })
-    
-    // // Probably can remove this
-    // if(image == null) return;
-    // let tmp = v4();
-    // const imageRef = ref(storage, `gs://daring-wavelet-384121.appspot.com/ImageData/${image.name + tmp}`);
+  const uploadFiles = async () => {
+    for (let i = 0; i < image.length; i++) {
+      const imageRef = ref(storage, `gs://daring-wavelet-384121.appspot.com/ImageData/${image.name + v4()}`);
 
-    // // TODO: image information JSON, imageInfo.json
-    // // const imageInfo = json
-    // const imageRefInfo = ref(storage, `gs://daring-wavelet-384121.appspot.com/ImageInformation/${image.name+tmp}`);
-    // fetch("imageInfo.json")
-    //     .then(response => response.json())
-    //     .then(imageInfo => {
-    //         imageInfo.orignalName = image.name;
-    //         imageInfo.imageHash = tmp;
-    //     })
-    // uploadBytes( imageRef, image ).then(()=>{
-    //     alert("Image Uploaded");
-    // })
-    // uploadBytes(imageRefInfo, imageInfo).then(()=>{}
-    // );
-  }
+      const result = await uploadBytes(imageRef, image[i])
+      .then(() => { 
+        alert('Images uploaded');
+      });
+    }
+  };
+    
+  
   // To show current email logged in:
   const [email, setEmail] = useState("");
   useEffect(() => {
@@ -178,12 +162,12 @@ function AdminLanding() {
         </div>
 
       <div className = 'file'>
-        <label htmlFor="image">Upload Image
-          <input type="file" name="image" onChange={(event) => setImage(event.target.files[0])} required />
+        <label htmlFor="image">Upload Image (Multiple)
+          <input type="file" name="image" multiple onChange={(event) => setImage(event.target.files)} />
         </label>
       </div>
       <div className = 'submit-button'>
-        <button onClick={uploadFile} type="button">Submit</button>
+        <button onClick={uploadFiles} type="button">Submit</button>
       </div>
     </div>
     <button class = "logout-btn" onClick={handleLogout}>LOGOUT</button>
