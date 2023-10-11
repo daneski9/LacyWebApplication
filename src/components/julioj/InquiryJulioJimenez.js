@@ -34,7 +34,7 @@ function InquiryPage() {
   const handleSubmit = async () => {
     // Save the data to Firebase
     await addDoc(collection(db, "Inquirer"), {First: first, Last: last,
-      Email: email, Phone: phone, Location: location, Description: description, ImageRef: imageRef})
+      Email: email, Phone: phone, Location: location, Description: description, ImageRef: imageRef, State: 1})
     // Clear the form
     setFName("");
     setLName("");
