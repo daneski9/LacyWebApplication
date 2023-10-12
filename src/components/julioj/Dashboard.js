@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../App.css'
-import './julioCSS/AdminLanding.css'
+import './julioCSS/Dashboard.css'
 import Navbar from "../Navbar";
 import Footer from './Footer';
 import { db } from "../../DataBase";  // db const
@@ -98,7 +98,7 @@ function AdminLanding() {
     try {
         await signOut(auth);  // Logout the user. pause the function's execution until the promise from signOut(auth) is either fulfilled or rejected.
         window.scrollTo(0, 0);
-        logoutNavigate("/"); // Navigate to the main page after logout
+        logoutNavigate("/JulioJimenez/about"); // Navigate to the main page after logout
         // Check if the user is still logged in
         if (auth.currentUser) {
           console.log('User is still logged in:', auth.currentUser.email);
@@ -114,6 +114,7 @@ function AdminLanding() {
   return (
     <>
     <Navbar />
+    
     <div className='welcome-message'>Welcome, {email} </div>
     <div className='landing'>
       <div className='table'>  
