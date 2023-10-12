@@ -24,7 +24,7 @@ function Login() {
         const userCredential = await signInWithEmailAndPassword(auth, email, password); // sign-in. pause the function's execution until the promise from signInWithEmailAndPassword(auth, email, password) is either fulfilled or rejected.
         console.log(userCredential);
         window.scrollTo(0, 0);
-        navigateToLanding('/JulioJimenez/adminlanding'); // Navigate after a successful login, does not require a click like <Link> does.
+        navigateToLanding('/JulioJimenez/dashboard'); // Navigate after a successful login, does not require a click like <Link> does.
     } catch (error) {
         console.log(error);
     }
@@ -39,35 +39,36 @@ function Login() {
 
   return (
     <>
-      <Navbar />
 
-      <div className = "log-in-container">
+    <Navbar />
 
-        <h1 class="login_header">Log In</h1>
+    <h1 class="login_header">Log In</h1>
+    <div className = "log-in-container">
 
-        <form onSubmit={handleSubmit} className="user-pass-container">
+      <form onSubmit={handleSubmit} className="user-pass-container">
           
-          
-          <input type="text" id="email" placeholder="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
-          <input type="password" id="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} required />
+        <input type="text" id="email" placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)} required />
+        <input type="password" id="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} required />
 
-          <div class = "buttons"> 
+        <div class = "buttons"> 
 
-              <button type="submit">Submit</button> 
+          <button type="submit">Submit</button> 
 
-              <Link to="/JulioJimenez/resetpassword">
-              <button type="button" onClick={handleLinkClick}>Reset Password</button>
-              </Link>
+          <Link to="/JulioJimenez/updatepassword">
+            <button type="button" onClick={handleLinkClick}>Update Password</button>
+          </Link>
 
-              <Link to='/JulioJimenez/about'>
-              <button type="button" onClick={handleLinkClick}>Back</button>
-              </Link>
-          </div>  
+          <Link to='/JulioJimenez/about'>
+            <button type="button" onClick={handleLinkClick}>Back</button>
+          </Link>
 
-        </form>
-      </div>
+        </div>  
+
+      </form>
+    </div>
     
-      <Footer />
+    <Footer />
+    
     </>
   );
 }

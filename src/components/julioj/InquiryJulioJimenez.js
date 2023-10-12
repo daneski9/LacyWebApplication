@@ -49,7 +49,7 @@ function InquiryPage() {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm('service_3croqwd', 'template_ocg7ucx', form.current, 'zCUN8bCaLrLkii0mR')
+    emailjs.sendForm('service_wvpurwc', 'template_747huxp', form.current, 'y1XLxwxWca9cZzlcv')
       .then((result) => {
           console.log(result.text);
       }, (error) => {
@@ -71,7 +71,9 @@ function InquiryPage() {
 
   return (
     <>
+
     <Navbar />
+
     <div className='inquiry'>
       
       {showAlert && (
@@ -103,6 +105,7 @@ function InquiryPage() {
     </div>
     
     <Footer />
+
     </>
   );
 }
