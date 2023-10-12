@@ -52,15 +52,12 @@ function SignUp() {
         <form onSubmit={signUp} className="user-pass-container">
           
           
-          <input type="text" id="email" placeholder="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
+          <input type="text" id="Email" placeholder="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
           <input type="password" id="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} required />
 
           <div class = "buttons"> 
             
-              <button type="submit">Sign Up</button> 
-            
-
-            
+            <button type="submit">Sign Up</button> 
 
             <Link to='/JulioJimenez/about'>
               <button type="button" onClick={handleLinkClick}>Back</button>
