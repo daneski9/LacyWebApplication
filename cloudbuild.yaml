@@ -1,0 +1,14 @@
+steps:
+# Install dependencies
+- name: 'node:16'
+  entrypoint: 'npm'
+  args: ['install']
+
+# Build the Node.js application
+- name: 'node:16'
+  entrypoint: 'npm'
+  args: ['run', 'build']
+
+# Deploy to Google App Engine
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy', 'app.yaml']

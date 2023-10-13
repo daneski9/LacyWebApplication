@@ -10,5 +10,9 @@
 }
 
 .inquiry_header {
-    margin-bottom: 40px;
+  font-size: 3em;
+  font-family: 'Oleo Script', 'Jost', sans-serif, Arial;
+  font-weight: lighter;
+  color: #ffffff;
+  margin-bottom: 40px;
 }

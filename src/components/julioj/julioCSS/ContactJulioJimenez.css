@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+
 /* .contact {
     width: 100%;
     max-width: 10000px;
@@ -14,5 +17,13 @@
 }
 
 .contact_header {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
+  font-size: 3em;
+  font-family: 'Oleo Script', 'Jost', sans-serif, Arial;
+  font-weight: lighter;
+  color: #ffffff;
+}
+
+.contact{
+  min-height: 60vh;
 }

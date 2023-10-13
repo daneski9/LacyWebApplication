@@ -1,23 +1,209 @@
-.leftSide, .rightSide {
-  padding: 10px;
-  background-color: rgba(43, 31, 31, 0.486);
-  margin-top: 3em;
-  
+
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 80vh;
+  margin-top: 50px;
+}
+.headerContainer{
+  display: flex;
+  justify-content: space-around;
+}
+.discountText{
+  color: rgba(255, 255, 255, 0.925);
+  background-color: rgba(38, 39, 38, 0.678);
+  padding: 1.3% 1.5%;
+  border-radius: 5px;
+  margin-top: 35px;
+  margin-left: 10px;
+  margin-bottom: 30px;
+  max-width: 200px;
+  border: 0.5px solid rgba(218, 206, 206, 0.856);
+}
+.spacer{
+  width: 300px;
+}
+
+.servicesTitle {
+  font-size: 4em;
+  font-family: 'Oleo Script', 'Jost', sans-serif, Arial;
+  font-weight: lighter;
+  color: #ffffff;
+  margin: 0;
+  margin-top: 10px;
+}
+.services-container{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 30px;
+  margin-top: -25px;
+}
+.services-container a {
+  text-decoration: none;
+}
+.services-item{
+  display: flex;
+  background-color: #160c088a;
+  padding: 5px 10px 5px 6px;
+  -webkit-box-shadow: 10px 12px 11px -2px rgba(0,0,0,0.46);
+  -moz-box-shadow: 10px 12px 11px -2px rgba(0,0,0,0.46);
+  box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.349);
+  border-radius: 10px;
+  max-width: 600px;
+}
+.itemImg{
+  max-width: auto; 
+  max-height: 200px;
+  object-fit: cover;
+  display: block; /* to remove the bottom spacing */
+  border-radius: 10px;
+}
+.itemTitle {
+  font-weight: lighter;
+  font-size: 30px;
+  font-weight:200;
+  margin: 5px 0px 0px 5px;
+  min-width: 100%;
+  text-shadow: 1px 1px 5px #e6ddddaf;
+}
+.itemText > p{
+  min-width: 70%;
+  color: white;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+@media (max-width: 1152px) {
+  .spacer{
+    width: 0px;
   }
 
-.servicesList{
-  display: flex;
-  justify-content: center;
-  gap: 6%;
 }
-.servicesList > li{
-  list-style: none;
-}
+@media (max-width: 980px) {
+  .services-container{
+    margin-top: -30px;
+  }
 
-a{
-    text-decoration: none;
-}
 
-.services_header {
-  margin-bottom: -20px;
+}
+@media (max-width: 852px) {
+  .itemTitle {
+    font-size: 25px;
+  }
+  .services-container{
+    grid-gap: 15px;
+  }
+  .services-item{
+    padding: 0px 0px 0px 0px;
+  }
+}
+@media (max-width: 740px) {
+  .page-container {
+    margin-top: 10px;
+  }
+  .servicesTitle {
+    margin-top: -6px;
+  }
+  .itemImg{
+    max-width: 100px; /* or 100% if you want it to take the full width of the container */
+    height: 200px;
+    object-fit: cover;
+    display: block; /* to remove the bottom spacing */
+  }
+  .headerContainer{
+    margin-bottom: 20px;
+  }
+  .itemDescription{
+    hyphens: auto; /* attempt to hyphenate */
+  overflow-wrap: break-word;
+  word-wrap: break-word; /* for older browsers */
+  word-break: break-word;
+  font-size: 0.8rem;
+  line-height: 1.1;
+  }
+  .services-container{
+    gap: 5px;
+  }
+  .services-item{
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+
+}
+@media (max-width: 670px) {
+  .headerContainer{
+    margin-top: 25px; 
+  }
+
+
+}
+@media (max-width: 595px) {
+  .itemImg{
+    max-width: 50%; /* or 100% if you want it to take the full width of the container */
+    height: 200px;
+    object-fit: cover;
+    display: block; /* to remove the bottom spacing */
+  }
+  .itemDescription{
+    width: 120px;
+    font-size: 0.8rem;
+  }
+  .itemTitle{
+    font-size: 1.3rem;
+    line-height: 0.9;
+  }
+  .discountText{
+    font-size: 0.7em;
+  }
+  .servicesTitle {
+      margin-top: -10px;
+  }
+  .itemText > .itemDescription{
+    color: rgba(255, 255, 255, 0.918);
+  }
+}
+@media (max-width: 531px) {
+  .itemDescription{
+    font-size: 0.7rem;
+    max-width: 90%;
+  }
+
+}
+@media (max-width: 513px) {
+  .itemDescription{
+    max-width: 80%;
+  }
+
+}
+@media (max-width: 481px) {
+  .itemDescription{
+    width: 105px;
+  }
+  .services-container{
+    gap: 7px;
+  }
+}
+@media (max-width: 426px) {
+  .servicesTitle {
+    margin-top: -12px;
+  }
+  .itemDescription{
+    width: unset;
+    font-size: 0.65rem;
+  }
+  .itemImg{
+    max-height: 150px;
+  }
+  .itemTitle{
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 350px){
+  .services-container{
+    grid-template-columns: repeat(1, 1fr);
+    gap: 3px;
+  }
+  
 }

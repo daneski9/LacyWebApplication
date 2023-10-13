@@ -1,7 +1,6 @@
 /* Import the font family */
 @import url('https://fonts.googleapis.com/css2?family=Asap:wght@200;400&family=Fjalla+One&family=IBM+Plex+Sans&family=Jost:wght@300&family=Mulish:wght@200&display=swap');
 
-
 /* Update the CSS for the inquiry page by adding a background image and modifiying its attributes */
 body {
   background-image: url('../src/components/images/la-bg.png');
@@ -12,11 +11,33 @@ body {
   background-attachment: fixed;
   font-family: 'Jost', 'Anuphan', 'Cambria', 'Roboto', sans-serif;
   padding-bottom: 5%;
+  position: relative;
+}
+@media (max-width: 767px) {
+  body::before {
+    content: "";
+    position: fixed; 
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1; 
+
+    background-image: url('../src/components/images/la-bg.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(0, 0, 0); 
+  }
+
+  body {
+    background: none; /* remove the background from the body */
+  }
 }
 
-
-
-
+html {
+  overflow-y: scroll;
+}
 
 /* Update the CSS for the headers to have them all padded from the top, centered, and some additional changes */
 h1 {

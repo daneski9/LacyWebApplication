@@ -1,0 +1,66 @@
+/* AdminLanding.css */
+.landing {
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 10px;
+  
+}
+
+
+.file {
+  width: 300px;
+  background-color: #6d2d2d;
+  color: #ffffff;
+  letter-spacing: 0.02rem;
+  padding: 10px;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+table {
+  margin-top: 10%;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(43, 31, 31, 0.486);
+
+}
+
+th {
+  border: 1px solid;
+  text-align: left;
+  padding: 8px;
+  background-color: transparent;
+  color: white;
+}
+
+td {
+  border: 1px solid;
+  text-align: left;
+  padding: 20px;
+  background-color: transparent;
+  color: white;
+}
+
+
+
+.submit-button {
+  margin-top: 10px;
+}
+
+.logout-btn{
+  background-color: black;
+  color: white;
+  padding: 0.7em 1.9em;
+  border-radius: 5px;
+  margin-left: 70%;
+  cursor: pointer;
+  border: 1px solid white;
+}
+.welcome-message{
+  color: white;
+  padding: 10px 20px;        
+  font-size: 1.1rem;
+  margin-left: 80%;
+}
