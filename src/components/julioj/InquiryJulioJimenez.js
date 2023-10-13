@@ -1,12 +1,14 @@
-import Navbar from "../Navbar";
-import React, { useState, useRef } from 'react';
-import emailjs from '@emailjs/browser';
-
 import '../../App.css'
 import './julioCSS/InquiryJulioJimenez.css'
 import Footer from './Footer';
 import { db } from "../../DataBase"; 
 import {addDoc, collection} from "firebase/firestore";
+
+import Navbar from "../Navbar";
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
+
+
 
 function InquiryPage() {
   
@@ -93,7 +95,7 @@ function InquiryPage() {
         <textarea name="description" value={description} onChange={handleDescription} placeholder="Tattoo description" required />
         
         <label htmlFor="image">Reference Image
-            <input type="file" accept=".pdf, .jpg, .png" name="image" value={imageRef} onChange={handleImageRef} />
+            <input type="file" className="file" accept=".pdf, .jpg, .png" name="image" value={imageRef} onChange={handleImageRef} />
         </label>
         
         <br></br>
