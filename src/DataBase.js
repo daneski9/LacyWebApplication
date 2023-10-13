@@ -6,6 +6,7 @@ import { initializeApp } from "firebase/app";
 import {getStorage} from "firebase/storage";
 import {getFirestore} from "@firebase/firestore" // Firebase Datrabase added by Eric
 import { getAuth } from "firebase/auth";
+import { ref } from "firebase/database";
 
 // Referenced this video for button and file access:
 // https://www.youtube.com/watch?v=YOAeBSCkArA

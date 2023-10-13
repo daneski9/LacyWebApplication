@@ -12,7 +12,7 @@ import ContactJulioJimenez from "./components/julioj/ContactJulioJimenez";
 import InquiryJulioJimenez from "./components/julioj/InquiryJulioJimenez";
 import PortfolioJulioJimenez from "./components/julioj/PortfolioJulioJimenez";
 import ServicesJulioJimenez from "./components/julioj/ServicesJulioJimenez";
-import AdminLanding from "./components/julioj/AdminLanding";
+import Dashboard from "./components/julioj/Dashboard";
 import PaymentOptions from "./components/julioj/PaymentOptions";
 
 
@@ -33,8 +33,8 @@ function App() {
             <Route path="/JulioJimenez/login" element={<Login />} />
             <Route path="/JulioJimenez/signup" element={<SignUp />} />
             <Route path="/JulioJimenez/authdetails" element={<AuthDetails />} />
-            <Route path="/JulioJimenez/resetpassword" element={<UpdatePassword />} />
-            <Route path="/JulioJimenez/adminlanding" element={<AdminLanding />} />
+            <Route path="/JulioJimenez/updatepassword" element={<UpdatePassword />} />
+            <Route path="/JulioJimenez/dashboard" element={<Dashboard />} />
             <Route path="/JulioJimenez/payment" element={<PaymentOptions />} />
 
         </Routes>
