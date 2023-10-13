@@ -22,24 +22,28 @@
   .artists-container {
     display: grid;
     justify-items: center;
-    row-gap: 20px;
+    row-gap: 25px;
+    grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
   }
-  
+
+
   /* Style the container for each artist */
   .lacy-container, .diana-container, .g-container, .gabriel-container, .luis-container {
     position: relative;
     display: inline-block;
     align-items: center; 
-    background-color: #0000007a;
-    padding: 0.3em;
+    background-color: #070101af;
+    padding: 2.5px;
+
   }
   
   /* Style the image for each artist */
   .artists-container img {
     width: 200px;
     height: 200px;
-    padding: 6px;
     object-fit: cover;
+    vertical-align: middle;
+    padding: 2.5px;
   }
 
    /* Style the text to appear on hover */
@@ -52,9 +56,9 @@
     display: none; /* Hide by default */
     justify-content: center;
     align-items: center;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.4);
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     text-align: center;
   }
 
@@ -64,6 +68,10 @@
    .luis-container:hover .img-overlay {
     display: flex;
   }
+
+  
+
+  
   @media (max-width: 900px) {
     .title {
       font-size: 2em;
@@ -75,17 +83,77 @@
 
     /* Style the container for the artists */
     .artists-container {
-    display: grid;
-    justify-items: center;
-    row-gap: 5px;
+      row-gap: 5px;
     }
   
     .artists-container img {
-      width: 80px;
-      height: 80px;
-      padding: 2px;
+      max-width: 150px;
+      max-height: 150px;
       object-fit: cover;
+      vertical-align: middle;
+    }
+  }
+  @media (hover:none) {
+    .img-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex; /* Hide by default */
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.3);
+      color: #fff;
+      font-size: 1rem;
+      letter-spacing: 0.04rem;
+      text-align: center;
+      text-shadow: 2px 2px 5px #0c00007c;
+    }
+  }
+
+  @media (max-width: 642px) {
+    .artists-container img {
+      max-width: 120px;
+      max-height: 120px;
     }
 
+  }
 
+  @media (max-width: 523px) {
+    .artists-container img {
+      max-width: 100px;
+      max-height: 100px;
+    }
+  }
+
+  @media (max-width: 442px) {
+    .artists-container img {
+      max-width: 90px;
+      max-height: 90px;
+    }
+  }
+
+  @media (max-width: 402px) {
+    .artists-container img {
+      max-width: 88px;
+      max-height: 88px;
+    }
+  }
+  @media (max-width: 394px) {
+    .artists-container img {
+      max-width: 86px;
+      max-height: 86px;
+    }
+  }
+
+  @media (max-width: 386px) {
+    .artists-container img {
+      max-width: 70px;
+      max-height: 70px;
+    }
+    .artists-container {
+      background-color: rgba(0, 0, 0, 0.911);
+      gap: 30px;
+    }
   }

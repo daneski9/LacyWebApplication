@@ -98,7 +98,7 @@
     padding: 0px 0px 0px 0px;
   }
 }
-@media (max-width: 668px) {
+@media (max-width: 740px) {
   .page-container {
     margin-top: 10px;
   }
@@ -112,8 +112,7 @@
     display: block; /* to remove the bottom spacing */
   }
   .headerContainer{
-    margin-top: 25px;
-    margin-bottom: 20p;
+    margin-bottom: 20px;
   }
   .itemDescription{
     hyphens: auto; /* attempt to hyphenate */
@@ -123,12 +122,24 @@
   font-size: 0.8rem;
   line-height: 1.1;
   }
+  .services-container{
+    gap: 5px;
+  }
+  .services-item{
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+
+}
+@media (max-width: 670px) {
+  .headerContainer{
+    margin-top: 25px; 
+  }
+
 
 }
 @media (max-width: 595px) {
-  .services-container{
-    grid-gap: 10px;
-  }
   .itemImg{
     max-width: 50%; /* or 100% if you want it to take the full width of the container */
     height: 200px;
@@ -142,6 +153,15 @@
   .itemTitle{
     font-size: 1.3rem;
     line-height: 0.9;
+  }
+  .discountText{
+    font-size: 0.7em;
+  }
+  .servicesTitle {
+      margin-top: -10px;
+  }
+  .itemText > .itemDescription{
+    color: rgba(255, 255, 255, 0.918);
   }
 }
 @media (max-width: 531px) {
@@ -161,10 +181,13 @@
   .itemDescription{
     width: 105px;
   }
+  .services-container{
+    gap: 7px;
+  }
 }
-@media (max-width: 424px) {
+@media (max-width: 426px) {
   .servicesTitle {
-    margin-top: 5px;
+    margin-top: -12px;
   }
   .itemDescription{
     width: unset;
@@ -180,6 +203,7 @@
 @media (max-width: 350px){
   .services-container{
     grid-template-columns: repeat(1, 1fr);
+    gap: 3px;
   }
   
 }
