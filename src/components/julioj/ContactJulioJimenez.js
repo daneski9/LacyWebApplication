@@ -65,9 +65,9 @@ function Contact() {
         <input type="email" name="email" placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)} required />
         <textarea id="message" name ="message" placeholder="Message" value={message} onChange={(event) => setDescription(event.target.value)} required />
 
-        <div className='submit-button'>
-          <button type="submit">Submit</button>
-        </div>
+        
+        <button type="submit">Submit</button>
+        
               
       </form>
     </div>
