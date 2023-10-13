@@ -13,6 +13,7 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { v4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
+import { Link } from 'react-router-dom';
 
 // TODO: Impliment JSON fro imageInfo
 // import {  } from "json";
@@ -117,6 +118,11 @@ function AdminLanding() {
     
     <div className='welcome-message'>Welcome, {email} </div>
     <div className='landing'>
+      <div class="buttons">
+        <Link to="/JulioJimenez/Dashboard">
+          <button type="button">Update Password</button>
+        </Link>
+      </div>
       <div className='table'>  
       <table>
         
