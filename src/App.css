@@ -42,7 +42,6 @@ html {
 /* Update the CSS for the headers to have them all padded from the top, centered, and some additional changes */
 h1 {
   color: #fff;
-  padding-top: 25px;
   font-size: 2rem;
   text-align: center;
   margin-bottom: 20px;

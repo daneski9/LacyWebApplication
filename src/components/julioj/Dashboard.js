@@ -119,7 +119,7 @@ function AdminLanding() {
     <div className='welcome-message'>Welcome, {email} </div>
     <div className='landing'>
       <div class="buttons">
-        <Link to="/JulioJimenez/Dashboard">
+        <Link to="/JulioJimenez/updatepassword">
           <button type="button">Update Password</button>
         </Link>
       </div>
