@@ -4,8 +4,8 @@ import './julioCSS/Dashboard.css'
 import Navbar from "../Navbar";
 import Footer from './Footer';
 import { db } from "../../DataBase";  // db const
-import{collection, getDocs, query, where} from 'firebase/firestore'; // collection and getDocs const
-import { set } from 'lodash';
+import{doc, updateDoc, deleteDoc, collection, getDocs, query, where} from 'firebase/firestore'; // collection and getDocs const
+import { orderBy, set } from 'lodash';
 import { getAuth } from 'firebase/auth';
 // Uncomment for access to image database
 import { storage } from "../../DataBase";
@@ -14,7 +14,7 @@ import { v4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { Link } from 'react-router-dom';
-
+import InquiryModal from './InquiryModal';
 // TODO: Impliment JSON fro imageInfo
 // import {  } from "json";
 
@@ -44,11 +44,71 @@ function AdminLanding() {
     }
   };
 
+  const updateStateInFirestore = async (inquiry, newState) => {
+    const inquiryDocRef = doc(db, 'Inquirer', inquiry.id);
+    await updateDoc(inquiryDocRef, { State: newState });
+    console.log('State updated successfully.');
+  };
+
+  const handleUpdateState = async (inquiry) => {
+    
+    try {
+      if (inquiry.State === 1) {
+        // Update the state to 2 (In-Progress)
+        await updateStateInFirestore(inquiry, 2);
+      } else if (inquiry.State === 2) {
+        // Update the state to 3 (Completed)
+        await updateStateInFirestore(inquiry, 3);
+      }
+      
+      closeModal(); // Close the modal after updating the state.
+
+      // Fetch the updated data to refresh the table with the latest information.
+    fetchInquirerData(currentState);
+    } catch (error) {
+      console.error('Error updating state: ', error);
+    }
+  };
+  
+
   useEffect(() => {
 
     // Fetch data when the component mounts or when the currentState changes
     fetchInquirerData(currentState);
   }, [currentState]);
+
+    // Modal Stuff
+
+const [showModal, setShowModal] = useState(false);
+const [selectedInquiry, setSelectedInquiry] = useState(null);
+
+    // Function to open the modal and set the selected inquiry
+const openModal = (Inquiry) => {
+  setSelectedInquiry(Inquiry);
+  setShowModal(true);
+  console.log("showModal:", showModal);
+};
+    // Function to close the modal
+const closeModal = () => {
+  setSelectedInquiry(null);
+  setShowModal(false);
+  console.log("closeModal:", showModal);
+};
+    // End Modal Stuff
+
+  
+
+  // Function to handle Inquiry Button clicks
+  const handleButtonAction = (Inquiry) => {
+    // You can access the inquiry's details here and perform actions.
+    console.log("Button clicked for inquiry:", Inquiry);
+    openModal(Inquiry);
+    // For example, you can open a modal to display more information or perform other actions.
+    console.log("showModal:", showModal);
+    console.log("selectedInquiry:", selectedInquiry);
+    // Implement your custom logic here.
+  };
+
 
   // Function to handle button clicks and change the current state
   const handleButtonClick = (newState) => {
@@ -56,15 +116,31 @@ function AdminLanding() {
 
     };
 
-    let pageTitle = "Newest Inquiry";
-  if (currentState === 2) {
-    pageTitle = "In-Progress";
-  } else if (currentState === 3) {
-    pageTitle = "Completed";
-  }
+
+  // function to handle deleting an inquiry
+  const handleDelete = async (inquiry) => {
+    // Add logic to confirm the delete action, e.g., a confirmation dialog
+    const confirmDelete = window.confirm('Are you sure you want to delete this inquiry?');
+  
+    if (confirmDelete) {
+       // Delete the inquiry from the database
+      // Be sure to add the necessary Firestore deletion logic.
+      const inquiryDocRef = doc(db, 'Inquirer', inquiry.id);
+      await deleteDoc(inquiryDocRef);
+      console.log('Inquiry deleted successfully.');
+
+     
+
+      // This Removes the inquiry from the UI without refreshing the page or repulling the data from the database
+      setInquirer((prevInquirer) => prevInquirer.filter((item) => item.id !== inquiry.id));
+  
+      // Close the modal after deleting the inquiry.
+      closeModal();
+    }
+  };
 
   
-  // end Cloud Database Stuff
+ 
   
   const [image, setImage] = useState(null);
   //const [ imageInfo ] = useState(null);
@@ -112,6 +188,15 @@ function AdminLanding() {
     }
   };
 
+
+// Set page title based on the current state, should be recoded to start as Newest Inquiry, then change based on button click
+  let pageTitle = "Newest Inquiry";
+  if (currentState === 2) {
+    pageTitle = "In-Progress";
+  } else if (currentState === 3) {
+    pageTitle = "Completed";
+  }
+
   return (
     <>
     <Navbar />
@@ -123,18 +208,31 @@ function AdminLanding() {
           <button type="button">Update Password</button>
         </Link>
       </div>
-      <div className='table'>  
-      <table>
-        
-        <thead>
-        
-        <div>
+      {showModal && (
+      <div className="modal">
+      <InquiryModal inquiry={selectedInquiry} 
+      onClose={closeModal} 
+      onUpdateState={handleUpdateState} 
+      onDelete={handleDelete} />
+      </div>
+      
+)}
+
+      <div>
         <h1>{pageTitle}</h1> 
         <button onClick={() => handleButtonClick(1)}>Newest Inquiries</button>
         <button onClick={() => handleButtonClick(2)}>In-Progress</button>
         <button onClick={() => handleButtonClick(3)}>Completed</button>
         
       </div>
+      <div className='table'>  
+      <table>
+        
+        <thead>
+        
+      
+
+
           <tr>
           
             <th>Inquirer ID</th>
@@ -144,14 +242,14 @@ function AdminLanding() {
             <th>Location on Body</th>
             <th>Tattoo Description</th>
             <th>Date</th>
-            <th>State</th> 
+            <th>Action</th> 
           </tr>
         </thead>
 
         <tbody>
         {Inquirer.map((Inquiry) => {
           return (
-            <tr>
+            <tr key={Inquiry.id}>
               <td>{Inquiry.id}</td>
               <td>{Inquiry.First} {Inquiry.Last}</td>
               <td>{Inquiry.Email}</td>
@@ -159,14 +257,18 @@ function AdminLanding() {
               <td>{Inquiry.Location}</td>
               <td>{Inquiry.Description}</td>
               <td>{Inquiry.Date}</td>
-              <td>{Inquiry.State}</td>
+              <td>
+                <button onClick={()=> handleButtonAction(Inquiry)}>Open</button>
+              </td>
             </tr>
           )
           
         })}
         </tbody>
         </table>
+        
         </div>
+        
 
       <div className = 'file'>
         <label htmlFor="image">Upload Image (Multiple)
