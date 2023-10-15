@@ -41,8 +41,8 @@ function UpdatePassword() {
     <>
       <Navbar />
 
-      <div>
-        <h1>Update Password</h1>
+      <div className="admin-page-container">
+        <h1 className="login_header">Update Password</h1>
         <div>{success && <p>{success}</p>}</div>
         <div></div>{error && <p>{error}</p>}
         <form onSubmit={handleUpdatePassword} className='user-pass-container'>
