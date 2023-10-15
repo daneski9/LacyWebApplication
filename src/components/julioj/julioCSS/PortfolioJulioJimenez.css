@@ -1,11 +1,19 @@
 
+.bannerGridWrapper {
+  margin-top: 30px;
+  width: 100%;
+  background: #00000054; /* or any color you want */
+  display: flex;
+  justify-content: center;
+  padding: 10px 10px 25px 10px;
+}
 .bannerGrid {
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 3 columns */
-  justify-content: center;
+  gap: 8px;
+  width: fit-content; /* This will make the grid as wide as its content */
 }
-
 .container {
   display: flex;
   justify-content: center;
@@ -19,7 +27,7 @@
   font-weight: lighter;
   color: #ffffff;
   margin-top: 50px;
-  margin-bottom: 50px;
+  
 }
 .appointment-btn{
   background-color: rgba(0, 0, 0, 0.329);
@@ -30,6 +38,7 @@
   border: 1px solid rgb(255, 255, 255);
   white-space: nowrap;
   width: auto;
+  text-decoration: underline;
 }
 
 /* Styles from Box.css */

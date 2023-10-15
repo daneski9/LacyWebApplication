@@ -24,20 +24,18 @@ function Portfolio(properties) {
     const [imageList, setImageList] = useState([]);
     const imageListRef = ref(storage, "ImageData/");
 
-    useEffect(()=>{
+    useEffect(() => {
         listAll(imageListRef)
         .then((response) => {
-                console.log(response);
-                response.items.forEach((item)=>{
-                    getDownloadURL(item).then((url)=>{
-                        setImageList((prev) => [...prev, url]);
-                    });
+            let uniqueURLs = new Set();
+            response.items.forEach((item) => {
+                getDownloadURL(item).then((url) => {
+                    uniqueURLs.add(url);
+                    setImageList([...uniqueURLs]);
                 });
             });
-
-    // KEEP THE NEXT LINE AS ```},[]);``` OR ELSE SAY HELLO TO A RAM BOMB!!!!      
-    },[]);
-
+        });
+    }, []);
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
@@ -54,14 +52,16 @@ function Portfolio(properties) {
                     });
                     }}>MAKE AN APPOINTMENT</button>
                 </Link>
-                <div className="bannerGrid">
-                    {imageList.map((image, url) => (
-                        <Box data={image} index={url} key={image} onClick={() => {
-                            setSelectedImage(image);
-                            setSelectedImageIndex(url);
-                        }} />
-                    ))}
-            </div>
+                <div className="bannerGridWrapper">
+                    <div className="bannerGrid">
+                        {imageList.map((image, url) => (
+                            <Box data={image} index={url} key={image} onClick={() => {
+                                setSelectedImage(image);
+                                setSelectedImageIndex(url);
+                            }} />
+                        ))}
+                    </div>
+                </div>
             </div>
             {selectedImage && (
                 <div className="modal-portfolio" onClick={(e) => {
