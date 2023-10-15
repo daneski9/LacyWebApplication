@@ -31,7 +31,7 @@ function About() {
   const handleAdminLoginClick = () => {
       if (isLoggedIn) {
           window.scrollTo(0, 0);
-          adminButtonNavigate('/JulioJimenez/adminlanding');
+          adminButtonNavigate('/JulioJimenez/dashboard');
       } else {
           window.scrollTo(0, 0);
           adminButtonNavigate('/JulioJimenez/login');
