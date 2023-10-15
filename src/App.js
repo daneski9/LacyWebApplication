@@ -7,6 +7,7 @@ import SignUp from "./components/auth/SignUp";
 import AuthDetails from "./components/auth/AuthDetails";
 import Lounge from "./components/Lounge";
 import UpdatePassword from "./components/UpdatePassword";
+import ResetPassword from "./components/ResetPassword";
 //Julio imports:
 import AboutJulioJimenez from "./components/julioj/AboutJulioJimenez";
 import ContactJulioJimenez from "./components/julioj/ContactJulioJimenez";
@@ -37,8 +38,10 @@ function App() {
             <Route path="/JulioJimenez/login" element={<Login />} />
             <Route path="/JulioJimenez/signup" element={<SignUp />} />
             <Route path="/JulioJimenez/authdetails" element={<AuthDetails />} />
+            <Route path="/JulioJimenez/resetpassword" element={<ResetPassword />} />
             <Route exact path='/' element={<PrivateRoute/>}>
                 <Route exact path='/JulioJimenez/updatepassword' element={<UpdatePassword/>}/>
+                
             </Route>
             <Route path="/JulioJimenez/payment" element={<PaymentOptions />} />
 

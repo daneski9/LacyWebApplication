@@ -57,9 +57,9 @@ function Login() {
           <div className="buttons">
             <button type="submit">Submit</button>
 
-            <Link to="/JulioJimenez/updatepassword">
+            <Link to="/JulioJimenez/resetpassword">
               <button type="button" onClick={handleLinkClick}>
-                Update Password
+                Forgot Password
               </button>
             </Link>
 
