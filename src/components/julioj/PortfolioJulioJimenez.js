@@ -39,6 +39,7 @@ function Portfolio(properties) {
     },[]);
 
     const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
     return (
         <>
@@ -55,14 +56,34 @@ function Portfolio(properties) {
                 </Link>
                 <div className="bannerGrid">
                     {imageList.map((image, url) => (
-                        <Box data={image} index={image} key={image} onClick={() => setSelectedImage(image)} />
+                        <Box data={image} index={url} key={image} onClick={() => {
+                            setSelectedImage(image);
+                            setSelectedImageIndex(url);
+                        }} />
                     ))}
             </div>
             </div>
             {selectedImage && (
-                <div className="modal" onClick={() => setSelectedImage(null)}>
+                <div className="modal-portfolio" onClick={(e) => {
+                    if (e.target.classList.contains('modal-portfolio')) {
+                        setSelectedImage(null);
+                    }
+                }}>
                     <img src={selectedImage} alt="Selected" className="modal-image" />
+                    <div className="arrow right-arrow" onClick={() => {
+                        if (selectedImageIndex < imageList.length - 1) {
+                            setSelectedImage(imageList[selectedImageIndex + 1]);
+                            setSelectedImageIndex(selectedImageIndex + 1);
+                        }
+                    }}>→</div>
+                    <div className="arrow left-arrow" onClick={() => {
+                        if (selectedImageIndex > 0) {
+                            setSelectedImage(imageList[selectedImageIndex - 1]);
+                            setSelectedImageIndex(selectedImageIndex - 1);
+                        }
+                    }}>←</div>
                 </div>
+                
             )}
             <Footer />
         </>

@@ -1,3 +1,4 @@
+
 .bannerGrid {
   margin-top: 20px;
   display: grid;
@@ -18,6 +19,7 @@
   font-weight: lighter;
   color: #ffffff;
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 .appointment-btn{
   background-color: rgba(0, 0, 0, 0.329);
@@ -28,7 +30,6 @@
   border: 1px solid rgb(255, 255, 255);
   white-space: nowrap;
   width: auto;
-  margin-top: 30px;
 }
 
 /* Styles from Box.css */
@@ -67,7 +68,7 @@
 }
 @media (max-width: 530px) {
   .appointment-btn{
-    margin-top: 10px;
+    margin-top: 10npm startpx;
   }
 
 }
@@ -84,13 +85,13 @@
 
 }
 /* Modal styling */
-.modal {
+.modal-portfolio {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.74);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,4 +101,23 @@
 .modal-image {
   max-width: 80%;
   max-height: 80%;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  font-size: 3em;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  user-select: none;
+  transform: translateY(-50%);
+  padding: 5px;
+}
+
+.right-arrow {
+  right: 15%;
+}
+
+.left-arrow {
+  left: 15%;
 }
