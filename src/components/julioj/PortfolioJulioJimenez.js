@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import Navbar from "../Navbar";
 import SearchBar from "../subcomponents/Searchbar";
-import Box from "../subcomponents/Box";
 import './julioCSS/PortfolioJulioJimenez.css';
 import Footer from './Footer';
 import { storage } from "../../DataBase";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
+import { Link } from 'react-router-dom';
 
 
 
@@ -38,24 +38,48 @@ function Portfolio(properties) {
     // KEEP THE NEXT LINE AS ```},[]);``` OR ELSE SAY HELLO TO A RAM BOMB!!!!      
     },[]);
 
+    const [selectedImage, setSelectedImage] = useState(null);
 
     return (
         <>
             <Navbar />
-
-            <h1 className="galleryTitle">Gallery of Recent Tattoos</h1>
-
-            <div className="search-container">
-            <SearchBar query={query} onChange={setQuery} />
-            </div>
-
+            <div className="container">
+                <h1 className="galleryTitle">Gallery of Recent Tattoos</h1>
+                <Link to="/JulioJimenez/inquiry">
+                    <button className='appointment-btn' onClick={() => {
+                    window.scroll({
+                        top: 0,
+                        left: 0
+                    });
+                    }}>MAKE AN APPOINTMENT</button>
+                </Link>
                 <div className="bannerGrid">
-                {imageList.map((image, url) => (
-                    <Box data={image} index={image} key={image} />
-                ))} </div>
-
+                    {imageList.map((image, url) => (
+                        <Box data={image} index={image} key={image} onClick={() => setSelectedImage(image)} />
+                    ))}
+            </div>
+            </div>
+            {selectedImage && (
+                <div className="modal" onClick={() => setSelectedImage(null)}>
+                    <img src={selectedImage} alt="Selected" className="modal-image" />
+                </div>
+            )}
             <Footer />
         </>
     );
 }
-export default Portfolio;
+
+function Box({ data, index, onClick }) {
+    return (
+      <div className='box'>
+          <img
+              className="box img"
+              src={`${data}`} 
+              alt={`${index}`}
+              onClick={onClick}  
+          />
+      </div>
+    );
+}
+  
+  export default Portfolio;

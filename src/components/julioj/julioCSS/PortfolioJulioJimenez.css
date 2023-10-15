@@ -1,18 +1,84 @@
-.bannerGrid{
-    display: grid;
-    grid-template-columns: repeat(3, auto); /* 3 columns */
-    justify-content: center;
-    
+.bannerGrid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  justify-content: center;
 }
 
-.search-container{
-    display: flex;
-    justify-content: center;
-    margin-top: 60px;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Stack children vertically */
 }
+
 .galleryTitle{
-  font-size: 3em;
+  font-size: 3.5em;
   font-family: 'Oleo Script', 'Jost', sans-serif, Arial;
   font-weight: lighter;
   color: #ffffff;
+  margin-top: 50px;
+}
+.appointment-btn{
+  background-color: rgba(0, 0, 0, 0.329);
+  color: white;
+  padding: 0.7em 1.9em;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid rgb(255, 255, 255);
+  white-space: nowrap;
+  width: auto;
+  margin-top: 30px;
+}
+
+/* Styles from Box.css */
+.box {
+  border-radius: 0.5rem;
+  max-width: 240px;
+  max-height: 240px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.box img:hover {
+  cursor: pointer;
+}
+
+.box img {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .box {
+      width: 200px; /* Adjust the box width for mobile */
+      height: 200px; /* Adjust the box height for mobile */
+  }
+  .box img {
+      width: 200px;
+      height: 200px;
+  }
+  .bannerGrid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Modal styling */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-image {
+  max-width: 80%;
+  max-height: 80%;
 }
