@@ -23,6 +23,7 @@
     display: grid;
     justify-items: center;
     row-gap: 25px;
+    row-gap: 25px;
     grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
   }
 
@@ -35,6 +36,9 @@
     background-color: #070101af;
     padding: 2.5px;
 
+    background-color: #070101af;
+    padding: 2.5px;
+
   }
   
   /* Style the image for each artist */
@@ -43,6 +47,7 @@
     height: 200px;
     object-fit: cover;
     vertical-align: middle;
+    padding: 2.5px;
     padding: 2.5px;
   }
 
@@ -89,6 +94,8 @@
     .artists-container img {
       max-width: 150px;
       max-height: 150px;
+      max-width: 150px;
+      max-height: 150px;
       object-fit: cover;
       vertical-align: middle;
     }
@@ -105,6 +112,8 @@
       align-items: center;
       background-color: rgba(0, 0, 0, 0.3);
       color: #fff;
+      font-size: 1rem;
+      letter-spacing: 0.04rem;
       font-size: 1rem;
       letter-spacing: 0.04rem;
       text-align: center;

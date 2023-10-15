@@ -1,5 +1,6 @@
 import ".//App.css";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import PrivateRoute from "./PrivateRoute";
 
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
@@ -12,7 +13,7 @@ import ContactJulioJimenez from "./components/julioj/ContactJulioJimenez";
 import InquiryJulioJimenez from "./components/julioj/InquiryJulioJimenez";
 import PortfolioJulioJimenez from "./components/julioj/PortfolioJulioJimenez";
 import ServicesJulioJimenez from "./components/julioj/ServicesJulioJimenez";
-import AdminLanding from "./components/julioj/AdminLanding";
+import Dashboard from "./components/julioj/Dashboard";
 import PaymentOptions from "./components/julioj/PaymentOptions";
 
 
@@ -25,6 +26,9 @@ function App() {
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<Lounge />} />
+            <Route exact path='/' element={<PrivateRoute/>}>
+                <Route exact path='/JulioJimenez/dashboard' element={<Dashboard/>}/>
+            </Route>
             <Route path="/JulioJimenez/about" element={<AboutJulioJimenez />} />
             <Route path="/JulioJimenez/contact" element={<ContactJulioJimenez />} />
             <Route path="/JulioJimenez/inquiry" element={<InquiryJulioJimenez />} />
@@ -33,8 +37,9 @@ function App() {
             <Route path="/JulioJimenez/login" element={<Login />} />
             <Route path="/JulioJimenez/signup" element={<SignUp />} />
             <Route path="/JulioJimenez/authdetails" element={<AuthDetails />} />
-            <Route path="/JulioJimenez/resetpassword" element={<UpdatePassword />} />
-            <Route path="/JulioJimenez/adminlanding" element={<AdminLanding />} />
+            <Route exact path='/' element={<PrivateRoute/>}>
+                <Route exact path='/JulioJimenez/updatepassword' element={<UpdatePassword/>}/>
+            </Route>
             <Route path="/JulioJimenez/payment" element={<PaymentOptions />} />
 
         </Routes>

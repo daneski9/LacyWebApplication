@@ -42,17 +42,10 @@ html {
 /* Update the CSS for the headers to have them all padded from the top, centered, and some additional changes */
 h1 {
   color: #fff;
-  padding-top: 25px;
   font-size: 2rem;
   text-align: center;
   margin-bottom: 20px;
 }
-
-
-
-
-
-
 
 /*
  * Modifying buttons, labels, and additional fields on the Form below
@@ -153,30 +146,44 @@ form > input[type="file"] {
 
 /* Update the CSS for the button of type submit to add some additional CSS features to make it look appealing */
 div button[type="submit"], div button[type="button"] {
-  display: inline-block;
-  background-color: #226324;
-  color: #fff;
-  padding: 10px 20px;
+  display:inline-block;
+  padding:10px 20px;
+  margin:0.1em;
   border-radius: 5px;
-  font-size: 1.1rem;
-  font-weight: 500;
-  cursor: pointer;
-  margin-right: 10px;
-  border: none;
-  letter-spacing: 0.09rem;
-  transition: background-color 0.3s ease;
+  border:0.20em solid #CCCCCC;
+  box-sizing: border-box;
+  text-decoration:none;
   font-family: Arial, sans-serif;
-  
-}
-/* Update the CSS for the button of type submit to change the background color when being hovered over */
-form > button[type="submit"]:hover {
-  background-color: #63e768;
+  font-size: 1.1rem;
+  font-weight:500;
+  letter-spacing: 0.09rem;
+  color:#000000;
+  background-color:#cccccc;
+  text-align:center;
+  position:relative;
 }
 
-/* Update the CSS for the button of type button to change the background color when being hovered over */
-form > button[type="button"]:hover {
-  background-color: #3e8e41; /* Darker green */
+/* Update the CSS for the button of type submit/button to change the background color when being hovered and pressed */
+form > button[type="submit"]:hover,
+form > button[type="button"]:hover{
+  border-color:#7a7a7a;
 }
+
+form > button[type="submit"]:active,
+form > button[type="button"]:active{
+  background-color:#999999;
+}
+
+div button[type="submit"]:hover,
+div button[type="button"]:hover{
+  border-color: #7a7a7a;
+}
+
+div button[type="submit"]:active,
+div button[type="button"]:active{
+  background-color:#999999;
+}
+
 
 .alert {
   background-color: green;

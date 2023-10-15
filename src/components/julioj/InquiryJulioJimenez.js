@@ -1,12 +1,14 @@
-import Navbar from "../Navbar";
-import React, { useState, useRef } from 'react';
-import emailjs from '@emailjs/browser';
-
 import '../../App.css'
 import './julioCSS/InquiryJulioJimenez.css'
 import Footer from './Footer';
 import { db } from "../../DataBase"; 
 import {addDoc, collection} from "firebase/firestore";
+
+import Navbar from "../Navbar";
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
+
+
 
 function InquiryPage() {
   
@@ -34,7 +36,7 @@ function InquiryPage() {
   const handleSubmit = async () => {
     // Save the data to Firebase
     await addDoc(collection(db, "Inquirer"), {First: first, Last: last,
-      Email: email, Phone: phone, Location: location, Description: description, ImageRef: imageRef})
+      Email: email, Phone: phone, Location: location, Description: description, ImageRef: imageRef, State: 1})
     // Clear the form
     setFName("");
     setLName("");
@@ -49,7 +51,7 @@ function InquiryPage() {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm('service_3croqwd', 'template_ocg7ucx', form.current, 'zCUN8bCaLrLkii0mR')
+    emailjs.sendForm('service_wvpurwc', 'template_747huxp', form.current, 'y1XLxwxWca9cZzlcv')
       .then((result) => {
           console.log(result.text);
       }, (error) => {
@@ -71,7 +73,9 @@ function InquiryPage() {
 
   return (
     <>
+
     <Navbar />
+
     <div className='inquiry'>
       
       {showAlert && (
@@ -91,7 +95,7 @@ function InquiryPage() {
         <textarea name="description" value={description} onChange={handleDescription} placeholder="Tattoo description" required />
         
         <label htmlFor="image">Reference Image
-            <input type="file" accept=".pdf, .jpg, .png" name="image" value={imageRef} onChange={handleImageRef} />
+            <input type="file" className="file" accept=".pdf, .jpg, .png" name="image" value={imageRef} onChange={handleImageRef} />
         </label>
         
         <br></br>
@@ -103,6 +107,7 @@ function InquiryPage() {
     </div>
     
     <Footer />
+
     </>
   );
 }
