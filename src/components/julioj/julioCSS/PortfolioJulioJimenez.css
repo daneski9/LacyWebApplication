@@ -1,7 +1,7 @@
 .bannerGrid {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-template-columns: repeat(4, 1fr); /* 3 columns */
   justify-content: center;
 }
 
@@ -49,21 +49,40 @@
   height: 240px;
   object-fit: cover;
 }
+@media (max-width: 978px) {
+  .bannerGrid {
+    grid-template-columns: repeat(3, 1fr);
+}
+}
 
 @media (max-width: 768px) {
-  .box {
-      width: 200px; /* Adjust the box width for mobile */
-      height: 200px; /* Adjust the box height for mobile */
-  }
-  .box img {
-      width: 200px;
-      height: 200px;
-  }
   .bannerGrid {
       grid-template-columns: repeat(2, 1fr);
   }
 }
+@media (max-width: 670px) {
+  .galleryTitle{
+    margin-top: 80px;
+  }
+}
+@media (max-width: 530px) {
+  .appointment-btn{
+    margin-top: 10px;
+  }
 
+}
+@media (max-width: 478px) {
+  .box img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+  .box {
+    max-width: 200px;
+    max-height: 200px;
+  }
+
+}
 /* Modal styling */
 .modal {
   position: fixed;
