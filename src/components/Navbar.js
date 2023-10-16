@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom'; 
 import "./Navbar.css";
+import InstagramIcon from "./images/insIcon.png";
 
 function Navbar(props){
     const location = useLocation();
     const currentPath = location.pathname;
-    let aboutUrl, servicesUrl, portfolioUrl, contactUrl, paymentUrl = '';
+    let aboutUrl, servicesUrl, portfolioUrl, contactUrl, paymentUrl,instagramUrl = '';
 
     const handleLinkClick = () => {
         window.scrollTo(0, 0);
@@ -17,6 +18,7 @@ function Navbar(props){
         portfolioUrl = '/JulioJimenez/portfolio';
         contactUrl = '/JulioJimenez/contact';
         paymentUrl = '/JulioJimenez/payment'
+        instagramUrl ='https://www.instagram.com/jayytatts/?hl=en'
     }
     //To add another artist:
     /*else if (currentPath.startsWith('OtherArtist')){
@@ -52,6 +54,10 @@ function Navbar(props){
                 <li>
                 <Link to="/" onClick={handleLinkClick}>Lounge</Link>
                 </li>
+                <li>
+                <Link to={instagramUrl} onClick={handleLinkClick} target="_blank">
+        <img src={InstagramIcon} alt="instagramIcon" width="30" height="30"/> </Link>
+                </li>
             </ul>
             </nav>
         </aside>
@@ -76,6 +82,10 @@ function Navbar(props){
                 </li>
                 <li>
                 <Link to="/" onClick={handleLinkClick}>Lounge</Link>
+                </li>
+                <li>
+                <Link to={instagramUrl} onClick={handleLinkClick} target="_blank">
+        <img src={InstagramIcon} alt="instagramIcon" width="30" height="30"/> </Link>
                 </li>
             </ul>
         </nav>

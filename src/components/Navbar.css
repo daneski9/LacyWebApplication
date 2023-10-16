@@ -122,7 +122,7 @@
       left: -10px;
       transition: translate var(--animation-timing);
       translate: -100%;
-      font-size: 30px;
+      font-size: 20px;
       padding: 0.5rem 3rem;
       padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
       background-color: rgba(8, 8, 8, 0.849);
