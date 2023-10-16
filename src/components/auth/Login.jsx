@@ -33,47 +33,47 @@ function Login() {
   return (
     <>
       <Navbar />
+      <div className="admin-page-container">
+        <h1 className="login_header">Log In</h1>
+        <div className="log-in-container">
+          <form onSubmit={handleSubmit} className="user-pass-container">
+            <input
+              type="text"
+              id="email"
+              placeholder="Email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              required
+            />
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              required
+            />
 
-      <h1 className="login_header">Log In</h1>
-      <div className="log-in-container">
-        <form onSubmit={handleSubmit} className="user-pass-container">
-          <input
-            type="text"
-            id="email"
-            placeholder="Email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            required
-          />
-          <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            required
-          />
+            <div className="buttons">
+              <button type="submit">Submit</button>
 
-          <div className="buttons">
-            <button type="submit">Submit</button>
+              <Link to="/JulioJimenez/resetpassword">
+                <button type="button" onClick={handleLinkClick}>
+                  Forgot Password
+                </button>
+              </Link>
 
-            <Link to="/JulioJimenez/resetpassword">
-              <button type="button" onClick={handleLinkClick}>
-                Forgot Password
-              </button>
-            </Link>
-
-            <Link to="/JulioJimenez/about">
-              <button type="button" onClick={handleLinkClick}>
-                Back
-              </button>
-            </Link>
-          </div>
-        </form>
-        {error && <div className="error-message">{error}</div>} {/* Display error message */}
-      </div>
-
-      <Footer />
+              <Link to="/JulioJimenez/about">
+                <button type="button" onClick={handleLinkClick}>
+                  Back
+                </button>
+              </Link>
+            </div>
+          </form>
+          {error && <div className="error-message">{error}</div>} {/* Display error message */}
+        </div>
+        </div>
+        <Footer />
     </>
   );
 }
