@@ -42,7 +42,7 @@
     display: none;
   }
     /* Media query for responsive design */
-  @media (max-width: 670px) {
+  @media (max-width: 748px) {
     .navbar{
       display:none;
     }

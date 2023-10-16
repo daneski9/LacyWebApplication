@@ -1,16 +1,11 @@
 
 .bannerGridWrapper {
-  margin-top: 30px;
-  width: 100%;
-  background: #00000054; /* or any color you want */
-  display: flex;
-  justify-content: center;
-  padding: 10px 10px 25px 10px;
+  
 }
 .bannerGrid {
-  margin-top: 20px;
+  margin-top: 40px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 3 columns */
+  grid-template-columns: repeat(5, 1fr); /* 3 columns */
   gap: 8px;
   width: fit-content; /* This will make the grid as wide as its content */
 }
@@ -59,6 +54,11 @@
   height: 240px;
   object-fit: cover;
 }
+@media (max-width: 1237px){
+  .bannerGrid {
+    grid-template-columns: repeat(4, 1fr); /* 3 columns */
+  }
+}
 @media (max-width: 978px) {
   .bannerGrid {
     grid-template-columns: repeat(3, 1fr);
@@ -70,26 +70,21 @@
       grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (max-width: 670px) {
+@media (max-width: 748px) {
   .galleryTitle{
     margin-top: 80px;
   }
 }
-@media (max-width: 530px) {
-  .appointment-btn{
-    margin-top: 10npm startpx;
-  }
-
-}
 @media (max-width: 478px) {
-  .box img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-  }
   .box {
     max-width: 200px;
     max-height: 200px;
+  }
+}
+@media (max-width: 415px) {
+  .box {
+    max-width: 150px;
+    max-height: 150px;
   }
 
 }
@@ -124,9 +119,9 @@
 }
 
 .right-arrow {
-  right: 15%;
+  right: 5%;
 }
 
 .left-arrow {
-  left: 15%;
+  left: 5%;
 }
