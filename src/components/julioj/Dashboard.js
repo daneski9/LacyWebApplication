@@ -203,11 +203,6 @@ const closeModal = () => {
     
     <div className='welcome-message'>Welcome, {email} </div>
     <div className='landing'>
-      <div class="buttons">
-        <Link to="/JulioJimenez/updatepassword">
-          <button type="button">Update Password</button>
-        </Link>
-      </div>
       {showModal && (
       <div className="modal">
       <InquiryModal inquiry={selectedInquiry} 
@@ -280,6 +275,10 @@ const closeModal = () => {
       </div>
     </div>
     <button class = "logout-btn" onClick={handleLogout}>LOGOUT</button>
+    
+    <Link to="/JulioJimenez/updatepassword">
+      <button class="logout-btn">UPDATE PASSWORD</button>
+    </Link>
     
     
     <Footer />

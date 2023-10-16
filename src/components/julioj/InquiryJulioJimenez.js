@@ -23,6 +23,9 @@ function InquiryPage() {
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const [imageRef, setImageRef] = useState("");
+  const [link, setLink] = useState("");
+
+  const [disabled, setDisabled] = useState("true")
 
   // Handle input changes
   const handleFName = (e) => setFName(e.target.value);
@@ -31,12 +34,46 @@ function InquiryPage() {
   const handlePhone = (e) => setPhone(e.target.value);
   const handleLocation = (e) => setLocation(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
-  const handleImageRef = (e) => setImageRef(e.target.value);
+  
+  const handleImageRef = event => {
+
+    console.log(event.target.files[0])
+
+    const selectedFile = event.target.files[0];
+    setImageRef(selectedFile.name);
+    console.log({imageRef});
+
+    const fileIn = event.target;
+    const file = fileIn.files[0];
+    if (file && file.size < 190e5) {
+
+      //setImageRef(event.target.value);
+      //console.log({imageRef});
+
+      const formdata = new FormData()
+      formdata.append("image", event.target.files[0])
+      fetch("https://api.imgur.com/3/image/", {
+        method: "post",
+        headers: {
+          Authorization: "Client-ID 9aec569336c27a5",
+          Accept: "application/json",
+        },
+        body: formdata
+
+      }).then(data => data.json()).then(data => {
+        setLink(data.data.link)
+        setDisabled("");
+        console.log("Link:  " + {link})
+      });
+    } else {
+      console.log("File too big");
+    }
+  };
 
   const handleSubmit = async () => {
     // Save the data to Firebase
     await addDoc(collection(db, "Inquirer"), {First: first, Last: last,
-      Email: email, Phone: phone, Location: location, Description: description, ImageRef: imageRef, State: 1})
+      Email: email, Phone: phone, Location: location, Description: description, ImageRef: link, State: 1})
     // Clear the form
     setFName("");
     setLName("");
@@ -45,6 +82,7 @@ function InquiryPage() {
     setLocation("");
     setDescription("");
     setImageRef("");
+    setLink("");
   };
 
 
@@ -95,12 +133,19 @@ function InquiryPage() {
         <textarea name="description" value={description} onChange={handleDescription} placeholder="Tattoo description" required />
         
         <label htmlFor="image">Reference Image
-            <input type="file" className="file" accept=".pdf, .jpg, .png" name="image" value={imageRef} onChange={handleImageRef} />
+          <input type="file" className="file" accept=".pdf, .jpg, .png" onChange={handleImageRef} />
         </label>
+
+        <input type="text" name="link" value={link} placeholder="Image Link" hidden/>
         
         <br></br>
 
-        <button type="submit" onClick={handleSubmit}>Submit</button>
+        {disabled && imageRef && (
+          <div>
+            <p className="text-content1">Image is currently uploading.  Inquiry Submission is disabled until image is processed.</p>
+          </div>
+        )}
+        <button type="submit" onClick={handleSubmit} disabled={disabled}>Submit</button>
 
       </form>
 
