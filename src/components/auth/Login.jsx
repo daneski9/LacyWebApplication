@@ -11,6 +11,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(''); // State variable for error message
+  const [failedAttempts, setFailedAttempts] = useState(0); // Track failed login attempts
   const navigateToLanding = useNavigate();
 
   const handleLinkClick = () => {
@@ -26,7 +27,14 @@ function Login() {
       navigateToLanding('/JulioJimenez/dashboard');
     } catch (error) {
       console.log(error);
-      setError('Unable to login. Please try again.'); // Sway to create an alert for this error message
+      setFailedAttempts(failedAttempts + 1);
+      if (failedAttempts >= 3) {
+        alert('Too many failed login attempts. Please try again later.');
+        // Optionally, you can disable the submit button here
+      } else {
+        setError('Unable to login. Please try again.');
+        alert('wrong password');
+      }
     }
   };
 
@@ -55,7 +63,7 @@ function Login() {
             />
 
             <div className="buttons">
-              <button type="submit">Submit</button>
+              <button type="submit" disabled={failedAttempts >= 3}>Submit</button>
 
               <Link to="/JulioJimenez/resetpassword">
                 <button type="button" onClick={handleLinkClick}>
@@ -72,8 +80,8 @@ function Login() {
           </form>
           {error && <div className="error-message">{error}</div>} {/* Display error message */}
         </div>
-        </div>
-        <Footer />
+      </div>
+      <Footer />
     </>
   );
 }
