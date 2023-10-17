@@ -47,15 +47,23 @@ function AdminLanding() {
   const formatTimestamp = (timestamp) => {
     if (timestamp && timestamp.toDate) {
       const date = timestamp.toDate();
-      
+  
       const month = String(date.getMonth() + 1).padStart(2, '0');
       const day = String(date.getDate()).padStart(2, '0');
-      const year = String(date.getFullYear()).slice(-2); 
-      const hours = String(date.getHours()).padStart(2, '0');
+      const year = String(date.getFullYear()).slice(-2);
+      let hours = date.getHours();
       const minutes = String(date.getMinutes()).padStart(2, '0');
       const seconds = String(date.getSeconds()).padStart(2, '0');
-      
-      const formattedDate = `${month}-${day}-${year} @ ${hours}:${minutes}:${seconds}`;
+      let amOrPm = "AM";
+  
+      if (hours >= 12) {
+        amOrPm = "PM";
+        if (hours > 12) {
+          hours -= 12;
+        }
+      }
+  
+      const formattedDate = `${month}-${day}-${year} @ ${hours}:${minutes}:${seconds} ${amOrPm}`;
       return formattedDate;
     } else {
       return "Invalid Timestamp";
