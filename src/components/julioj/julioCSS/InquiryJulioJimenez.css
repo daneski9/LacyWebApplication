@@ -17,6 +17,12 @@
   margin-bottom: 40px;
 }
 
+@media (max-width: 670px) {
+  .inquiry_header {
+    margin-top: 60px;
+  }
+}
+
 .text-content1 {
   color: rgb(255, 255, 255);
   font-size: 1em;
