@@ -4,7 +4,7 @@ import './julioCSS/Dashboard.css'
 import Navbar from "../Navbar";
 import Footer from './Footer';
 import { db } from "../../DataBase";  // db const
-import{doc, updateDoc, deleteDoc, collection, getDocs, query, where} from 'firebase/firestore'; // collection and getDocs const
+import{doc, updateDoc, deleteDoc, collection, getDocs, query, where,} from 'firebase/firestore'; // collection and getDocs const
 import { orderBy, set } from 'lodash';
 import { getAuth } from 'firebase/auth';
 // Uncomment for access to image database
@@ -45,12 +45,20 @@ function AdminLanding() {
   };
 
   const formatTimestamp = (timestamp) => {
-    // Check if the timestamp is a valid firstore timestamp
-    if (timestamp && timestamp.fromDate){
-      const date = timestamp.fromDate(new Date(timestamp.seconds * 1000));
-      return date.toDate().toLocalString(); // Format Can be changed here 
+    if (timestamp && timestamp.toDate) {
+      const date = timestamp.toDate();
+      
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      const year = String(date.getFullYear()).slice(-2); 
+      const hours = String(date.getHours()).padStart(2, '0');
+      const minutes = String(date.getMinutes()).padStart(2, '0');
+      const seconds = String(date.getSeconds()).padStart(2, '0');
+      
+      const formattedDate = `${month}-${day}-${year} @ ${hours}:${minutes}:${seconds}`;
+      return formattedDate;
     } else {
-      return "Invalid TimeStamp";
+      return "Invalid Timestamp";
     }
   };
 
