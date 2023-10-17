@@ -23,7 +23,7 @@ function UpdatePassword() {
       // Update successful.
       setSuccess('Password updated successfully.');
     }).catch((error) => {
-      console.log(error.message)
+      console.log(error.message) ///////////////////////////////////////////////////////////////////////////////////////////
     });
     
     

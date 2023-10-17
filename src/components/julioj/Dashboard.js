@@ -44,6 +44,16 @@ function AdminLanding() {
     }
   };
 
+  const formatTimestamp = (timestamp) => {
+    // Check if the timestamp is a valid firstore timestamp
+    if (timestamp && timestamp.fromDate){
+      const date = timestamp.fromDate(new Date(timestamp.seconds * 1000));
+      return date.toDate().toLocalString(); // Format Can be changed here 
+    } else {
+      return "Invalid TimeStamp";
+    }
+  };
+
   const updateStateInFirestore = async (inquiry, newState) => {
     const inquiryDocRef = doc(db, 'Inquirer', inquiry.id);
     await updateDoc(inquiryDocRef, { State: newState });
@@ -246,12 +256,13 @@ const closeModal = () => {
           return (
             <tr key={Inquiry.id}>
               <td>{Inquiry.id}</td>
-              <td>{Inquiry.First} {Inquiry.Last}</td>
+              <td>{Inquiry.First}
+               {Inquiry.Last}</td>
               <td>{Inquiry.Email}</td>
               <td>{Inquiry.Phone}</td>
               <td>{Inquiry.Location}</td>
               <td>{Inquiry.Description}</td>
-              <td>{Inquiry.Date}</td>
+              <td>{formatTimestamp(Inquiry.Date)}</td>
               <td>
                 <button onClick={()=> handleButtonAction(Inquiry)}>Open</button>
               </td>

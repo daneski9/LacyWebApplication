@@ -2,7 +2,8 @@ import '../../App.css'
 import './julioCSS/InquiryJulioJimenez.css'
 import Footer from './Footer';
 import { db } from "../../DataBase"; 
-import {addDoc, collection} from "firebase/firestore";
+import {addDoc, collection, serverTimestamp, updateDoc} from "firebase/firestore";
+import { storage } from "../../DataBase";
 
 import Navbar from "../Navbar";
 import React, { useState, useRef } from 'react';
@@ -72,8 +73,33 @@ function InquiryPage() {
 
   const handleSubmit = async () => {
     // Save the data to Firebase
-    await addDoc(collection(db, "Inquirer"), {First: first, Last: last,
-      Email: email, Phone: phone, Location: location, Description: description, ImageRef: link, State: 1})
+    const docRef = await addDoc(collection(db, "Inquirer"), {    // Reformated for eye appeal and added constant docRef to be used for autoId
+      First: first,
+      Last: last,
+      Email: email,
+      Phone: phone,
+      Location: location,
+      Description: description,
+      Date: serverTimestamp(), // Added Date to be Auto Created from Server Timestamp of object TimeStamp
+      ImageRef: link,
+      State: 1})               // Added State 1 to be created as "Newest Inquiry" state
+
+     // const autoId = docRef.id; // Get the ID of the document that was just created
+
+      // Create a reference to the file location, will be placed in seperate folder for each inquiry for cases of muliple images
+      //const storageRef = storage.ref();('Inquiries/${autoId}/${imageRef.name}'); 
+      //await storageRef.put(imageRef);
+
+      // Get the download URL of the uploaded image
+    //const imageUrl = await storageRef.getDownloadURL();
+
+    // Update the Firestore document with the image URL
+    //const docUpdateResult = await updateDoc(docRef, { ImageRef: imageUrl });
+
+
+      //console.log("Document written with ID: ", autoId);
+      //console.log("Image URL: ", imageUrl);
+
     // Clear the form
     setFName("");
     setLName("");
@@ -82,6 +108,7 @@ function InquiryPage() {
     setLocation("");
     setDescription("");
     setImageRef("");
+    
     setLink("");
   };
 
