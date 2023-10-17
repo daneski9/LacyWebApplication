@@ -161,6 +161,15 @@ const closeModal = () => {
  
   
   const [image, setImage] = useState(null);
+  const [disable, setDisable] = useState("true");
+
+  const handleImage = (e) => {
+    setImage(e.target.files);
+    console.log(e.target.files);
+    setDisable("");
+    console.log("enable button");
+  };
+
   //const [ imageInfo ] = useState(null);
   //const [imageInfo, setImageInfo] = useState([]);
 
@@ -170,6 +179,7 @@ const closeModal = () => {
 
       const result = await uploadBytes(imageRef, image[i])
       .then(() => { 
+        setImage("");
         alert('Images uploaded');
       });
     }
@@ -286,17 +296,17 @@ const closeModal = () => {
 
       <div className = 'file'>
         <label htmlFor="image">Upload Image (Multiple)
-          <input type="file" name="image" multiple onChange={(event) => setImage(event.target.files)} />
+          <input type="file" name="image" accept=".jpg, .png" multiple onChange={handleImage} />
         </label>
       </div>
       <div className = 'submit-button'>
-        <button onClick={uploadFiles} type="button">Submit</button>
+        <button onClick={uploadFiles} type="button" disabled={disable}>Submit</button>
       </div>
     </div>
-    <button class = "logout-btn" onClick={handleLogout}>LOGOUT</button>
+    <button className = "logout-btn" onClick={handleLogout}>LOGOUT</button>
     
     <Link to="/JulioJimenez/updatepassword">
-      <button class="logout-btn">UPDATE PASSWORD</button>
+      <button className="logout-btn">UPDATE PASSWORD</button>
     </Link>
     
     

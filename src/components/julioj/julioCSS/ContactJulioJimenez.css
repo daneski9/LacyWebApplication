@@ -18,6 +18,26 @@
   color: #ffffff;
 }
 
+@media (max-width: 670px) {
+  .contact_header {
+    margin-top: 60px;
+  }
+}
+
+
 .contact{
   min-height: 60vh;
+  text-align: center;
+}
+
+.messageText{
+  color: rgba(255, 255, 255, 0.925);
+  background-color: rgba(38, 39, 38, 0.678);
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: -30px;
+  margin-bottom: 40px;
+  max-width: 400px;
+  text-align: center;
+  border: 0.5px solid rgba(218, 206, 206, 0.856);
 }
