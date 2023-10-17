@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {useRef} from 'react';
 import emailjs from '@emailjs/browser';
+import ReCAPTCHA from 'react-google-recaptcha';
+
 
 //import './julioCSS/juliojimenez.css';
 import Footer from './Footer';
@@ -18,6 +20,16 @@ function Contact() {
   const [email, setEmail] = useState('');
   const [message, setDescription] = useState('');
   const [showAlert, setShowAlert] = useState(false);
+
+  const [capVal, setCapVal] = useState("true");
+  const updateCaptcha = (e) => {
+    // Log the changes
+    console.log("Captcha Completed");
+
+    // Change the captcha value to false (for the disabled attrivute)
+    setCapVal("");
+  }
+
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -69,8 +81,14 @@ function Contact() {
         <input type="email" name="email" placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)} required />
         <textarea id="message" name ="message" placeholder="Message" value={message} onChange={(event) => setDescription(event.target.value)} required />
 
+        <ReCAPTCHA 
+          sitekey='6LdVvagoAAAAALOqtiBfkZY7sIYlse5jpbJ-tuo6'
+          onChange={updateCaptcha}
+        />
+
+        <br></br>
         
-        <button type="submit">Submit</button>
+        <button type="submit" disabled={capVal}>Submit</button>
         
               
       </form>
