@@ -4,8 +4,8 @@ import './julioCSS/Dashboard.css'
 import Navbar from "../Navbar";
 import Footer from './Footer';
 import { db } from "../../DataBase";  // db const
-import{doc, updateDoc, deleteDoc, collection, getDocs, query, where,} from 'firebase/firestore'; // collection and getDocs const
-import { orderBy, set } from 'lodash';
+import{doc, updateDoc, deleteDoc, collection, getDocs, query, where, orderBy} from 'firebase/firestore'; // collection and getDocs const
+//import { orderBy, set } from 'lodash';
 import { getAuth } from 'firebase/auth';
 // Uncomment for access to image database
 import { storage } from "../../DataBase";
@@ -23,11 +23,11 @@ function AdminLanding() {
   // Cloud Database Stuff
   const [Inquirer, setInquirer] = useState([]);
   const [currentState, setCurrentState] = useState(1); // Initialize with State 1, being the Newest Inquiry State
-  const InquirerCollectionRef = collection(db,"Inquirer");
+  const InquirerCollectionRef = collection(db, "Inquirer");
 
   const fetchInquirerData = async (state) => {
     // Create a query to filter documents based on the current state value
-    const q = query(InquirerCollectionRef, where("State", "==", state)); // states are 1-3, 1 = Newest Inquiry, 2 = In-Progress, 3 = Completed
+    const q = query(InquirerCollectionRef, where("State", "==", state), orderBy ("Date", "desc")); // states are 1-3, 1 = Newest Inquiry, 2 = In-Progress, 3 = Completed // OrderBy Date
 
     try {
       const querySnapshot = await getDocs(q);
@@ -43,6 +43,10 @@ function AdminLanding() {
       console.error("Error fetching documents: ", error);
     }
   };
+
+ 
+  
+
 
   const formatTimestamp = (timestamp) => {
     if (timestamp && timestamp.toDate) {
