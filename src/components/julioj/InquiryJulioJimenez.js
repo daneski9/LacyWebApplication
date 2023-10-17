@@ -7,7 +7,7 @@ import {addDoc, collection} from "firebase/firestore";
 import Navbar from "../Navbar";
 import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
-
+import ReCAPTCHA from 'react-google-recaptcha';
 
 
 function InquiryPage() {
@@ -24,6 +24,15 @@ function InquiryPage() {
   const [description, setDescription] = useState("");
   const [imageRef, setImageRef] = useState("");
   const [link, setLink] = useState("");
+
+  const [capVal, setCapVal] = useState("true");
+  const updateCaptcha = (e) => {
+    // Log the changes
+    console.log("Captcha Completed");
+
+    // Change the captcha value to false (for the disabled attrivute)
+    setCapVal("");
+  }
 
   const [disabled, setDisabled] = useState("true")
 
@@ -132,12 +141,21 @@ function InquiryPage() {
         <input type="text" name="location" value={location} onChange={handleLocation} placeholder="Location on the body" required />
         <textarea name="description" value={description} onChange={handleDescription} placeholder="Tattoo description" required />
         
+        <div className = 'file'>
         <label htmlFor="image">Reference Image
-          <input type="file" className="file" accept=".pdf, .jpg, .png" onChange={handleImageRef} />
+          <input type="file" accept=".jpg, .png" onChange={handleImageRef} />
         </label>
+        </div>
 
         <input type="text" name="link" value={link} placeholder="Image Link" hidden/>
         
+        <br></br>
+        
+        <ReCAPTCHA 
+          sitekey='6LdVvagoAAAAALOqtiBfkZY7sIYlse5jpbJ-tuo6'
+          onChange={updateCaptcha}
+        />
+
         <br></br>
 
         {disabled && imageRef && (
@@ -145,7 +163,7 @@ function InquiryPage() {
             <p className="text-content1">Image is currently uploading.  Inquiry Submission is disabled until image is processed.</p>
           </div>
         )}
-        <button type="submit" onClick={handleSubmit} disabled={disabled}>Submit</button>
+        <button type="submit" onClick={handleSubmit} disabled={disabled || capVal}>Submit</button>
 
       </form>
 
