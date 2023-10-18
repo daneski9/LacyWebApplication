@@ -5,7 +5,7 @@
 .bannerGrid {
   margin-top: 40px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 3 columns */
+  grid-template-columns: repeat(4, 1fr); /* 3 columns */
   gap: 8px;
   width: fit-content; /* This will make the grid as wide as its content */
 }
@@ -35,6 +35,16 @@
   width: auto;
   text-decoration: underline;
 }
+.appointment-btn:hover{
+  background-color: rgb(0, 0, 0);
+}
+.right-arrow {
+  right: 15%;
+}
+
+.left-arrow {
+  left: 15%;
+}
 
 /* Styles from Box.css */
 .box {
@@ -62,17 +72,30 @@
 @media (max-width: 978px) {
   .bannerGrid {
     grid-template-columns: repeat(3, 1fr);
-}
+  }
+  .right-arrow {
+    right: 3%;
+  }
+  
+  .left-arrow {
+    left: 3%;
+  }
 }
 
 @media (max-width: 768px) {
   .bannerGrid {
       grid-template-columns: repeat(2, 1fr);
   }
+  
 }
 @media (max-width: 748px) {
   .galleryTitle{
     margin-top: 80px;
+  }
+}
+@media (max-width: 531px) {
+  .galleryTitle{
+    line-height: 1.1;
   }
 }
 @media (max-width: 478px) {
@@ -111,17 +134,10 @@
   position: absolute;
   top: 50%;
   font-size: 3em;
-  color: rgb(255, 255, 255);
+  color: rgba(255, 255, 255, 0.726);
   cursor: pointer;
   user-select: none;
   transform: translateY(-50%);
+  transform: scaleX(0.6);
   padding: 5px;
-}
-
-.right-arrow {
-  right: 5%;
-}
-
-.left-arrow {
-  left: 5%;
 }

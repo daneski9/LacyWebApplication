@@ -22,7 +22,7 @@ function Portfolio(properties) {
     // A List to hold the image file names
     // reference video: https://www.youtube.com/watch?v=YOAeBSCkArA
     const [imageList, setImageList] = useState([]);
-    const imageListRef = ref(storage, "ImageData/");
+    const imageListRef = ref(storage, "Portfolio-page/");
 
     useEffect(() => {
         listAll(imageListRef)
