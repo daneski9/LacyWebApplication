@@ -2,12 +2,13 @@ import '../../App.css'
 import './julioCSS/InquiryJulioJimenez.css'
 import Footer from './Footer';
 import { db } from "../../DataBase"; 
-import {addDoc, collection} from "firebase/firestore";
+import {addDoc, collection, serverTimestamp, updateDoc} from "firebase/firestore";
+import { storage } from "../../DataBase";
 
 import Navbar from "../Navbar";
 import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
-
+import ReCAPTCHA from 'react-google-recaptcha';
 
 
 function InquiryPage() {
@@ -23,6 +24,18 @@ function InquiryPage() {
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const [imageRef, setImageRef] = useState("");
+  const [link, setLink] = useState("");
+
+  const [capVal, setCapVal] = useState("true");
+  const updateCaptcha = (e) => {
+    // Log the changes
+    console.log("Captcha Completed");
+
+    // Change the captcha value to false (for the disabled attrivute)
+    setCapVal("");
+  }
+
+  const [disabled, setDisabled] = useState("true")
 
   // Handle input changes
   const handleFName = (e) => setFName(e.target.value);
@@ -31,12 +44,71 @@ function InquiryPage() {
   const handlePhone = (e) => setPhone(e.target.value);
   const handleLocation = (e) => setLocation(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
-  const handleImageRef = (e) => setImageRef(e.target.value);
+  
+  const handleImageRef = event => {
+
+    console.log(event.target.files[0])
+
+    const selectedFile = event.target.files[0];
+    setImageRef(selectedFile.name);
+    console.log({imageRef});
+
+    const fileIn = event.target;
+    const file = fileIn.files[0];
+    if (file && file.size < 190e5) {
+
+      //setImageRef(event.target.value);
+      //console.log({imageRef});
+
+      const formdata = new FormData()
+      formdata.append("image", event.target.files[0])
+      fetch("https://api.imgur.com/3/image/", {
+        method: "post",
+        headers: {
+          Authorization: "Client-ID 9aec569336c27a5",
+          Accept: "application/json",
+        },
+        body: formdata
+
+      }).then(data => data.json()).then(data => {
+        setLink(data.data.link)
+        setDisabled("");
+        console.log("Link:  " + {link})
+      });
+    } else {
+      console.log("File too big");
+    }
+  };
 
   const handleSubmit = async () => {
     // Save the data to Firebase
-    await addDoc(collection(db, "Inquirer"), {First: first, Last: last,
-      Email: email, Phone: phone, Location: location, Description: description, ImageRef: imageRef, State: 1})
+    const docRef = await addDoc(collection(db, "Inquirer"), {    // Reformated for eye appeal and added constant docRef to be used for autoId
+      First: first,
+      Last: last,
+      Email: email,
+      Phone: phone,
+      Location: location,
+      Description: description,
+      Date: serverTimestamp(), // Added Date to be Auto Created from Server Timestamp of object TimeStamp
+      ImageRef: link,
+      State: 1})               // Added State 1 to be created as "Newest Inquiry" state
+
+     // const autoId = docRef.id; // Get the ID of the document that was just created
+
+      // Create a reference to the file location, will be placed in seperate folder for each inquiry for cases of muliple images
+      //const storageRef = storage.ref();('Inquiries/${autoId}/${imageRef.name}'); 
+      //await storageRef.put(imageRef);
+
+      // Get the download URL of the uploaded image
+    //const imageUrl = await storageRef.getDownloadURL();
+
+    // Update the Firestore document with the image URL
+    //const docUpdateResult = await updateDoc(docRef, { ImageRef: imageUrl });
+
+
+      //console.log("Document written with ID: ", autoId);
+      //console.log("Image URL: ", imageUrl);
+
     // Clear the form
     setFName("");
     setLName("");
@@ -45,6 +117,8 @@ function InquiryPage() {
     setLocation("");
     setDescription("");
     setImageRef("");
+    
+    setLink("");
   };
 
 
@@ -94,13 +168,29 @@ function InquiryPage() {
         <input type="text" name="location" value={location} onChange={handleLocation} placeholder="Location on the body" required />
         <textarea name="description" value={description} onChange={handleDescription} placeholder="Tattoo description" required />
         
+        <div className = 'file'>
         <label htmlFor="image">Reference Image
-            <input type="file" className="file" accept=".pdf, .jpg, .png" name="image" value={imageRef} onChange={handleImageRef} />
+          <input type="file" accept=".jpg, .png" onChange={handleImageRef} />
         </label>
+        </div>
+
+        <input type="text" name="link" value={link} placeholder="Image Link" hidden/>
         
         <br></br>
+        
+        <ReCAPTCHA 
+          sitekey='6LdVvagoAAAAALOqtiBfkZY7sIYlse5jpbJ-tuo6'
+          onChange={updateCaptcha}
+        />
 
-        <button type="submit" onClick={handleSubmit}>Submit</button>
+        <br></br>
+
+        {disabled && imageRef && (
+          <div>
+            <p className="text-content1">Image is currently uploading.  Inquiry Submission is disabled until image is processed.</p>
+          </div>
+        )}
+        <button type="submit" onClick={handleSubmit} disabled={disabled || capVal}>Submit</button>
 
       </form>
 

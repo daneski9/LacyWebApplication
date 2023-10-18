@@ -4,8 +4,8 @@ import './julioCSS/Dashboard.css'
 import Navbar from "../Navbar";
 import Footer from './Footer';
 import { db } from "../../DataBase";  // db const
-import{doc, updateDoc, deleteDoc, collection, getDocs, query, where} from 'firebase/firestore'; // collection and getDocs const
-import { orderBy, set } from 'lodash';
+import{doc, updateDoc, deleteDoc, collection, getDocs, query, where, orderBy} from 'firebase/firestore'; // collection and getDocs const
+//import { orderBy, set } from 'lodash';
 import { getAuth } from 'firebase/auth';
 // Uncomment for access to image database
 import { storage } from "../../DataBase";
@@ -23,11 +23,11 @@ function AdminLanding() {
   // Cloud Database Stuff
   const [Inquirer, setInquirer] = useState([]);
   const [currentState, setCurrentState] = useState(1); // Initialize with State 1, being the Newest Inquiry State
-  const InquirerCollectionRef = collection(db,"Inquirer");
+  const InquirerCollectionRef = collection(db, "Inquirer");
 
   const fetchInquirerData = async (state) => {
     // Create a query to filter documents based on the current state value
-    const q = query(InquirerCollectionRef, where("State", "==", state)); // states are 1-3, 1 = Newest Inquiry, 2 = In-Progress, 3 = Completed
+    const q = query(InquirerCollectionRef, where("State", "==", state), orderBy ("Date", "desc")); // states are 1-3, 1 = Newest Inquiry, 2 = In-Progress, 3 = Completed // OrderBy Date
 
     try {
       const querySnapshot = await getDocs(q);
@@ -41,6 +41,36 @@ function AdminLanding() {
       );
     } catch (error) {
       console.error("Error fetching documents: ", error);
+    }
+  };
+
+ 
+  
+
+
+  const formatTimestamp = (timestamp) => {
+    if (timestamp && timestamp.toDate) {
+      const date = timestamp.toDate();
+  
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      const year = String(date.getFullYear()).slice(-2);
+      let hours = date.getHours();
+      const minutes = String(date.getMinutes()).padStart(2, '0');
+      const seconds = String(date.getSeconds()).padStart(2, '0');
+      let amOrPm = "AM";
+  
+      if (hours >= 12) {
+        amOrPm = "PM";
+        if (hours > 12) {
+          hours -= 12;
+        }
+      }
+  
+      const formattedDate = `${month}-${day}-${year} @ ${hours}:${minutes}:${seconds} ${amOrPm}`;
+      return formattedDate;
+    } else {
+      return "Invalid Timestamp";
     }
   };
 
@@ -143,6 +173,15 @@ const closeModal = () => {
  
   
   const [image, setImage] = useState(null);
+  const [disable, setDisable] = useState("true");
+
+  const handleImage = (e) => {
+    setImage(e.target.files);
+    console.log(e.target.files);
+    setDisable("");
+    console.log("enable button");
+  };
+
   //const [ imageInfo ] = useState(null);
   //const [imageInfo, setImageInfo] = useState([]);
 
@@ -152,6 +191,7 @@ const closeModal = () => {
 
       const result = await uploadBytes(imageRef, image[i])
       .then(() => { 
+        setImage("");
         alert('Images uploaded');
       });
     }
@@ -203,11 +243,6 @@ const closeModal = () => {
     
     <div className='welcome-message'>Welcome, {email} </div>
     <div className='landing'>
-      <div class="buttons">
-        <Link to="/JulioJimenez/updatepassword">
-          <button type="button">Update Password</button>
-        </Link>
-      </div>
       {showModal && (
       <div className="modal">
       <InquiryModal inquiry={selectedInquiry} 
@@ -251,12 +286,13 @@ const closeModal = () => {
           return (
             <tr key={Inquiry.id}>
               <td>{Inquiry.id}</td>
-              <td>{Inquiry.First} {Inquiry.Last}</td>
+              <td>{Inquiry.First}
+               {Inquiry.Last}</td>
               <td>{Inquiry.Email}</td>
               <td>{Inquiry.Phone}</td>
               <td>{Inquiry.Location}</td>
               <td>{Inquiry.Description}</td>
-              <td>{Inquiry.Date}</td>
+              <td>{formatTimestamp(Inquiry.Date)}</td>
               <td>
                 <button onClick={()=> handleButtonAction(Inquiry)}>Open</button>
               </td>
@@ -272,14 +308,18 @@ const closeModal = () => {
 
       <div className = 'file'>
         <label htmlFor="image">Upload Image (Multiple)
-          <input type="file" name="image" multiple onChange={(event) => setImage(event.target.files)} />
+          <input type="file" name="image" accept=".jpg, .png" multiple onChange={handleImage} />
         </label>
       </div>
       <div className = 'submit-button'>
-        <button onClick={uploadFiles} type="button">Submit</button>
+        <button onClick={uploadFiles} type="button" disabled={disable}>Submit</button>
       </div>
     </div>
-    <button class = "logout-btn" onClick={handleLogout}>LOGOUT</button>
+    <button className = "logout-btn" onClick={handleLogout}>LOGOUT</button>
+    
+    <Link to="/JulioJimenez/updatepassword">
+      <button className="logout-btn">UPDATE PASSWORD</button>
+    </Link>
     
     
     <Footer />
