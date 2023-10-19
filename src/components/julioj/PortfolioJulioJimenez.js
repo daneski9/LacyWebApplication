@@ -42,10 +42,12 @@ function Portfolio(properties) {
     // Function to update the page number
     const goToNextPage = () => {
         if (currentPage < total_pages) setCurrentPage(prev => prev + 1);
+        window.scrollTo(120, 120);
     }
 
     const goToPreviousPage = () => {
         if (currentPage > 1) setCurrentPage(prev => prev - 1);
+        window.scrollTo(120, 120);
     }
 
     return (
@@ -63,12 +65,17 @@ function Portfolio(properties) {
                 </Link>
                 <div className="bannerGridWrapper">
                     <div className="bannerGrid">
-                        {currentImages.map((image, url) => (
-                            <Box data={image} index={url} key={image} onClick={() => {
+                    {currentImages.map((image, index) => (
+                        <Box 
+                            data={image} 
+                            index={(currentPage - 1) * imagesPerPage + index} 
+                            key={image} 
+                            onClick={() => {
                                 setSelectedImage(image);
-                                setSelectedImageIndex(url);
-                            }} />
-                        ))}
+                                setSelectedImageIndex((currentPage - 1) * imagesPerPage + index);
+                            }} 
+                        />
+                    ))}
                     </div>
                 </div>
                 <div className="pagination">
