@@ -1,61 +1,120 @@
 import { useState, useEffect } from "react";
 import Navbar from "../Navbar";
 import SearchBar from "../subcomponents/Searchbar";
-import Box from "../subcomponents/Box";
 import './julioCSS/PortfolioJulioJimenez.css';
 import Footer from './Footer';
 import { storage } from "../../DataBase";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
+import { Link } from 'react-router-dom';
 
 
 
 function Portfolio(properties) {
-    // TODO: Finish the search implementation
-    // TODO: Make it so that they load in boxes and properly crop and center on the image while retaining quality. 
-    //      IE Fill to the box and any overflow gets cropped.
-    //      Make it so that when an image can't load it is a gray box
-    //      Make it so that the boxes load in cols of 2 to 4
-    //      Make it so that if a box does not have an image to load it will load a gray box.
-
     let [query, setQuery] = useState('');
 
     // A List to hold the image file names
     // reference video: https://www.youtube.com/watch?v=YOAeBSCkArA
     const [imageList, setImageList] = useState([]);
-    const imageListRef = ref(storage, "ImageData/");
+    const imageListRef = ref(storage, "Portfolio-page/");
 
-    useEffect(()=>{
+    useEffect(() => {
         listAll(imageListRef)
         .then((response) => {
-                console.log(response);
-                response.items.forEach((item)=>{
-                    getDownloadURL(item).then((url)=>{
-                        setImageList((prev) => [...prev, url]);
-                    });
+            let uniqueURLs = new Set();
+            response.items.forEach((item) => {
+                getDownloadURL(item).then((url) => {
+                    uniqueURLs.add(url);
+                    setImageList([...uniqueURLs]);
                 });
             });
+        });
+    }, []);
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1); // Start with page 1
+    const imagesPerPage = 16; // Number of images per page
 
-    // KEEP THE NEXT LINE AS ```},[]);``` OR ELSE SAY HELLO TO A RAM BOMB!!!!      
-    },[]);
+    // Calculate total number of pages
+    const total_pages = Math.ceil(imageList.length / imagesPerPage);
+    
+    const currentImages = imageList.slice((currentPage - 1) * imagesPerPage, currentPage * imagesPerPage);
 
+    // Function to update the page number
+    const goToNextPage = () => {
+        if (currentPage < total_pages) setCurrentPage(prev => prev + 1);
+    }
+
+    const goToPreviousPage = () => {
+        if (currentPage > 1) setCurrentPage(prev => prev - 1);
+    }
 
     return (
         <>
             <Navbar />
-
-            <h1 className="galleryTitle">Gallery of Recent Tattoos</h1>
-
-            <div className="search-container">
-            <SearchBar query={query} onChange={setQuery} />
+            <div className="container">
+                <h1 className="galleryTitle">Gallery of Recent Tattoos</h1>
+                <Link to="/JulioJimenez/inquiry">
+                    <button className='appointment-btn' onClick={() => {
+                    window.scroll({
+                        top: 0,
+                        left: 0
+                    });
+                    }}>MAKE AN APPOINTMENT</button>
+                </Link>
+                <div className="bannerGridWrapper">
+                    <div className="bannerGrid">
+                        {currentImages.map((image, url) => (
+                            <Box data={image} index={url} key={image} onClick={() => {
+                                setSelectedImage(image);
+                                setSelectedImageIndex(url);
+                            }} />
+                        ))}
+                    </div>
+                </div>
+                <div className="pagination">
+                    {currentPage > 1 && <button className="pagination-button" onClick={goToPreviousPage}>← Previous</button>}
+                    <span className="pagination-text">Page {currentPage} of {total_pages}</span>
+                    {currentPage < total_pages && <button className="pagination-button" onClick={goToNextPage}>Next →</button>}
+                </div>
             </div>
-
-                <div className="bannerGrid">
-                {imageList.map((image, url) => (
-                    <Box data={image} index={image} key={image} />
-                ))} </div>
-
+            {selectedImage && (
+                <div className="modal-portfolio" onClick={(e) => {
+                    if (e.target.classList.contains('modal-portfolio')) {
+                        setSelectedImage(null);
+                    }
+                }}>
+                    <img src={selectedImage} alt="Selected" className="modal-image" />
+                    <div className="arrow right-arrow" onClick={() => {
+                        if (selectedImageIndex < imageList.length - 1) {
+                            setSelectedImage(imageList[selectedImageIndex + 1]);
+                            setSelectedImageIndex(selectedImageIndex + 1);
+                        }
+                    }}>→</div>
+                    <div className="arrow left-arrow" onClick={() => {
+                        if (selectedImageIndex > 0) {
+                            setSelectedImage(imageList[selectedImageIndex - 1]);
+                            setSelectedImageIndex(selectedImageIndex - 1);
+                        }
+                    }}>←</div>
+                </div>
+                
+            )}
             <Footer />
         </>
     );
 }
-export default Portfolio;
+
+function Box({ data, index, onClick }) {
+    return (
+      <div className='box'>
+          <img
+              className="box img"
+              src={`${data}`} 
+              alt={`${index}`}
+              onClick={onClick}  
+          />
+      </div>
+    );
+}
+  
+  export default Portfolio;
