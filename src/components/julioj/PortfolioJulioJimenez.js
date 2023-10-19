@@ -10,13 +10,6 @@ import { Link } from 'react-router-dom';
 
 
 function Portfolio(properties) {
-    // TODO: Finish the search implementation
-    // TODO: Make it so that they load in boxes and properly crop and center on the image while retaining quality. 
-    //      IE Fill to the box and any overflow gets cropped.
-    //      Make it so that when an image can't load it is a gray box
-    //      Make it so that the boxes load in cols of 2 to 4
-    //      Make it so that if a box does not have an image to load it will load a gray box.
-
     let [query, setQuery] = useState('');
 
     // A List to hold the image file names
@@ -38,6 +31,22 @@ function Portfolio(properties) {
     }, []);
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1); // Start with page 1
+    const imagesPerPage = 16; // Number of images per page
+
+    // Calculate total number of pages
+    const total_pages = Math.ceil(imageList.length / imagesPerPage);
+    
+    const currentImages = imageList.slice((currentPage - 1) * imagesPerPage, currentPage * imagesPerPage);
+
+    // Function to update the page number
+    const goToNextPage = () => {
+        if (currentPage < total_pages) setCurrentPage(prev => prev + 1);
+    }
+
+    const goToPreviousPage = () => {
+        if (currentPage > 1) setCurrentPage(prev => prev - 1);
+    }
 
     return (
         <>
@@ -54,13 +63,18 @@ function Portfolio(properties) {
                 </Link>
                 <div className="bannerGridWrapper">
                     <div className="bannerGrid">
-                        {imageList.map((image, url) => (
+                        {currentImages.map((image, url) => (
                             <Box data={image} index={url} key={image} onClick={() => {
                                 setSelectedImage(image);
                                 setSelectedImageIndex(url);
                             }} />
                         ))}
                     </div>
+                </div>
+                <div className="pagination">
+                    {currentPage > 1 && <button className="pagination-button" onClick={goToPreviousPage}>← Previous</button>}
+                    <span className="pagination-text">Page {currentPage} of {total_pages}</span>
+                    {currentPage < total_pages && <button className="pagination-button" onClick={goToNextPage}>Next →</button>}
                 </div>
             </div>
             {selectedImage && (
