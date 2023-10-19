@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom'; 
 import "./Navbar.css";
-import InstagramIcon from "./images/insIcon.png";
+import InstagramIcon from "./images/instagram_logo.png";
 
 function Navbar(props){
     const location = useLocation();
@@ -56,7 +56,7 @@ function Navbar(props){
                 </li>
                 <li>
                 <Link to={instagramUrl} onClick={handleLinkClick} target="_blank">
-        <img src={InstagramIcon} alt="instagramIcon" width="30" height="30"/> </Link>
+        <img src={InstagramIcon} alt="instagramIcon" width="20" height="20"/> </Link>
                 </li>
             </ul>
             </nav>
@@ -85,7 +85,7 @@ function Navbar(props){
                 </li>
                 <li>
                 <Link to={instagramUrl} onClick={handleLinkClick} target="_blank">
-        <img src={InstagramIcon} alt="instagramIcon" width="30" height="30"/> </Link>
+        <img src={InstagramIcon} className="instagram" alt="instagramIcon" width="20" height="20"/> </Link>
                 </li>
             </ul>
         </nav>
