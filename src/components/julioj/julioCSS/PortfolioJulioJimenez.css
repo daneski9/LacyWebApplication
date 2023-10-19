@@ -1,7 +1,22 @@
-
-.bannerGridWrapper {
-  
+.pagination-text {
+  color: #ffffff; /* Change to your desired font color */
+  margin-top: 10px;
 }
+
+.pagination-button {
+  background-color: #333; /* Change to your desired button background color */
+  color: #FFF;   /* Change to your desired button font color */
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 30px 5px; /* Optional: Added for spacing */
+  border-radius: 3px; /* Optional: Rounded corners */
+}
+
+.pagination-button:hover {
+  background-color: #555; /* Optional: Change for hover effect */
+}
+
 .bannerGrid {
   margin-top: 40px;
   display: grid;
