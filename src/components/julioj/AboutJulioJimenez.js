@@ -65,9 +65,9 @@ function About() {
           </Link>
           
 
-          <h2>Contact the Tattoo Artist</h2>
+          <h3>Contact the Tattoo Artist</h3>
           <Link to="/JulioJimenez/contact">
-            <button className='about-btn' onClick={() => {
+            <button className='contact-btn' onClick={() => {
               window.scroll({
                 top: 0,
                 left: 0
