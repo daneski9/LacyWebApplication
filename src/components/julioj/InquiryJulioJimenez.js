@@ -181,6 +181,7 @@ function InquiryPage() {
         <ReCAPTCHA 
           sitekey='6LdVvagoAAAAALOqtiBfkZY7sIYlse5jpbJ-tuo6'
           onChange={updateCaptcha}
+          theme="dark"
         />
 
         <br></br>

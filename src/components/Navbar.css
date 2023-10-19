@@ -47,6 +47,13 @@
   .sidebar{
     display: none;
   }
+
+  .instagram {
+    margin-top: -5px;
+    margin-bottom: -10px;
+  }
+
+
     /* Media query for responsive design */
   @media (max-width: 748px) {
     .navbar{

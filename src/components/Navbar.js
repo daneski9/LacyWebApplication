@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom'; 
 import "./Navbar.css";
-import InstagramIcon from "./images/insIcon.png";
+import InstagramIcon from "./images/instagram_logo.png";
 
 function Navbar(props){
     const location = useLocation();

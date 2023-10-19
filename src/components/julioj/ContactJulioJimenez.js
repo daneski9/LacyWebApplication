@@ -14,6 +14,8 @@ import './julioCSS/ContactJulioJimenez.css'
 function Contact() {
 
   const form = useRef()
+
+  const captchaRef = useRef(null);
     
   const [first, setFirst] = useState('');
   const [last, setLast] = useState('');
@@ -26,7 +28,7 @@ function Contact() {
     // Log the changes
     console.log("Captcha Completed");
 
-    // Change the captcha value to false (for the disabled attrivute)
+    // Change the captcha value to false (for the disabled attribute)
     setCapVal("");
   }
 
@@ -84,6 +86,8 @@ function Contact() {
         <ReCAPTCHA 
           sitekey='6LdVvagoAAAAALOqtiBfkZY7sIYlse5jpbJ-tuo6'
           onChange={updateCaptcha}
+          theme="dark"
+          ref={captchaRef}
         />
 
         <br></br>
@@ -96,13 +100,13 @@ function Contact() {
       <br /><br /><br /><br /><br /><br /><br />
       <h1>Looking to Schedule an Appointment?</h1>
       <Link to="/JulioJimenez/inquiry">
-            <button className='about-btn' onClick={() => {
-              window.scroll({
-                top: 0,
-                left: 0
-              });
-            }}>BOOK NOW</button>
-          </Link>
+        <button className='about-btn' onClick={() => {
+          window.scroll({
+            top: 0,
+            left: 0
+          });
+        }}>BOOK NOW</button>
+      </Link>
 
     </div>
 

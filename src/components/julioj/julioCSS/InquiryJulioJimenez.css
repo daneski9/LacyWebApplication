@@ -1,8 +1,6 @@
 .inquiry {
     width: 100%;
     margin: 0 auto;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .submit-btn{
@@ -14,7 +12,7 @@
   font-family: 'Oleo Script', 'Jost', sans-serif, Arial;
   font-weight: lighter;
   color: #ffffff;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 @media (max-width: 670px) {
