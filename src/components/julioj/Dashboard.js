@@ -98,6 +98,25 @@ function AdminLanding() {
       console.error('Error updating state: ', error);
     }
   };
+
+  const handleUpdateStateEmail = async (inquiry, emailText) => {
+    try {
+      // Implement the logic to send an email here using the emailText.
+      console.log('Email sent successfully.'); 
+      console.log('Email text:', emailText);
+      
+      // Update the state (In-Progress) "2"
+      await updateStateInFirestore(inquiry, 2);
+  
+      closeModal(); // Close the modal after updating the state.
+  
+      // Fetch the updated data to refresh the table with the latest information.
+      fetchInquirerData(currentState);
+    } catch (error) {
+      console.error('Error updating state and sending email: ', error);
+    }
+  };
+  
   
 
   useEffect(() => {
@@ -346,11 +365,12 @@ const toggleAddImageModal = () => {
     
     <div className='welcome-message'>Welcome, {email} </div>
     <div className='landing'>
-      {showModal && (
+    {showModal && (
       <div className="modal">
       <InquiryModal inquiry={selectedInquiry} 
       onClose={closeModal} 
-      onUpdateState={handleUpdateState} 
+      onUpdateState={handleUpdateState}
+      onUpdateStateEmail={handleUpdateStateEmail} 
       onDelete={handleDelete} />
       </div>
       
@@ -367,34 +387,20 @@ const toggleAddImageModal = () => {
       <table>
         
         <thead>
-        
-      
-
-
           <tr>
           
             <th>Inquirer ID</th>
             <th>Inquirer Name</th>
-            <th>Inquirer Email</th>
-            <th>Inquirer Phone</th>
-            <th>Location on Body</th>
-            <th>Tattoo Description</th>
             <th>Date</th>
             <th>Action</th> 
           </tr>
         </thead>
-
         <tbody>
         {Inquirer.map((Inquiry) => {
           return (
             <tr key={Inquiry.id}>
               <td>{Inquiry.id}</td>
-              <td>{Inquiry.First}
-               {Inquiry.Last}</td>
-              <td>{Inquiry.Email}</td>
-              <td>{Inquiry.Phone}</td>
-              <td>{Inquiry.Location}</td>
-              <td>{Inquiry.Description}</td>
+              <td>{Inquiry.First} {Inquiry.Last}</td>
               <td>{formatTimestamp(Inquiry.Date)}</td>
               <td>
                 <button onClick={()=> handleButtonAction(Inquiry)}>Open</button>
