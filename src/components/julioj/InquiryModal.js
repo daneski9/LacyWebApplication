@@ -62,7 +62,7 @@ function InquiryModal({ inquiry, onClose, onUpdateState, onDelete, onUpdateState
                      type="text"
                      value={emailText}
                      onChange={(e) => setEmailText(e.target.value)}
-                     placeholder="Enter email text..."
+                     placeholder="Add Additional Comments on email here..."
                      className="email-text-input" 
                     />
                     
