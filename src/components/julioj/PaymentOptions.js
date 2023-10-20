@@ -71,31 +71,31 @@ function PaymentOptions() {
       <button className="payment-button paypal" onClick={togglePaypal}>
         <img src={paypal} alt="PayPal Logo" className="payment-logo" />Pay with PayPal
       </button>
-      <div className="box">{paypalOpen ? <Box title = {"paypal"}/> : null}</div>
+      <div className="box-payment">{paypalOpen ? <Box title = {"paypal"}/> : null}</div>
       <br></br>
 
       <button className="payment-button" onClick={toggleZelle}>
         <img src={zelle} alt="Zelle Logo" className="payment-logo" />Pay with Zelle
       </button>
-      <div className="box">{zelleOpen ? <Box title = {"zelle"}/> : null}</div>
+      <div className="box-payment">{zelleOpen ? <Box title = {"zelle"}/> : null}</div>
       <br></br>
 
       <button className="payment-button" onClick={toggleCashApp}>
         <img src={cashapp} alt="Cash App Logo" className="payment-logo" />Pay with Cash App
       </button>
-      <div className="box">{cashAppOpen ? <Box  title = {"cashapp"}/> : null}</div>
+      <div className="box-payment">{cashAppOpen ? <Box  title = {"cashapp"}/> : null}</div>
       <br></br>
 
       <button className="payment-button" onClick={toggleVenmo}>
         <img src={venmo} alt="Venmo Logo" className="payment-logo" />Pay with Venmo
       </button>
-      <div className="box">{venmoOpen ? <Box  title = {"venmo"}/> : null}</div>
+      <div className="box-payment">{venmoOpen ? <Box  title = {"venmo"}/> : null}</div>
       <br></br>
 
       <button className="payment-button" onClick={toggleSquare}>
         <img src={square} alt="Square Logo" className="payment-logo" />Pay with Square
       </button>
-      <div className="box">{squareOpen ? <Box  title = {"square"}/> : null}</div>
+      <div className="box-payment">{squareOpen ? <Box  title = {"square"}/> : null}</div>
 
     </div>
         

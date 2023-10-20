@@ -25,7 +25,13 @@
     min-height: 60vh;
 }
 
-
+.box-payment-portals img {
+    width: 330px;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* center the image */
+    border-radius: 20px;
+}
 
 /* Style for the payment logo */
 .payment-logo {
@@ -47,4 +53,10 @@
     height: 80px;
     font-size: 1.3rem;
     border-radius: 10px;
+}
+/* For mobile responsiveness */
+@media (max-width: 768px) { /* adjust the breakpoint as needed */
+    .payment-button, .box {
+        width: 90vw; /* or some other relative value */
+    }
 }
