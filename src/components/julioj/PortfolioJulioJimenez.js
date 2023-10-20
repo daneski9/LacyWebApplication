@@ -18,17 +18,33 @@ function Portfolio(properties) {
     const imageListRef = ref(storage, "Portfolio-page/");
 
     useEffect(() => {
-        listAll(imageListRef)
-        .then((response) => {
-            let uniqueURLs = new Set();
-            response.items.forEach((item) => {
-                getDownloadURL(item).then((url) => {
-                    uniqueURLs.add(url);
-                    setImageList([...uniqueURLs]);
+        // Try to get cached image URLs from local storage
+        const cachedImages = localStorage.getItem('portfolioImages');
+    
+        // If cached data exists and is not empty, use it
+        if (cachedImages && JSON.parse(cachedImages).length > 0) {
+            setImageList(JSON.parse(cachedImages));
+        } else {
+            // If no cached data, fetch from Firebase
+            listAll(imageListRef)
+                .then((response) => {
+                    let uniqueURLs = new Set();
+                    const downloadPromises = response.items.map((item) => {
+                        return getDownloadURL(item);
+                    });
+    
+                    Promise.all(downloadPromises)
+                        .then((urls) => {
+                            urls.forEach((url) => uniqueURLs.add(url));
+                            setImageList([...uniqueURLs]);
+    
+                            // Cache the fetched image URLs to local storage
+                            localStorage.setItem('portfolioImages', JSON.stringify([...uniqueURLs]));
+                        });
                 });
-            });
-        });
+        }
     }, []);
+    
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedImageIndex, setSelectedImageIndex] = useState(null);
     const [currentPage, setCurrentPage] = useState(1); // Start with page 1

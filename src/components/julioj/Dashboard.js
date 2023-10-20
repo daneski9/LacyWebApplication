@@ -17,9 +17,6 @@ import { Link } from 'react-router-dom';
 import InquiryModal from './InquiryModal';
 import { deleteObject } from 'firebase/storage';
 
-// TODO: Impliment JSON fro imageInfo
-// import {  } from "json";
-
 
 function AdminLanding() {
   // Cloud Database Stuff
@@ -302,23 +299,33 @@ const handleAddImages = async (e) => {
     return;
   }
 
-  const uploadPromises = Array.from(files).map(file => {
+  const uploadPromises = Array.from(files).map(async file => {
     const imageRef = ref(storage, `Portfolio-page/${file.name + v4()}`);
-    return uploadBytes(imageRef, file);
+    await uploadBytes(imageRef, file);
+    
+    // Get the download URL of the uploaded image
+    return getDownloadURL(imageRef);
   });
 
   try {
-    await Promise.all(uploadPromises);
+    const newImageURLs = await Promise.all(uploadPromises);
+    
+    // Append the new URLs to the current imageList
+    const updatedImageList = [...imageList, ...newImageURLs];
+    setImageList(updatedImageList);
+    
+    // Update the local storage
+    localStorage.setItem('portfolioImages', JSON.stringify(updatedImageList));
+    
     alert('Image(s) uploaded successfully');
-    // Clear cached images
-    localStorage.removeItem('portfolioImages');
-    fetchPortfolioImages(); // Refresh the image list after upload
-} catch (error) {
+  } catch (error) {
     console.error('Error uploading image(s):', error);
-}
+  }
+
   // Reset the file input value
   e.target.value = null;
 };
+
 
 
 
