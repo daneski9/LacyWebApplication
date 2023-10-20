@@ -17,9 +17,6 @@ import { Link } from 'react-router-dom';
 import InquiryModal from './InquiryModal';
 import { deleteObject } from 'firebase/storage';
 
-// TODO: Impliment JSON fro imageInfo
-// import {  } from "json";
-
 
 function AdminLanding() {
   // Cloud Database Stuff
