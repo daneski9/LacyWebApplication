@@ -9,12 +9,14 @@ import{doc, updateDoc, deleteDoc, collection, getDocs, query, where, orderBy} fr
 import { getAuth } from 'firebase/auth';
 // Uncomment for access to image database
 import { storage } from "../../DataBase";
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { getDownloadURL, ref, uploadBytes, listAll } from 'firebase/storage';
 import { v4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { Link } from 'react-router-dom';
 import InquiryModal from './InquiryModal';
+import { deleteObject } from 'firebase/storage';
+
 // TODO: Impliment JSON fro imageInfo
 // import {  } from "json";
 
@@ -237,6 +239,100 @@ const closeModal = () => {
     pageTitle = "Completed";
   }
 
+//////////////////////////////////////////////////// 
+//Portfolio Add/remove images:////////////////////
+////////////////////////////////////////////////////
+  const [imageList, setImageList] = useState([]);
+  const [showPortfolioGrid, setShowPortfolioGrid] = useState(false);
+  const [imagesLoading, setImagesLoading] = useState(false);
+  const togglePortfolioGrid = async () => {
+    if (!showPortfolioGrid && imageList.length === 0) { // check if the imageList is empty
+      setImagesLoading(true); // Start loading
+      await fetchPortfolioImages();
+      setImagesLoading(false); // End loading
+    }
+    setShowPortfolioGrid(!showPortfolioGrid);
+  };
+  
+  
+  const removeImage = async (image) => {
+    const confirmDelete = window.confirm('Remove image?');
+    if (confirmDelete) {
+        const imageName = image.split("/").pop().split("?")[0];
+        const decodedImageName = decodeURIComponent(imageName);
+        const imageRef = ref(storage, decodedImageName);
+        await deleteObject(imageRef);
+    
+        setImageList(prev => prev.filter(img => img !== image));
+        // Clear cached images
+        localStorage.removeItem('portfolioImages');
+    }
+  };
+  
+
+const fetchPortfolioImages = async () => {
+  // Try to get images from local storage first
+  const cachedImages = localStorage.getItem('portfolioImages');
+  
+  if (cachedImages) {
+      setImageList(JSON.parse(cachedImages));
+      return;
+  }
+
+  let images = [];
+  const imagesRef = ref(storage, 'Portfolio-page');
+  const imageRefs = await listAll(imagesRef);
+
+  for (let imageRef of imageRefs.items) {
+      const imageURL = await getDownloadURL(imageRef);
+      images.push(imageURL);
+  }
+  
+  // Save the images to local storage for future use
+  localStorage.setItem('portfolioImages', JSON.stringify(images));
+  setImageList(images);
+};
+
+
+const handleAddImages = async (e) => {
+  const files = e.target.files;
+
+  // Check if files were selected or if the user hit cancel
+  if (files.length === 0) {
+    return;
+  }
+
+  const uploadPromises = Array.from(files).map(file => {
+    const imageRef = ref(storage, `Portfolio-page/${file.name + v4()}`);
+    return uploadBytes(imageRef, file);
+  });
+
+  try {
+    await Promise.all(uploadPromises);
+    alert('Image(s) uploaded successfully');
+    // Clear cached images
+    localStorage.removeItem('portfolioImages');
+    fetchPortfolioImages(); // Refresh the image list after upload
+} catch (error) {
+    console.error('Error uploading image(s):', error);
+}
+  // Reset the file input value
+  e.target.value = null;
+};
+
+
+
+const toggleAddImageModal = () => {
+  const fileInput = document.getElementById('addPortfolioImages');
+  fileInput.click();
+};
+
+//////////////////////////////////////////////////// 
+////////////////////////////////////////////////////
+////////////////////////////////////////////////////
+
+
+
   return (
     <>
     <Navbar />
@@ -315,13 +411,36 @@ const closeModal = () => {
         <button onClick={uploadFiles} type="button" disabled={disable}>Submit</button>
       </div>
     </div>
-    <button className = "logout-btn" onClick={handleLogout}>LOGOUT</button>
+    <div className="bottom-container-dash">
+    {/* Portfolio Grid Code */}
+    {
+        showPortfolioGrid && (
+          <div className="portfolioGrid">
+            {imageList.map((image, index) => (
+              <div key={index} className="portfolioImage" onClick={() => removeImage(image)}>
+                <img src={image} alt={`Portfolio ${index}`} />
+              </div>
+            ))}
+          </div>
+        )
+    }
+   <input type="file" id="addPortfolioImages" style={{ display: 'none' }} multiple onChange={handleAddImages} />
+      {
+      imagesLoading && (
+        <div className="loader-container">
+          <div className="loader"></div> {}
+        </div>
+      )
+    }
+    <button className="portfolioEdit-btn" onClick={togglePortfolioGrid}>Remove Portfolio Image(s)</button>
+    <button className="portfolioEdit-btn" onClick={toggleAddImageModal}>Add Portfolio Image(s)</button>
+    <p className = "help">Hold the Ctrl key (or Cmd on Mac) while clicking on files to select multiple files.</p>
     
     <Link to="/JulioJimenez/updatepassword">
       <button className="logout-btn">UPDATE PASSWORD</button>
     </Link>
-    
-    
+    <button className = "logout-btn" onClick={handleLogout}>LOGOUT</button>
+    </div>
     <Footer />
     
     </>
