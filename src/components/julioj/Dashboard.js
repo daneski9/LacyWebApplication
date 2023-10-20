@@ -239,76 +239,55 @@ const closeModal = () => {
 //////////////////////////////////////////////////// 
 //Portfolio Add/remove images:////////////////////
 ////////////////////////////////////////////////////
-  const [imageList, setImageList] = useState([]);
-  const [showPortfolioGrid, setShowPortfolioGrid] = useState(false);
-  const [imagesLoading, setImagesLoading] = useState(false);
-  const togglePortfolioGrid = async () => {
-    if (!showPortfolioGrid && imageList.length === 0) { // check if the imageList is empty
-      setImagesLoading(true); // Start loading
-      await fetchPortfolioImages();
-      setImagesLoading(false); // End loading
-    }
-    setShowPortfolioGrid(!showPortfolioGrid);
-  };
-  
- const removeImage = async (image) => {
-    const confirmDelete = window.confirm('Remove image?');
-    if (confirmDelete) {
-        const imageName = image.split("/").pop().split("?")[0];
-        const decodedImageName = decodeURIComponent(imageName);
-        const imageRef = ref(storage, decodedImageName);
-        await deleteObject(imageRef);
-    
-        setImageList(prev => {
-            const updatedList = prev.filter(img => img !== image);
-            localStorage.removeItem('portfolioImages');  
-            return updatedList;
-        });
-    }
+const [imageList, setImageList] = useState([]);
+const [showPortfolioGrid, setShowPortfolioGrid] = useState(false);
+const [imagesLoading, setImagesLoading] = useState(false);
+
+const togglePortfolioGrid = async () => {
+  if (!showPortfolioGrid && imageList.length === 0) { // check if the imageList is empty
+    setImagesLoading(true); // Start loading
+    await fetchPortfolioImages();
+    setImagesLoading(false); // End loading
+  }
+  setShowPortfolioGrid(!showPortfolioGrid);
 };
 
+const removeImage = async (image) => {
+  const confirmDelete = window.confirm('Remove image?');
+  if (confirmDelete) {
+    const imageName = image.split("/").pop().split("?")[0];
+    const decodedImageName = decodeURIComponent(imageName);
+    const imageRef = ref(storage, decodedImageName);
+    await deleteObject(imageRef);
+    setImageList(prev => prev.filter(img => img !== image));
+  }
+};
 
 const fetchPortfolioImages = async () => {
-  // Try to get images from local storage first
-  const cachedImages = localStorage.getItem('portfolioImages');
-  
-  if (cachedImages) {
-      setImageList(JSON.parse(cachedImages));
-      return;
-  }
-
   let images = [];
   const imagesRef = ref(storage, 'Portfolio-page');
   const imageRefs = await listAll(imagesRef);
-
   for (let imageRef of imageRefs.items) {
-      const imageURL = await getDownloadURL(imageRef);
-      images.push(imageURL);
+    const imageURL = await getDownloadURL(imageRef);
+    images.push(imageURL);
   }
-  
-  // Save the images to local storage for future use
-  localStorage.setItem('portfolioImages', JSON.stringify(images));
   setImageList(images);
 };
-
 
 const handleAddImages = async (e) => {
   const files = e.target.files;
   if (files.length === 0) {
     return;
   }
-
   const uploadPromises = Array.from(files).map(async file => {
     const imageRef = ref(storage, `Portfolio-page/${file.name + v4()}`);
     await uploadBytes(imageRef, file);
     return getDownloadURL(imageRef);
   });
-
   try {
     const newImageURLs = await Promise.all(uploadPromises);
     const updatedImageList = [...imageList, ...newImageURLs];
     setImageList(updatedImageList);
-    localStorage.removeItem('portfolioImages');  // Clear the local storage for portfolio images
     alert('Image(s) uploaded successfully');
   } catch (error) {
     console.error('Error uploading image(s):', error);
@@ -316,12 +295,10 @@ const handleAddImages = async (e) => {
   e.target.value = null;
 };
 
-
 const toggleAddImageModal = () => {
   const fileInput = document.getElementById('addPortfolioImages');
   fileInput.click();
 };
-
 //////////////////////////////////////////////////// 
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
