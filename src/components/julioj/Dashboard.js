@@ -251,7 +251,6 @@ const closeModal = () => {
     setShowPortfolioGrid(!showPortfolioGrid);
   };
   
-  
   const removeImage = async (image) => {
     const confirmDelete = window.confirm('Remove image?');
     if (confirmDelete) {
@@ -260,12 +259,13 @@ const closeModal = () => {
         const imageRef = ref(storage, decodedImageName);
         await deleteObject(imageRef);
     
-        setImageList(prev => prev.filter(img => img !== image));
-        // Clear cached images
-        localStorage.removeItem('portfolioImages');
+        setImageList(prev => {
+            const updatedList = prev.filter(img => img !== image); // Exclude removed image from the updatedlist for the local storage.
+            localStorage.setItem('portfolioImages', JSON.stringify(updatedList));  // Update the local storage with the updated list
+            return updatedList;
+        });
     }
-  };
-  
+};
 
 const fetchPortfolioImages = async () => {
   // Try to get images from local storage first
@@ -439,7 +439,7 @@ const toggleAddImageModal = () => {
         </div>
       )
     }
-    <button className="portfolioEdit-btn" onClick={togglePortfolioGrid}>Remove Portfolio Image(s)</button>
+    <button className="portfolioEdit-btn" onClick={togglePortfolioGrid}>Remove Image From Portfolio</button>
     <button className="portfolioEdit-btn" onClick={toggleAddImageModal}>Add Portfolio Image(s)</button>
     <p className = "help">Hold the Ctrl key (or Cmd on Mac) while clicking on files to select multiple files.</p>
     
