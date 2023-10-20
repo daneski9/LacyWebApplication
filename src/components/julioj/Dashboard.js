@@ -251,7 +251,7 @@ const closeModal = () => {
     setShowPortfolioGrid(!showPortfolioGrid);
   };
   
-  const removeImage = async (image) => {
+ const removeImage = async (image) => {
     const confirmDelete = window.confirm('Remove image?');
     if (confirmDelete) {
         const imageName = image.split("/").pop().split("?")[0];
@@ -260,12 +260,13 @@ const closeModal = () => {
         await deleteObject(imageRef);
     
         setImageList(prev => {
-            const updatedList = prev.filter(img => img !== image); // Exclude removed image from the updatedlist for the local storage.
-            localStorage.setItem('portfolioImages', JSON.stringify(updatedList));  // Update the local storage with the updated list
+            const updatedList = prev.filter(img => img !== image);
+            localStorage.removeItem('portfolioImages');  
             return updatedList;
         });
     }
 };
+
 
 const fetchPortfolioImages = async () => {
   // Try to get images from local storage first
@@ -293,8 +294,6 @@ const fetchPortfolioImages = async () => {
 
 const handleAddImages = async (e) => {
   const files = e.target.files;
-
-  // Check if files were selected or if the user hit cancel
   if (files.length === 0) {
     return;
   }
@@ -302,31 +301,20 @@ const handleAddImages = async (e) => {
   const uploadPromises = Array.from(files).map(async file => {
     const imageRef = ref(storage, `Portfolio-page/${file.name + v4()}`);
     await uploadBytes(imageRef, file);
-    
-    // Get the download URL of the uploaded image
     return getDownloadURL(imageRef);
   });
 
   try {
     const newImageURLs = await Promise.all(uploadPromises);
-    
-    // Append the new URLs to the current imageList
     const updatedImageList = [...imageList, ...newImageURLs];
     setImageList(updatedImageList);
-    
-    // Update the local storage
-    localStorage.setItem('portfolioImages', JSON.stringify(updatedImageList));
-    
+    localStorage.removeItem('portfolioImages');  // Clear the local storage for portfolio images
     alert('Image(s) uploaded successfully');
   } catch (error) {
     console.error('Error uploading image(s):', error);
   }
-
-  // Reset the file input value
   e.target.value = null;
 };
-
-
 
 
 const toggleAddImageModal = () => {
