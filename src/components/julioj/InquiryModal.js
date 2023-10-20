@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './InquiryModal.css';
 
 
 
-function InquiryModal({ inquiry, onClose, onUpdateState, onDelete }) {
+function InquiryModal({ inquiry, onClose, onUpdateState, onDelete, onUpdateStateEmail }) {
+
+  const [emailText, setEmailText] = useState(''); // State for email text
 
   const formatTimestamp = (timestamp) => {
     if (timestamp && timestamp.toDate) {
@@ -48,12 +50,28 @@ function InquiryModal({ inquiry, onClose, onUpdateState, onDelete }) {
           <p>Location: {inquiry.Location}</p>
           <p>Descripton: {inquiry.Description}</p>
           <div className="StateButton">
-            {inquiry.State === 1 && (
-              <button onClick={() => onUpdateState(inquiry, 2)}>Mark In-Progress</button>
-            )}
-            {inquiry.State === 2 && (
+            {inquiry.State === 1 ? (
+              <div>
+                <button onClick={() => onUpdateState(inquiry, 2)} className="Mark-In-Progress-button">Mark In-Progress Only</button>
+                {inquiry.State === 1 && (
+                  <div>
+                    <button
+                      onClick={() => onUpdateStateEmail(inquiry, emailText)}
+                      className="send-email-button"> Mark In-Progress and Send Email</button>
+                    <input
+                     type="text"
+                     value={emailText}
+                     onChange={(e) => setEmailText(e.target.value)}
+                     placeholder="Enter email text..."
+                     className="email-text-input" 
+                    />
+                    
+                  </div>
+                )}
+              </div>
+            ) : inquiry.State === 2 ? (
               <button onClick={() => onUpdateState(inquiry, 3)}>Mark Completed</button>
-            )}
+            ) : null}
           </div>
           <button onClick={() => onDelete(inquiry)} className="delete-button">Delete</button>
           <button className="close-button" onClick={onClose}>Close</button>
@@ -65,7 +83,6 @@ function InquiryModal({ inquiry, onClose, onUpdateState, onDelete }) {
       </div>
     </div>
   );
-  
 }
 
 export default InquiryModal;
