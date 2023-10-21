@@ -31,7 +31,8 @@ function Portfolio(properties) {
                         setImageList([...uniqueURLs]);
                     });
             });
-    }, []);
+    }, [imageListRef]);
+    
     
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedImageIndex, setSelectedImageIndex] = useState(null);
