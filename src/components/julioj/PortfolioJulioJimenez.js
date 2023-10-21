@@ -1,49 +1,45 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Navbar from "../Navbar";
 import SearchBar from "../subcomponents/Searchbar";
 import './julioCSS/PortfolioJulioJimenez.css';
 import Footer from './Footer';
 import { storage } from "../../DataBase";
-import { ref, listAll, getDownloadURL } from "firebase/storage";
+import { ref, list, getDownloadURL } from "firebase/storage";
 import { Link } from 'react-router-dom';
 
 
 
 function Portfolio(properties) {
-    let [query, setQuery] = useState('');
-
-    // A List to hold the image file names
-    // reference video: https://www.youtube.com/watch?v=YOAeBSCkArA
     const [imageList, setImageList] = useState([]);
     const imageListRef = ref(storage, "Portfolio-page/");
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const imagesPerPage = 16;
+    const [pageToken, setPageToken] = useState(null);
+
+    const fetchImages = useCallback(async (currentPage, currentToken) => {
+        const res = await list(imageListRef, {
+            maxResults: imagesPerPage,
+            pageToken: currentPage > 1 ? currentToken : undefined
+        });
+
+        const downloadPromises = res.items.map(item => getDownloadURL(item));
+        const urls = await Promise.all(downloadPromises);
+        setImageList(urls);
+
+        if (res.nextPageToken) {
+            setPageToken(res.nextPageToken);
+        }
+    }, [imageListRef]); // imageListRef is a dependency for fetchImages
+
     useEffect(() => {
-        listAll(imageListRef)
-            .then((response) => {
-                let uniqueURLs = new Set();
-                const downloadPromises = response.items.map((item) => {
-                    return getDownloadURL(item);
-                });
-    
-                Promise.all(downloadPromises)
-                    .then((urls) => {
-                        urls.forEach((url) => uniqueURLs.add(url));
-                        setImageList([...uniqueURLs]);
-                    });
-            });
-    }, []);
-    
+        fetchImages(currentPage, pageToken);
+    }, [currentPage, fetchImages, imageListRef, pageToken]); // include fetchImages and pageToken in the dependency array
+
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedImageIndex, setSelectedImageIndex] = useState(null);
-    const [currentPage, setCurrentPage] = useState(1); // Start with page 1
-    const imagesPerPage = 16; // Number of images per page
-
-    // Calculate total number of pages
     const total_pages = Math.ceil(imageList.length / imagesPerPage);
-    
-    const currentImages = imageList.slice((currentPage - 1) * imagesPerPage, currentPage * imagesPerPage);
 
-    // Function to update the page number
     const goToNextPage = () => {
         if (currentPage < total_pages) setCurrentPage(prev => prev + 1);
         window.scrollTo(120, 120);
@@ -53,6 +49,7 @@ function Portfolio(properties) {
         if (currentPage > 1) setCurrentPage(prev => prev - 1);
         window.scrollTo(120, 120);
     }
+
 
     return (
         <>
