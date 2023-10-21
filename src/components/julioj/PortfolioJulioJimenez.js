@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Navbar from "../Navbar";
-import SearchBar from "../subcomponents/Searchbar";
 import './julioCSS/PortfolioJulioJimenez.css';
 import Footer from './Footer';
 import { storage } from "../../DataBase";
@@ -10,7 +9,6 @@ import { Link } from 'react-router-dom';
 
 
 function Portfolio(properties) {
-    let [query, setQuery] = useState('');
 
     // A List to hold the image file names
     // reference video: https://www.youtube.com/watch?v=YOAeBSCkArA
@@ -20,19 +18,16 @@ function Portfolio(properties) {
     useEffect(() => {
         listAll(imageListRef)
             .then((response) => {
-                let uniqueURLs = new Set();
                 const downloadPromises = response.items.map((item) => {
                     return getDownloadURL(item);
                 });
     
                 Promise.all(downloadPromises)
                     .then((urls) => {
-                        urls.forEach((url) => uniqueURLs.add(url));
-                        setImageList([...uniqueURLs]);
+                        setImageList(urls);
                     });
             });
     }, [imageListRef]);
-    
     
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedImageIndex, setSelectedImageIndex] = useState(null);
@@ -41,8 +36,10 @@ function Portfolio(properties) {
 
     // Calculate total number of pages
     const total_pages = Math.ceil(imageList.length / imagesPerPage);
-    
-    const currentImages = imageList.slice((currentPage - 1) * imagesPerPage, currentPage * imagesPerPage);
+    const currentImages = useMemo(() => 
+    imageList.slice((currentPage - 1) * imagesPerPage, currentPage * imagesPerPage), 
+    [imageList, currentPage]);
+
 
     // Function to update the page number
     const goToNextPage = () => {
