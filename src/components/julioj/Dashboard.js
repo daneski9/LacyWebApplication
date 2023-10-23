@@ -17,9 +17,6 @@ import { Link } from 'react-router-dom';
 import InquiryModal from './InquiryModal';
 import { deleteObject } from 'firebase/storage';
 
-// TODO: Impliment JSON fro imageInfo
-// import {  } from "json";
-
 
 function AdminLanding() {
   // Cloud Database Stuff
@@ -101,6 +98,25 @@ function AdminLanding() {
       console.error('Error updating state: ', error);
     }
   };
+
+  const handleUpdateStateEmail = async (inquiry, emailText) => {
+    try {
+      // Implement the logic to send an email here using the emailText.
+      console.log('Email sent successfully.'); 
+      console.log('Email text:', emailText);
+      
+      // Update the state (In-Progress) "2"
+      await updateStateInFirestore(inquiry, 2);
+  
+      closeModal(); // Close the modal after updating the state.
+  
+      // Fetch the updated data to refresh the table with the latest information.
+      fetchInquirerData(currentState);
+    } catch (error) {
+      console.error('Error updating state and sending email: ', error);
+    }
+  };
+  
   
 
   useEffect(() => {
@@ -302,23 +318,33 @@ const handleAddImages = async (e) => {
     return;
   }
 
-  const uploadPromises = Array.from(files).map(file => {
+  const uploadPromises = Array.from(files).map(async file => {
     const imageRef = ref(storage, `Portfolio-page/${file.name + v4()}`);
-    return uploadBytes(imageRef, file);
+    await uploadBytes(imageRef, file);
+    
+    // Get the download URL of the uploaded image
+    return getDownloadURL(imageRef);
   });
 
   try {
-    await Promise.all(uploadPromises);
+    const newImageURLs = await Promise.all(uploadPromises);
+    
+    // Append the new URLs to the current imageList
+    const updatedImageList = [...imageList, ...newImageURLs];
+    setImageList(updatedImageList);
+    
+    // Update the local storage
+    localStorage.setItem('portfolioImages', JSON.stringify(updatedImageList));
+    
     alert('Image(s) uploaded successfully');
-    // Clear cached images
-    localStorage.removeItem('portfolioImages');
-    fetchPortfolioImages(); // Refresh the image list after upload
-} catch (error) {
+  } catch (error) {
     console.error('Error uploading image(s):', error);
-}
+  }
+
   // Reset the file input value
   e.target.value = null;
 };
+
 
 
 
@@ -339,11 +365,12 @@ const toggleAddImageModal = () => {
     
     <div className='welcome-message'>Welcome, {email} </div>
     <div className='landing'>
-      {showModal && (
+    {showModal && (
       <div className="modal">
       <InquiryModal inquiry={selectedInquiry} 
       onClose={closeModal} 
-      onUpdateState={handleUpdateState} 
+      onUpdateState={handleUpdateState}
+      onUpdateStateEmail={handleUpdateStateEmail} 
       onDelete={handleDelete} />
       </div>
       
@@ -360,34 +387,20 @@ const toggleAddImageModal = () => {
       <table>
         
         <thead>
-        
-      
-
-
           <tr>
           
             <th>Inquirer ID</th>
             <th>Inquirer Name</th>
-            <th>Inquirer Email</th>
-            <th>Inquirer Phone</th>
-            <th>Location on Body</th>
-            <th>Tattoo Description</th>
             <th>Date</th>
             <th>Action</th> 
           </tr>
         </thead>
-
         <tbody>
         {Inquirer.map((Inquiry) => {
           return (
             <tr key={Inquiry.id}>
               <td>{Inquiry.id}</td>
-              <td>{Inquiry.First}
-               {Inquiry.Last}</td>
-              <td>{Inquiry.Email}</td>
-              <td>{Inquiry.Phone}</td>
-              <td>{Inquiry.Location}</td>
-              <td>{Inquiry.Description}</td>
+              <td>{Inquiry.First} {Inquiry.Last}</td>
               <td>{formatTimestamp(Inquiry.Date)}</td>
               <td>
                 <button onClick={()=> handleButtonAction(Inquiry)}>Open</button>

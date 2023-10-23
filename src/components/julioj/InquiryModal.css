@@ -29,6 +29,35 @@
 }
 
 
+
+.modal-left input[type="text"] {
+  width: 100%; 
+  height: 40px; 
+  margin-bottom: 10px; 
+  padding: 5px; 
+}
+/*test*/
+
+
+.modal-left button.Mark-In-Progress-button {
+  background-color: #007bff; 
+  color: #fff; 
+  border: none;
+  padding: 10px 20px; 
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.modal-left button.send-email-button {
+  background-color: #00b521; 
+  color: #fff; 
+  border: none;
+  padding: 10px 20px; 
+  cursor: pointer;
+  font-size: 16px;
+}
+
+
 .close-button {
   position: absolute;
   top: 10px;
