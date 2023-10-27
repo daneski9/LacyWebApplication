@@ -33,7 +33,7 @@ function Login() {
         // Optionally, you can disable the submit button here
       } else {
         setError('Unable to login. Please try again.');
-        alert('wrong password');
+        alert('Wrong Password');
       }
     }
   };
