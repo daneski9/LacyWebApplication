@@ -31,10 +31,20 @@ function InquiryPage() {
   const handleFName = (e) => setFName(e.target.value);
   const handleLName = (e) => setLName(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
-  const handlePhone = (e) => setPhone(e.target.value);
+  //const handlePhone = (e) => setPhone(e.target.value);
   const handleLocation = (e) => setLocation(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
   
+  const handlePhone = (e) => {
+    const rawPhoneNumber = e.target.value;
+    const formattedPhoneNumber = rawPhoneNumber.replace(/\D/g, ''); // Remove non-digit characters
+    if (formattedPhoneNumber.length <= 10) {
+      // Format the phone number as (xxx)xxx-xxxx
+      const formatted = formattedPhoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '($1)$2-$3');
+      setPhone(formatted);
+    }
+  };
+
   const handleImageRef = event => {
 
     console.log(event.target.files[0])
