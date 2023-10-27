@@ -10,7 +10,7 @@ import '../julioj/julioCSS/PaymentOptions.css';
 
 function Box({title}) {
   return (
-    <div className='box'>
+    <div className='box-payment-portals'>
       {title === 'zelle' ? <img src={zelle} class="zelleImage" ></img> : null}
       {title === 'paypal' ? <img src={paypal} class="paypalImage"></img> : null}
       {title === 'cashapp' ? <a href="https://cash.app/$jayytatts26" target="_blank"><img src={cashapp} class="cashappImage"></img></a>  : null}

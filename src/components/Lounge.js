@@ -91,7 +91,7 @@ function Lounge() {
       <>
         <div>
           <h1 className="title is-1">Lacy St. Art Lounge</h1>
-          <h2 className="title-2">Meet The Artists:</h2>
+          <h2 className="title-2">Meet The Artists</h2>
           <div className = "artists-container">
           {shuffledArtists}
           </div>

@@ -31,7 +31,7 @@ function About() {
   const handleAdminLoginClick = () => {
       if (isLoggedIn) {
           window.scrollTo(0, 0);
-          adminButtonNavigate('/JulioJimenez/adminlanding');
+          adminButtonNavigate('/JulioJimenez/dashboard');
       } else {
           window.scrollTo(0, 0);
           adminButtonNavigate('/JulioJimenez/login');
@@ -51,16 +51,10 @@ function About() {
         </div>
       </div>
       <div className = "bottom-container">
-        <div className = "hours-info">
+        <div className = "info">
           <h2>Hours</h2>
-          <ul>
-            <li>M&nbsp;&nbsp;10am - 9pm</li>
-            <li>T&nbsp;&nbsp;&nbsp;10am - 9pm</li>
-            <li>W 10am - 9pm</li>
-            <li>F&nbsp;&nbsp;&nbsp;10am - 9pm</li>
-            <li>Sa (Appointment Only)</li>
-            <li>Su (Appointment Only)</li>
-          </ul></div>
+          <p className="appointment">Monday - Sunday<br></br>(Appointment Only)</p>
+        
           <Link to="/JulioJimenez/inquiry">
             <button className='about-btn' onClick={() => {
               window.scroll({
@@ -69,10 +63,22 @@ function About() {
               });
             }}>BOOK NOW</button>
           </Link>
+          
+
+          <h3>Contact the Tattoo Artist</h3>
+          <Link to="/JulioJimenez/contact">
+            <button className='contact-btn' onClick={() => {
+              window.scroll({
+                top: 0,
+                left: 0
+              });
+            }}>CONTACT US</button>
+          </Link>
+        
+        </div>
       </div>
-      <div>
-        <Footer />
-      </div>
+      
+      <Footer />
 
       <div className = "login">
         <button className="lounge-button" onClick={handleAdminLoginClick}>Admin Login</button>
