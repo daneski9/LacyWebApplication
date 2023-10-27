@@ -124,7 +124,7 @@ function InquiryPage() {
 
   const sendEmail = (e) => {
     e.preventDefault();
-
+    handleSubmit();
     emailjs.sendForm('service_wvpurwc', 'template_747huxp', form.current, 'y1XLxwxWca9cZzlcv')
       .then((result) => {
           console.log(result.text);
@@ -191,7 +191,7 @@ function InquiryPage() {
             <p className="text-content1">Image is currently uploading.  Inquiry Submission is disabled until image is processed.</p>
           </div>
         )}
-        <button type="submit" onClick={handleSubmit} disabled={disabled || capVal}>Submit</button>
+        <button type="submit" disabled={disabled || capVal}>Submit</button>
 
       </form>
 
