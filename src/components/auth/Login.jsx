@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../Login.css';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, setPersistence, browserSessionPersistence} from 'firebase/auth';
 import { auth } from '../../DataBase';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar';
@@ -21,7 +21,8 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await setPersistence(auth, browserSessionPersistence);
+      await signInWithEmailAndPassword(auth, email, password);
       console.log(userCredential);
       window.scrollTo(0, 0);
       navigateToLanding('/JulioJimenez/dashboard');

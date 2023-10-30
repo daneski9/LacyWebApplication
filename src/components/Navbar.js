@@ -1,16 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom'; 
 import "./Navbar.css";
 import InstagramIcon from "./images/instagram_logo.png";
 
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
 function Navbar(props){
     const location = useLocation();
     const currentPath = location.pathname;
-    let aboutUrl, servicesUrl, portfolioUrl, contactUrl, paymentUrl,instagramUrl = '';
+    let aboutUrl, servicesUrl, portfolioUrl, contactUrl, paymentUrl,instagramUrl, dashboardUrl = '';
 
     const handleLinkClick = () => {
         window.scrollTo(0, 0);
     };
+
+    // Only show the dashboard link if the user is logged in
+    const auth = getAuth();
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, user => {
+            setUser(user);
+        });
+        
+        return () => {
+            unsubscribe();
+        };
+    }, [auth]);
+    
 
     if (currentPath.startsWith('/JulioJimenez')) {
         aboutUrl = '/JulioJimenez/about';
@@ -19,7 +36,18 @@ function Navbar(props){
         contactUrl = '/JulioJimenez/contact';
         paymentUrl = '/JulioJimenez/payment'
         instagramUrl ='https://www.instagram.com/jayytatts/?hl=en'
+        dashboardUrl = '/JulioJimenez/dashboard';
     }
+    
+    // Only show the dashboard link if the user is logged in
+    const dashboardLink = user ? (
+        <li>
+            <Link to={dashboardUrl} onClick={handleLinkClick}>Dashboard</Link>
+        </li>
+    ) : null;
+
+
+
     //To add another artist:
     /*else if (currentPath.startsWith('OtherArtist')){
         aboutUrl = '';
@@ -54,6 +82,9 @@ function Navbar(props){
                 <li>
                 <Link to="/" onClick={handleLinkClick}>Lounge</Link>
                 </li>
+                
+                {dashboardLink}
+                    
                 <li>
                 <Link to={instagramUrl} onClick={handleLinkClick} target="_blank">
         <img src={InstagramIcon} alt="instagramIcon" width="20" height="20"/> </Link>
@@ -83,6 +114,7 @@ function Navbar(props){
                 <li>
                 <Link to="/" onClick={handleLinkClick}>Lounge</Link>
                 </li>
+                {dashboardLink}
                 <li>
                 <Link to={instagramUrl} onClick={handleLinkClick} target="_blank">
         <img src={InstagramIcon} className="instagram" alt="instagramIcon" width="20" height="20"/> </Link>
