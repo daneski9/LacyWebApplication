@@ -12,7 +12,10 @@ function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(''); // State variable for error message
   const [failedAttempts, setFailedAttempts] = useState(0); // Track failed login attempts
+  const [isLocked, setIsLocked] = useState(false);
+  
   const navigateToLanding = useNavigate();
+  
 
   const handleLinkClick = () => {
     window.scrollTo(0, 0);
@@ -30,11 +33,16 @@ function Login() {
       console.log(error);
       setFailedAttempts(failedAttempts + 1);
       if (failedAttempts >= 3) {
-        alert('Too many failed login attempts. Please try again later.');
-        // Optionally, you can disable the submit button here
+        setIsLocked(true);
+        setError('Account temporarily locked. Please try again later.');
+        setTimeout(() => {
+          setIsLocked(false);
+          setFailedAttempts(0);
+          setError('');
+        }, 30000); // Unlock the account after 30 seconds
       } else {
         setError('Unable to login. Please try again.');
-        alert('wrong password');
+        alert('Wrong password');
       }
     }
   };
