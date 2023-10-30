@@ -2,9 +2,8 @@
 .landing {
   width: 75%;
   margin: 0 auto;
-  border-radius: 10px;
+  border-radius: 15px;
 }
-
 
 .file {
   width: 300px;
@@ -19,10 +18,11 @@
 }
 
 table {
-  margin-top: 5%;
+  margin-bottom: 1%;
   width: 100%;
   padding: 10px;
   background-color: rgba(43, 31, 31, 0.486);
+  align-items: center;
 
 }
 
@@ -41,10 +41,54 @@ td {
   color: white;
 }
 
-
-
+/*
 .submit-button {
-  margin-top: 10px;
+  margin-top:  1px;
+}
+*/
+
+.bottom-container-dash{
+  width: 75%;
+  margin: 0 auto;
+  border-radius: 15px;
+}
+  
+.btn-group2{
+  display: flex;
+  justify-content: left;
+}
+.btn-group3{
+  display: flex;
+  justify-content: left;
+}
+
+.btn-group{
+margin-bottom: 5%;
+}
+
+
+/* Style for the individual buttons */
+.inquire-btn {
+  background-color: rgba(0, 0, 0, 0.493);
+    border: 1.5px solid #000000;
+    color: #ffffff;
+    text-decoration: underline; 
+    cursor: pointer;
+    float: left;
+    padding: 10px 16px;
+    font-size: 18px;
+    
+}
+
+.active, .inquire-btn:hover {
+  background-color: rgb(129, 129, 129);
+  color: white;
+  border: 1.5px solid #000000;
+  cursor: pointer;
+}
+
+.inquire-btn:not(:last-child) {
+  border-right: none; /* Prevent double borders */
 }
 
 .logout-btn{
@@ -52,37 +96,46 @@ td {
   color: white;
   padding: 0.7em 1.9em;
   border-radius: 5px;
-  margin-left: 70%;
   cursor: pointer;
   border: 1px solid white;
-  margin-bottom: 10px;
+  width: 10em;
 }
 .logout-btn:hover{
   background-color: rgb(129, 129, 129);
 }
-
+.grid-container {
+  max-width: 1320px; /* Set the maximum width you desire */
+  margin: 0 auto; /* Center the container horizontally on the page */
+}
 .portfolioEdit-btn{
   background-color: rgb(1, 59, 25);
   color: white;
   padding: 0.7em 1.9em;
   border-radius: 5px;
-  margin-left: 70%;
   cursor: pointer;
   border: 1px solid white;
-  margin-bottom: 10px;
+  width: 10em
 }
 .portfolioEdit-btn:hover{
   background-color: rgb(45, 194, 70);
 }
 
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 
 .welcome-message{
   color: white;
   padding: 10px 20px;        
   font-size: 1.1rem;
   margin-left: 75%;
+  animation: fadeOut 5s;
 }
-
 
 .portfolioGrid {
   display: grid;
@@ -129,31 +182,72 @@ td {
   background-color: rgba(0, 0, 0, 0.5); 
   z-index: 1000; 
 }
-
+/*
 .help{
   color:white;
   margin-left: 70%;
   margin-top: -10px;
 }
+*/
 
 @media (max-width: 852px) {
+
 .welcome-message{
   margin-top: 50px;
 }
 
-
 }
 
 @media (max-width: 450px) {
+
+.landing {
+   width: 98%;
+   margin-top: 15%;
+  
+  }
+
 .bottom-container-dash{
-  margin-left: 70%;
+   width: 98%;  
+  }
+
+.inquire-btn {
+    border: 1px solid #000000;
+    font-size: 12px;
+    padding: 10px 15px;  
 }
+  
+.active, .inquire-btn:hover {
+    border: 1px solid #000000;
+}
+
+.logout-btn{
+  font-size: 12px;
+}
+
+.portfolioEdit-btn{
+  font-size: 12px;
+}
+/* Adjust the table for smaller screens */
+.table table {
+  font-size: 14px;
+  padding: 5px;
+}
+.welcome-message{
+  color: white;
+  padding: 10px 20px;        
+  font-size: 1.1rem;
+  opacity: 1;
+  transition: opacity 3s; 
+}  
+
 .portfolioGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);  /* Force 3 columns */
   margin-top: 20px;
 }
-.help{
+
+/*.help{
   min-width: 150%;
-}
+}*/
+
 }

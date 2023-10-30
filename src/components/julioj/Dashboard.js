@@ -44,7 +44,6 @@ function AdminLanding() {
   };
 
  
-  
 
 
   const formatTimestamp = (timestamp) => {
@@ -322,7 +321,13 @@ const toggleAddImageModal = () => {
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
 
-
+setTimeout(() => {
+  const elements = document.getElementsByClassName('welcome-message');
+  if (elements.length > 0) {
+    const txt = elements[0]; // Access the first element with the class name
+    txt.style.display = 'none';
+  }
+}, 5000);
 
   return (
     <>
@@ -339,14 +344,15 @@ const toggleAddImageModal = () => {
       onDelete={handleDelete} />
       </div>
       
-)}
+    )}
 
       <div>
         <h1>{pageTitle}</h1> 
-        <button onClick={() => handleButtonClick(1)}>Newest Inquiries</button>
-        <button onClick={() => handleButtonClick(2)}>In-Progress</button>
-        <button onClick={() => handleButtonClick(3)}>Completed</button>
-        
+        <div className='btn-group'style={{width:'100%'}}>
+        <button className = 'inquire-btn' onClick={() => handleButtonClick(1)} style={{width:'33.3%'}}>Newest Inquiries</button>
+        <button className = 'inquire-btn' onClick={() => handleButtonClick(2)} style={{width:'33.3%'}}>In-Progress</button>
+        <button className = 'inquire-btn' onClick={() => handleButtonClick(3)} style={{width:'33.3%'}}>Completed</button>
+        </div>
       </div>
       <div className='table'>  
       <table>
@@ -377,9 +383,8 @@ const toggleAddImageModal = () => {
         </tbody>
         </table>
         
-        </div>
-        
-
+      </div>
+      {/* 
       <div className = 'file'>
         <label htmlFor="image">Upload Image (Multiple)
           <input type="file" name="image" accept=".jpg, .png" multiple onChange={handleImage} />
@@ -388,20 +393,25 @@ const toggleAddImageModal = () => {
       <div className = 'submit-button'>
         <button onClick={uploadFiles} type="button" disabled={disable}>Submit</button>
       </div>
-    </div>
-    <div className="bottom-container-dash">
+      */}
+      </div>
+       
     {/* Portfolio Grid Code */}
     {
         showPortfolioGrid && (
-          <div className="portfolioGrid">
-            {imageList.map((image, index) => (
-              <div key={index} className="portfolioImage" onClick={() => removeImage(image)}>
-                <img src={image} alt={`Portfolio ${index}`} />
-              </div>
-            ))}
+          <div class="grid-container">
+            <div className="portfolioGrid">
+              {imageList.map((image, index) => (
+               <div key={index} className="portfolioImage" onClick={() => removeImage(image)}>
+                 <img src={image} alt={`Portfolio ${index}`} />
+                </div>
+             ))}
+            </div>
           </div>
+
         )
     }
+    {/*
    <input type="file" id="addPortfolioImages" style={{ display: 'none' }} multiple onChange={handleAddImages} />
       {
       imagesLoading && (
@@ -410,15 +420,20 @@ const toggleAddImageModal = () => {
         </div>
       )
     }
-    <button className="portfolioEdit-btn" onClick={togglePortfolioGrid}>Remove Image From Portfolio</button>
-    <button className="portfolioEdit-btn" onClick={toggleAddImageModal}>Add Portfolio Image(s)</button>
-    <p className = "help">Hold the Ctrl key (or Cmd on Mac) while clicking on files to select multiple files.</p>
-    
-    <Link to="/JulioJimenez/updatepassword">
-      <button className="logout-btn">UPDATE PASSWORD</button>
-    </Link>
-    <button className = "logout-btn" onClick={handleLogout}>LOGOUT</button>
+  */}
+    <div className="bottom-container-dash">
+      <div className="btn-group2">
+        <button className="portfolioEdit-btn" onClick={togglePortfolioGrid}>Remove Image From Portfolio</button>
+        <button className="portfolioEdit-btn" onClick={toggleAddImageModal}>Add Portfolio Image(s)</button>
+      </div>
+      <div className="btn-group3">
+        <Link to="/JulioJimenez/updatepassword">
+          <button className="logout-btn">UPDATE PASSWORD</button>
+       </Link>
+       <button className = "logout-btn" onClick={handleLogout}>LOGOUT</button>
+      </div>
     </div>
+
     <Footer />
     
     </>
@@ -426,3 +441,5 @@ const toggleAddImageModal = () => {
 }
 
 export default AdminLanding;
+
+//<p className = "help"> Hold the Ctrl key (or Cmd on Mac)<br></br> while clicking on files to select multiple files.</p>
