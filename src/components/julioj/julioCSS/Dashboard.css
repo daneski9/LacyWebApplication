@@ -160,8 +160,8 @@ margin-bottom: 5%;
   border: 8px solid #f3f3f3;
   border-radius: 50%;
   border-top: 8px solid #3498db;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   animation: spin 2s linear infinite;
 }
 
@@ -182,13 +182,6 @@ margin-bottom: 5%;
   background-color: rgba(0, 0, 0, 0.5); 
   z-index: 1000; 
 }
-/*
-.help{
-  color:white;
-  margin-left: 70%;
-  margin-top: -10px;
-}
-*/
 
 @media (max-width: 852px) {
 

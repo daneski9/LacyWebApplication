@@ -411,7 +411,7 @@ setTimeout(() => {
 
         )
     }
-    {/*
+    
    <input type="file" id="addPortfolioImages" style={{ display: 'none' }} multiple onChange={handleAddImages} />
       {
       imagesLoading && (
@@ -420,7 +420,7 @@ setTimeout(() => {
         </div>
       )
     }
-  */}
+    
     <div className="bottom-container-dash">
       <div className="btn-group2">
         <button className="portfolioEdit-btn" onClick={togglePortfolioGrid}>Remove Image From Portfolio</button>
@@ -441,5 +441,3 @@ setTimeout(() => {
 }
 
 export default AdminLanding;
-
-//<p className = "help"> Hold the Ctrl key (or Cmd on Mac)<br></br> while clicking on files to select multiple files.</p>
