@@ -14,8 +14,6 @@ import './julioCSS/ContactJulioJimenez.css'
 function Contact() {
 
   const form = useRef()
-
-  const captchaRef = useRef(null);
     
   const [first, setFirst] = useState('');
   const [last, setLast] = useState('');
@@ -24,12 +22,22 @@ function Contact() {
   const [showAlert, setShowAlert] = useState(false);
 
   const [capVal, setCapVal] = useState("true");
+  const captchaRef = useRef();
   const updateCaptcha = (e) => {
-    // Log the changes
-    console.log("Captcha Completed");
+     // Log the changes
+     console.log("Captcha Completed");
 
-    // Change the captcha value to false (for the disabled attribute)
-    setCapVal("");
+     // Capture the value of the captch
+     const captchaValue = captchaRef.current.getValue();
+ 
+     // Check to see if the captcha was valid
+     if (captchaValue != "") {
+       // Change the captcha value to false (for the disabled attrivute)
+       setCapVal("");
+     } else {
+       // Otherwise the captcha hasn't passed so we set it back to true
+       setCapVal("true");
+     }
   }
 
 

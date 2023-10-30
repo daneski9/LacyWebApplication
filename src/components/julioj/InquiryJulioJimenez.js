@@ -2,7 +2,7 @@ import '../../App.css'
 import './julioCSS/InquiryJulioJimenez.css'
 import Footer from './Footer';
 import { db } from "../../DataBase"; 
-import {addDoc, collection, serverTimestamp, updateDoc} from "firebase/firestore";
+import {addDoc, collection, serverTimestamp, getDocs, query} from "firebase/firestore";
 import { storage } from "../../DataBase";
 
 import Navbar from "../Navbar";
@@ -27,15 +27,27 @@ function InquiryPage() {
   const [link, setLink] = useState("");
 
   const [capVal, setCapVal] = useState("true");
+  const captchaRef = useRef();
   const updateCaptcha = (e) => {
+    
     // Log the changes
     console.log("Captcha Completed");
 
-    // Change the captcha value to false (for the disabled attrivute)
-    setCapVal("");
+    // Capture the value of the captch
+    const captchaValue = captchaRef.current.getValue();
+
+    // Check to see if the captcha was valid
+    if (captchaValue != "") {
+      // Change the captcha value to false (for the disabled attrivute)
+      setCapVal("");
+    } else {
+      // Otherwise the captcha hasn't passed so we set it back to true
+      setCapVal("true");
+    }
+    
   }
 
-  const [disabled, setDisabled] = useState("true")
+  const [disabled, setDisabled] = useState("")
 
   // Handle input changes
   const handleFName = (e) => setFName(e.target.value);
@@ -46,6 +58,9 @@ function InquiryPage() {
   const handleDescription = (e) => setDescription(e.target.value);
   
   const handleImageRef = event => {
+
+    // Disable the submit button while uploading the file
+    setDisabled("true")
 
     console.log(event.target.files[0])
 
@@ -80,6 +95,9 @@ function InquiryPage() {
     }
   };
 
+  // Use to capture the Inquiry ID
+  const [autoId, setAutoId] = useState("");
+
   const handleSubmit = async () => {
     // Save the data to Firebase
     const docRef = await addDoc(collection(db, "Inquirer"), {    // Reformated for eye appeal and added constant docRef to be used for autoId
@@ -93,7 +111,7 @@ function InquiryPage() {
       ImageRef: link,
       State: 1})               // Added State 1 to be created as "Newest Inquiry" state
 
-     // const autoId = docRef.id; // Get the ID of the document that was just created
+      setAutoId(docRef.id); // Get the ID of the document that was just created
 
       // Create a reference to the file location, will be placed in seperate folder for each inquiry for cases of muliple images
       //const storageRef = storage.ref();('Inquiries/${autoId}/${imageRef.name}'); 
@@ -108,41 +126,55 @@ function InquiryPage() {
 
       //console.log("Document written with ID: ", autoId);
       //console.log("Image URL: ", imageUrl);
-
-    // Clear the form
-    setFName("");
-    setLName("");
-    setEmail("");
-    setPhone("");
-    setLocation("");
-    setDescription("");
-    setImageRef("");
-    
-    setLink("");
   };
 
 
   const sendEmail = (e) => {
     e.preventDefault();
+
+    // Push the Inquiry data to the database
     handleSubmit();
-    emailjs.sendForm('service_wvpurwc', 'template_747huxp', form.current, 'y1XLxwxWca9cZzlcv')
-      .then((result) => {
+
+    // Wait for 5 seconds to wait for Inquiry data push
+    setTimeout(() => {
+      // Send the notification
+      emailjs.sendForm('service_wvpurwc', 'template_747huxp', form.current, 'y1XLxwxWca9cZzlcv')
+        .then((result) => {
           console.log(result.text);
-      }, (error) => {
+        }, (error) => {
           console.log(error.text);
       });
 
-      window.scrollTo(0, 0);
-
       e.target.reset();
 
-      // Show alert
-      setShowAlert(true);
+      // Clear the form
+      setFName("");
+      setLName("");
+      setEmail("");
+      setPhone("");
+      setLocation("");
+      setDescription("");
+      setImageRef("");
+      setLink("");
 
-      // Hide alert after 15 seconds
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 15000);
+      console.log("SENT EMAIL!");
+    }, 5000);
+    console.log("HERE!!!!");
+
+    // Move the window to the top of the screen
+    window.scrollTo(0, 0);
+  
+    // Reset the values of the disabled
+    //setCapVal(true);
+
+    // Show alert
+    setShowAlert(true);
+
+    // Hide alert after 15 seconds
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 15000);
+
   };
 
   return (
@@ -175,6 +207,7 @@ function InquiryPage() {
         </div>
 
         <input type="text" name="link" value={link} placeholder="Image Link" hidden/>
+        <input type="text" name="id" value={autoId} placeholder="INQUIRY ID" hidden />
         
         <br></br>
         
@@ -182,6 +215,7 @@ function InquiryPage() {
           sitekey='6LdVvagoAAAAALOqtiBfkZY7sIYlse5jpbJ-tuo6'
           onChange={updateCaptcha}
           theme="dark"
+          ref={captchaRef}
         />
 
         <br></br>
