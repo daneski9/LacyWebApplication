@@ -33,6 +33,21 @@ th {
   background-color: transparent;
   color: white;
 }
+.open-btn{
+  cursor: pointer;
+}
+.x-btn{
+    float: right;
+    margin-left: 5px;
+    color: white;
+    background-color: rgb(180, 0, 0);
+    cursor: pointer;
+}
+.action-buttons {
+  display: flex;         /* Align items in a row */
+  justify-content: space-between;  /* Distribute the space between items */
+  flex-wrap: nowrap;     /* Prevent items from wrapping */
+}
 
 td {
   border: 1px solid;

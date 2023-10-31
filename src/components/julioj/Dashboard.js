@@ -372,8 +372,12 @@ setTimeout(() => {
               <td>{Inquiry.First} {Inquiry.Last}</td>
               <td>{formatTimestamp(Inquiry.Date)}</td>
               <td>
-                <button onClick={()=> handleButtonAction(Inquiry)}>Open</button>
+                <div className="action-buttons">
+                  <button className="open-btn" onClick={() => handleButtonAction(Inquiry)}>Open</button>
+                  <button className="x-btn" onClick={() => handleDelete(Inquiry)}>X</button>
+                </div>
               </td>
+
             </tr>
           )
           
