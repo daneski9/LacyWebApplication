@@ -411,7 +411,7 @@ setTimeout(() => {
     }
     
    <input type="file" id="addPortfolioImages" style={{ display: 'none' }} multiple onChange={handleAddImages} />
-      {
+    {
       imagesLoading && (
         <div className="loader-container">
           <div className="loader"></div> {}

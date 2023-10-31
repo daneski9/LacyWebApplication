@@ -16,7 +16,7 @@ function InquiryPage() {
   const [image, setImage] = useState(null);
   const [showAlert, setShowAlert] = useState(false);
   const form = useRef();
-  
+  const [isLoading, setIsLoading] = useState(false);
   const [first, setFName] = useState("");
   const [last, setLName] = useState("");
   const [email, setEmail] = useState("");
@@ -129,53 +129,53 @@ function InquiryPage() {
   };
 
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
 
-    // Push the Inquiry data to the database
-    handleSubmit();
-
-    // Wait for 5 seconds to wait for Inquiry data push
-    setTimeout(() => {
-      // Send the notification
-      emailjs.sendForm('service_wvpurwc', 'template_747huxp', form.current, 'y1XLxwxWca9cZzlcv')
-        .then((result) => {
-          console.log(result.text);
-        }, (error) => {
-          console.log(error.text);
-      });
-
-      e.target.reset();
-
-      // Clear the form
-      setFName("");
-      setLName("");
-      setEmail("");
-      setPhone("");
-      setLocation("");
-      setDescription("");
-      setImageRef("");
-      setLink("");
-
-      console.log("SENT EMAIL!");
-    }, 5000);
-    console.log("HERE!!!!");
-
-    // Move the window to the top of the screen
+    // Scroll to the top of the page immediately after hitting submit
     window.scrollTo(0, 0);
-  
-    // Reset the values of the disabled
-    //setCapVal(true);
+
+    setIsLoading(true);  // Start loading
+
+    // Push the Inquiry data to the database
+    await handleSubmit();
+
+    // Await the email sending process
+    try {
+        await emailjs.sendForm('service_wvpurwc', 'template_747huxp', form.current, 'y1XLxwxWca9cZzlcv');
+        console.log("SENT EMAIL!");
+    } catch (error) {
+        console.log(error.text);
+    }
+
+    e.target.reset();
+
+    // Clear the form
+    setFName("");
+    setLName("");
+    setEmail("");
+    setPhone("");
+    setLocation("");
+    setDescription("");
+    setImageRef("");
+    setLink("");
+
+    // Reset the ReCAPTCHA
+    captchaRef.current.reset();
 
     // Show alert
     setShowAlert(true);
 
     // Hide alert after 15 seconds
     setTimeout(() => {
-      setShowAlert(false);
+        setShowAlert(false);
     }, 15000);
+    
+    // After all processes are done:
+    setIsLoading(false);  // End loading
+};
 
-  };
+
 
   return (
     <>
@@ -210,7 +210,13 @@ function InquiryPage() {
         <input type="text" name="id" value={autoId} placeholder="INQUIRY ID" hidden />
         
         <br></br>
-        
+        {
+          isLoading && (
+            <div className="loader-container">
+              <div className="loader"></div> {}
+            </div>
+          )
+        }
         <ReCAPTCHA 
           sitekey='6LdVvagoAAAAALOqtiBfkZY7sIYlse5jpbJ-tuo6'
           onChange={updateCaptcha}
@@ -225,7 +231,7 @@ function InquiryPage() {
             <p className="text-content1">Image is currently uploading.  Inquiry Submission is disabled until image is processed.</p>
           </div>
         )}
-        <button type="submit" disabled={disabled || capVal}>Submit</button>
+        <button type="submit" disabled={isLoading || disabled || capVal}>Submit</button>
 
       </form>
 
