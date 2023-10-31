@@ -3,32 +3,55 @@ import Navbar from "../Navbar";
 import './julioCSS/PortfolioJulioJimenez.css';
 import Footer from './Footer';
 import { storage } from "../../DataBase";
-import { ref, listAll, getDownloadURL } from "firebase/storage";
+import { ref, listAll, getDownloadURL, getMetadata } from "firebase/storage";
 import { Link } from 'react-router-dom';
-
-
 
 function Portfolio(properties) {
 
-    // A List to hold the image file names
-    // reference video: https://www.youtube.com/watch?v=YOAeBSCkArA
     const [imageList, setImageList] = useState([]);
     const imageListRef = ref(storage, "Portfolio-page/");
 
     useEffect(() => {
-        listAll(imageListRef)
-            .then((response) => {
-                const downloadPromises = response.items.map((item) => {
-                    return getDownloadURL(item);
+        // Define an async function inside the useEffect
+        const fetchAndSortImages = async () => {
+            try {
+                // Fetch all items from the provided Firebase storage reference.
+                const response = await listAll(imageListRef);
+
+                // For each item in the response, get its metadata.
+                const itemsWithMetadata = await Promise.all(
+                    response.items.map(async item => {
+                        const metadata = await getMetadata(item);
+                        return { item, metadata };
+                    })
+                );
+
+                // Sort items based on their updated date in descending order.
+                const sortedItemsWithMetadata = itemsWithMetadata.sort((a, b) => {
+                    const aDate = new Date(a.metadata.updated);
+                    const bDate = new Date(b.metadata.updated);
+                    return bDate - aDate;
                 });
-    
-                Promise.all(downloadPromises)
-                    .then((urls) => {
-                        setImageList(urls);
-                    });
-            });
-    }, [imageListRef]);
-    
+
+                // For each sorted item, fetch its download URL.
+                const sortedUrls = await Promise.all(
+                    sortedItemsWithMetadata.map(({ item }) => getDownloadURL(item))
+                );
+
+                // Once all URLs are fetched, update the state with the sorted URLs.
+                setImageList(sortedUrls);
+            } catch (error) {
+                // Handle any errors that might occur during the async operations
+                console.error("Error fetching and sorting images:", error);
+            }
+        };
+
+        // Invoke the async function
+        fetchAndSortImages();
+
+    }, [imageListRef]);  // The effect hook will re-run when the imageListRef changes.
+
+
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedImageIndex, setSelectedImageIndex] = useState(null);
     const [currentPage, setCurrentPage] = useState(1); // Start with page 1
@@ -36,9 +59,9 @@ function Portfolio(properties) {
 
     // Calculate total number of pages
     const total_pages = Math.ceil(imageList.length / imagesPerPage);
-    const currentImages = useMemo(() => 
-    imageList.slice((currentPage - 1) * imagesPerPage, currentPage * imagesPerPage), 
-    [imageList, currentPage]);
+    const currentImages = useMemo(() =>
+        imageList.slice((currentPage - 1) * imagesPerPage, currentPage * imagesPerPage),
+        [imageList, currentPage]);
 
 
     // Function to update the page number
@@ -59,25 +82,25 @@ function Portfolio(properties) {
                 <h1 className="galleryTitle">Gallery of Recent Tattoos</h1>
                 <Link to="/JulioJimenez/inquiry">
                     <button className='appointment-btn' onClick={() => {
-                    window.scroll({
-                        top: 0,
-                        left: 0
-                    });
+                        window.scroll({
+                            top: 0,
+                            left: 0
+                        });
                     }}>MAKE AN APPOINTMENT</button>
                 </Link>
                 <div className="bannerGridWrapper">
                     <div className="bannerGrid">
-                    {currentImages.map((image, index) => (
-                        <Box 
-                            data={image} 
-                            index={(currentPage - 1) * imagesPerPage + index} 
-                            key={image} 
-                            onClick={() => {
-                                setSelectedImage(image);
-                                setSelectedImageIndex((currentPage - 1) * imagesPerPage + index);
-                            }} 
-                        />
-                    ))}
+                        {currentImages.map((image, index) => (
+                            <Box
+                                data={image}
+                                index={(currentPage - 1) * imagesPerPage + index}
+                                key={image}
+                                onClick={() => {
+                                    setSelectedImage(image);
+                                    setSelectedImageIndex((currentPage - 1) * imagesPerPage + index);
+                                }}
+                            />
+                        ))}
                     </div>
                 </div>
                 <div className="pagination">
@@ -106,7 +129,7 @@ function Portfolio(properties) {
                         }
                     }}>←</div>
                 </div>
-                
+
             )}
             <Footer />
         </>
@@ -115,15 +138,15 @@ function Portfolio(properties) {
 
 function Box({ data, index, onClick }) {
     return (
-      <div className='box'>
-          <img
-              className="box img"
-              src={`${data}`} 
-              alt={`${index}`}
-              onClick={onClick}  
-          />
-      </div>
+        <div className='box'>
+            <img
+                className="box img"
+                src={`${data}`}
+                alt={`${index}`}
+                onClick={onClick}
+            />
+        </div>
     );
 }
-  
-  export default Portfolio;
+
+export default Portfolio;
