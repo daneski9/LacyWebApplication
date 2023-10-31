@@ -332,7 +332,6 @@ setTimeout(() => {
   return (
     <>
     <Navbar />
-    <div className='welcome-message'>Welcome, {email} </div>
     <div className='landing'>
     {showModal && (
       <div className="modal">
@@ -433,7 +432,6 @@ setTimeout(() => {
       </div>
     </div>
     <Footer />
-    
     </>
   );
 }

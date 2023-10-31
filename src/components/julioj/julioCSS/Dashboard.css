@@ -2,7 +2,7 @@
 .landing {
   width: 75%;
   margin: 0 auto;
-  border-radius: 15px;
+  min-height: 80vh; 
 }
 
 .file {
@@ -40,12 +40,6 @@ td {
   background-color: transparent;
   color: white;
 }
-
-/*
-.submit-button {
-  margin-top:  1px;
-}
-*/
 
 .bottom-container-dash{
   width: 75%;
@@ -205,12 +199,10 @@ margin-bottom: 5%;
 
 }
 
-@media (max-width: 450px) {
+@media (max-width: 672px) {
 
 .landing {
    width: 98%;
-   margin-top: 15%;
-  
   }
 
 .bottom-container-dash{
