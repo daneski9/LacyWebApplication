@@ -74,22 +74,20 @@
   margin-top: 5px;
   margin-left: 10px;
 }
-@media (max-width: 1152px) {
+@media(max-width: 1192px){
   .spacer{
     width: 0px;
   }
-
-}
-@media (max-width: 980px) {
-  .services-container{
-    margin-top: -30px;
+  .servicesTitle{
+    margin-top: 55px;
   }
   .discountText{
     padding: 1.3% 1.5%;
+    margin-top: 70px;
+    margin-bottom: 10px;
   }
-
-
 }
+
 @media (max-width: 852px) {
   .itemTitle {
     font-size: 25px;
@@ -106,7 +104,10 @@
     margin-top: 10px;
   }
   .servicesTitle {
-    margin-top: 12px;
+    margin-top: 50px;
+  }
+  .discountText{
+    margin-bottom: 20px;
   }
   .itemImg{
     max-width: 100px; /* or 100% if you want it to take the full width of the container */
@@ -135,16 +136,7 @@
   }
 
 }
-@media (max-width: 670px) {
-  .headerContainer{
-    margin-top: 25px; 
-  }
-  .servicesTitle {
-    margin-top: 20px;
-  }
 
-
-}
 @media (max-width: 595px) {
   .itemImg{
     max-width: 50%; /* or 100% if you want it to take the full width of the container */
@@ -159,12 +151,6 @@
   .itemTitle{
     font-size: 1.3rem;
     line-height: 0.9;
-  }
-  .discountText{
-    font-size: 0.7em;
-  }
-  .servicesTitle {
-      margin-top: 14px;
   }
   .itemText > .itemDescription{
     color: rgba(255, 255, 255, 0.918);
@@ -192,9 +178,6 @@
   }
 }
 @media (max-width: 426px) {
-  .servicesTitle {
-    
-  }
   .itemDescription{
     width: unset;
     font-size: 0.65rem;

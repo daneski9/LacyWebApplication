@@ -77,7 +77,10 @@ margin-bottom: 5%;
     float: left;
     padding: 10px 16px;
     font-size: 18px;
-    
+}
+.admin-page-title{
+  font-family: 'Oleo Script', 'Jost', sans-serif, Arial;
+  font-weight: lighter;
 }
 
 .active, .inquire-btn:hover {
@@ -94,11 +97,15 @@ margin-bottom: 5%;
 .logout-btn{
   background-color: black;
   color: white;
-  padding: 0.7em 1.9em;
+  padding: 0.3em 1.5em;
   border-radius: 5px;
   cursor: pointer;
   border: 1px solid white;
   width: 10em;
+  margin-top: 3px;
+}
+.btn-group3 .logout-btn:nth-child(2) {
+  margin-left: 3px;
 }
 .logout-btn:hover{
   background-color: rgb(129, 129, 129);
@@ -110,11 +117,14 @@ margin-bottom: 5%;
 .portfolioEdit-btn{
   background-color: rgb(1, 59, 25);
   color: white;
-  padding: 0.7em 1.9em;
+  padding: 0.3em 1.5em;
   border-radius: 5px;
   cursor: pointer;
   border: 1px solid white;
-  width: 10em
+  width: 10em;
+}
+.btn-group2 .portfolioEdit-btn:nth-child(2) {
+  margin-left: 3px;
 }
 .portfolioEdit-btn:hover{
   background-color: rgb(45, 194, 70);
@@ -182,7 +192,11 @@ margin-bottom: 5%;
   background-color: rgba(0, 0, 0, 0.5); 
   z-index: 1000; 
 }
-
+@media(max-width: 1192px){
+  .admin-page-title{
+    margin-top: 60px;
+  }
+}
 @media (max-width: 852px) {
 
 .welcome-message{

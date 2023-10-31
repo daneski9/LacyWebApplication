@@ -332,7 +332,6 @@ setTimeout(() => {
   return (
     <>
     <Navbar />
-    
     <div className='welcome-message'>Welcome, {email} </div>
     <div className='landing'>
     {showModal && (
@@ -347,7 +346,7 @@ setTimeout(() => {
     )}
 
       <div>
-        <h1>{pageTitle}</h1> 
+        <h1 className = 'admin-page-title'>{pageTitle}</h1> 
         <div className='btn-group'style={{width:'100%'}}>
         <button className = 'inquire-btn' onClick={() => handleButtonClick(1)} style={{width:'33.3%'}}>Newest Inquiries</button>
         <button className = 'inquire-btn' onClick={() => handleButtonClick(2)} style={{width:'33.3%'}}>In-Progress</button>
@@ -433,7 +432,6 @@ setTimeout(() => {
        <button className = "logout-btn" onClick={handleLogout}>LOGOUT</button>
       </div>
     </div>
-
     <Footer />
     
     </>
