@@ -52,7 +52,7 @@
   }
 
     /* Media query for responsive design */
-  @media (max-width: 852px) {
+  @media (max-width: 1192px) {
     .navbar{
       display:none;
     }
