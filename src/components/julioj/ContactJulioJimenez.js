@@ -20,7 +20,7 @@ function Contact() {
   const [email, setEmail] = useState('');
   const [message, setDescription] = useState('');
   const [showAlert, setShowAlert] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
   const [capVal, setCapVal] = useState("true");
   const captchaRef = useRef();
   const updateCaptcha = (e) => {
@@ -41,32 +41,38 @@ function Contact() {
   }
 
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
-
-    emailjs.sendForm('service_wvpurwc', 'template_me89qhj', form.current, 'y1XLxwxWca9cZzlcv')
-      .then((result) => {
-        console.log(result.text);
-      }, (error) => {
-          console.log(error.text);
-      });
     
-    // Clear all fields
-    setFirst('');
-    setLast('');
-    setEmail('');
-    setDescription('');
-
-    // 
+    // Scroll to the top of the page immediately after hitting submit
     window.scrollTo(0, 0);
-
-    // Show alert
-    setShowAlert(true);
-
-    // Hide alert after 15 seconds
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 15000);
+    setIsLoading(true);  // Start loading
+  
+    try {
+      const result = await emailjs.sendForm('service_wvpurwc', 'template_me89qhj', form.current, 'y1XLxwxWca9cZzlcv');
+      console.log(result.text);
+  
+      // Clear all fields
+      setFirst('');
+      setLast('');
+      setEmail('');
+      setDescription('');
+  
+      // Reset the ReCAPTCHA
+      captchaRef.current.reset();
+  
+      // Show alert
+      setShowAlert(true);
+  
+      // Hide alert after 15 seconds
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 15000);
+    } catch (error) {
+      console.log(error.text);
+    } finally {
+      setIsLoading(false);  
+    }
   };
   
   return (
@@ -99,8 +105,15 @@ function Contact() {
         />
 
         <br></br>
+        {
+          isLoading && (
+            <div className="loader-container">
+              <div className="loader"></div> {}
+            </div>
+          )
+        }
         
-        <button type="submit" disabled={capVal}>Submit</button>
+        <button type="submit" disabled={isLoading || capVal}>Submit</button>
         
               
       </form>

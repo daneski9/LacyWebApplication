@@ -332,7 +332,6 @@ setTimeout(() => {
   return (
     <>
     <Navbar />
-    <div className='welcome-message'>Welcome, {email} </div>
     <div className='landing'>
     {showModal && (
       <div className="modal">
@@ -373,8 +372,12 @@ setTimeout(() => {
               <td>{Inquiry.First} {Inquiry.Last}</td>
               <td>{formatTimestamp(Inquiry.Date)}</td>
               <td>
-                <button onClick={()=> handleButtonAction(Inquiry)}>Open</button>
+                <div className="action-buttons">
+                  <button className="open-btn" onClick={() => handleButtonAction(Inquiry)}>Open</button>
+                  <button className="x-btn" onClick={() => handleDelete(Inquiry)}>X</button>
+                </div>
               </td>
+
             </tr>
           )
           
@@ -412,7 +415,7 @@ setTimeout(() => {
     }
     
    <input type="file" id="addPortfolioImages" style={{ display: 'none' }} multiple onChange={handleAddImages} />
-      {
+    {
       imagesLoading && (
         <div className="loader-container">
           <div className="loader"></div> {}
@@ -433,7 +436,6 @@ setTimeout(() => {
       </div>
     </div>
     <Footer />
-    
     </>
   );
 }

@@ -2,7 +2,7 @@
 .landing {
   width: 75%;
   margin: 0 auto;
-  border-radius: 15px;
+  min-height: 80vh; 
 }
 
 .file {
@@ -33,6 +33,21 @@ th {
   background-color: transparent;
   color: white;
 }
+.open-btn{
+  cursor: pointer;
+}
+.x-btn{
+    float: right;
+    margin-left: 5px;
+    color: white;
+    background-color: rgb(180, 0, 0);
+    cursor: pointer;
+}
+.action-buttons {
+  display: flex;         /* Align items in a row */
+  justify-content: space-between;  /* Distribute the space between items */
+  flex-wrap: nowrap;     /* Prevent items from wrapping */
+}
 
 td {
   border: 1px solid;
@@ -40,12 +55,6 @@ td {
   background-color: transparent;
   color: white;
 }
-
-/*
-.submit-button {
-  margin-top:  1px;
-}
-*/
 
 .bottom-container-dash{
   width: 75%;
@@ -139,18 +148,10 @@ margin-bottom: 5%;
   }
 }
 
-.welcome-message{
-  color: white;
-  padding: 10px 20px;        
-  font-size: 1.1rem;
-  margin-left: 75%;
-  animation: fadeOut 5s;
-}
-
 .portfolioGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  margin-top: 20px;
+  gap: 3px;
 }
 
 .portfolioImage img {
@@ -197,20 +198,11 @@ margin-bottom: 5%;
     margin-top: 60px;
   }
 }
-@media (max-width: 852px) {
 
-.welcome-message{
-  margin-top: 50px;
-}
-
-}
-
-@media (max-width: 450px) {
+@media (max-width: 862px) {
 
 .landing {
    width: 98%;
-   margin-top: 15%;
-  
   }
 
 .bottom-container-dash{
@@ -246,15 +238,15 @@ margin-bottom: 5%;
   opacity: 1;
   transition: opacity 3s; 
 }  
-
 .portfolioGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);  /* Force 3 columns */
-  margin-top: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 3fr));
+  column-gap: -5px;
 }
-
-/*.help{
-  min-width: 150%;
-}*/
-
+}
+@media (max-width: 359px) {
+  .portfolioGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
