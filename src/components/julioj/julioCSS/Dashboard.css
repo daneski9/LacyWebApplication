@@ -25,7 +25,33 @@ table {
   align-items: center;
 
 }
+/* Parent container */
+.deleteAll-btns {
+  display: flex;
+  flex-wrap: nowrap; 
+  justify-content: center;
+}
 
+.deleteAll-btns > button {
+  color: rgba(255, 255, 255, 0.966);
+  background-color: rgba(179, 2, 2, 0.486);
+  border: 1px solid rgba(0, 0, 0, 0.233);
+  margin: 1%;
+  border-radius: 15px;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  cursor: pointer;
+  width: 30%; /* Dividing by roughly three buttons minus margins */
+  height: 30px; /* You can keep this fixed or adjust based on your preference */
+  max-width: 150px;
+  font-size: 12px;
+}
+
+.deleteAll-btns > button:hover {
+  background-color: rgb(228, 5, 5);
+  border: 1px solid rgba(255, 255, 255, 0.815);
+}
 th {
   border: 1px solid;
   text-align: left;
@@ -72,7 +98,7 @@ td {
 }
 
 .btn-group{
-margin-bottom: 5%;
+margin-bottom: 50px;
 }
 
 
@@ -90,6 +116,7 @@ margin-bottom: 5%;
 .admin-page-title{
   font-family: 'Oleo Script', 'Jost', sans-serif, Arial;
   font-weight: lighter;
+  margin-top: 50px;
 }
 
 .active, .inquire-btn:hover {

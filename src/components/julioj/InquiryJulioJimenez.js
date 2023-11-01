@@ -123,7 +123,7 @@ function InquiryPage() {
       State: 1})               // Added State 1 to be created as "Newest Inquiry" state
 
       setAutoId(docRef.id); // Get the ID of the document that was just created
-
+      return docRef.id;
       // Create a reference to the file location, will be placed in seperate folder for each inquiry for cases of muliple images
       //const storageRef = storage.ref();('Inquiries/${autoId}/${imageRef.name}'); 
       //await storageRef.put(imageRef);
@@ -149,8 +149,8 @@ function InquiryPage() {
     setIsLoading(true);  // Start loading
 
     // Push the Inquiry data to the database
-    await handleSubmit();
-
+    const generatedId = await handleSubmit();
+    e.target.elements.id.value = generatedId;
     // Await the email sending process
     try {
         await emailjs.sendForm('service_wvpurwc', 'template_747huxp', form.current, 'y1XLxwxWca9cZzlcv');
@@ -158,7 +158,7 @@ function InquiryPage() {
     } catch (error) {
         console.log(error.text);
     }
-
+    
     e.target.reset();
 
     // Clear the form
