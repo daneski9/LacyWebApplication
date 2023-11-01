@@ -4,7 +4,7 @@ import './julioCSS/Dashboard.css'
 import Navbar from "../Navbar";
 import Footer from './Footer';
 import { db } from "../../DataBase";  // db const
-import{doc, updateDoc, deleteDoc, collection, getDocs, query, where, orderBy} from 'firebase/firestore'; // collection and getDocs const
+import{doc, updateDoc, deleteDoc, collection, getDocs, query, where, orderBy, writeBatch} from 'firebase/firestore'; // collection and getDocs const
 //import { orderBy, set } from 'lodash';
 import { getAuth } from 'firebase/auth';
 // Uncomment for access to image database
@@ -320,6 +320,45 @@ const toggleAddImageModal = () => {
 //////////////////////////////////////////////////// 
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
+const deleteAllByState = async (state) => {
+  // Confirmation check
+  const isConfirmed = window.confirm(`Delete all ${getStateName(state)} inquiries? *Warning: Cannot undo this action!*`);
+  if (!isConfirmed) return;
+
+  // Create a query to filter documents based on the state value
+  const q = query(InquirerCollectionRef, where("State", "==", state));
+
+  try {
+    const querySnapshot = await getDocs(q);
+    const batch = writeBatch(db);  // Initialize the batch
+
+    querySnapshot.docs.forEach((doc) => {
+      batch.delete(doc.ref); // Schedule a delete operation for every document
+    });
+
+    await batch.commit();  // Commit the batch
+    console.log(`All documents with state ${getStateName(state)} deleted successfully.`);
+
+    // Refresh the data to update the table
+    fetchInquirerData(currentState);
+  } catch (error) {
+    console.error("Error deleting documents: ", error);
+  }
+};
+
+const getStateName = (stateValue) => {
+  switch (stateValue) {
+    case 3:
+      return 'Completed';
+    case 2:
+      return 'In-progress';
+    case 1:
+      return 'Newest';
+    default:
+      return 'Unknown';
+  }
+}
+
 
 setTimeout(() => {
   const elements = document.getElementsByClassName('welcome-message');
@@ -346,6 +385,11 @@ setTimeout(() => {
 
       <div>
         <h1 className = 'admin-page-title'>{pageTitle}</h1> 
+        <div className = "deleteAll-btns">
+        <button onClick={() => deleteAllByState(1)}>Delete All Newest</button>
+        <button onClick={() => deleteAllByState(2)}>Delete All In-progress</button>
+        <button onClick={() => deleteAllByState(3)}>Delete All Completed</button>
+      </div> 
         <div className='btn-group'style={{width:'100%'}}>
         <button className = 'inquire-btn' onClick={() => handleButtonClick(1)} style={{width:'33.3%'}}>Newest Inquiries</button>
         <button className = 'inquire-btn' onClick={() => handleButtonClick(2)} style={{width:'33.3%'}}>In-Progress</button>
@@ -413,7 +457,6 @@ setTimeout(() => {
 
         )
     }
-    
    <input type="file" id="addPortfolioImages" style={{ display: 'none' }} multiple onChange={handleAddImages} />
     {
       imagesLoading && (
