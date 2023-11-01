@@ -34,7 +34,7 @@ table {
 
 .deleteAll-btns > button {
   color: rgba(255, 255, 255, 0.966);
-  background-color: rgba(179, 2, 2, 0.486);
+  background-color: rgba(226, 4, 4, 0.486);
   border: 1px solid rgba(0, 0, 0, 0.233);
   margin: 1%;
   border-radius: 15px;
@@ -59,15 +59,30 @@ th {
   background-color: transparent;
   color: white;
 }
-.open-btn{
+.open-btn, .x-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.open-btn {
+  background-color: #4CAF50;
+  color: white;
+  margin-left: 2px;
+}
+.open-btn:hover {
+  background-color: #228f27;
 }
 .x-btn{
     float: right;
     margin-left: 5px;
+    margin-right: 2px;
     color: white;
     background-color: rgb(180, 0, 0);
-    cursor: pointer;
+}
+.x-btn:hover {
+  background-color: #f11e0f;
 }
 .action-buttons {
   display: flex;         /* Align items in a row */
@@ -275,5 +290,11 @@ margin-bottom: 50px;
   .portfolioGrid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 437px) {
+  .deleteAll-btns > button {
+    max-width: 80px;
   }
 }
