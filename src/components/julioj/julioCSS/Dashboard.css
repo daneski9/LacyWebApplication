@@ -30,6 +30,7 @@ table {
   display: flex;
   flex-wrap: nowrap; 
   justify-content: center;
+  margin-bottom: 5px;
 }
 
 .deleteAll-btns > button {
@@ -49,7 +50,7 @@ table {
 }
 
 .deleteAll-btns > button:hover {
-  background-color: rgb(228, 5, 5);
+  background-color: rgb(155, 5, 5);
   border: 1px solid rgba(255, 255, 255, 0.815);
 }
 th {
@@ -119,6 +120,7 @@ margin-bottom: 50px;
 
 /* Style for the individual buttons */
 .inquire-btn {
+  margin-top: 3px;
   background-color: rgba(0, 0, 0, 0.493);
     border: 1.5px solid #000000;
     color: #ffffff;
