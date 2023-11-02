@@ -29,7 +29,6 @@ table {
   align-items: center;
 
 }
-/* Parent container */
 .deleteAll-btns {
   display: flex;
   flex-wrap: nowrap; 
@@ -47,8 +46,8 @@ table {
   vertical-align: middle;
   overflow: hidden;
   cursor: pointer;
-  width: 30%; /* Dividing by roughly three buttons minus margins */
-  height: 30px; /* You can keep this fixed or adjust based on your preference */
+  width: 30%; 
+  height: 30px; 
   max-width: 150px;
   font-size: 12px;
 }
@@ -71,6 +70,12 @@ th {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+.table-title{
+  text-wrap: nowrap;
+}
+.fnameLname{
+  max-width: 40px;
+}
 .open-btn {
   background-color: #4CAF50;
   color: white;
@@ -90,9 +95,9 @@ th {
   background-color: #f11e0f;
 }
 .action-buttons {
-  display: flex;         /* Align items in a row */
-  justify-content: space-between;  /* Distribute the space between items */
-  flex-wrap: nowrap;     /* Prevent items from wrapping */
+  display: flex;        
+  justify-content: space-between; 
+  flex-wrap: nowrap;     
 }
 
 td {
@@ -116,7 +121,7 @@ td {
 .btn-group2, .btn-group3 {
   display: flex;
   justify-content: center;
-  gap: 7px; /* This creates spacing between the buttons. Adjust as needed. */
+  gap: 7px; 
   width: 100%; 
 }
 
@@ -125,7 +130,6 @@ td {
 margin-bottom: 50px;
 }
 
-/* Style for the individual buttons */
 .inquire-btn {
   margin-top: 3px;
   background-color: rgba(0, 0, 0, 0.493);
@@ -143,15 +147,20 @@ margin-bottom: 50px;
   margin-top: 50px;
 }
 
-.active, .inquire-btn:hover {
+.inquire-btn:hover, .active {
+  color: white;
+  cursor: pointer;
+  background-color: #000000fd;
+}
+
+.inquire-btn.button-selected {
   background-color: rgb(129, 129, 129);
   color: white;
-  border: 1.5px solid #000000;
-  cursor: pointer;
+  cursor: auto;
 }
 
 .inquire-btn:not(:last-child) {
-  border-right: none; /* Prevent double borders */
+  border-right: none; 
 }
 
 .logout-btn{
@@ -168,8 +177,8 @@ margin-bottom: 50px;
   background-color: rgb(129, 129, 129);
 }
 .grid-container {
-  max-width: 1320px; /* Set the maximum width you desire */
-  margin: 0 auto; /* Center the container horizontally on the page */
+  max-width: 1320px; 
+  margin: 0 auto;
 }
 .portfolioEdit-btn{
   background-color: rgb(1, 59, 25);
@@ -200,10 +209,10 @@ margin-bottom: 50px;
 }
 
 .portfolioImage img {
-  width: 120px;  /* or whatever width you want */
-  height: 120px; /* or whatever height you want */
+  width: 120px;  
+  height: 120px;
   object-fit: cover;
-  border-radius: 5px;  /* optional, for rounded corners */
+  border-radius: 5px;  
 }
 
 .portfolioImage img:hover {
@@ -271,7 +280,6 @@ margin-bottom: 50px;
 .portfolioEdit-btn{
   font-size: 12px;
 }
-/* Adjust the table for smaller screens */
 .table table {
   font-size: 14px;
   padding: 5px;

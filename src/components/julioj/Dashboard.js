@@ -389,11 +389,30 @@ setTimeout(() => {
         <button onClick={() => deleteAllByState(2)}>Delete All In-progress</button>
         <button onClick={() => deleteAllByState(3)}>Delete All Completed</button>
       </div> 
-        <div className='btn-group'style={{width:'100%'}}>
-        <button className = 'inquire-btn' onClick={() => handleButtonClick(1)} style={{width:'33.3%'}}>Newest</button>
-        <button className = 'inquire-btn' onClick={() => handleButtonClick(2)} style={{width:'33.3%'}}>In-Progress</button>
-        <button className = 'inquire-btn' onClick={() => handleButtonClick(3)} style={{width:'33.3%'}}>Completed</button>
-        </div>
+      <div className='btn-group' style={{width:'100%'}}>
+        <button 
+            className={`inquire-btn ${currentState === 1 ? 'button-selected' : ''}`} 
+            onClick={() => handleButtonClick(1)} 
+            style={{width:'33.3%'}}
+        >
+            Newest
+        </button>
+        <button 
+            className={`inquire-btn ${currentState === 2 ? 'button-selected' : ''}`} 
+            onClick={() => handleButtonClick(2)} 
+            style={{width:'33.3%'}}
+        >
+            In-Progress
+        </button>
+        <button 
+            className={`inquire-btn ${currentState === 3 ? 'button-selected' : ''}`} 
+            onClick={() => handleButtonClick(3)} 
+            style={{width:'33.3%'}}
+        >
+            Completed
+        </button>
+      </div>
+
       </div>
       <div className='table'>  
       <table>
@@ -402,16 +421,16 @@ setTimeout(() => {
           <tr>
           
             
-            <th>Inquirer Name</th>
-            <th>Date Created</th>
-            <th>Action</th> 
+            <th className = "table-title">Inquirer Name</th>
+            <th className = "table-title">Date Created</th>
+            <th className = "table-title">Action</th> 
           </tr>
         </thead>
         <tbody>
         {Inquirer.map((Inquiry) => {
           return (
             <tr key={Inquiry.id}>
-              <td>{Inquiry.First} {Inquiry.Last}</td>
+              <td className= "fnameLname">{Inquiry.First} {Inquiry.Last}</td>
               <td>{formatTimestamp(Inquiry.Date)}</td>
               <td>
                 <div className="action-buttons">
