@@ -55,7 +55,6 @@ function AdminLanding() {
       const year = String(date.getFullYear()).slice(-2);
       let hours = date.getHours();
       const minutes = String(date.getMinutes()).padStart(2, '0');
-      const seconds = String(date.getSeconds()).padStart(2, '0');
       let amOrPm = "AM";
   
       if (hours >= 12) {
@@ -65,7 +64,7 @@ function AdminLanding() {
         }
       }
   
-      const formattedDate = `${month}-${day}-${year} @ ${hours}:${minutes}:${seconds} ${amOrPm}`;
+      const formattedDate = `${month}-${day}-${year} @ ${hours}:${minutes} ${amOrPm}`;
       return formattedDate;
     } else {
       return "Invalid Timestamp";
@@ -383,7 +382,7 @@ setTimeout(() => {
       
     )}
 
-      <div>
+      <div class = "dash-top-container">
         <h1 className = 'admin-page-title'>{pageTitle}</h1> 
         <div className = "deleteAll-btns">
         <button onClick={() => deleteAllByState(1)}>Delete All Newest</button>
@@ -402,9 +401,9 @@ setTimeout(() => {
         <thead>
           <tr>
           
-            <th>Inquirer ID</th>
+            
             <th>Inquirer Name</th>
-            <th>Date</th>
+            <th>Date Created</th>
             <th>Action</th> 
           </tr>
         </thead>
@@ -412,7 +411,6 @@ setTimeout(() => {
         {Inquirer.map((Inquiry) => {
           return (
             <tr key={Inquiry.id}>
-              <td>{Inquiry.id}</td>
               <td>{Inquiry.First} {Inquiry.Last}</td>
               <td>{formatTimestamp(Inquiry.Date)}</td>
               <td>

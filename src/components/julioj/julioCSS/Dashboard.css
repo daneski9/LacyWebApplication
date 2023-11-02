@@ -16,10 +16,14 @@
   border-radius: 5px;
   margin-top: 20px;
 }
+.btn-group, table{
+  max-width: 800px;
+  margin: 0 auto;
+}
 
 table {
-  margin-bottom: 1%;
   width: 100%;
+  margin-bottom: 1%;
   padding: 10px;
   background-color: rgba(43, 31, 31, 0.486);
   align-items: center;
@@ -98,25 +102,28 @@ td {
   color: white;
 }
 
-.bottom-container-dash{
-  width: 75%;
-  margin: 0 auto;
-  border-radius: 15px;
-}
-  
-.btn-group2{
+.bottom-container-dash {
+  margin-top: 100px;
   display: flex;
-  justify-content: left;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .btn-group3{
-  display: flex;
-  justify-content: left;
+  margin-top: 3px;
 }
+
+.btn-group2, .btn-group3 {
+  display: flex;
+  justify-content: center;
+  gap: 7px; /* This creates spacing between the buttons. Adjust as needed. */
+  width: 100%; 
+}
+
 
 .btn-group{
 margin-bottom: 50px;
 }
-
 
 /* Style for the individual buttons */
 .inquire-btn {
@@ -157,9 +164,6 @@ margin-bottom: 50px;
   width: 10em;
   margin-top: 3px;
 }
-.btn-group3 .logout-btn:nth-child(2) {
-  margin-left: 3px;
-}
 .logout-btn:hover{
   background-color: rgb(129, 129, 129);
 }
@@ -175,9 +179,6 @@ margin-bottom: 50px;
   cursor: pointer;
   border: 1px solid white;
   width: 10em;
-}
-.btn-group2 .portfolioEdit-btn:nth-child(2) {
-  margin-left: 3px;
 }
 .portfolioEdit-btn:hover{
   background-color: rgb(45, 194, 70);
@@ -298,5 +299,19 @@ margin-bottom: 50px;
 @media (max-width: 437px) {
   .deleteAll-btns > button {
     max-width: 80px;
+    height: 34px;
+  }
+}
+
+@media (max-width: 415px) {
+  .deleteAll-btns > button {
+    max-width: 80px;
+    height: 34px;
+  }
+  .dash-top-container{
+   width: 400px;
+  }
+  table{
+    width: 400px;
   }
 }
