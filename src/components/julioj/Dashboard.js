@@ -391,7 +391,7 @@ setTimeout(() => {
         <button onClick={() => deleteAllByState(3)}>Delete All Completed</button>
       </div> 
         <div className='btn-group'style={{width:'100%'}}>
-        <button className = 'inquire-btn' onClick={() => handleButtonClick(1)} style={{width:'33.3%'}}>Newest Inquiries</button>
+        <button className = 'inquire-btn' onClick={() => handleButtonClick(1)} style={{width:'33.3%'}}>Newest</button>
         <button className = 'inquire-btn' onClick={() => handleButtonClick(2)} style={{width:'33.3%'}}>In-Progress</button>
         <button className = 'inquire-btn' onClick={() => handleButtonClick(3)} style={{width:'33.3%'}}>Completed</button>
         </div>
