@@ -90,8 +90,7 @@ function Portfolio(properties) {
                     });
                     }}>MAKE AN APPOINTMENT</button>
                 </Link>
-                <div className="bannerGridWrapper">
-                    <div className="bannerGrid">
+                <div className="portfolio-images">
                     {currentImages.map((image, index) => (
                         <Box 
                             data={image} 
@@ -103,7 +102,6 @@ function Portfolio(properties) {
                             }} 
                         />
                     ))}
-                    </div>
                 </div>
                 <div className="pagination">
                     {currentPage > 1 && <button className="pagination-button" onClick={goToPreviousPage}>← Previous</button>}
@@ -112,8 +110,8 @@ function Portfolio(properties) {
                 </div>
             </div>
             {selectedImage && (
-                <div className="modal-portfolio" onClick={(e) => {
-                    if (e.target.classList.contains('modal-portfolio')) {
+                <div className="selected-image-modal-page" onClick={(e) => {
+                    if (e.target.classList.contains('selected-image-modal-page')) {
                         setSelectedImage(null);
                     }
                 }}>
@@ -131,7 +129,6 @@ function Portfolio(properties) {
                         }
                     }}>←</div>
                 </div>
-                
             )}
             <Footer />
         </>
