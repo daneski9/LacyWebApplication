@@ -55,7 +55,6 @@ function AdminLanding() {
       const year = String(date.getFullYear()).slice(-2);
       let hours = date.getHours();
       const minutes = String(date.getMinutes()).padStart(2, '0');
-      const seconds = String(date.getSeconds()).padStart(2, '0');
       let amOrPm = "AM";
   
       if (hours >= 12) {
@@ -65,7 +64,7 @@ function AdminLanding() {
         }
       }
   
-      const formattedDate = `${month}-${day}-${year} @ ${hours}:${minutes}:${seconds} ${amOrPm}`;
+      const formattedDate = `${month}-${day}-${year} @ ${hours}:${minutes} ${amOrPm}`;
       return formattedDate;
     } else {
       return "Invalid Timestamp";
@@ -383,18 +382,37 @@ setTimeout(() => {
       
     )}
 
-      <div>
+      <div class = "dash-top-container">
         <h1 className = 'admin-page-title'>{pageTitle}</h1> 
         <div className = "deleteAll-btns">
         <button onClick={() => deleteAllByState(1)}>Delete All Newest</button>
         <button onClick={() => deleteAllByState(2)}>Delete All In-progress</button>
         <button onClick={() => deleteAllByState(3)}>Delete All Completed</button>
       </div> 
-        <div className='btn-group'style={{width:'100%'}}>
-        <button className = 'inquire-btn' onClick={() => handleButtonClick(1)} style={{width:'33.3%'}}>Newest</button>
-        <button className = 'inquire-btn' onClick={() => handleButtonClick(2)} style={{width:'33.3%'}}>In-Progress</button>
-        <button className = 'inquire-btn' onClick={() => handleButtonClick(3)} style={{width:'33.3%'}}>Completed</button>
-        </div>
+      <div className='btn-group' style={{width:'100%'}}>
+        <button 
+            className={`inquire-btn ${currentState === 1 ? 'button-selected' : ''}`} 
+            onClick={() => handleButtonClick(1)} 
+            style={{width:'33.3%'}}
+        >
+            Newest
+        </button>
+        <button 
+            className={`inquire-btn ${currentState === 2 ? 'button-selected' : ''}`} 
+            onClick={() => handleButtonClick(2)} 
+            style={{width:'33.3%'}}
+        >
+            In-Progress
+        </button>
+        <button 
+            className={`inquire-btn ${currentState === 3 ? 'button-selected' : ''}`} 
+            onClick={() => handleButtonClick(3)} 
+            style={{width:'33.3%'}}
+        >
+            Completed
+        </button>
+      </div>
+
       </div>
       <div className='table'>  
       <table>
@@ -402,18 +420,17 @@ setTimeout(() => {
         <thead>
           <tr>
           
-            <th>Inquirer ID</th>
-            <th>Inquirer Name</th>
-            <th>Date</th>
-            <th>Action</th> 
+            
+            <th className = "table-title">Inquirer Name</th>
+            <th className = "table-title">Date Created</th>
+            <th className = "table-title">Action</th> 
           </tr>
         </thead>
         <tbody>
         {Inquirer.map((Inquiry) => {
           return (
             <tr key={Inquiry.id}>
-              <td>{Inquiry.id}</td>
-              <td>{Inquiry.First} {Inquiry.Last}</td>
+              <td className= "fnameLname">{Inquiry.First} {Inquiry.Last}</td>
               <td>{formatTimestamp(Inquiry.Date)}</td>
               <td>
                 <div className="action-buttons">

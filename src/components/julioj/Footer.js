@@ -15,7 +15,7 @@ function Footer(props) {
           <p>2684 Lacy St.</p>
           <p>Los Angeles, CA 90031</p>
           <p>Phone: (562) 201-7139</p>
-          <p>Email: Email to be added</p>
+          <p>Email: lacystartlounge<br></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@gmail.com</p>
         </div>
         <div className="footer-middle">
           <h3>Navigation</h3>

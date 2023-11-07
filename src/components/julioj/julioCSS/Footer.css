@@ -150,3 +150,13 @@ html, body {
     }
   
 }
+@media (max-width: 330px) {
+
+    .footer-container p{
+        font-size: 14px;
+    }
+    .footer-container h3{
+        font-size: 16px;
+    }
+
+}
