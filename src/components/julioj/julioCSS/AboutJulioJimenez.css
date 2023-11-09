@@ -192,16 +192,26 @@
         font-size: 17px;
         text-align: center;
         margin: 0 auto;
-        min-width: 484.781;
+        min-width: 350px;
     }
  }
-
- @media (max-width: 363px){
+ @media(max-width: 407px){
+    .text-box{
+        padding: 20px 5px;
+     }
+     
+ }
+ @media (max-width: 367px){
     .top-container > .img-container > img{
         min-width: 330px;
     }
     .top-container{
         min-width: 330px;
+    }
+    .text-box > .text-content{
+       font-size: 14px;
+       width: 290px;
+       min-width: 100px;
     }
 
  }
