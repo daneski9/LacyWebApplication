@@ -198,7 +198,7 @@
 
  @media (max-width: 363px){
     .top-container > .img-container > img{
-        min-width: 300px;
+        min-width: 330px;
     }
     .top-container{
         min-width: 330px;
