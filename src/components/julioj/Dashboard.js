@@ -384,11 +384,6 @@ setTimeout(() => {
 
       <div class = "dash-top-container">
         <h1 className = 'admin-page-title'>{pageTitle}</h1> 
-        <div className = "deleteAll-btns">
-        <button onClick={() => deleteAllByState(1)}>Delete All Newest</button>
-        <button onClick={() => deleteAllByState(2)}>Delete All In-progress</button>
-        <button onClick={() => deleteAllByState(3)}>Delete All Completed</button>
-      </div> 
       <div className='btn-group' style={{width:'100%'}}>
         <button 
             className={`inquire-btn ${currentState === 1 ? 'button-selected' : ''}`} 
@@ -491,11 +486,19 @@ setTimeout(() => {
       <div className="btn-group3">
         <Link to="/JulioJimenez/updatepassword">
           <button className="logout-btn">UPDATE PASSWORD</button>
-       </Link>
-       <button className = "logout-btn" onClick={handleLogout}>LOGOUT</button>
+        </Link>
+        <button className = "logout-btn" onClick={handleLogout}>LOGOUT</button>
       </div>
-    </div>
+      
+      <div className="deleteAll-btns">
+        <button onClick={() => deleteAllByState(1)}>Delete All<br />Newest</button>
+        <button onClick={() => deleteAllByState(2)}>Delete All<br />In-progress</button>
+        <button onClick={() => deleteAllByState(3)}>Delete All<br />Completed</button>
+      </div>
+
+      </div>
     <Footer />
+    
     </>
   );
 }

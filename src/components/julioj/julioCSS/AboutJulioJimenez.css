@@ -1,4 +1,8 @@
 
+.AboutJulioJimenez *, .AboutJulioJimenez *:before, .AboutJulioJimenez *:after {
+    box-sizing: border-box;
+  }
+  
 .about_header{
   font-size: 3em;
   font-family: 'Oleo Script', 'Jost', sans-serif, Arial;
@@ -172,9 +176,6 @@
         margin-bottom: -15px;
     }
     
-    .bottom-container{
-        min-width: 360px;
-    }
  }
  
  @media (max-width: 545px){
@@ -190,28 +191,28 @@
     }
     .text-box > .text-content{
         font-size: 17px;
-        text-align: center;
-        margin: 0 auto;
-        min-width: 350px;
+        text-align: left;
+        max-width: 350px;
+        margin-left: 10px;
     }
  }
  @media(max-width: 407px){
     .text-box{
-        padding: 20px 5px;
+        padding: 15px 7px;
      }
      
  }
  @media (max-width: 367px){
     .top-container > .img-container > img{
-        min-width: 330px;
-    }
-    .top-container{
-        min-width: 330px;
+        min-width: 300px;
     }
     .text-box > .text-content{
        font-size: 14px;
        width: 290px;
        min-width: 100px;
+    }
+    .text-box{
+        max-width: 305px;
     }
 
  }
