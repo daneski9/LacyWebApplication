@@ -16,25 +16,29 @@
   border-radius: 5px;
   margin-top: 20px;
 }
+.btn-group, table{
+  max-width: 800px;
+  margin: 0 auto;
+}
 
 table {
-  margin-bottom: 1%;
   width: 100%;
+  margin-bottom: 1%;
   padding: 10px;
   background-color: rgba(43, 31, 31, 0.486);
   align-items: center;
 
 }
-/* Parent container */
 .deleteAll-btns {
   display: flex;
   flex-wrap: nowrap; 
   justify-content: center;
+  margin-bottom: 5px;
 }
 
 .deleteAll-btns > button {
   color: rgba(255, 255, 255, 0.966);
-  background-color: rgba(179, 2, 2, 0.486);
+  background-color: rgba(226, 4, 4, 0.486);
   border: 1px solid rgba(0, 0, 0, 0.233);
   margin: 1%;
   border-radius: 15px;
@@ -42,14 +46,14 @@ table {
   vertical-align: middle;
   overflow: hidden;
   cursor: pointer;
-  width: 30%; /* Dividing by roughly three buttons minus margins */
-  height: 30px; /* You can keep this fixed or adjust based on your preference */
+  width: 30%; 
+  height: 30px; 
   max-width: 150px;
   font-size: 12px;
 }
 
 .deleteAll-btns > button:hover {
-  background-color: rgb(228, 5, 5);
+  background-color: rgb(155, 5, 5);
   border: 1px solid rgba(255, 255, 255, 0.815);
 }
 th {
@@ -59,20 +63,41 @@ th {
   background-color: transparent;
   color: white;
 }
-.open-btn{
+.open-btn, .x-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.table-title{
+  text-wrap: nowrap;
+}
+.fnameLname{
+  max-width: 40px;
+}
+.open-btn {
+  background-color: #4CAF50;
+  color: white;
+  margin-left: 2px;
+}
+.open-btn:hover {
+  background-color: #228f27;
 }
 .x-btn{
     float: right;
     margin-left: 5px;
+    margin-right: 2px;
     color: white;
     background-color: rgb(180, 0, 0);
-    cursor: pointer;
+}
+.x-btn:hover {
+  background-color: #f11e0f;
 }
 .action-buttons {
-  display: flex;         /* Align items in a row */
-  justify-content: space-between;  /* Distribute the space between items */
-  flex-wrap: nowrap;     /* Prevent items from wrapping */
+  display: flex;        
+  justify-content: space-between; 
+  flex-wrap: nowrap;     
 }
 
 td {
@@ -82,28 +107,31 @@ td {
   color: white;
 }
 
-.bottom-container-dash{
-  width: 75%;
-  margin: 0 auto;
-  border-radius: 15px;
-}
-  
-.btn-group2{
+.bottom-container-dash {
+  margin-top: 100px;
   display: flex;
-  justify-content: left;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .btn-group3{
-  display: flex;
-  justify-content: left;
+  margin-top: 3px;
 }
+
+.btn-group2, .btn-group3 {
+  display: flex;
+  justify-content: center;
+  gap: 7px; 
+  width: 100%; 
+}
+
 
 .btn-group{
 margin-bottom: 50px;
 }
 
-
-/* Style for the individual buttons */
 .inquire-btn {
+  margin-top: 3px;
   background-color: rgba(0, 0, 0, 0.493);
     border: 1.5px solid #000000;
     color: #ffffff;
@@ -119,15 +147,20 @@ margin-bottom: 50px;
   margin-top: 50px;
 }
 
-.active, .inquire-btn:hover {
+.inquire-btn:hover, .active {
+  color: white;
+  cursor: pointer;
+  background-color: #000000fd;
+}
+
+.inquire-btn.button-selected {
   background-color: rgb(129, 129, 129);
   color: white;
-  border: 1.5px solid #000000;
-  cursor: pointer;
+  cursor: auto;
 }
 
 .inquire-btn:not(:last-child) {
-  border-right: none; /* Prevent double borders */
+  border-right: none; 
 }
 
 .logout-btn{
@@ -140,15 +173,12 @@ margin-bottom: 50px;
   width: 10em;
   margin-top: 3px;
 }
-.btn-group3 .logout-btn:nth-child(2) {
-  margin-left: 3px;
-}
 .logout-btn:hover{
   background-color: rgb(129, 129, 129);
 }
 .grid-container {
-  max-width: 1320px; /* Set the maximum width you desire */
-  margin: 0 auto; /* Center the container horizontally on the page */
+  max-width: 1320px; 
+  margin: 0 auto;
 }
 .portfolioEdit-btn{
   background-color: rgb(1, 59, 25);
@@ -158,9 +188,6 @@ margin-bottom: 50px;
   cursor: pointer;
   border: 1px solid white;
   width: 10em;
-}
-.btn-group2 .portfolioEdit-btn:nth-child(2) {
-  margin-left: 3px;
 }
 .portfolioEdit-btn:hover{
   background-color: rgb(45, 194, 70);
@@ -182,10 +209,10 @@ margin-bottom: 50px;
 }
 
 .portfolioImage img {
-  width: 120px;  /* or whatever width you want */
-  height: 120px; /* or whatever height you want */
+  width: 120px;  
+  height: 120px;
   object-fit: cover;
-  border-radius: 5px;  /* optional, for rounded corners */
+  border-radius: 5px;  
 }
 
 .portfolioImage img:hover {
@@ -253,7 +280,6 @@ margin-bottom: 50px;
 .portfolioEdit-btn{
   font-size: 12px;
 }
-/* Adjust the table for smaller screens */
 .table table {
   font-size: 14px;
   padding: 5px;
@@ -275,5 +301,25 @@ margin-bottom: 50px;
   .portfolioGrid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 437px) {
+  .deleteAll-btns > button {
+    max-width: 80px;
+    height: 34px;
+  }
+}
+
+@media (max-width: 415px) {
+  .deleteAll-btns > button {
+    max-width: 80px;
+    height: 34px;
+  }
+  .dash-top-container{
+   width: 400px;
+  }
+  table{
+    width: 400px;
   }
 }

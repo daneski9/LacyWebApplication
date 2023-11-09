@@ -17,7 +17,7 @@
   background-color: #555; /* Optional: Change for hover effect */
 }
 
-.bannerGrid {
+.portfolio-images {
   margin-top: 40px;
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 3 columns */
@@ -33,8 +33,8 @@
 
 
 .galleryTitle{
-  font-size: 3.5em;
-  font-size: 3.5em;
+  font-size: 3em;
+  font-size: 3em;
   font-family: 'Oleo Script', 'Jost', sans-serif, Arial;
   font-weight: lighter;
   color: #ffffff;
@@ -82,12 +82,12 @@
   object-fit: cover;
 }
 @media (max-width: 1237px){
-  .bannerGrid {
+  .portfolio-images {
     grid-template-columns: repeat(4, 1fr); /* 3 columns */
   }
 }
 @media (max-width: 978px) {
-  .bannerGrid {
+  .portfolio-images {
     grid-template-columns: repeat(3, 1fr);
   }
   .right-arrow {
@@ -100,7 +100,7 @@
 }
 
 @media (max-width: 768px) {
-  .bannerGrid {
+  .portfolio-images {
       grid-template-columns: repeat(2, 1fr);
   }
   
@@ -200,12 +200,12 @@
   object-fit: cover;
 }
 @media (max-width: 1237px){
-  .bannerGrid {
+  .portfolio-images {
     grid-template-columns: repeat(4, 1fr); /* 3 columns */
   }
 }
 @media (max-width: 978px) {
-  .bannerGrid {
+  .portfolio-images {
     grid-template-columns: repeat(3, 1fr);
   }
   .right-arrow {
@@ -218,7 +218,7 @@
 }
 
 @media (max-width: 768px) {
-  .bannerGrid {
+  .portfolio-images {
       grid-template-columns: repeat(2, 1fr);
   }
   
@@ -231,6 +231,13 @@
 @media (max-width: 531px) {
   .galleryTitle{
     line-height: 1.1;
+  }
+  .right-arrow {
+    right: 0.5%;
+  }
+  
+  .left-arrow {
+    left: 0.5%;
   }
 }
 @media (max-width: 478px) {
@@ -247,13 +254,13 @@
 
 }
 /* Modal styling */
-.modal-portfolio {
+.selected-image-modal-page {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.74);
+  background-color: rgba(0, 0, 0, 0.788);
   display: flex;
   justify-content: center;
   align-items: center;

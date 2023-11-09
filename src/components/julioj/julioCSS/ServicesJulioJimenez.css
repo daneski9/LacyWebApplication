@@ -27,7 +27,7 @@
 }
 
 .servicesTitle {
-  font-size: 4em;
+  font-size: 3em;
   font-family: 'Oleo Script', 'Jost', sans-serif, Arial;
   font-weight: lighter;
   color: #ffffff;
@@ -79,7 +79,7 @@
     width: 0px;
   }
   .servicesTitle{
-    margin-top: 55px;
+    margin-top: 70px;
   }
   .discountText{
     padding: 1.3% 1.5%;
@@ -102,9 +102,6 @@
 @media (max-width: 740px) {
   .page-container {
     margin-top: 10px;
-  }
-  .servicesTitle {
-    margin-top: 50px;
   }
   .discountText{
     margin-bottom: 20px;
