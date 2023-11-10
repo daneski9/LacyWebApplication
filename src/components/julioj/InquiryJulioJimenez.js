@@ -2,7 +2,7 @@ import '../../App.css'
 import './julioCSS/InquiryJulioJimenez.css'
 import Footer from './Footer';
 import { db } from "../../DataBase"; 
-import {addDoc, collection, serverTimestamp, updateDoc} from "firebase/firestore";
+import {addDoc, collection, serverTimestamp, getDocs, query} from "firebase/firestore";
 import { storage } from "../../DataBase";
 
 import Navbar from "../Navbar";
@@ -16,7 +16,7 @@ function InquiryPage() {
   const [image, setImage] = useState(null);
   const [showAlert, setShowAlert] = useState(false);
   const form = useRef();
-  
+  const [isLoading, setIsLoading] = useState(false);
   const [first, setFName] = useState("");
   const [last, setLName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,25 +27,51 @@ function InquiryPage() {
   const [link, setLink] = useState("");
 
   const [capVal, setCapVal] = useState("true");
+  const captchaRef = useRef();
   const updateCaptcha = (e) => {
+    
     // Log the changes
     console.log("Captcha Completed");
 
-    // Change the captcha value to false (for the disabled attrivute)
-    setCapVal("");
+    // Capture the value of the captch
+    const captchaValue = captchaRef.current.getValue();
+
+    // Check to see if the captcha was valid
+    if (captchaValue != "") {
+      // Change the captcha value to false (for the disabled attrivute)
+      setCapVal("");
+    } else {
+      // Otherwise the captcha hasn't passed so we set it back to true
+      setCapVal("true");
+    }
+    
   }
 
-  const [disabled, setDisabled] = useState("true")
+  const [disabled, setDisabled] = useState("")
 
   // Handle input changes
   const handleFName = (e) => setFName(e.target.value);
   const handleLName = (e) => setLName(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
-  const handlePhone = (e) => setPhone(e.target.value);
+  
   const handleLocation = (e) => setLocation(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
+
+  const handlePhone = (e) => {
+    const rawPhoneNumber = e.target.value;
+    const formattedPhoneNumber = rawPhoneNumber.replace(/\D/g, ''); // Remove non-digit characters
+    if (formattedPhoneNumber.length <= 10) {
+      // Format the phone number 
+      const formatted = formattedPhoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '($1)$2-$3');
+      setPhone(formatted);
+      
+    }
+  };
   
   const handleImageRef = event => {
+
+    // Disable the submit button while uploading the file
+    setDisabled("true")
 
     console.log(event.target.files[0])
 
@@ -80,6 +106,9 @@ function InquiryPage() {
     }
   };
 
+  // Use to capture the Inquiry ID
+  const [autoId, setAutoId] = useState("");
+
   const handleSubmit = async () => {
     // Save the data to Firebase
     const docRef = await addDoc(collection(db, "Inquirer"), {    // Reformated for eye appeal and added constant docRef to be used for autoId
@@ -93,8 +122,8 @@ function InquiryPage() {
       ImageRef: link,
       State: 1})               // Added State 1 to be created as "Newest Inquiry" state
 
-     // const autoId = docRef.id; // Get the ID of the document that was just created
-
+      setAutoId(docRef.id); // Get the ID of the document that was just created
+      return docRef.id;
       // Create a reference to the file location, will be placed in seperate folder for each inquiry for cases of muliple images
       //const storageRef = storage.ref();('Inquiries/${autoId}/${imageRef.name}'); 
       //await storageRef.put(imageRef);
@@ -108,6 +137,29 @@ function InquiryPage() {
 
       //console.log("Document written with ID: ", autoId);
       //console.log("Image URL: ", imageUrl);
+  };
+
+
+  const sendEmail = async (e) => {
+    e.preventDefault();
+
+    // Scroll to the top of the page immediately after hitting submit
+    window.scrollTo(0, 0);
+
+    setIsLoading(true);  // Start loading
+
+    // Push the Inquiry data to the database
+    const generatedId = await handleSubmit();
+    e.target.elements.id.value = generatedId;
+    // Await the email sending process
+    try {
+        await emailjs.sendForm('service_wvpurwc', 'template_747huxp', form.current, 'y1XLxwxWca9cZzlcv');
+        console.log("SENT EMAIL!");
+    } catch (error) {
+        console.log(error.text);
+    }
+    
+    e.target.reset();
 
     // Clear the form
     setFName("");
@@ -117,33 +169,25 @@ function InquiryPage() {
     setLocation("");
     setDescription("");
     setImageRef("");
-    
     setLink("");
-  };
+    setCapVal('true');
 
+    // Reset the ReCAPTCHA
+    captchaRef.current.reset();
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-    handleSubmit();
-    emailjs.sendForm('service_wvpurwc', 'template_747huxp', form.current, 'y1XLxwxWca9cZzlcv')
-      .then((result) => {
-          console.log(result.text);
-      }, (error) => {
-          console.log(error.text);
-      });
+    // Show alert
+    setShowAlert(true);
 
-      window.scrollTo(0, 0);
-
-      e.target.reset();
-
-      // Show alert
-      setShowAlert(true);
-
-      // Hide alert after 15 seconds
-      setTimeout(() => {
+    // Hide alert after 15 seconds
+    setTimeout(() => {
         setShowAlert(false);
-      }, 15000);
-  };
+    }, 15000);
+    
+    // After all processes are done:
+    setIsLoading(false);  // End loading
+};
+
+
 
   return (
     <>
@@ -159,7 +203,7 @@ function InquiryPage() {
       )}
 
       <h1 className="inquiry_header">Submit an Inquiry</h1>
-      <form ref={form} onSubmit={sendEmail}>
+      <form ref={form} onSubmit={sendEmail} className="inquiry_form">
 
         <input type="text" name="first" value={first} onChange={handleFName} placeholder="First name" required />
         <input type="text" name="last" value={last} onChange={handleLName} placeholder="Last name" required />
@@ -175,13 +219,22 @@ function InquiryPage() {
         </div>
 
         <input type="text" name="link" value={link} placeholder="Image Link" hidden/>
+        <input type="text" name="id" value={autoId} placeholder="INQUIRY ID" hidden />
         
         <br></br>
-        
+        {
+          isLoading && (
+            <div className="loader-container">
+              <div className="loader"></div> {}
+            </div>
+          )
+        }
         <ReCAPTCHA 
           sitekey='6LdVvagoAAAAALOqtiBfkZY7sIYlse5jpbJ-tuo6'
           onChange={updateCaptcha}
           theme="dark"
+          ref={captchaRef}
+          className='recaptcha'
         />
 
         <br></br>
@@ -191,7 +244,7 @@ function InquiryPage() {
             <p className="text-content1">Image is currently uploading.  Inquiry Submission is disabled until image is processed.</p>
           </div>
         )}
-        <button type="submit" disabled={disabled || capVal}>Submit</button>
+        <button type="submit" disabled={isLoading || disabled || capVal}>Submit</button>
 
       </form>
 

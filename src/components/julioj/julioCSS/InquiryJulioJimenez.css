@@ -15,18 +15,12 @@
   margin-bottom: 30px;
 }
 
-@media (max-width: 670px) {
-  .inquiry_header {
-    margin-top: 60px;
-  }
-}
-
 .text-content1 {
   color: rgb(255, 255, 255);
   font-size: 1em;
   letter-spacing: -0.04em;
   text-align: center;
-  background-color: red;
+  background-color: rgb(107, 1, 1);
   width: 75%;
   min-width: 600px;
   padding: 10px;

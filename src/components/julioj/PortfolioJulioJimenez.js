@@ -3,31 +3,56 @@ import Navbar from "../Navbar";
 import './julioCSS/PortfolioJulioJimenez.css';
 import Footer from './Footer';
 import { storage } from "../../DataBase";
-import { ref, listAll, getDownloadURL } from "firebase/storage";
+import { ref, listAll, getDownloadURL, getMetadata } from "firebase/storage";
 import { Link } from 'react-router-dom';
 
 
 
 function Portfolio(properties) {
 
-    // A List to hold the image file names
-    // reference video: https://www.youtube.com/watch?v=YOAeBSCkArA
     const [imageList, setImageList] = useState([]);
     const imageListRef = ref(storage, "Portfolio-page/");
 
     useEffect(() => {
-        listAll(imageListRef)
-            .then((response) => {
-                const downloadPromises = response.items.map((item) => {
-                    return getDownloadURL(item);
+        // Define an async function inside the useEffect
+        const fetchAndSortImages = async () => {
+            try {
+                // Fetch all items from the provided Firebase storage reference.
+                const response = await listAll(imageListRef);
+                
+                // For each item in the response, get its metadata.
+                const itemsWithMetadata = await Promise.all(
+                    response.items.map(async item => {
+                        const metadata = await getMetadata(item);
+                        return { item, metadata };
+                    })
+                );
+    
+                // Sort items based on their updated date in descending order.
+                const sortedItemsWithMetadata = itemsWithMetadata.sort((a, b) => {
+                    const aDate = new Date(a.metadata.updated);
+                    const bDate = new Date(b.metadata.updated);
+                    return bDate - aDate;
                 });
     
-                Promise.all(downloadPromises)
-                    .then((urls) => {
-                        setImageList(urls);
-                    });
-            });
-    }, [imageListRef]);
+                // For each sorted item, fetch its download URL.
+                const sortedUrls = await Promise.all(
+                    sortedItemsWithMetadata.map(({ item }) => getDownloadURL(item))
+                );
+    
+                // Once all URLs are fetched, update the state with the sorted URLs.
+                setImageList(sortedUrls);
+            } catch (error) {
+                // Handle any errors that might occur during the async operations
+                console.error("Error fetching and sorting images:", error);
+            }
+        };
+    
+        // Invoke the async function
+        fetchAndSortImages();
+        
+    }, [imageListRef]);  // The effect hook will re-run when the imageListRef changes.
+    
     
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedImageIndex, setSelectedImageIndex] = useState(null);
@@ -65,8 +90,7 @@ function Portfolio(properties) {
                     });
                     }}>MAKE AN APPOINTMENT</button>
                 </Link>
-                <div className="bannerGridWrapper">
-                    <div className="bannerGrid">
+                <div className="portfolio-images">
                     {currentImages.map((image, index) => (
                         <Box 
                             data={image} 
@@ -78,7 +102,6 @@ function Portfolio(properties) {
                             }} 
                         />
                     ))}
-                    </div>
                 </div>
                 <div className="pagination">
                     {currentPage > 1 && <button className="pagination-button" onClick={goToPreviousPage}>← Previous</button>}
@@ -87,8 +110,8 @@ function Portfolio(properties) {
                 </div>
             </div>
             {selectedImage && (
-                <div className="modal-portfolio" onClick={(e) => {
-                    if (e.target.classList.contains('modal-portfolio')) {
+                <div className="selected-image-modal-page" onClick={(e) => {
+                    if (e.target.classList.contains('selected-image-modal-page')) {
                         setSelectedImage(null);
                     }
                 }}>
@@ -106,7 +129,6 @@ function Portfolio(properties) {
                         }
                     }}>←</div>
                 </div>
-                
             )}
             <Footer />
         </>
