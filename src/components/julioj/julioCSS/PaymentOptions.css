@@ -54,14 +54,19 @@
     font-size: 1.3rem;
     border-radius: 10px;
 }
-@media (max-width: 1192px){
-    .payment-portal{
-        margin-top: 20px;
-    }
-}
+
 /* For mobile responsiveness */
-@media (max-width: 768px) { /* adjust the breakpoint as needed */
+@media (max-width: 437.5px) { /* adjust the breakpoint as needed */
     .payment-button, .box {
-        width: 90vw; /* or some other relative value */
+        width: 75%; /* or some other relative value */
     }
+
+    .box-payment {
+        width: 75%;
+    }
+
+    .box-payment-portals img {
+        width: 100%;
+    }
+
 }

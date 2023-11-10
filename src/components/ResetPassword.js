@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'; // Import the Link component
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../DataBase'; // Import your Firebase authentication instance
 
+import Navbar from "./Navbar";
+import Footer from './julioj/Footer';
+
 function ResetPassword() {
   const [email, setEmail] = useState('');
   const [resetSent, setResetSent] = useState(false);
@@ -29,28 +32,39 @@ function ResetPassword() {
   };
 
   return (
-    <div>
-      <h1>Reset Password</h1>
-      {resetError && <p>{resetError}</p>}
-      {resetSent ? (
-        <div>
-          <p>Check your email for instructions to reset your password.</p>
-          <Link to="/JulioJimenez/login"><button type="button">Back to Login</button></Link>
-        </div>
-      ) : (
-        <form>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <button type="button" onClick={sendResetEmail}>
-            Send Password Reset Email
-          </button>
-        </form>
-      )}
-    </div>
+
+    <>
+    
+      <Navbar />
+
+      <div>
+        <h1>Reset Password</h1>
+        {resetError && <p>{resetError}</p>}
+        {resetSent ? (
+          <div>
+            <p>Check your email for instructions to reset your password.</p>
+            <Link to="/JulioJimenez/login"><button type="button">Back to Login</button></Link>
+          </div>
+        ) : (
+          <form onSubmit={sendResetEmail}>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <button type="submit">
+              Send Password Reset Email
+            </button>
+          </form>
+        )}
+      </div>
+
+      <Footer />
+    
+    </>
+    
   );
 }
 

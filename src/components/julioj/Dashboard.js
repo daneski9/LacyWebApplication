@@ -16,6 +16,7 @@ import { signOut } from 'firebase/auth';
 import { Link } from 'react-router-dom';
 import InquiryModal from './InquiryModal';
 import { deleteObject } from 'firebase/storage';
+import emailjs from '@emailjs/browser';
 
 
 function AdminLanding() {
@@ -97,14 +98,36 @@ function AdminLanding() {
     }
   };
 
+
+
+
   const handleUpdateStateEmail = async (inquiry, emailText) => {
-    try {
-      // Implement the logic to send an email here using the emailText.
-      console.log('Email sent successfully.'); 
-      console.log('Email text:', emailText);
-      
+    try {      
       // Update the state (In-Progress) "2"
       await updateStateInFirestore(inquiry, 2);
+
+      // Create a template with the parameters for the email
+      const templateParams = {
+        name: inquiry.First + " " + inquiry.Last,
+        id: inquiry.id,
+        location: inquiry.Location,
+        description: inquiry.Description
+      };
+
+      // Implement the logic to send an email here using the emailText.
+      console.log('Email sent successfully.'); 
+      console.log('Email text:', templateParams);
+
+      // Scroll to the top of the page immediately after hitting submit
+      window.scrollTo(0, 0);
+
+      // Await the email sending process
+      try {
+          await emailjs.send('service_ystt4qc', 'template_efod31y', templateParams, 'rBdv4vbxFl9erDx3J');
+          console.log("SENT EMAIL!");
+      } catch (error) {
+          console.log(error.text);
+      }
   
       closeModal(); // Close the modal after updating the state.
   

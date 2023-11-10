@@ -8,7 +8,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 
 //import './julioCSS/juliojimenez.css';
 import Footer from './Footer';
-//import '../../App.css'
+import '../../App.css'
 import './julioCSS/ContactJulioJimenez.css'
 
 function Contact() {
@@ -57,6 +57,7 @@ function Contact() {
       setLast('');
       setEmail('');
       setDescription('');
+      setCapVal('true');
   
       // Reset the ReCAPTCHA
       captchaRef.current.reset();
@@ -89,8 +90,8 @@ function Contact() {
         
       <h1 className="contact_header">Contact</h1>
       
-      <form ref={form} onSubmit={sendEmail}>
-        <p className="messageText">Have any questions or concerns? Send me an email here.</p>
+      <form ref={form} onSubmit={sendEmail} className="contact_form">
+        <p className="messageText">Any questions or concerns? Contact Us!</p>
 
         <input type="text" name="first" placeholder="First name" value={first} onChange={(event) => setFirst(event.target.value)} required />
         <input type="text" name="last" placeholder="Last name" value={last} onChange={(event) => setLast(event.target.value)} required />
@@ -102,6 +103,7 @@ function Contact() {
           onChange={updateCaptcha}
           theme="dark"
           ref={captchaRef}
+          className="recaptcha"
         />
 
         <br></br>
@@ -119,7 +121,7 @@ function Contact() {
       </form>
 
       <br /><br /><br /><br /><br /><br /><br />
-      <h1>Looking to Schedule an Appointment?</h1>
+      <h1 className="appointment">Looking to Schedule an Appointment?</h1>
       <Link to="/JulioJimenez/inquiry">
         <button className='about-btn' onClick={() => {
           window.scroll({
