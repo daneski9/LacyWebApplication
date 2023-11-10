@@ -9,7 +9,9 @@ function InquiryModal({ inquiry, onClose, onUpdateState, onDelete, onUpdateState
     return `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
+  /*
   const generateEmailBody = (inquiryDetails, additionalComments) => {
+    
     return `
         Hey ${inquiryDetails.First},
 
@@ -22,7 +24,10 @@ function InquiryModal({ inquiry, onClose, onUpdateState, onDelete, onUpdateState
         Cheers,
         Julio
       `;
+      
   };
+  */
+  
 
   const formatTimestamp = (timestamp) => {
     if (timestamp && timestamp.toDate) {
@@ -74,7 +79,6 @@ function InquiryModal({ inquiry, onClose, onUpdateState, onDelete, onUpdateState
                   <div>
                     {/* Use an anchor tag here with the mailto link */}
                     <a
-                      href={generateMailtoLink(inquiry.Email, "Tattoo Request Accepted!", generateEmailBody(inquiry, emailText))}
                       onClick={() => onUpdateStateEmail(inquiry, emailText)}
                       className="send-email-button"> Mark In-Progress & Send Email</a>
                     <input

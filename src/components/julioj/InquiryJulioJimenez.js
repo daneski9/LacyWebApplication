@@ -170,6 +170,7 @@ function InquiryPage() {
     setDescription("");
     setImageRef("");
     setLink("");
+    setCapVal('true');
 
     // Reset the ReCAPTCHA
     captchaRef.current.reset();
@@ -202,7 +203,7 @@ function InquiryPage() {
       )}
 
       <h1 className="inquiry_header">Submit an Inquiry</h1>
-      <form ref={form} onSubmit={sendEmail}>
+      <form ref={form} onSubmit={sendEmail} className="inquiry_form">
 
         <input type="text" name="first" value={first} onChange={handleFName} placeholder="First name" required />
         <input type="text" name="last" value={last} onChange={handleLName} placeholder="Last name" required />
@@ -233,6 +234,7 @@ function InquiryPage() {
           onChange={updateCaptcha}
           theme="dark"
           ref={captchaRef}
+          className='recaptcha'
         />
 
         <br></br>
