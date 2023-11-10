@@ -54,6 +54,11 @@
     font-size: 1.3rem;
     border-radius: 10px;
 }
+@media (max-width: 1192px){
+    .payment-portal{
+        margin-top: 20px;
+    }
+}
 /* For mobile responsiveness */
 @media (max-width: 768px) { /* adjust the breakpoint as needed */
     .payment-button, .box {

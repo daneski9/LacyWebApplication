@@ -18,7 +18,7 @@
   color: #ffffff;
 }
 
-@media (max-width: 670px) {
+@media (max-width: 1192px) {
   .contact_header {
     margin-top: 60px;
   }
