@@ -20,6 +20,7 @@ function ResetPassword() {
         setResetError(null); // Clear any previous error messages
       })
       .catch((error) => {
+        setResetSent(false);
         // Handle errors
         if (error.code === 'auth/user-not-found') {
           // User not found error
@@ -32,39 +33,28 @@ function ResetPassword() {
   };
 
   return (
-
-    <>
-    
-      <Navbar />
-
-      <div>
-        <h1>Reset Password</h1>
-        {resetError && <p>{resetError}</p>}
-        {resetSent ? (
-          <div>
-            <p>Check your email for instructions to reset your password.</p>
-            <Link to="/JulioJimenez/login"><button type="button">Back to Login</button></Link>
-          </div>
-        ) : (
-          <form onSubmit={sendResetEmail}>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <button type="submit">
-              Send Password Reset Email
-            </button>
-          </form>
-        )}
-      </div>
-
-      <Footer />
-    
-    </>
-    
+    <div>
+      <h1>Reset Password</h1>
+      {resetError && <p>{resetError}</p>}
+      {resetSent ? (
+        <div>
+          <p>f your email is registered with us, you will receive instructions to reset your password.</p>
+          <Link to="/JulioJimenez/login"><button type="button">Back to Login</button></Link>
+        </div>
+      ) : (
+        <form>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button type="button" onClick={sendResetEmail}>
+            Send Password Reset Email
+          </button>
+        </form>
+      )}
+    </div>
   );
 }
 
