@@ -17,6 +17,7 @@ function ResetPassword() {
         setResetError(null); // Clear any previous error messages
       })
       .catch((error) => {
+        setResetSent(false);
         // Handle errors
         if (error.code === 'auth/user-not-found') {
           // User not found error
@@ -34,7 +35,7 @@ function ResetPassword() {
       {resetError && <p>{resetError}</p>}
       {resetSent ? (
         <div>
-          <p>Check your email for instructions to reset your password.</p>
+          <p>f your email is registered with us, you will receive instructions to reset your password.</p>
           <Link to="/JulioJimenez/login"><button type="button">Back to Login</button></Link>
         </div>
       ) : (
