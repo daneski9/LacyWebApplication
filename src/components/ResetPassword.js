@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'; // Import the Link component
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../DataBase'; // Import your Firebase authentication instance
 
+import Navbar from "./Navbar";
+import Footer from './julioj/Footer';
+
 function ResetPassword() {
   const [email, setEmail] = useState('');
   const [resetSent, setResetSent] = useState(false);

@@ -47,6 +47,7 @@
   .sidebar{
     display: none;
   }
+
   .instagram{
     margin-bottom: 2px;
   }
@@ -148,6 +149,9 @@
     }
     .hamburger-menu:has(input:checked) + .sidebar{
       translate: 0;
+    }
+    h1 {
+      margin-top: 80px;
     }
 
   }

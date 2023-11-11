@@ -1,3 +1,6 @@
+.Dashboard *, .Dashboard *:before, .Dashboard *:after {
+  box-sizing: border-box;
+}
 
 .landing {
   width: 75%;
@@ -6,7 +9,6 @@
 }
 
 .file {
-  width: 300px;
   background-color: #6d2d2d;
   color: #ffffff;
   letter-spacing: 0.02rem;
@@ -34,21 +36,21 @@ table {
   flex-wrap: nowrap; 
   justify-content: center;
   margin-bottom: 5px;
+  margin-top: 30px;
 }
 
 .deleteAll-btns > button {
   color: rgba(255, 255, 255, 0.966);
-  background-color: rgba(226, 4, 4, 0.486);
+  background-color: rgba(226, 4, 4, 0.664);
   border: 1px solid rgba(0, 0, 0, 0.233);
-  margin: 1%;
+  margin: 10px;
   border-radius: 15px;
   text-align: center;
   vertical-align: middle;
   overflow: hidden;
   cursor: pointer;
-  width: 30%; 
+  width: 100px; 
   height: 30px; 
-  max-width: 150px;
   font-size: 12px;
 }
 
@@ -167,11 +169,12 @@ margin-bottom: 50px;
   background-color: black;
   color: white;
   padding: 0.3em 1.5em;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
   border: 1px solid white;
   width: 10em;
   margin-top: 3px;
+  
 }
 .logout-btn:hover{
   background-color: rgb(129, 129, 129);
@@ -181,13 +184,15 @@ margin-bottom: 50px;
   margin: 0 auto;
 }
 .portfolioEdit-btn{
-  background-color: rgb(1, 59, 25);
+  margin-top: 10px;
+  background-color: rgb(1, 116, 49);
   color: white;
   padding: 0.3em 1.5em;
   border-radius: 5px;
   cursor: pointer;
   border: 1px solid white;
   width: 10em;
+  border-radius: 15px;
 }
 .portfolioEdit-btn:hover{
   background-color: rgb(45, 194, 70);
@@ -259,10 +264,6 @@ margin-bottom: 50px;
    width: 98%;
   }
 
-.bottom-container-dash{
-   width: 98%;  
-  }
-
 .inquire-btn {
     border: 1px solid #000000;
     font-size: 12px;
@@ -296,6 +297,11 @@ margin-bottom: 50px;
   grid-template-columns: repeat(auto-fill, minmax(120px, 3fr));
   column-gap: -5px;
 }
+@media(max-width: 500px){
+  .portfolioImage img:hover {
+    transform: scale(1.1);
+  }
+}
 }
 @media (max-width: 359px) {
   .portfolioGrid {
@@ -316,10 +322,5 @@ margin-bottom: 50px;
     max-width: 80px;
     height: 34px;
   }
-  .dash-top-container{
-   width: 400px;
-  }
-  table{
-    width: 400px;
-  }
+  
 }
