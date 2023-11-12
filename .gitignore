@@ -338,3 +338,6 @@ google-services.json
 # .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/reactnative,yarn,visualstudiocode,macos
+/test-results/
+/playwright-report/
+/playwright/.cache/

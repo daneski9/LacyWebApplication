@@ -1,12 +1,14 @@
+.Dashboard *, .Dashboard *:before, .Dashboard *:after {
+  box-sizing: border-box;
+}
 
 .landing {
   width: 75%;
   margin: 0 auto;
-  border-radius: 15px;
+  min-height: 80vh; 
 }
 
 .file {
-  width: 300px;
   background-color: #6d2d2d;
   color: #ffffff;
   letter-spacing: 0.02rem;
@@ -16,22 +18,88 @@
   border-radius: 5px;
   margin-top: 20px;
 }
+.btn-group, table{
+  max-width: 800px;
+  margin: 0 auto;
+}
 
 table {
-  margin-bottom: 1%;
   width: 100%;
+  margin-bottom: 1%;
   padding: 10px;
   background-color: rgba(43, 31, 31, 0.486);
   align-items: center;
 
 }
+.deleteAll-btns {
+  display: flex;
+  flex-wrap: nowrap; 
+  justify-content: center;
+  margin-bottom: 5px;
+  margin-top: 30px;
+}
 
+.deleteAll-btns > button {
+  color: rgba(255, 255, 255, 0.966);
+  background-color: rgba(226, 4, 4, 0.664);
+  border: 1px solid rgba(0, 0, 0, 0.233);
+  margin: 10px;
+  border-radius: 15px;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  cursor: pointer;
+  width: 100px; 
+  height: 30px; 
+  font-size: 12px;
+}
+
+.deleteAll-btns > button:hover {
+  background-color: rgb(155, 5, 5);
+  border: 1px solid rgba(255, 255, 255, 0.815);
+}
 th {
   border: 1px solid;
   text-align: left;
   padding: 8px;
   background-color: transparent;
   color: white;
+}
+.open-btn, .x-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.table-title{
+  text-wrap: nowrap;
+}
+.fnameLname{
+  max-width: 40px;
+}
+.open-btn {
+  background-color: #4CAF50;
+  color: white;
+  margin-left: 2px;
+}
+.open-btn:hover {
+  background-color: #228f27;
+}
+.x-btn{
+    float: right;
+    margin-left: 5px;
+    margin-right: 2px;
+    color: white;
+    background-color: rgb(180, 0, 0);
+}
+.x-btn:hover {
+  background-color: #f11e0f;
+}
+.action-buttons {
+  display: flex;        
+  justify-content: space-between; 
+  flex-wrap: nowrap;     
 }
 
 td {
@@ -41,34 +109,31 @@ td {
   color: white;
 }
 
-/*
-.submit-button {
-  margin-top:  1px;
-}
-*/
-
-.bottom-container-dash{
-  width: 75%;
-  margin: 0 auto;
-  border-radius: 15px;
-}
-  
-.btn-group2{
+.bottom-container-dash {
+  margin-top: 100px;
   display: flex;
-  justify-content: left;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .btn-group3{
-  display: flex;
-  justify-content: left;
+  margin-top: 3px;
 }
+
+.btn-group2, .btn-group3 {
+  display: flex;
+  justify-content: center;
+  gap: 7px; 
+  width: 100%; 
+}
+
 
 .btn-group{
-margin-bottom: 5%;
+margin-bottom: 50px;
 }
 
-
-/* Style for the individual buttons */
 .inquire-btn {
+  margin-top: 3px;
   background-color: rgba(0, 0, 0, 0.493);
     border: 1.5px solid #000000;
     color: #ffffff;
@@ -77,44 +142,57 @@ margin-bottom: 5%;
     float: left;
     padding: 10px 16px;
     font-size: 18px;
-    
+}
+.admin-page-title{
+  font-family: 'Oleo Script', 'Jost', sans-serif, Arial;
+  font-weight: lighter;
+  margin-top: 50px;
 }
 
-.active, .inquire-btn:hover {
+.inquire-btn:hover, .active {
+  color: white;
+  cursor: pointer;
+  background-color: #000000fd;
+}
+
+.inquire-btn.button-selected {
   background-color: rgb(129, 129, 129);
   color: white;
-  border: 1.5px solid #000000;
-  cursor: pointer;
+  cursor: auto;
 }
 
 .inquire-btn:not(:last-child) {
-  border-right: none; /* Prevent double borders */
+  border-right: none; 
 }
 
 .logout-btn{
   background-color: black;
   color: white;
-  padding: 0.7em 1.9em;
-  border-radius: 5px;
+  padding: 0.3em 1.5em;
+  border-radius: 15px;
   cursor: pointer;
   border: 1px solid white;
   width: 10em;
+  margin-top: 3px;
+  
 }
 .logout-btn:hover{
   background-color: rgb(129, 129, 129);
 }
 .grid-container {
-  max-width: 1320px; /* Set the maximum width you desire */
-  margin: 0 auto; /* Center the container horizontally on the page */
+  max-width: 1320px; 
+  margin: 0 auto;
 }
 .portfolioEdit-btn{
-  background-color: rgb(1, 59, 25);
+  margin-top: 10px;
+  background-color: rgb(1, 116, 49);
   color: white;
-  padding: 0.7em 1.9em;
+  padding: 0.3em 1.5em;
   border-radius: 5px;
   cursor: pointer;
   border: 1px solid white;
-  width: 10em
+  width: 10em;
+  border-radius: 15px;
 }
 .portfolioEdit-btn:hover{
   background-color: rgb(45, 194, 70);
@@ -129,25 +207,17 @@ margin-bottom: 5%;
   }
 }
 
-.welcome-message{
-  color: white;
-  padding: 10px 20px;        
-  font-size: 1.1rem;
-  margin-left: 75%;
-  animation: fadeOut 5s;
-}
-
 .portfolioGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  margin-top: 20px;
+  gap: 3px;
 }
 
 .portfolioImage img {
-  width: 120px;  /* or whatever width you want */
-  height: 120px; /* or whatever height you want */
+  width: 120px;  
+  height: 120px;
   object-fit: cover;
-  border-radius: 5px;  /* optional, for rounded corners */
+  border-radius: 5px;  
 }
 
 .portfolioImage img:hover {
@@ -160,8 +230,8 @@ margin-bottom: 5%;
   border: 8px solid #f3f3f3;
   border-radius: 50%;
   border-top: 8px solid #3498db;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   animation: spin 2s linear infinite;
 }
 
@@ -182,32 +252,16 @@ margin-bottom: 5%;
   background-color: rgba(0, 0, 0, 0.5); 
   z-index: 1000; 
 }
-/*
-.help{
-  color:white;
-  margin-left: 70%;
-  margin-top: -10px;
-}
-*/
-
-@media (max-width: 852px) {
-
-.welcome-message{
-  margin-top: 50px;
+@media(max-width: 1192px){
+  .admin-page-title{
+    margin-top: 60px;
+  }
 }
 
-}
-
-@media (max-width: 450px) {
+@media (max-width: 862px) {
 
 .landing {
    width: 98%;
-   margin-top: 15%;
-  
-  }
-
-.bottom-container-dash{
-   width: 98%;  
   }
 
 .inquire-btn {
@@ -227,7 +281,6 @@ margin-bottom: 5%;
 .portfolioEdit-btn{
   font-size: 12px;
 }
-/* Adjust the table for smaller screens */
 .table table {
   font-size: 14px;
   padding: 5px;
@@ -239,15 +292,35 @@ margin-bottom: 5%;
   opacity: 1;
   transition: opacity 3s; 
 }  
-
 .portfolioGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);  /* Force 3 columns */
-  margin-top: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 3fr));
+  column-gap: -5px;
+}
+@media(max-width: 500px){
+  .portfolioImage img:hover {
+    transform: scale(1.1);
+  }
+}
+}
+@media (max-width: 359px) {
+  .portfolioGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
-/*.help{
-  min-width: 150%;
-}*/
+@media (max-width: 437px) {
+  .deleteAll-btns > button {
+    max-width: 80px;
+    height: 34px;
+  }
+}
 
+@media (max-width: 415px) {
+  .deleteAll-btns > button {
+    max-width: 80px;
+    height: 34px;
+  }
+  
 }
