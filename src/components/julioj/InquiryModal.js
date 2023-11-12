@@ -1,11 +1,33 @@
 import React, { useState } from 'react';
 import './InquiryModal.css';
 
-
-
 function InquiryModal({ inquiry, onClose, onUpdateState, onDelete, onUpdateStateEmail }) {
-
+  
   const [emailText, setEmailText] = useState(''); // State for email text
+
+  const generateMailtoLink = (email, subject, body) => {
+    return `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  /*
+  const generateEmailBody = (inquiryDetails, additionalComments) => {
+    
+    return `
+        Hey ${inquiryDetails.First},
+
+        Your tattoo request from ${formatTimestamp(inquiryDetails.Date)} is on the board.
+
+        ${additionalComments ? `Comments: ${additionalComments}\n\n` : ''}
+            
+        See you soon at Lacy Street Art Lounge!
+
+        Cheers,
+        Julio
+      `;
+      
+  };
+  */
+  
 
   const formatTimestamp = (timestamp) => {
     if (timestamp && timestamp.toDate) {
@@ -34,7 +56,7 @@ function InquiryModal({ inquiry, onClose, onUpdateState, onDelete, onUpdateState
   };
 
   if (!inquiry) {
-    return null; // If 'inquiry' is null, return nothing, debugs errors when table is not fully filled out
+    return null;
   }
 
   return (
@@ -55,29 +77,29 @@ function InquiryModal({ inquiry, onClose, onUpdateState, onDelete, onUpdateState
                 <button onClick={() => onUpdateState(inquiry, 2)} className="Mark-In-Progress-button">Mark In-Progress Only</button>
                 {inquiry.State === 1 && (
                   <div>
-                    <button
+                    {/* Use an anchor tag here with the mailto link */}
+                    <a
                       onClick={() => onUpdateStateEmail(inquiry, emailText)}
-                      className="send-email-button"> Mark In-Progress and Send Email</button>
+                      className="send-email-button"> Mark In-Progress & Send Email</a>
                     <input
-                     type="text"
-                     value={emailText}
-                     onChange={(e) => setEmailText(e.target.value)}
-                     placeholder="Add Additional Comments on email here..."
-                     className="email-text-input" 
+                      type="text"
+                      value={emailText}
+                      onChange={(e) => setEmailText(e.target.value)}
+                      placeholder="Add Additional Comments on email here..."
+                      className="email-text-input" 
                     />
-                    
                   </div>
                 )}
               </div>
             ) : inquiry.State === 2 ? (
-              <button onClick={() => onUpdateState(inquiry, 3)}>Mark Completed</button>
+              <button className="completed-btn" onClick={() => onUpdateState(inquiry, 3)}>Mark Completed</button>
             ) : null}
           </div>
           <button onClick={() => onDelete(inquiry)} className="delete-button">Delete</button>
           <button className="close-button" onClick={onClose}>Close</button>
         </div>
         <div className="modal-right">
-          <p>Reference Images:</p>
+          <p>Reference Image:</p>
           <img src={inquiry.ImageRef} alt="Reference Image" />
         </div>
       </div>

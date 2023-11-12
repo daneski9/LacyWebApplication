@@ -4,7 +4,7 @@ import './julioCSS/Dashboard.css'
 import Navbar from "../Navbar";
 import Footer from './Footer';
 import { db } from "../../DataBase";  // db const
-import{doc, updateDoc, deleteDoc, collection, getDocs, query, where, orderBy} from 'firebase/firestore'; // collection and getDocs const
+import{doc, updateDoc, deleteDoc, collection, getDocs, query, where, orderBy, writeBatch} from 'firebase/firestore'; // collection and getDocs const
 //import { orderBy, set } from 'lodash';
 import { getAuth } from 'firebase/auth';
 // Uncomment for access to image database
@@ -16,6 +16,7 @@ import { signOut } from 'firebase/auth';
 import { Link } from 'react-router-dom';
 import InquiryModal from './InquiryModal';
 import { deleteObject } from 'firebase/storage';
+import emailjs from '@emailjs/browser';
 
 
 function AdminLanding() {
@@ -44,7 +45,6 @@ function AdminLanding() {
   };
 
  
-  
 
 
   const formatTimestamp = (timestamp) => {
@@ -56,7 +56,6 @@ function AdminLanding() {
       const year = String(date.getFullYear()).slice(-2);
       let hours = date.getHours();
       const minutes = String(date.getMinutes()).padStart(2, '0');
-      const seconds = String(date.getSeconds()).padStart(2, '0');
       let amOrPm = "AM";
   
       if (hours >= 12) {
@@ -66,7 +65,7 @@ function AdminLanding() {
         }
       }
   
-      const formattedDate = `${month}-${day}-${year} @ ${hours}:${minutes}:${seconds} ${amOrPm}`;
+      const formattedDate = `${month}-${day}-${year} @ ${hours}:${minutes} ${amOrPm}`;
       return formattedDate;
     } else {
       return "Invalid Timestamp";
@@ -99,14 +98,36 @@ function AdminLanding() {
     }
   };
 
+
+
+
   const handleUpdateStateEmail = async (inquiry, emailText) => {
-    try {
-      // Implement the logic to send an email here using the emailText.
-      console.log('Email sent successfully.'); 
-      console.log('Email text:', emailText);
-      
+    try {      
       // Update the state (In-Progress) "2"
       await updateStateInFirestore(inquiry, 2);
+
+      // Create a template with the parameters for the email
+      const templateParams = {
+        name: inquiry.First + " " + inquiry.Last,
+        id: inquiry.id,
+        location: inquiry.Location,
+        description: inquiry.Description
+      };
+
+      // Implement the logic to send an email here using the emailText.
+      console.log('Email sent successfully.'); 
+      console.log('Email text:', templateParams);
+
+      // Scroll to the top of the page immediately after hitting submit
+      window.scrollTo(0, 0);
+
+      // Await the email sending process
+      try {
+          await emailjs.send('service_ystt4qc', 'template_efod31y', templateParams, 'rBdv4vbxFl9erDx3J');
+          console.log("SENT EMAIL!");
+      } catch (error) {
+          console.log(error.text);
+      }
   
       closeModal(); // Close the modal after updating the state.
   
@@ -321,14 +342,57 @@ const toggleAddImageModal = () => {
 //////////////////////////////////////////////////// 
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
+const deleteAllByState = async (state) => {
+  // Confirmation check
+  const isConfirmed = window.confirm(`Delete all ${getStateName(state)} inquiries? *Warning: Cannot undo this action!*`);
+  if (!isConfirmed) return;
+
+  // Create a query to filter documents based on the state value
+  const q = query(InquirerCollectionRef, where("State", "==", state));
+
+  try {
+    const querySnapshot = await getDocs(q);
+    const batch = writeBatch(db);  // Initialize the batch
+
+    querySnapshot.docs.forEach((doc) => {
+      batch.delete(doc.ref); // Schedule a delete operation for every document
+    });
+
+    await batch.commit();  // Commit the batch
+    console.log(`All documents with state ${getStateName(state)} deleted successfully.`);
+
+    // Refresh the data to update the table
+    fetchInquirerData(currentState);
+  } catch (error) {
+    console.error("Error deleting documents: ", error);
+  }
+};
+
+const getStateName = (stateValue) => {
+  switch (stateValue) {
+    case 3:
+      return 'Completed';
+    case 2:
+      return 'In-progress';
+    case 1:
+      return 'Newest';
+    default:
+      return 'Unknown';
+  }
+}
 
 
+setTimeout(() => {
+  const elements = document.getElementsByClassName('welcome-message');
+  if (elements.length > 0) {
+    const txt = elements[0]; // Access the first element with the class name
+    txt.style.display = 'none';
+  }
+}, 5000);
 
   return (
     <>
     <Navbar />
-    
-    <div className='welcome-message'>Welcome, {email} </div>
     <div className='landing'>
     {showModal && (
       <div className="modal">
@@ -339,14 +403,34 @@ const toggleAddImageModal = () => {
       onDelete={handleDelete} />
       </div>
       
-)}
+    )}
 
-      <div>
-        <h1>{pageTitle}</h1> 
-        <button onClick={() => handleButtonClick(1)}>Newest Inquiries</button>
-        <button onClick={() => handleButtonClick(2)}>In-Progress</button>
-        <button onClick={() => handleButtonClick(3)}>Completed</button>
-        
+      <div class = "dash-top-container">
+        <h1 className = 'admin-page-title'>{pageTitle}</h1> 
+      <div className='btn-group' style={{width:'100%'}}>
+        <button 
+            className={`inquire-btn ${currentState === 1 ? 'button-selected' : ''}`} 
+            onClick={() => handleButtonClick(1)} 
+            style={{width:'33.3%'}}
+        >
+            Newest
+        </button>
+        <button 
+            className={`inquire-btn ${currentState === 2 ? 'button-selected' : ''}`} 
+            onClick={() => handleButtonClick(2)} 
+            style={{width:'33.3%'}}
+        >
+            In-Progress
+        </button>
+        <button 
+            className={`inquire-btn ${currentState === 3 ? 'button-selected' : ''}`} 
+            onClick={() => handleButtonClick(3)} 
+            style={{width:'33.3%'}}
+        >
+            Completed
+        </button>
+      </div>
+
       </div>
       <div className='table'>  
       <table>
@@ -354,22 +438,25 @@ const toggleAddImageModal = () => {
         <thead>
           <tr>
           
-            <th>Inquirer ID</th>
-            <th>Inquirer Name</th>
-            <th>Date</th>
-            <th>Action</th> 
+            
+            <th className = "table-title">Inquirer Name</th>
+            <th className = "table-title">Date Created</th>
+            <th className = "table-title">Action</th> 
           </tr>
         </thead>
         <tbody>
         {Inquirer.map((Inquiry) => {
           return (
             <tr key={Inquiry.id}>
-              <td>{Inquiry.id}</td>
-              <td>{Inquiry.First} {Inquiry.Last}</td>
+              <td className= "fnameLname">{Inquiry.First} {Inquiry.Last}</td>
               <td>{formatTimestamp(Inquiry.Date)}</td>
               <td>
-                <button onClick={()=> handleButtonAction(Inquiry)}>Open</button>
+                <div className="action-buttons">
+                  <button className="open-btn" onClick={() => handleButtonAction(Inquiry)}>Open</button>
+                  <button className="x-btn" onClick={() => handleDelete(Inquiry)}>X</button>
+                </div>
               </td>
+
             </tr>
           )
           
@@ -377,9 +464,8 @@ const toggleAddImageModal = () => {
         </tbody>
         </table>
         
-        </div>
-        
-
+      </div>
+      {/* 
       <div className = 'file'>
         <label htmlFor="image">Upload Image (Multiple)
           <input type="file" name="image" accept=".jpg, .png" multiple onChange={handleImage} />
@@ -388,37 +474,52 @@ const toggleAddImageModal = () => {
       <div className = 'submit-button'>
         <button onClick={uploadFiles} type="button" disabled={disable}>Submit</button>
       </div>
-    </div>
-    <div className="bottom-container-dash">
+      */}
+      </div>
+       
     {/* Portfolio Grid Code */}
     {
         showPortfolioGrid && (
-          <div className="portfolioGrid">
-            {imageList.map((image, index) => (
-              <div key={index} className="portfolioImage" onClick={() => removeImage(image)}>
-                <img src={image} alt={`Portfolio ${index}`} />
-              </div>
-            ))}
+          <div class="grid-container">
+            <div className="portfolioGrid">
+              {imageList.map((image, index) => (
+               <div key={index} className="portfolioImage" onClick={() => removeImage(image)}>
+                 <img src={image} alt={`Portfolio ${index}`} />
+                </div>
+             ))}
+            </div>
           </div>
+
         )
     }
    <input type="file" id="addPortfolioImages" style={{ display: 'none' }} multiple onChange={handleAddImages} />
-      {
+    {
       imagesLoading && (
         <div className="loader-container">
           <div className="loader"></div> {}
         </div>
       )
     }
-    <button className="portfolioEdit-btn" onClick={togglePortfolioGrid}>Remove Image From Portfolio</button>
-    <button className="portfolioEdit-btn" onClick={toggleAddImageModal}>Add Portfolio Image(s)</button>
-    <p className = "help">Hold the Ctrl key (or Cmd on Mac) while clicking on files to select multiple files.</p>
     
-    <Link to="/JulioJimenez/updatepassword">
-      <button className="logout-btn">UPDATE PASSWORD</button>
-    </Link>
-    <button className = "logout-btn" onClick={handleLogout}>LOGOUT</button>
-    </div>
+    <div className="bottom-container-dash">
+      <div className="btn-group2">
+        <button className="portfolioEdit-btn" onClick={togglePortfolioGrid}>Remove Image From Portfolio</button>
+        <button className="portfolioEdit-btn" onClick={toggleAddImageModal}>Add Portfolio Image(s)</button>
+      </div>
+      <div className="btn-group3">
+        <Link to="/JulioJimenez/updatepassword">
+          <button className="logout-btn">UPDATE PASSWORD</button>
+        </Link>
+        <button className = "logout-btn" onClick={handleLogout}>LOGOUT</button>
+      </div>
+      
+      <div className="deleteAll-btns">
+        <button onClick={() => deleteAllByState(1)}>Delete All<br />Newest</button>
+        <button onClick={() => deleteAllByState(2)}>Delete All<br />In-progress</button>
+        <button onClick={() => deleteAllByState(3)}>Delete All<br />Completed</button>
+      </div>
+
+      </div>
     <Footer />
     
     </>

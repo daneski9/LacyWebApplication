@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
+    "@react-google-maps/api": "^2.19.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -15,6 +16,7 @@
     "react-router-dom": "^6.10.0",
     "react-scripts": "^5.0.1",
     "uuid": "^9.0.1",
+    "validator": "^13.11.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -42,6 +44,8 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@playwright/test": "^1.39.0",
+    "@types/node": "^20.8.9"
   }
 }

@@ -47,12 +47,13 @@
   .sidebar{
     display: none;
   }
+
   .instagram{
     margin-bottom: 2px;
   }
 
     /* Media query for responsive design */
-  @media (max-width: 852px) {
+  @media (max-width: 1192px) {
     .navbar{
       display:none;
     }
@@ -148,6 +149,9 @@
     }
     .hamburger-menu:has(input:checked) + .sidebar{
       translate: 0;
+    }
+    h1 {
+      margin-top: 80px;
     }
 
   }

@@ -117,3 +117,47 @@ html, body {
     height: 200px;
     border: 0;
 }
+/* auto adjusts the footer size according to device screen size*/ 
+@media (max-width: 900px) {
+    .footer-container- {
+        display: flex;
+        display:grid;
+        justify-content: space-between; 
+        flex-wrap: wrap;
+        margin: 10rem 0 2rem 0;
+        gap: 10%;
+  
+    }
+    /* control width of footer section*/
+    .footer-left-, .footer-middle-, .footer-right- {
+    flex: 1;
+    padding: 0 20px; 
+    box-sizing: border-box;
+    }
+  
+    .footer-left- h3, .footer-middle- h3, .footer-right- h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    }
+  
+    .footer-left- p, .footer-middle- ul li, .footer-right- ul li {
+    margin-bottom: 1rem;
+     }
+
+    #map {
+        width: 100%; 
+        height: 200px;
+        border: 0;
+    }
+  
+}
+@media (max-width: 330px) {
+
+    .footer-container p{
+        font-size: 14px;
+    }
+    .footer-container h3{
+        font-size: 16px;
+    }
+
+}
