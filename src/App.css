@@ -214,13 +214,6 @@ div button[type="button"]:active{
   text-align: center;
 }
 
-@media (min-width: 1192px) {
-  .alert {
-    margin-top: 0;
-    margin-bottom: -20px;
-  }
-}
-
 .recaptcha {
   transform:scale(1.06);
   -webkit-transform:scale(1.06);

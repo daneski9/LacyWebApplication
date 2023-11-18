@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 80vh;
   margin-top: 50px;
 }
 .headerContainer{
@@ -55,13 +56,11 @@
   max-width: 600px;
 }
 .itemImg{
-  /*max-width: auto; */
-  max-height: 250px;
+  max-width: auto; 
+  max-height: 200px;
   object-fit: cover;
   display: block; /* to remove the bottom spacing */
   border-radius: 10px;
-  width: 200px;
-  height: 200px;
 }
 .itemTitle {
   font-weight: lighter;
@@ -76,13 +75,6 @@
   color: white;
   margin-top: 10px;
   margin-left: 10px;
-}
-@media(max-width: 1300px){
-  .itemImg {
-    min-width: 200px;
-    width: 200px;
-    height: 200px;
-  }
 }
 @media(max-width: 1192px){
   .spacer{
@@ -172,16 +164,13 @@
     display: block; /* to remove the bottom spacing */
   }
   .itemDescription{
-    
-    font-size: 0.9rem;
+    width: 120px;
+    font-size: 0.8rem;
   }
   .itemTitle{
     font-size: 1.3rem;
     line-height: 0.9;
     
-  }
-  .itemText {
-    width: 200px;
   }
   .itemText > .itemDescription{
     color: rgba(255, 255, 255, 0.918);
@@ -189,7 +178,7 @@
 }
 @media (max-width: 531px) {
   .itemDescription{
-    
+    font-size: 0.7rem;
     max-width: 90%;
   }
 
@@ -207,14 +196,11 @@
   .services-container{
     gap: 20px;
   }
-  .itemImg {
-    min-width: 0;
-  }
 }
 @media (max-width: 426px) {
   .itemDescription{
     width: unset;
-    font-size: 0.65rem;
+    /*font-size: 0.65rem;*/
   }
   .itemImg{
     max-height: 150px;

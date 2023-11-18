@@ -111,8 +111,7 @@ function AdminLanding() {
         name: inquiry.First + " " + inquiry.Last,
         id: inquiry.id,
         location: inquiry.Location,
-        description: inquiry.Description,
-        additional_comments: emailText
+        description: inquiry.Description
       };
 
       // Implement the logic to send an email here using the emailText.
