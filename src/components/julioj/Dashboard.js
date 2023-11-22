@@ -111,7 +111,8 @@ function AdminLanding() {
         name: inquiry.First + " " + inquiry.Last,
         id: inquiry.id,
         location: inquiry.Location,
-        description: inquiry.Description
+        description: inquiry.Description,
+        additional_comments: emailText
       };
 
       // Implement the logic to send an email here using the emailText.
@@ -492,6 +493,7 @@ setTimeout(() => {
 
         )
     }
+    
    <input type="file" id="addPortfolioImages" style={{ display: 'none' }} multiple onChange={handleAddImages} />
     {
       imagesLoading && (
