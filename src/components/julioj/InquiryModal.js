@@ -1,7 +1,39 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './InquiryModal.css';
 
-function InquiryModal({ inquiry, onClose, onUpdateState, onDelete, onUpdateStateEmail }) {
+function InquiryModal({ 
+  inquiry, 
+  onClose, 
+  onUpdateState, 
+  onDelete, 
+  onUpdateStateEmail, 
+  onCheckboxUpdate
+}) {
+
+  const [waiverChecked, setWaiverChecked] = useState(false);
+  const [downpaymentChecked, setDownpaymentChecked] = useState(false);
+
+  useEffect(() => {
+    // Update checkbox states based on inquiry data
+    setWaiverChecked(!!inquiry.WaiverCheck); // Assuming 'WaiverCheck' is a boolean field in your inquiry data
+    setDownpaymentChecked(!!inquiry.DownPaymentCheck); // Assuming 'DownPaymentCheck' is a boolean field
+  }, [inquiry]);
+
+  const handleWaiverChange = () => {
+    const newWaiverCheck = !waiverChecked;
+    setWaiverChecked(newWaiverCheck);
+    onCheckboxUpdate(inquiry.id, newWaiverCheck, downpaymentChecked);
+  };
+
+  const handleDownpaymentChange = () => {
+    const newDownpaymentCheck = !downpaymentChecked;
+    setDownpaymentChecked(newDownpaymentCheck);
+    onCheckboxUpdate(inquiry.id, waiverChecked, newDownpaymentCheck);
+  };
+
+  const canMarkCompleted = waiverChecked && downpaymentChecked;
+
+
   
   const [emailText, setEmailText] = useState(''); // State for email text
 
@@ -72,39 +104,68 @@ function InquiryModal({ inquiry, onClose, onUpdateState, onDelete, onUpdateState
           <p>Location: {inquiry.Location}</p>
           <p>Descripton: {inquiry.Description}</p>
           <div className="StateButton">
-            {inquiry.State === 1 ? (
+          {inquiry.State === 1 ? (
+            <div>
+              <button onClick={() => onUpdateState(inquiry, 2)} className="Mark-In-Progress-button">Mark In-Progress Only</button>
+              {inquiry.State === 1 && (
+                <div>
+                  {/* Use an anchor tag here with the mailto link */}
+                  <a
+                    onClick={() => onUpdateStateEmail(inquiry, emailText)}
+                    className="send-email-button"> Mark In-Progress & Send Email</a>
+                  <input
+                    type="text"
+                    value={emailText}
+                    onChange={(e) => setEmailText(e.target.value)}
+                    placeholder="Add Additional Comments on email here..."
+                    className="email-text-input" 
+                  />
+                </div>
+              )}
+            </div>
+          ) : inquiry.State === 2 ? (
+            <>
               <div>
-                <button onClick={() => onUpdateState(inquiry, 2)} className="Mark-In-Progress-button">Mark In-Progress Only</button>
-                {inquiry.State === 1 && (
-                  <div>
-                    {/* Use an anchor tag here with the mailto link */}
-                    <a
-                      onClick={() => onUpdateStateEmail(inquiry, emailText)}
-                      className="send-email-button"> Mark In-Progress & Send Email</a>
-                    <input
-                      type="text"
-                      value={emailText}
-                      onChange={(e) => setEmailText(e.target.value)}
-                      placeholder="Add Additional Comments on email here..."
-                      className="email-text-input" 
-                    />
-                  </div>
-                )}
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={waiverChecked}
+                    onChange={handleWaiverChange}
+                  />
+                  Waiver filled Out
+                </label>
               </div>
-            ) : inquiry.State === 2 ? (
-              <button className="completed-btn" onClick={() => onUpdateState(inquiry, 3)}>Mark Completed</button>
-            ) : null}
-          </div>
-          <button onClick={() => onDelete(inquiry)} className="delete-button">Delete</button>
-          <button className="close-button" onClick={onClose}>Close</button>
+              <div>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={downpaymentChecked}
+                    onChange={handleDownpaymentChange}
+                  />
+                  Down Payment received
+                </label>
+              </div>
+              {/* "Mark Completed" button */}
+              {canMarkCompleted && (
+                <button className="completed-btn" onClick={() => onUpdateState(inquiry, 3)}>
+                  Mark Completed
+                </button>
+              )}
+            </>
+
+          ) : null}
+
         </div>
-        <div className="modal-right">
-          <p>Reference Image:</p>
-          <img src={inquiry.ImageRef} alt="Reference Image" />
-        </div>
+        <button onClick={() => onDelete(inquiry)} className="delete-button">Delete</button>
+        <button className="close-button" onClick={onClose}>Close</button>
+      </div>
+      <div className="modal-right">
+        <p>Reference Image:</p>
+        <img src={inquiry.ImageRef} alt="Reference Image" />
       </div>
     </div>
-  );
+  </div>
+);
 }
 
 export default InquiryModal;
