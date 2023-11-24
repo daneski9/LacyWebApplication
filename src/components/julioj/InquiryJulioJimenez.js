@@ -120,6 +120,8 @@ function InquiryPage() {
       Description: description,
       Date: serverTimestamp(), // Added Date to be Auto Created from Server Timestamp of object TimeStamp
       ImageRef: link,
+      WaiverCheck: false,
+      DownPaymentCheck: false,
       State: 1})               // Added State 1 to be created as "Newest Inquiry" state
 
       setAutoId(docRef.id); // Get the ID of the document that was just created
