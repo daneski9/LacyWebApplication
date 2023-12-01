@@ -68,15 +68,35 @@ The following pages were created:
   <video src="https://user-images.githubusercontent.com/117392319/236076733-4386d409-6b29-4344-864c-a4f081bf3573.webm" controls="controls" style="max-width: 730px;" />
 </p>   
 
-## Website Demo
+## Screenshots of the product features (mobile view/desktop view)
 ---
 
-The video below does a quick demo of the current state of the Lacy St. Art Lounge web application.  It showcases the different pages and the pathways which can be taken to get to this specific pages along with the fields and buttons that are available on the web pages.  If an individual wants to visit the website themselves, then they can reach it by going to [Lacy St. Art Lounge](https://www.twerpz.dev/).   
+<p align="center">
+  <img src="src/components/images/home-page.png" />
+</p>   
+This is the home page for Julio's website where users can view information, book an appointment, or contact for questions.
 
 <p align="center">
-  <video src="https://user-images.githubusercontent.com/117392319/236071792-56710919-d5ad-4403-90bc-70ef56dd0665.webm" controls="controls" style="max-width: 730px;" />
+  <img src="src/components/images/portfolio-example.png" />
 </p>   
+Here is the portfolio page where users can see the artwork, and click on images to enlarge/go to the next image.
 
+<p align="center">
+  <img src="src/components/images/contact-pages.png" />
+</p>   
+Here are the forms of contact for the users. The left picture is how they book appoints, and the right picture is for asking general questions.
+Both will be sent to the admin's email.
+
+<p align="center">
+  <img src="src/components/images/admin-table-example.png" />
+</p>   
+The left picture is the admin table containing three states to manage inquiry requests: "Newest", "In-Progress", "Completed". Selecting "Open" will open the right
+picture where the admin can manage the request.
+
+<p align="center">
+  <img src="src/components/images/removeimages-example.png" />
+</p>   
+Near the bottom of the admin page are options to add or remove images to the portfolio page. This allows admins to have more control over their site.
    
 ## Timeline
 ---
@@ -89,7 +109,11 @@ The video below does a quick demo of the current state of the Lacy St. Art Loung
 ## Testing
 ---
 
-Testing instructions will be added next semester  
+Our tests are set up using Playwright. An open-source automation library for browser testing and web scraping developed by Microsoft.
+<p align="center">
+  <img src="src/components/images/setting-up-tests.png" />
+</p>   
+ 
 
 
 ## Deployment
