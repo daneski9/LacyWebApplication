@@ -73,36 +73,33 @@ The following pages were created:
 
 <p align="center">
   <img src="src/components/images/home-page.png" />
-</p>   
-This is the home page for Julio's website where users can view information, book an appointment, or contact for questions.
-
+</p>
+Julio's website's homepage, featuring options to view information, schedule appointments, or make inquiries.
 <br/>
+
 <p align="center">
   <img src="src/components/images/portfolio-example.png" />
-</p>   
-Here is the portfolio page where users can see the artwork, and click on images to enlarge/go to the next image.
-
+</p>
+The portfolio page, where users can view Julio's artwork, with the functionality to click and enlarge images or navigate through the gallery.
 <br/>
+
 <p align="center">
   <img src="src/components/images/contact-pages.png" />
-</p>   
-Here are the forms of contact for the users. The left picture is how they book appoints, and the right picture is for asking general questions.
-Both will be sent to the admin's email.
-
+</p>
+Contact options are neatly presented for user convenience. On the left, a form for booking appointments, and on the right, a general inquiry form, both directly linking to the admin's email.
 <br/>
+
 <p align="center">
   <img src="src/components/images/admin-table-example.png" />
-</p>   
-The left picture is the admin table containing three states to manage inquiry requests: "Newest", "In-Progress", "Completed". Selecting "Open" will open the right
-picture where the admin can manage the request.
-
-
+</p>
+Featured here is the admin table, showcasing the inquiry management system categorized into three states: "Newest", "In-Progress", and "Completed". Selecting "Open" reveals further details for managing each request.
 <br/>
+
 <p align="center">
   <img src="src/components/images/removeimages-example.png" />
-</p>   
-Near the bottom of the admin page are options to add or remove images to the portfolio page. This allows admins to have more control over their site.
-   
+</p>
+Administrative flexibility is highlighted near the bottom of the admin page, where options to add or remove portfolio images are available, granting admins more control over site content.
+
 
 ## Timeline
 ---
