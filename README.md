@@ -89,14 +89,44 @@ The video below does a quick demo of the current state of the Lacy St. Art Loung
 ## Testing
 ---
 
-Testing will be added next semester   
+Testing instructions will be added next semester  
 
 
 ## Deployment
 
 ---
 
-Deployement instructions will be added next semester   
+
+This section outlines the necessary steps for deploying your application. Our website utilizes Google App Engine for its hosting and deployment needs.  
+
+**Setting up the environment**
+
+Begin by installing the Google Cloud SDK. You can find and download it from the official Google Cloud SDK page: https://cloud.google.com/sdk/docs/install.   
+
+Ensure you follow the specific installation guidelines tailored to your operating system. During the installation process, it is recommended to leave all default options selected. 
+
+During the setup, select an account that has the necessary permissions in the Google Cloud Console for this project. Proceed to establish a new configuration for this account.
+
+Make sure to select the project ID that corresponds with the one in your Google Cloud Console. 
+
+**Deployment**
+
+Change the directory to your project’s location using the `cd` command.
+For example: `cd C:\Users\path\to\project-directory` 
+
+To apply the most recent updates to your product environment, execute `npm run build` in the project directory to build the latest version of your project, if you have not done so already. 
+
+Run `gcloud app deploy –no-cache` to deploy the project.  
+
+Or run `gcloud app deploy` if you are redeploying and wish to utilize previous build artifacts to save time. 
+
+**Delete Unnecessary Storage **
+
+When you deploy to Google Cloud, an artifact is created that uses storage space. If you are not deploying frequently and wish to manage costs, consider cleaning up the build artifact. 
+
+Navigate to Google Cloud console, go to Cloud Storage, then Buckets.  
+
+Delete the bucket that begins with “us.artifacts” to delete the build artifact.
 
 
 ## Developer Instructions
