@@ -153,12 +153,3 @@ Navigate to Google Cloud console, go to Cloud Storage, then Buckets.
 
 Delete the bucket that begins with “us.artifacts” to delete the build artifact.
 
-
-## Developer Instructions
-
----
-
-Developer instructions will be added next semester
-
-
-
