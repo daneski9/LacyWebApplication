@@ -76,20 +76,20 @@ The following pages were created:
 </p>   
 This is the home page for Julio's website where users can view information, book an appointment, or contact for questions.
 
-
+<br/>
 <p align="center">
   <img src="src/components/images/portfolio-example.png" />
 </p>   
 Here is the portfolio page where users can see the artwork, and click on images to enlarge/go to the next image.
 
-
+<br/>
 <p align="center">
   <img src="src/components/images/contact-pages.png" />
 </p>   
 Here are the forms of contact for the users. The left picture is how they book appoints, and the right picture is for asking general questions.
 Both will be sent to the admin's email.
 
-
+<br/>
 <p align="center">
   <img src="src/components/images/admin-table-example.png" />
 </p>   
@@ -97,7 +97,7 @@ The left picture is the admin table containing three states to manage inquiry re
 picture where the admin can manage the request.
 
 
-
+<br/>
 <p align="center">
   <img src="src/components/images/removeimages-example.png" />
 </p>   
