@@ -71,34 +71,32 @@ The following pages were created:
 ## Screenshots of the product features (mobile view/desktop view)
 ---
 
+Julio's website's homepage, featuring options to view information, schedule appointments, or make inquiries:
 <p align="center">
   <img src="src/components/images/home-page.png" />
 </p>
-Julio's website's homepage, featuring options to view information, schedule appointments, or make inquiries.
-<br/>
 
+The portfolio page, where users can view Julio's artwork, with the functionality to click and enlarge images or navigate through the gallery:
 <p align="center">
   <img src="src/components/images/portfolio-example.png" />
 </p>
-The portfolio page, where users can view Julio's artwork, with the functionality to click and enlarge images or navigate through the gallery.
-<br/>
 
+Contact options are neatly presented for user convenience. On the left, a form for booking appointments, and on the right, a general inquiry form, both directly linking to the admin's email:
 <p align="center">
   <img src="src/components/images/contact-pages.png" />
 </p>
-Contact options are neatly presented for user convenience. On the left, a form for booking appointments, and on the right, a general inquiry form, both directly linking to the admin's email.
-<br/>
 
+Featured here is the admin table, showcasing the inquiry management system categorized into three states: "Newest", "In-Progress", and "Completed". Selecting "Open" reveals further details for managing each request:
 <p align="center">
   <img src="src/components/images/admin-table-example.png" />
 </p>
-Featured here is the admin table, showcasing the inquiry management system categorized into three states: "Newest", "In-Progress", and "Completed". Selecting "Open" reveals further details for managing each request.
-<br/>
 
+
+Administrative flexibility is highlighted near the bottom of the admin page, where options to add or remove portfolio images are available, granting admins more control over site content:
 <p align="center">
   <img src="src/components/images/removeimages-example.png" />
 </p>
-Administrative flexibility is highlighted near the bottom of the admin page, where options to add or remove portfolio images are available, granting admins more control over site content.
+
 
 
 ## Timeline
