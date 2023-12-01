@@ -25,6 +25,26 @@ function AdminLanding() {
   const [currentState, setCurrentState] = useState(1); // Initialize with State 1, being the Newest Inquiry State
   const InquirerCollectionRef = collection(db, "Inquirer");
 
+// Function to update the Waiver and Downpayment checkboxes in Firestore
+const updateCheckboxFields = async (inquiryId, waiverCheck, downpaymentCheck) => {
+  const inquiryDocRef = doc(db, 'Inquirer', inquiryId);
+  await updateDoc(inquiryDocRef, { WaiverCheck: waiverCheck, DownPaymentCheck: downpaymentCheck });
+  console.log('Checkbox fields updated successfully.');
+};
+
+const handleCheckboxUpdate = async (inquiryId, waiverCheck, downpaymentCheck) => {
+  try {
+    // Update the checkbox fields in Firestore
+    await updateCheckboxFields(inquiryId, waiverCheck, downpaymentCheck);
+    // Fetch the updated data to refresh the table with the latest information.
+    fetchInquirerData(currentState);
+  } catch (error) {
+    console.error('Error updating checkbox fields: ', error);
+  }
+};
+
+
+
   const fetchInquirerData = async (state) => {
     // Create a query to filter documents based on the current state value
     const q = query(InquirerCollectionRef, where("State", "==", state), orderBy ("Date", "desc")); // states are 1-3, 1 = Newest Inquiry, 2 = In-Progress, 3 = Completed // OrderBy Date
@@ -111,7 +131,8 @@ function AdminLanding() {
         name: inquiry.First + " " + inquiry.Last,
         id: inquiry.id,
         location: inquiry.Location,
-        description: inquiry.Description
+        description: inquiry.Description,
+        additional_comments: emailText
       };
 
       // Implement the logic to send an email here using the emailText.
@@ -396,11 +417,13 @@ setTimeout(() => {
     <div className='landing'>
     {showModal && (
       <div className="modal">
-      <InquiryModal inquiry={selectedInquiry} 
+      <InquiryModal
+      inquiry={selectedInquiry} 
       onClose={closeModal} 
       onUpdateState={handleUpdateState}
       onUpdateStateEmail={handleUpdateStateEmail} 
-      onDelete={handleDelete} />
+      onDelete={handleDelete}
+      onCheckboxUpdate={handleCheckboxUpdate} />
       </div>
       
     )}
@@ -492,6 +515,7 @@ setTimeout(() => {
 
         )
     }
+    
    <input type="file" id="addPortfolioImages" style={{ display: 'none' }} multiple onChange={handleAddImages} />
     {
       imagesLoading && (

@@ -4,13 +4,12 @@ import './julioCSS/ServicesJulioJimenez.css';
 import './julioCSS/InquiryJulioJimenez.css'
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
-import servicePic1 from "../images/services/full-lower-arm.png";
-import servicePic2 from "../images/services/full-back.png";
-import servicePic3 from "../images/services/full-sleeve.png";
-import servicePic4 from "../images/services/portrait-arm.png";
-import servicePic5 from "../images/services/portrait-bicep.png";
-import servicePic6 from "../images/services/upper-arm.png";
-import servicePic7 from "../images/services/upper-arm-full.png";
+
+import full_day from "../images/services/full_day.jpg";
+import half_day from "../images/services/half_day.jpg";
+import small_tattoo from "../images/services/small_tattoo.jpg"
+import consultation from "../images/services/consultation.jpg"
+
 //import servicePic8 from "../images/services/img8.png";
 
 
@@ -32,40 +31,43 @@ function Services() {
        <div className = "services-container">
               <Link to="/JulioJimenez/inquiry" onClick={handleLinkClick}>
               <div className = "services-item">
-                  <img className = "itemImg" src={servicePic2} alt="text"></img>
+                  <img className = "itemImg" src={full_day} alt="text"></img>
                   <div className = "itemText">
                     <p className = "itemTitle">Full Day Session</p>
-                    <p className = "itemDescription">Ideal for extensive designs, covering the entire back, chest, or sleeve, bringing your bold ideas to life.</p>
+                    <p className = "itemDescription">This is abut 8 - 10 hours of tattoo time. Price:  $1,000 - $1,200</p>
+                    <p className = "itemDescription"></p>
                   </div>
               </div>
               </Link>
               <Link to="/JulioJimenez/inquiry" onClick={handleLinkClick}>
               <div className = "services-item">
-                  <img className = "itemImg" src={servicePic2} alt="text"></img>
+                  <img className = "itemImg" src={half_day} alt="text"></img>
                   <div className = "itemText">
                     <p className = "itemTitle">Half Day Session</p>
-                    <p className = "itemDescription">Suited for shorter appointments, typically lasting around 3-4 hours, offering a professional touch in less time.</p>
+                    <p className = "itemDescription">This is about 4 - 6 hours of tattoo time. Price:  $500 - $600</p>
                   </div>
               </div>
               </Link>
               <Link to="/JulioJimenez/inquiry" onClick={handleLinkClick}>
               <div className = "services-item">
-                  <img className = "itemImg" src={servicePic7} alt="text"></img>
+                  <img className = "itemImg" src={small_tattoo} alt="text"></img>
                   <div className = "itemText">
-                    <p className = "itemTitle">Filler Tattoo</p>
-                    <p className = "itemDescription">Ideal for those looking to add some extra flair or fill empty spaces with smaller, detailed designs.</p>
+                    <p className = "itemTitle">Small Tattoos Session</p>
+                    <p className = "itemDescription">This is based on hourly at $150 minimum</p>
                   </div>
               </div>
               </Link>
               <Link to="/JulioJimenez/inquiry" onClick={handleLinkClick}>
               <div className = "services-item">
-                  <img className = "itemImg" src={servicePic7} alt="text"></img>
+                  <img className = "itemImg" src={consultation} alt="text"></img>
                   <div className = "itemText">
-                    <p className = "itemTitle">Small Tattoo</p>
-                    <p className = "itemDescription">Perfect for a subtle statement, these tattoos are small but impactful.</p>
+                    <p className = "itemTitle">Consultation Session</p>
+                    <p className = "itemDescription">Based on request for design and placement</p>
                   </div>
               </div>
               </Link>
+              
+              {/*
               <Link to="/JulioJimenez/inquiry" onClick={handleLinkClick}>
               <div className = "services-item">
                   <img className = "itemImg" src={servicePic3} alt="text"></img>
@@ -121,7 +123,7 @@ function Services() {
               </div>
               </Link>
               
-              {/* <Link to="/JulioJimenez/inquiry">
+              <Link to="/JulioJimenez/inquiry">
                   <div className = "services-item">
                     <img className = "itemImg" src={servicePic7} alt="text"></img>
                     <div className = "itemText">
@@ -132,7 +134,7 @@ function Services() {
                 </Link> */}
         </div>
     </div>
-      <Footer className="footer"/>
+    <Footer className="footer"/>
     </>
   );
 }
