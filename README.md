@@ -68,16 +68,37 @@ The following pages were created:
   <video src="https://user-images.githubusercontent.com/117392319/236076733-4386d409-6b29-4344-864c-a4f081bf3573.webm" controls="controls" style="max-width: 730px;" />
 </p>   
 
-## Website Demo
+## Screenshots of the product features (mobile view/desktop view)
 ---
 
-The video below does a quick demo of the current state of the Lacy St. Art Lounge web application.  It showcases the different pages and the pathways which can be taken to get to this specific pages along with the fields and buttons that are available on the web pages.  If an individual wants to visit the website themselves, then they can reach it by going to [Lacy St. Art Lounge](https://www.twerpz.dev/).   
-
+Julio's website's homepage, featuring options to view information, schedule appointments, or make inquiries:
 <p align="center">
-  <video src="https://user-images.githubusercontent.com/117392319/236071792-56710919-d5ad-4403-90bc-70ef56dd0665.webm" controls="controls" style="max-width: 730px;" />
-</p>   
+  <img src="src/components/images/home-page.png" />
+</p>
 
-   
+The portfolio page, where users can view Julio's artwork, with the functionality to click and enlarge images or navigate through the gallery:
+<p align="center">
+  <img src="src/components/images/portfolio-example.png" />
+</p>
+
+Contact options are neatly presented for user convenience. On the left, a form for booking appointments, and on the right, a general inquiry form, both directly linking to the admin's email:
+<p align="center">
+  <img src="src/components/images/contact-pages.png" />
+</p>
+
+Featured here is the admin table, showcasing the inquiry management system categorized into three states: "Newest", "In-Progress", and "Completed". Selecting "Open" reveals further details for managing each request:
+<p align="center">
+  <img src="src/components/images/admin-table-example.png" />
+</p>
+
+
+Administrative flexibility is highlighted near the bottom of the admin page, where options to add or remove portfolio images are available, granting admins more control over site content:
+<p align="center">
+  <img src="src/components/images/removeimages-example.png" />
+</p>
+
+
+
 ## Timeline
 ---
 
@@ -89,14 +110,48 @@ The video below does a quick demo of the current state of the Lacy St. Art Loung
 ## Testing
 ---
 
-Testing will be added next semester   
+Our tests are set up using Playwright. An open-source automation library for browser testing and web scraping developed by Microsoft.
+<p align="center">
+  <img src="src/components/images/setting-up-tests.png" />
+</p>   
+ 
 
 
 ## Deployment
 
 ---
 
-Deployement instructions will be added next semester   
+
+This section outlines the necessary steps for deploying your application. Our website utilizes Google App Engine for its hosting and deployment needs.  
+
+**Setting up the environment**
+
+Begin by installing the Google Cloud SDK. You can find and download it from the official Google Cloud SDK page: https://cloud.google.com/sdk/docs/install.   
+
+Ensure you follow the specific installation guidelines tailored to your operating system. During the installation process, it is recommended to leave all default options selected. 
+
+During the setup, select an account that has the necessary permissions in the Google Cloud Console for this project. Proceed to establish a new configuration for this account.
+
+Make sure to select the project ID that corresponds with the one in your Google Cloud Console. 
+
+**Deployment**
+
+Change the directory to your project’s location using the `cd` command.
+For example: `cd C:\Users\path\to\project-directory` 
+
+To apply the most recent updates to your product environment, execute `npm run build` in the project directory to build the latest version of your project, if you have not done so already. 
+
+Run `gcloud app deploy –no-cache` to deploy the project.  
+
+Or run `gcloud app deploy` if you are redeploying and wish to utilize previous build artifacts to save time. 
+
+**Delete Unnecessary Storage **
+
+When you deploy to Google Cloud, an artifact is created that uses storage space. If you are not deploying frequently and wish to manage costs, consider cleaning up the build artifact. 
+
+Navigate to Google Cloud console, go to Cloud Storage, then Buckets.  
+
+Delete the bucket that begins with “us.artifacts” to delete the build artifact.
 
 
 ## Developer Instructions

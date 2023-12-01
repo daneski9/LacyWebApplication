@@ -84,10 +84,10 @@
   }
   .contact-btn{
     display: inline-block;
-    margin: 0em 0 4em 0;
-    font-size: 0.8rem;
+    margin: 1em 0 4em 0;
+    font-size: 1rem;
     text-decoration: none;
-    padding: 10px 30px;
+    padding: 10px 23px;
     background-color: #ada18a;
     color: #ffffff;
     border-radius: 25px;
@@ -185,7 +185,7 @@
         max-width: 200px;
     }
     .text-box{
-       max-width: 350px;
+       max-width: 320px;
        padding: 20px 20px;
        margin-bottom: 5px;
     }
@@ -199,6 +199,9 @@
  @media(max-width: 407px){
     .text-box{
         padding: 15px 7px;
+     }
+     .text-box{
+        max-width: 340px;
      }
      
  }
