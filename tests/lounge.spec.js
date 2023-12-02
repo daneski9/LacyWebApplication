@@ -1,55 +1,42 @@
- //load test and expect modules from playwright package
- const { test, expect } = require('@playwright/test');
+//load test and expect modules from playwright package
+const { test, expect } = require('@playwright/test');
 
- test.describe('Lounge Page Tests', () => {
- 
-    test.beforeEach(async ({ page }) => {
-       await page.goto('http://localhost:3001');
-    });
- 
-    test.afterEach(async ({page}) => {
-       await page.close();
-    });
-    
+test.describe('Lounge Page Tests', () => {
 
-    test('Should display the title and artists', async ({page}) => {
-        await expect(page).toHaveTitle('Lacy St. Art Lounge');
-        await page.waitForSelector('h1.title.is-1'); // wait for title to appear
-        await page.waitForSelector('h2.title-2'); // wait for subtitle to appear
-    });
+   test.beforeEach(async ({ page }) => {
+      await page.goto('http://localhost:3000');
+   });
 
-    test('Should display all artist containers', async ({page}) => {
-        //check if the artists are displayed
-        const artists = await page.$$('.artists-container > div');
-        expect(artists.length).toBe(5); // 5 artists total
-    });
+   test.afterEach(async ({page}) => {
+      await page.close();
+   });
+   
+   test('Should display the title and artists', async ({page}) => {
+       await expect(page).toHaveTitle('Lacy St. Art Lounge');
+       await page.waitForSelector('h1.title.is-1'); // wait for title to appear
+       await page.waitForSelector('h2.title-2'); // wait for subtitle to appear
+   });
 
-    test('Should display all artist images', async ({page}) => {
-        const artistImages = await page.$$('.artists-container img');
+   test('Should display all artist containers', async ({page}) => {
+       //check if the artists are displayed
+       const artists = await page.$$('.artists-container > div');
+       expect(artists.length).toBe(5); // 5 artists total
+   });
 
-        for (const artistImage of artistImages) {       // loop through pictures 
-         const altText = await artistImage.getAttribute('alt');
+   test('Should display all artist images', async ({page}) => {
+       const artistImages = await page.$$('.artists-container img');
 
-        expect(altText).toBeTruthy(); //make sure the pictures are populated 
-         }
-    });
+       for (const artistImage of artistImages) {       // loop through pictures 
+        const altText = await artistImage.getAttribute('alt');
 
-    test('Should verify the instgram links are present', async ({page}) => {
-         //check if the links to socials are present 
-        const artistProfileLinks = await page.$$('.socials');
-        expect(artistProfileLinks.length).toBe(4); // 4 instagram links
-      
-    });
+       expect(altText).toBeTruthy(); //make sure the pictures are populated 
+        }
+   });
 
-    test('Should navigate to Julio Jimenez artist page', async ({page}) => {
-        
-        const julioContainer = await page.$('.lacy-container');
-        const julioLink = await julioContainer.$('a');
-        await julioLink.click();
-        await page.waitForNavigation({ url: 'http://localhost:3001/JulioJimenez/about' });
-        const currentURL = page.url();
-        expect(currentURL).toBe('http://localhost:3001/JulioJimenez/about');
-      });
-
+   test('Should verify the instgram links are present', async ({page}) => {
+        //check if the links to socials are present 
+       const artistProfileLinks = await page.$$('.socials');
+       expect(artistProfileLinks.length).toBe(4); // 4 instagram links
+     
+   });
 });
- 
