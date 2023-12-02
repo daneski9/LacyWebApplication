@@ -17,7 +17,6 @@ import ServicesJulioJimenez from "./components/julioj/ServicesJulioJimenez";
 import Dashboard from "./components/julioj/Dashboard";
 import PaymentOptions from "./components/julioj/PaymentOptions";
 
-
 //Next artist imports:
 
 
@@ -37,7 +36,6 @@ function App() {
             <Route path="/JulioJimenez/portfolio" element={<PortfolioJulioJimenez />} />
             <Route path="/JulioJimenez/services" element={<ServicesJulioJimenez />} />
             <Route path="/JulioJimenez/login" element={<Login />} />
-            <Route path="/JulioJimenez/signup" element={<SignUp />} />
             
             <Route path="/JulioJimenez/resetpassword" element={<ResetPassword />} />
             <Route path="/JulioJimenez/payment" element={<PaymentOptions />} />
