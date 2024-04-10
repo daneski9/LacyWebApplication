@@ -14,13 +14,7 @@ import { ref } from "firebase/database";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBwZIHTwjOEb62DXwjnuKziwBwWvK7AM3U",
-  authDomain: "daring-wavelet-384121.firebaseapp.com",
-  projectId: "daring-wavelet-384121",
-  storageBucket: "daring-wavelet-384121.appspot.com",
-  messagingSenderId: "306093407206",
-  appId: "1:306093407206:web:73a7fe3c8fbc1fd8443427",
-  measurementId: "G-FGYC54VH9R"
+  
 };
 
 // Initialize Firebase
